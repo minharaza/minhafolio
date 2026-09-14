@@ -1,18 +1,16 @@
 'use client';
 
-
+import { useState } from 'react';
 import { Stack } from '@mui/material';
-import { gsap } from "gsap";
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMoon, faSun, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from 'next-themes';
 
 gsap.registerPlugin(ScrollTrigger);
-
-import { useTheme } from 'next-themes';
 
 const ThemeToggle = () => {
     const { theme, setTheme } = useTheme();

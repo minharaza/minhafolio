@@ -1,0 +1,93 @@
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #f5f1ea;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.welcome-screen * {
+  box-sizing: border-box;
+}
+
+.welcome-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.welcome-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.welcome-close {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 2px solid #9f7ad0;
+  background: rgba(247, 243, 251, 0.9);
+  color: #7b5d9d;
+  font-size: 2rem;
+  font-weight: 300;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.welcome-plant {
+  position: absolute;
+  top:-1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.welcome-plant.left {
+  left: -1rem;
+  transform: translate(-10rem, -2rem);
+}
+
+.welcome-plant.right {
+  right: 0rem;
+  transform: translate(10rem, -2rem);
+}
+
+.welcome-plant img {
+  display: block;
+  width: 40rem;
+  height: 40rem;
+  object-fit: contain;
+}
+
+.welcome-mat {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0rem;
+}
+
+.welcome-mat img {
+  display: block;
+  width: min(84vw, 1300px);
+  height: auto;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12));
+}

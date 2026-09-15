@@ -27,6 +27,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={quicksand.variable}>
       <body>
+        <head>
+          <link rel="icon" href="/images/Logo.png" type="image/png" />
+        </head>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

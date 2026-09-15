@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
+
 .welcome-screen {
   position: fixed;
   inset: 0;
@@ -5,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Lily Script One', cursive;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -77,19 +80,61 @@
 }
 
 .welcome-mat {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 7rem);
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0rem;
-  transform: translateY(7rem);
+  width: min(84vw, 1300px);
+  transform: translate(-50%, -50%);
 }
 
 .welcome-mat img {
   display: block;
-
-  width: min(84vw, 1300px);
+  width: 100%;
   height: auto;
   filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12));
+}
+
+.welcome-text {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 7rem);
+  z-index: 2;
+  width: min(58vw, 760px);
+  transform: translate(-50%, -50%);
+  font-family: 'Lily Script One', cursive;
+  color: #695687;
+  text-align: center;
+  pointer-events: none;
+}
+
+.welcome-text h1,
+.welcome-text p {
+  margin: 0;
+}
+
+.welcome-text h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.02em;
+  white-space: nowrap;
+  font-size: clamp(9rem, 12vw, 6rem);
+  line-height: 1.1;
+}
+
+.welcome-logo-letter {
+  display: inline-block;
+  width: 12rem;
+  height: 12rem;
+  margin: 0 0.02em;
+  object-fit: contain;
+}
+
+.welcome-text p {
+  margin-top: 0.75rem;
+  font-size: clamp(2.5rem, 2vw, 2rem);
 }

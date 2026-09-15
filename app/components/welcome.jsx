@@ -41,6 +41,14 @@ export default function Welcome({ onClose }) {
       <div className="welcome-mat">
         <img src="/images/Welcome_Mat.png" alt="Welcome mat" />
       </div>
+      <div className="welcome-text">
+        <h1>
+          Welc
+          <img className="welcome-logo-letter" src="/images/Logo.png" alt="o" />
+          me
+        </h1>
+        <p>to my portfolio</p>
+      </div>
     </div>
   );
 }

@@ -5,16 +5,16 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
 const App = () => {
-  const { theme } = useTheme(); // light, dark, or system
+  const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [particlesContainer, setParticlesContainer] = useState(null);
 
   useEffect(() => setMounted(true), []);
   useEffect(() => {
-    if (particlesContainer && theme) {
-      particlesContainer.loadTheme(theme === "dark" ? "dark" : "light");
+    if (particlesContainer && (theme || resolvedTheme)) {
+      particlesContainer.loadTheme((resolvedTheme || theme) === "dark" ? "dark" : "light");
     }
-  }, [theme, particlesContainer]);
+  }, [theme, resolvedTheme, particlesContainer]);
 
   const particlesInit = useCallback(async (main) => {
     await loadFull(main);
@@ -58,7 +58,7 @@ const App = () => {
         },
       ],
       background: {
-        color: { value: theme === "dark" ? "#000000" : "#ffffff" },
+        color: { value: (resolvedTheme || theme) === "dark" ? "#000000" : "#ffffff" },
       },
       fpsLimit: 120,
       interactivity: {
@@ -73,9 +73,9 @@ const App = () => {
         },
       },
       particles: {
-        color: { value: theme === "dark" ? "#ffffff" : "#000000" },
+        color: { value: (resolvedTheme || theme) === "dark" ? "#ffffff" : "#000000" },
         links: {
-          color: theme === "dark" ? "#ffffff" : "#000000",
+          color: (resolvedTheme || theme) === "dark" ? "#ffffff" : "#000000",
           distance: 150,
           enable: true,
           opacity: 0.5,

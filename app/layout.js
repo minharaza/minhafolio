@@ -1,13 +1,9 @@
-'use client'
-
 import './globals.css';
 import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
 
 import { ThemeProvider } from './components/theme-provider';
 import ParticlesWrapper from './components/ParticlesWrapper';
 import { Quicksand } from 'next/font/google';
-import { useTheme } from 'next-themes';
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -15,21 +11,16 @@ const quicksand = Quicksand({
   variable: '--font-quicksand',
 });
 
+export const metadata = {
+  icons: {
+    icon: '/images/Logo.png',
+  },
+};
+
 export default function RootLayout({ children }) {
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-  useEffect(() => {
-    console.log('theme: ', theme);
-  }, [theme]);
-
   return (
     <html lang="en" suppressHydrationWarning className={quicksand.variable}>
       <body>
-        <head>
-          <link rel="icon" href="/images/Logo.png" type="image/png" />
-        </head>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -37,7 +28,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Box className="home-container">
-            {mounted && <ParticlesWrapper />}
+            <ParticlesWrapper />
           </Box>
           {children}
         </ThemeProvider>

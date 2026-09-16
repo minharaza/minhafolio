@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
+
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lily Script One', cursive;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #f5f1ea;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.welcome-screen * {
+  box-sizing: border-box;
+}
+
+.welcome-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.welcome-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.welcome-close {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 2px solid #9f7ad0;
+  background: rgba(247, 243, 251, 0.9);
+  color: #7b5d9d;
+  font-size: 2rem;
+  font-weight: 300;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.welcome-plant {
+  position: absolute;
+  top:-1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.welcome-plant.left {
+  left: -1rem;
+  transform: translate(-10rem, -2rem);
+}
+
+.welcome-plant.right {
+  right: 0rem;
+  transform: translate(10rem, -2rem);
+}
+
+.welcome-plant img {
+  display: block;
+  width: 40rem;
+  height: 40rem;
+  object-fit: contain;
+}
+
+.welcome-mat {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 7rem);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(84vw, 1300px);
+  transform: translate(-50%, -50%);
+}
+
+.welcome-mat img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12));
+}
+
+.welcome-text {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 7rem);
+  z-index: 2;
+  width: min(58vw, 760px);
+  transform: translate(-50%, -50%);
+  font-family: 'Lily Script One', cursive;
+  color: #695687;
+  text-align: center;
+  pointer-events: none;
+}
+
+.welcome-text h1,
+.welcome-text p {
+  margin: 0;
+}
+
+.welcome-text h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.02em;
+  white-space: nowrap;
+  font-size: clamp(9rem, 12vw, 6rem);
+  line-height: 1.1;
+}
+
+.welcome-logo-letter {
+  display: inline-block;
+  width: 12rem;
+  height: 12rem;
+  margin: 0 0.02em;
+  object-fit: contain;
+}
+
+.welcome-text p {
+  margin-top: 0.75rem;
+  font-size: clamp(2.5rem, 2vw, 2rem);
+}

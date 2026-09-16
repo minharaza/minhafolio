@@ -28,6 +28,7 @@ export default function Welcome({ onClose }) {
 
       <button type="button" onClick={onClose} aria-label="Close welcome screen" className="welcome-close">
         <img src="/images/Key.png" alt="Close welcome screen" />
+        <img className="welcome-click-hint" src="/images/Click_Me.png" alt="" aria-hidden="true" />
       </button>
 
       <div className="welcome-plant left">

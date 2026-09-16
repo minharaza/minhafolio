@@ -52,9 +52,28 @@
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+.welcome-click-hint {
+  position: absolute;
+  right: calc(100% - 10rem);
+  top: 20%;
+  width: clamp(2rem, 6vw, 6rem);
+  height: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(0.75rem) rotate(-6deg);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
 .welcome-close:hover {
   transform: translateX(-50%) scale(1.14);
   filter: drop-shadow(0 8px 16px rgba(252, 227, 65, 0.9));
+}
+
+.welcome-close:hover .welcome-click-hint {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0) rotate(-6deg);
 }
 
 .welcome-close:active {

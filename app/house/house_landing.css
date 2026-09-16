@@ -11,10 +11,16 @@
 	background-size: cover;
 }
 
-.smile_with_matcha{
-    width: 70rem;
-    height: auto;
-    transform: translateX(-8rem);
-    align-self: flex-end;
-  margin-bottom: -2rem;
+.matcha-swap {
+	position: relative;
+	width: 50rem;
+	transform: translateX(-8rem);
+	align-self: flex-end;
+	margin-bottom:-3rem;
+}
+
+.matcha-image {
+	display: block;
+	width: 100%;
+	height: auto;
 }

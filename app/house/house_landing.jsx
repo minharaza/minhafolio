@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import './house_landing.css';
 
 const rooms = [
@@ -10,6 +13,8 @@ const rooms = [
 ];
 
 export default function HousePage() {
+  const [showPout, setShowPout] = useState(false);
+
   return (
     <main className="house-landing">
       <nav aria-label="Portfolio sections">
@@ -19,11 +24,18 @@ export default function HousePage() {
           </Link>
         ))}
       </nav>
-      <img
-        className="smile_with_matcha"
-        src="/images/Smiling_With_Matcha.png"
-        alt="Smiling with matcha"
-      />
+      <div
+        className="matcha-swap"
+        onMouseEnter={() => setShowPout(true)}
+        onMouseLeave={() => setShowPout(false)}
+        aria-label="Portrait that changes when hovered"
+      >
+        <img
+          className="matcha-image"
+          src={showPout ? '/images/pout_with_matcha.png' : '/images/smiling_with_matcha.png'}
+          alt={showPout ? 'Pout with matcha' : 'Smiling with matcha'}
+        />
+      </div>
     </main>
   );
 }

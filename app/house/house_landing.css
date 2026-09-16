@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
 .house-landing {
 	position: relative;
 	z-index: 1;
@@ -23,4 +24,49 @@
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+.speech-bubble {
+	position: absolute;
+	top: 15%;
+	right: 20%;
+	z-index: 2;
+	width: clamp(10rem, 22vw, 20rem);
+	animation: speech-bubble-in 0.6s ease-out both;
+}
+
+.speech-bubble img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.speech-bubble span {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	width: 80%;
+	transform: translate(-50%, -50%);
+    font-family: 'Lily Script One', cursive;
+	color:  #695687;;
+	font-size: clamp(2.5rem, 3vw, 1.25rem);
+	font-weight: 700;
+	text-align: center;
+}
+
+@keyframes speech-bubble-in {
+	from {
+		opacity: 0;
+		transform: translateY(1.5rem) scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.speech-bubble {
+		animation: none;
+	}
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './house_landing.css';
 
 const rooms = [
@@ -14,6 +14,15 @@ const rooms = [
 
 export default function HousePage() {
   const [showPout, setShowPout] = useState(false);
+  const [showSpeechBubble, setShowSpeechBubble] = useState(false);
+
+  useEffect(() => {
+    const speechBubbleTimer = setTimeout(() => {
+      setShowSpeechBubble(true);
+    }, 3000);
+
+    return () => clearTimeout(speechBubbleTimer);
+  }, []);
 
   return (
     <main className="house-landing">
@@ -36,6 +45,12 @@ export default function HousePage() {
           alt={showPout ? 'Pout with matcha' : 'Smiling with matcha'}
         />
       </div>
+      {showSpeechBubble && (
+        <div className="speech-bubble" role="status" aria-label="Welcome in!">
+          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <span>Hello!! My name is Minha!</span>
+        </div>
+      )}
     </main>
   );
 }

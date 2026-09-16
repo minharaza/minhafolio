@@ -17,6 +17,11 @@ export default function HousePage() {
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [showFollowupBubble, setShowFollowupBubble] = useState(false);
   const [isSpeechBubblePopping, setIsSpeechBubblePopping] = useState(false);
+  const [showStarsBackground, setShowStarsBackground] = useState(false);
+
+  const toggleBackground = () => {
+    setShowStarsBackground((current) => !current);
+  };
 
   useEffect(() => {
     const speechBubbleTimer = setTimeout(() => {
@@ -27,7 +32,7 @@ export default function HousePage() {
   }, []);
 
   return (
-    <main className="house-landing">
+    <main className={`house-landing${showStarsBackground ? ' stars-background' : ''}`}>
       <nav aria-label="Portfolio sections">
         {rooms.map((room) => (
           <Link key={room.href} href={room.href}>
@@ -53,9 +58,13 @@ export default function HousePage() {
           role="button"
           tabIndex="0"
           aria-label="Dismiss welcome message"
-          onClick={() => setIsSpeechBubblePopping(true)}
+          onClick={() => {
+            toggleBackground();
+            setIsSpeechBubblePopping(true);
+          }}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
+              toggleBackground();
               setIsSpeechBubblePopping(true);
             }
           }}
@@ -71,7 +80,18 @@ export default function HousePage() {
         </div>
       )}
       {showFollowupBubble && (
-        <div className="speech-bubble speech-bubble-followup" role="status">
+        <div
+          className="speech-bubble speech-bubble-followup"
+          role="button"
+          tabIndex="0"
+          aria-label="Switch background"
+          onClick={toggleBackground}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              toggleBackground();
+            }
+          }}
+        >
           <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Make yourself at home!</span>
         </div>

@@ -12,6 +12,10 @@
 	background-size: cover;
 }
 
+.house-landing.stars-background {
+	background-image: url('/images/Cut_Out_Of_Stars.png');
+}
+
 .matcha-swap {
 	position: relative;
 	width: 50rem;

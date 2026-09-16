@@ -1,0 +1,20 @@
+.house-landing {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 2rem;
+	background: url('/images/Cut_Out.png') no-repeat center center;
+	background-size: cover;
+}
+
+.smile_with_matcha{
+    width: 70rem;
+    height: auto;
+    transform: translateX(-8rem);
+    align-self: flex-end;
+  margin-bottom: -2rem;
+}

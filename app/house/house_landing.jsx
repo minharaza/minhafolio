@@ -15,6 +15,8 @@ const rooms = [
 export default function HousePage() {
   const [showPout, setShowPout] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
+  const [showFollowupBubble, setShowFollowupBubble] = useState(false);
+  const [isSpeechBubblePopping, setIsSpeechBubblePopping] = useState(false);
 
   useEffect(() => {
     const speechBubbleTimer = setTimeout(() => {
@@ -46,9 +48,32 @@ export default function HousePage() {
         />
       </div>
       {showSpeechBubble && (
-        <div className="speech-bubble" role="status" aria-label="Welcome in!">
+        <div
+          className={`speech-bubble${isSpeechBubblePopping ? ' is-popping' : ''}`}
+          role="button"
+          tabIndex="0"
+          aria-label="Dismiss welcome message"
+          onClick={() => setIsSpeechBubblePopping(true)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              setIsSpeechBubblePopping(true);
+            }
+          }}
+          onAnimationEnd={(event) => {
+            if (event.animationName === 'speech-bubble-pop') {
+              setShowSpeechBubble(false);
+              setShowFollowupBubble(true);
+            }
+          }}
+        >
           <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Hello!! My name is Minha!</span>
+        </div>
+      )}
+      {showFollowupBubble && (
+        <div className="speech-bubble speech-bubble-followup" role="status">
+          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <span>Make yourself at home!</span>
         </div>
       )}
     </main>

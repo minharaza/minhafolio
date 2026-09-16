@@ -32,13 +32,36 @@
 	right: 20%;
 	z-index: 2;
 	width: clamp(10rem, 22vw, 20rem);
+	cursor: pointer;
 	animation: speech-bubble-in 0.6s ease-out both;
+}
+
+.speech-bubble:hover {
+	animation: speech-bubble-breathe 2.1s ease-in-out infinite;
+}
+
+.speech-bubble:active {
+	animation: speech-bubble-pop 0.25s ease-out;
+}
+
+.speech-bubble.is-popping {
+	animation: speech-bubble-pop 0.25s ease-out;
 }
 
 .speech-bubble img {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+.speech-bubble-followup {
+	top: 28%;
+	right: auto;
+	left: 12%;
+}
+
+.speech-bubble-followup img {
+	transform: scaleX(-1);
 }
 
 .speech-bubble span {
@@ -65,8 +88,39 @@
 	}
 }
 
+@keyframes speech-bubble-breathe {
+	0%, 100% {
+		transform: scale(1);
+		filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+	}
+	50% {
+		transform: scale(1.08);
+		filter: drop-shadow(0 8px 16px rgba(252, 227, 65, 0.9));
+	}
+}
+
+@keyframes speech-bubble-pop {
+	0% {
+		transform: scale(1.08);
+		filter: drop-shadow(0 8px 16px rgba(252, 227, 65, 0.9));
+	}
+	50% {
+		transform: scale(0.92);
+		filter: drop-shadow(0 2px 5px rgba(252, 227, 65, 0.55));
+	}
+	100% {
+		transform: scale(1.08);
+		filter: drop-shadow(0 8px 16px rgba(252, 227, 65, 0.9));
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.speech-bubble {
 		animation: none;
+	}
+
+	.speech-bubble:hover {
+		animation: none;
+		filter: drop-shadow(0 8px 16px rgba(252, 227, 65, 0.9));
 	}
 }

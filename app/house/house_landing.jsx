@@ -16,6 +16,7 @@ export default function HousePage() {
   const [showPout, setShowPout] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [showFollowupBubble, setShowFollowupBubble] = useState(false);
+  const [showFinalBubble, setShowFinalBubble] = useState(false);
   const [isSpeechBubblePopping, setIsSpeechBubblePopping] = useState(false);
   const [showStarsBackground, setShowStarsBackground] = useState(false);
 
@@ -81,19 +82,31 @@ export default function HousePage() {
       )}
       {showFollowupBubble && (
         <div
-          className="speech-bubble speech-bubble-followup"
+          className="speech-bubble speech-bubble-followup speech-bubble-clickable"
           role="button"
           tabIndex="0"
           aria-label="Switch background"
-          onClick={toggleBackground}
+          onClick={() => {
+            toggleBackground();
+            setShowFollowupBubble(false);
+            setShowFinalBubble(true);
+          }}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               toggleBackground();
+              setShowFollowupBubble(false);
+              setShowFinalBubble(true);
             }
           }}
         >
           <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
-          <span>Make yourself at home!</span>
+          <span>Welcome to my house tour!</span>
+        </div>
+      )}
+      {showFinalBubble && (
+        <div className="speech-bubble speech-bubble-final" role="status">
+          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <span>Let&apos;s get started!</span>
         </div>
       )}
     </main>

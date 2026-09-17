@@ -68,6 +68,11 @@
 	transform: scaleX(-1);
 }
 
+.speech-bubble-final {
+	top: 15%;
+	right: 20%;
+}
+
 .speech-bubble span {
 	position: absolute;
 	top: 45%;

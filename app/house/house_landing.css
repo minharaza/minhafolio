@@ -8,12 +8,18 @@
 	align-items: flex-end;
 	justify-content: center;
 	padding: 2rem;
-	background: url('/images/Cut_Out.png') no-repeat center center;
+	background-image: url('/images/Cut_Out.png'), url('/images/Landscape.png');
+	background-position: center center;
+	background-repeat: no-repeat;
 	background-size: cover;
 }
 
 .house-landing.stars-background {
-	background-image: url('/images/Cut_Out_Of_Stars.png');
+	background-image: url('/images/Cut_Out_Of_Stars.png'), url('/images/Landscape.png');
+}
+
+.house-landing.landscape-only {
+	background-image: url('/images/Landscape.png');
 }
 
 .matcha-swap {
@@ -24,10 +30,24 @@
 	margin-bottom:-3rem;
 }
 
+.matcha-swap.matcha-leaving {
+	animation: matcha-leave 1s ease-in forwards;
+	pointer-events: none;
+}
+
 .matcha-image {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+@keyframes matcha-leave {
+	from {
+		transform: translateX(-8rem);
+	}
+	to {
+		transform: translateX(calc(-50vw + 5rem));
+	}
 }
 
 .speech-bubble {

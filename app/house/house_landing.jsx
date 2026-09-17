@@ -18,10 +18,17 @@ export default function HousePage() {
   const [showFollowupBubble, setShowFollowupBubble] = useState(false);
   const [showFinalBubble, setShowFinalBubble] = useState(false);
   const [isSpeechBubblePopping, setIsSpeechBubblePopping] = useState(false);
+  const [isFinalBubblePopping, setIsFinalBubblePopping] = useState(false);
   const [showStarsBackground, setShowStarsBackground] = useState(false);
+  const [showLandscapeOnly, setShowLandscapeOnly] = useState(false);
+  const [isMatchaLeaving, setIsMatchaLeaving] = useState(false);
 
   const toggleBackground = () => {
     setShowStarsBackground((current) => !current);
+  };
+
+  const showStars = () => {
+    setShowStarsBackground(true);
   };
 
   useEffect(() => {
@@ -33,7 +40,9 @@ export default function HousePage() {
   }, []);
 
   return (
-    <main className={`house-landing${showStarsBackground ? ' stars-background' : ''}`}>
+    <main
+      className={`house-landing${showStarsBackground ? ' stars-background' : ''}${showLandscapeOnly ? ' landscape-only' : ''}`}
+    >
       <nav aria-label="Portfolio sections">
         {rooms.map((room) => (
           <Link key={room.href} href={room.href}>
@@ -42,7 +51,7 @@ export default function HousePage() {
         ))}
       </nav>
       <div
-        className="matcha-swap"
+        className={`matcha-swap${isMatchaLeaving ? ' matcha-leaving' : ''}`}
         onMouseEnter={() => setShowPout(true)}
         onMouseLeave={() => setShowPout(false)}
         aria-label="Portrait that changes when hovered"
@@ -87,13 +96,13 @@ export default function HousePage() {
           tabIndex="0"
           aria-label="Switch background"
           onClick={() => {
-            toggleBackground();
+            showStars();
             setShowFollowupBubble(false);
             setShowFinalBubble(true);
           }}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
-              toggleBackground();
+              showStars();
               setShowFollowupBubble(false);
               setShowFinalBubble(true);
             }
@@ -104,7 +113,31 @@ export default function HousePage() {
         </div>
       )}
       {showFinalBubble && (
-        <div className="speech-bubble speech-bubble-final" role="status">
+        <div
+          className={`speech-bubble speech-bubble-final${isFinalBubblePopping ? ' is-popping' : ''}`}
+          role="button"
+          tabIndex="0"
+          aria-label="Return to the regular background"
+          onClick={() => {
+            setShowStarsBackground(false);
+            setShowLandscapeOnly(true);
+            setIsMatchaLeaving(true);
+            setIsFinalBubblePopping(true);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              setShowStarsBackground(false);
+              setShowLandscapeOnly(true);
+              setIsMatchaLeaving(true);
+              setIsFinalBubblePopping(true);
+            }
+          }}
+          onAnimationEnd={(event) => {
+            if (event.animationName === 'speech-bubble-pop') {
+              setShowFinalBubble(false);
+            }
+          }}
+        >
           <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Let&apos;s get started!</span>
         </div>

@@ -8,30 +8,69 @@
 	align-items: flex-end;
 	justify-content: center;
 	padding: 2rem;
-	background-image: url('/images/Cut_Out.png'), url('/images/Landscape.png');
+	isolation: isolate;
+}
+
+.house-landing::before,
+.house-landing::after {
+	position: absolute;
+	inset: 0;
+	content: '';
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	pointer-events: none;
 }
 
-.house-landing.stars-background {
-	background-image: url('/images/Cut_Out_Of_Stars.png'), url('/images/Landscape.png');
+.house-landing::before {
+	z-index: 0;
+	background-image: url('/images/Landscape.png');
+}
+
+.house-landing::after {
+	z-index: 2;
+	background-image: url('/images/Cut_Out.png');
+}
+
+.house-landing.stars-background::after {
+	background-image: url('/images/Cut_Out_Of_Stars.png');
 }
 
 .house-landing.landscape-only {
-	background-image: url('/images/Landscape.png');
+	background-image: none;
+}
+
+.house-landing.landscape-only::after {
+	display: none;
 }
 
 .matcha-swap {
 	position: relative;
+	z-index: 3;
 	width: 50rem;
 	transform: translateX(-8rem);
 	align-self: flex-end;
 	margin-bottom:-3rem;
 }
 
+.house-image {
+	position: absolute;
+	bottom: 2rem;
+	left: 50%;
+	z-index: 1;
+	width: min(70vw, 80rem);
+	height: auto;
+	transform: translateX(-50%);
+	pointer-events: none;
+}
+
 .matcha-swap.matcha-leaving {
 	animation: matcha-leave 1s ease-in forwards;
+	pointer-events: none;
+}
+
+.matcha-swap.matcha-exiting {
+	animation: matcha-exit 1s ease-in forwards;
 	pointer-events: none;
 }
 
@@ -50,11 +89,20 @@
 	}
 }
 
+@keyframes matcha-exit {
+	from {
+		transform: translateX(calc(-50vw + 5rem));
+	}
+	to {
+		transform: translateX(calc(-100vw - 50rem));
+	}
+}
+
 .speech-bubble {
 	position: absolute;
 	top: 15%;
 	right: 20%;
-	z-index: 2;
+	z-index: 4;
 	width: clamp(10rem, 22vw, 20rem);
 	cursor: pointer;
 	animation: speech-bubble-in 0.6s ease-out both;
@@ -93,6 +141,12 @@
 	right: 20%;
 }
 
+.speech-bubble-explore {
+	top: 26%;
+	left: 25%;
+	right: auto;
+}
+
 .speech-bubble span {
 	position: absolute;
 	top: 45%;
@@ -104,6 +158,11 @@
 	font-size: clamp(2.5rem, 3vw, 1.25rem);
 	font-weight: 700;
 	text-align: center;
+}
+
+.speech-bubble-explore span {
+	font-size: 1.70rem;
+	line-height: 1.1;
 }
 
 @keyframes speech-bubble-in {

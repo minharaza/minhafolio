@@ -26,6 +26,7 @@ export default function HousePage() {
   const [isExplorePopping, setIsExplorePopping] = useState(false);
   const [isMatchaExiting, setIsMatchaExiting] = useState(false);
   const [showMatcha, setShowMatcha] = useState(true);
+  const [isCutoutReady, setIsCutoutReady] = useState(false);
 
   const toggleBackground = () => {
     setShowStarsBackground((current) => !current);
@@ -39,6 +40,29 @@ export default function HousePage() {
     return () => clearTimeout(speechBubbleTimer);
   }, []);
 
+  useEffect(() => {
+    const cutoutImage = new Image();
+    const starsCutoutImage = new Image();
+    let loadedImages = 0;
+
+    const handleImageLoad = () => {
+      loadedImages += 1;
+      if (loadedImages === 2) {
+        setIsCutoutReady(true);
+      }
+    };
+
+    cutoutImage.onload = handleImageLoad;
+    starsCutoutImage.onload = handleImageLoad;
+    cutoutImage.src = '/images/Cut_Out.png';
+    starsCutoutImage.src = '/images/Cut_Out_Of_Stars.png';
+
+    return () => {
+      cutoutImage.onload = null;
+      starsCutoutImage.onload = null;
+    };
+  }, []);
+
   return (
     <main
       className={`house-landing${showStarsBackground ? ' stars-background' : ''}${showLandscapeOnly ? ' landscape-only' : ''}`}
@@ -50,7 +74,9 @@ export default function HousePage() {
           </Link>
         ))}
       </nav>
-      <img className="house-image" src="/images/House.png" alt="" aria-hidden="true" />
+      {isCutoutReady && (
+        <img className="house-image" src="/images/House.png" alt="" aria-hidden="true" />
+      )}
       {showMatcha && (
       <div
         className={`matcha-swap${isMatchaLeaving ? ' matcha-leaving' : ''}${isMatchaExiting ? ' matcha-exiting' : ''}`}

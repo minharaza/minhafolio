@@ -12,6 +12,13 @@ const rooms = [
   { label: 'Contact', href: '/homepage/contact' },
 ];
 
+const houseItems = [
+  { label: 'Resume', href: '/homepage/about', image: '/images/Bookshelf.png', className: 'house-item-bookshelf' },
+  { label: 'About', href: '/homepage/skills', image: '/images/Bed.png', className: 'house-item-bed' },
+  { label: 'Projects', href: '/homepage/experience', image: '/images/Table.png', className: 'house-item-table' },
+  { label: 'Interests', href: '/homepage/projects', image: '/images/Bathtub.png', className: 'house-item-bathtub' },
+];
+
 export default function HousePage() {
   const [showPout, setShowPout] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
@@ -74,9 +81,19 @@ export default function HousePage() {
           </Link>
         ))}
       </nav>
-      {isCutoutReady && (
-        <img className="house-image" src="/images/House.png" alt="" aria-hidden="true" />
-      )}
+    {isCutoutReady && (
+    <div className="house-scene">
+      <img className="house-image" src="/images/House.png" alt="" aria-hidden="true" />
+      <div className={`house-items${showExploreBubble ? ' house-items-disabled' : ''}`} aria-label="Explore my house">
+      {houseItems.map((item) => (
+        <Link key={item.href} className={`house-item ${item.className}`} href={item.href}>
+        <img src={item.image} alt="" aria-hidden="true" />
+        <span>{item.label}</span>
+        </Link>
+      ))}
+      </div>
+    </div>
+    )}
       {showMatcha && (
       <div
         className={`matcha-swap${isMatchaLeaving ? ' matcha-leaving' : ''}${isMatchaExiting ? ' matcha-exiting' : ''}`}

@@ -53,15 +53,110 @@
 	margin-bottom:-3rem;
 }
 
-.house-image {
+
+.house-scene {
 	position: absolute;
 	bottom: 2rem;
 	left: 50%;
 	z-index: 1;
 	width: min(70vw, 80rem);
-	height: auto;
 	transform: translateX(-50%);
+	line-height: 0;
+	}
+
+.house-image {
+	display: block;
+	width: 100%;
+	height: auto;
 	pointer-events: none;
+}
+
+.house-items {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.house-items-disabled {
+	pointer-events: none;
+}
+
+.house-item {
+	position: absolute;
+	display: block;
+	line-height: 1;
+	transform-origin: center bottom;
+	transition: transform 180ms ease, filter 180ms ease;
+}
+
+.house-item:hover,
+.house-item:focus-visible {
+	z-index: 2;
+	transform: scale(1.08);
+	filter: drop-shadow(0 0 0.8rem rgba(252, 227, 65, 0.9));
+}
+
+.house-item:focus-visible {
+	outline: 0.2rem solid #fff;
+	outline-offset: 0.25rem;
+}
+
+.house-item img {
+	display: block;
+	width: 100%;
+	height: auto;
+	opacity: 0;
+}
+
+.house-item span {
+	position: absolute;
+	left: 50%;
+	bottom: 105%;
+	padding: 0.35rem 0.6rem;
+	border-radius: 0.35rem;
+	background: rgba(255, 255, 255, 0.9);
+	color: #695687;
+	font-family: 'Lily Script One', cursive;
+	font-size: clamp(0.9rem, 1.5vw, 1.4rem);
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateX(-50%) translateY(0.35rem);
+	transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.house-item:hover span,
+.house-item:focus-visible span {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+.house-item-bookshelf {
+	left: 23%;
+	top: 69%;
+	width: 10%;
+}
+
+.house-item-bookshelf span {
+	left: 50%;
+	bottom: 100%;
+}
+
+.house-item-bed {
+	left: 10%;
+	top: 43%;
+	width: 23%;
+}
+
+.house-item-table {
+	left: 53%;
+	top: 76%;
+	width: 28%;
+}
+
+.house-item-bathtub {
+	left: 56%;
+	top: 39%;
+	width: 29%;
 }
 
 .matcha-swap.matcha-leaving {

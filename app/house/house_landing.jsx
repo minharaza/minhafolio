@@ -13,8 +13,8 @@ const rooms = [
 ];
 
 const houseItems = [
-  { label: 'Resume', href: '/homepage/about', image: '/images/Bookshelf.png', className: 'house-item-bookshelf' },
-  { label: 'About', href: '/homepage/skills', image: '/images/Bed.png', className: 'house-item-bed' },
+  { label: 'Resume', href: '/homepage/resume-page', image: '/images/Bookshelf.png', className: 'house-item-bookshelf' },
+  { label: 'About', href: '/homepage/about-page', image: '/images/Bed.png', className: 'house-item-bed' },
   { label: 'Projects', href: '/homepage/experience', image: '/images/Table.png', className: 'house-item-table' },
   { label: 'Interests', href: '/homepage/projects', image: '/images/Bathtub.png', className: 'house-item-bathtub' },
 ];

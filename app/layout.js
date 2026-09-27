@@ -1,8 +1,6 @@
 import './globals.css';
-import { Box } from '@mui/material';
 
 import { ThemeProvider } from './components/theme-provider';
-import ParticlesWrapper from './components/ParticlesWrapper';
 import { Quicksand } from 'next/font/google';
 
 const quicksand = Quicksand({
@@ -27,9 +25,6 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <Box className="home-container">
-            <ParticlesWrapper />
-          </Box>
           {children}
         </ThemeProvider>
       </body>

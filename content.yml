@@ -61,38 +61,101 @@ skills:
 experience:
   title: "Experience"
   experienceList:
-  - position: "Senior Software Engineer"
-    startDate: "Jan 2021"
+  - position: "Angular UI Software Engineer"
+    startDate: "Jul 2025"
     endDate: "Present"
-    company: "Tech Solutions Inc."
+    company: "Brooksource"
     logo: "/images/jquery.png"
-    location: "San Francisco, CA, USA"
+    location: "Remote"
     keywords:
-      - AWS
       - Angular
-      - Node.js
-      - PostgreSQL
-      - Docker
+      - Authentication
+      - AI
+      - UX/UI
+      - Banking
     description:
-      - Led a team of 10 engineers to develop a scalable cloud-based application, reducing operational costs by 30%.
-      - Implemented CI/CD pipelines using Jenkins and Docker, improving deployment speed by 50%.
-      - Designed and optimized database schemas for high-traffic applications, ensuring data integrity and performance.
-  - position: "Software Engineer"
-    startDate: "Jun 2018"
-    endDate: "Dec 2020"
-    company: "Innovatech"
+      - Debugged and resolved critical authentication defects, including password submission and persistence issues, while enhancing the login workflow to improve reliability within the first point of entry.
+      - Integrated new application features, including an AI-powered chatbot, by partnering with UX/UI designers to translate designs into technically feasible, cohesive experiences across the online banking application.
+      - Alleviated API connectivity issues, identifying integration failures that caused data persistence defects and disrupted authentication workflows.
+      - Refactored and enhanced the Multi-Factor Authentication happy path to align with industry accessibility standards, improving keyboard navigation, VoiceOver usability, and inclusive access for users with disabilities.
+  - position: "Software & Computer Engineer"
+    startDate: "Jan 2024"
+    endDate: "Aug 2024"
+    company: "GE Appliances, A Haier Company"
     logo: "/images/jquery.png"
-    location: "New York, NY, USA"
+    location: "United States"
     keywords:
-      - AWS
-      - Angular
-      - Node.js
-      - PostgreSQL
-      - Docker
+      - Flutter
+      - Android
+      - UI/UX
+      - Embedded Systems
     description:
-      - Developed and maintained web applications using Angular and Node.js, enhancing user experience and functionality.
-      - Collaborated with cross-functional teams to define project requirements and deliver high-quality software solutions.
-      - Automated testing and deployment processes, reducing bugs and downtime.
+      - Deployed over 12 intuitive UI features for the Android-based Wall Oven screen, utilizing Flutter to ensure a seamless and responsive user experience.
+      - Integrated "Festive Themes" UI across two appliance product lines, improving seasonal user engagement and enhancing the app's personalization features.
+      - Optimized existing UI screens by designing and implementing additional features that improved functionality, resulting in a more intuitive UI and positive user feedback.
+  - position: "UX/UI Software Engineer"
+    startDate: "Jan 2024"
+    endDate: "Aug 2024"
+    company: "GE Appliances, A Haier Company"
+    logo: "/images/jquery.png"
+    location: "United States"
+    keywords:
+      - Flutter
+      - Android
+      - UI/UX
+      - Design Systems
+    description:
+      - Deployed over 12 intuitive UI features for the Android-based Wall Oven screen, utilizing Flutter to ensure a seamless and responsive user experience.
+      - Integrated "Festive Themes" UI across two appliance product lines, improving seasonal user engagement and enhancing the app's personalization features.
+      - Optimized existing UI screens by designing and implementing additional features that improved functionality, resulting in a more intuitive UI and positive user feedback.
+  - position: "Embedded Systems Engineer"
+    startDate: "Jan 2024"
+    endDate: "Aug 2024"
+    company: "GE Appliances, A Haier Company"
+    logo: "/images/jquery.png"
+    location: "United States"
+    keywords:
+      - Embedded Systems
+      - OTA
+      - Firmware
+      - RAM
+      - ROM
+    description:
+      - Refactored legacy models to integrate with the updated data model, optimizing memory usage and reducing RAM and ROM consumption by 63.72 bytes, improving performance for embedded firmware builds.
+      - Assisted in Over-The-Air (OTA) server crisis testing for the NPI Combination Laundry Unit, ensuring less than 10% deployment errors in product functionality during the critical release week.
+      - Automated the generation of release notes summaries for the Dryer Team's repository, streamlining the documentation process and reducing manual documentation time by 80%.
+  - position: "UX/UI Designer & Software Engineer"
+    startDate: "Sep 2022"
+    endDate: "Dec 2022"
+    company: "BECO Ventures Pte. Ltd."
+    logo: "/images/jquery.png"
+    location: "Singapore"
+    keywords:
+      - UX/UI
+      - Agile
+      - AI
+      - SaaS
+      - Wireframing
+    description:
+      - Delivered a complex, multi-step registration workflow for an agricultural tech platform designed to support users across 5 countries, leveraging Agile methodology to connect farmers with AI-driven SaaS products.
+      - Led collaborative efforts within a cross-functional team, contributing innovative design ideas by using project data to create over 10 user personas and stories that addressed the unique needs of stakeholders in agriculture.
+      - Transformed early-stage mockups into coherent wireframes, designing a user-friendly interface that seamlessly integrated AI tools into farming workflows.
+  - position: "Quality Software Engineer"
+    startDate: "Jan 2022"
+    endDate: "Apr 2022"
+    company: "TENET3 Cybernetics"
+    logo: "/images/jquery.png"
+    location: "United States"
+    keywords:
+      - Selenium
+      - Python
+      - GitLab
+      - Agile
+      - QA
+    description:
+      - Solved 14 bug reports within the cyber risk assessment platform in a cloud-based, model-driven environment.
+      - Applied Agile methodologies, used GitLab for version control, and Selenium with Python for automated testing, improving software reliability.
+      - Actively participated in each sprint by offering feedback and developing bug reports to resolve issues in large-scale projects.
 
 projects:
   title: "Projects"

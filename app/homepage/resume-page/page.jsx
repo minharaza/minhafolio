@@ -3,17 +3,14 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const bookEntries = [
-  { id: 'book-1', image: '/images/Book_1.png', label: 'Experience' },
-  { id: 'book-2', image: '/images/Book_2.png', label: 'Skills' },
-  { id: 'book-3', image: '/images/Book_3.png', label: 'Projects' },
-  { id: 'book-4', image: '/images/Book_4.png', label: 'About' },
-];
+const bookImages = ['/images/Book_1.png', '/images/Book_2.png', '/images/Book_3.png', '/images/Book_4.png', '/images/Book_1.png'];
 
 export default function ResumePage() {
   const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
   const [selectedBook, setSelectedBook] = useState('book-1');
+  const [showResume, setShowResume] = useState(false);
+  const [isShelfHovered, setIsShelfHovered] = useState(false);
 
   useEffect(() => {
     async function fetchContent() {
@@ -30,60 +27,40 @@ export default function ResumePage() {
     fetchContent();
   }, []);
 
-  const firstJob = content?.experience?.experienceList?.[0];
-  const secondJob = content?.experience?.experienceList?.[1];
-  const resumeSkills = content?.skills?.skillList ?? [];
-  const projects = content?.projects?.projectList ?? [];
+  const experienceEntries = content?.experience?.experienceList ?? [];
+  const visibleJobs = experienceEntries.filter((_, index) => index !== 1).slice(0, 5);
+  const bookEntries = visibleJobs.map((job, index) => ({
+    id: `book-${index + 1}`,
+    image: bookImages[index % bookImages.length],
+    label: job.position,
+  }));
 
   const selectedContent = (() => {
-    switch (selectedBook) {
-      case 'book-1':
-        return {
-          title: firstJob?.position ?? 'Experience',
-          subtitle: firstJob?.company ?? '',
-          meta: `${firstJob?.startDate ?? ''} - ${firstJob?.endDate ?? ''}`,
-          items: firstJob?.description ?? [],
-        };
-      case 'book-2':
-        return {
-          title: 'Skills',
-          subtitle: 'Core technologies and strengths',
-          meta: `${resumeSkills.length} areas`,
-          items: resumeSkills.map((skill) => skill.name),
-        };
-      case 'book-3':
-        return {
-          title: 'Projects',
-          subtitle: 'Recent work and highlights',
-          meta: `${projects.length} projects`,
-          items: projects.map((project) => project.title),
-        };
-      case 'book-4':
-        return {
-          title: 'About',
-          subtitle: 'How I work and what I value',
-          meta: 'Approach',
-          items: [
-            'I build thoughtful digital products with a focus on clarity, usability, and business value.',
-            'I enjoy turning complex ideas into polished, interactive experiences that feel effortless to use.',
-            'I work best in collaborative environments where iteration, creativity, and user feedback shape the final product.',
-          ],
-        };
-      default:
-        return {
-          title: 'Experience',
-          subtitle: '',
-          meta: '',
-          items: [],
-        };
+    const selectedIndex = Number(selectedBook.replace('book-', '')) - 1;
+    const job = visibleJobs[selectedIndex];
+
+    if (!job) {
+      return {
+        title: 'Experience',
+        subtitle: '',
+        meta: '',
+        items: [],
+      };
     }
+
+    return {
+      title: job.position,
+      subtitle: job.company,
+      meta: `${job.startDate} - ${job.endDate}`,
+      items: job.description ?? [],
+    };
   })();
 
   if (error) {
     return <div className="p-5 text-center text-black"><strong>Error:</strong> {error}</div>;
   }
 
-  if (!content || !firstJob) {
+  if (!content || !visibleJobs.length) {
     return <div className="flex min-h-screen items-center justify-center bg-white text-black">Loading resume...</div>;
   }
 
@@ -92,8 +69,51 @@ export default function ResumePage() {
       <div className="w-full max-w-5xl rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur-sm">
         <h1 className="mb-8 text-center text-4xl font-bold">Resume</h1>
 
-        <section className="mb-8 flex flex-col items-center justify-center gap-6">
-          <div className="relative h-[240px] w-[340px]">
+        {!showResume ? (
+          <div className="flex min-h-[640px] items-center justify-center">
+            <button
+              type="button"
+              aria-label="Open resume bookshelf"
+              onClick={() => setShowResume(true)}
+              onMouseEnter={() => setIsShelfHovered(true)}
+              onMouseLeave={() => setIsShelfHovered(false)}
+              style={{
+                position: 'relative',
+                width: 'min(500px, 80vw)',
+height: 'min(620px, 80vh)',
+                border: 'none',
+                background: 'transparent',
+                padding: 0,
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease, filter 0.2s ease',
+                transform: isShelfHovered ? 'scale(1.04)' : 'scale(1)',
+                filter: isShelfHovered ? 'drop-shadow(0 10px 18px rgba(252, 227, 65, 0.7))' : 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16))',
+              }}
+            >
+              <Image src="/images/Bookshelf.png" alt="Open resume bookshelf" fill sizes="320px" className="object-contain" priority />
+              <Image
+                src="/images/Click_Me.png"
+                alt=""
+                aria-hidden="true"
+                width={150}
+                height={150}
+                style={{
+                  position: 'absolute',
+                  top: '18%',
+                  left: '-30%',
+                  width: 'clamp(160px, 18vw, 220px)',
+                  height: 'auto',
+                  opacity: isShelfHovered ? 1 : 0,
+                  transform: isShelfHovered ? 'translateX(0) rotate(-6deg)' : 'translateX(12px) rotate(-6deg)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  pointerEvents: 'none',
+                }}
+              />
+            </button>
+          </div>
+        ) : (
+        <section className="mb-8 flex flex-col items-center justify-center gap-8">
+          <div className="relative h-[240px] w-[340px] pb-2">
             {bookEntries.map((book, index) => {
               const isActive = book.id === selectedBook;
 
@@ -164,20 +184,13 @@ export default function ResumePage() {
                 transform: 'translateY(0)',
               }}
             >
-              {selectedBook === 'book-2' ? (
-                <div className="flex flex-wrap gap-2">
-                  {selectedContent.items.map((item) => (
-                    <span key={item} className="rounded-full bg-slate-200 px-3 py-1 text-sm text-slate-700">{item}</span>
-                  ))}
-                </div>
-              ) : (
-                <ul className="list-disc space-y-2 pl-5 text-slate-700">
-                  {selectedContent.items.map((item) => <li key={item}>{item}</li>)}
-                </ul>
-              )}
+              <ul className="list-disc space-y-2 pl-5 text-slate-700">
+                {selectedContent.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
             </div>
           </div>
         </section>
+        )}
       </div>
     </main>
   );

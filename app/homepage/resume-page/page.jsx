@@ -1,16 +1,35 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const bookImages = ['/images/Book_1.png', '/images/Book_2.png', '/images/Book_3.png', '/images/Book_4.png', '/images/Book_1.png'];
+const bookPalette = [
+  { dark: '#4fa8b8', light: '#cfeef3' },
+  { dark: '#d99b5a', light: '#f6e3c2' },
+  { dark: '#d875ac', light: '#f7d7e9' },
+  { dark: '#8f6fc8', light: '#e8dff7' },
+  { dark: '#4fa8b8', light: '#cfeef3' },
+];
 
 export default function ResumePage() {
+  const router = useRouter();
   const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
   const [selectedBook, setSelectedBook] = useState('book-1');
   const [showResume, setShowResume] = useState(false);
   const [isShelfHovered, setIsShelfHovered] = useState(false);
+  const [booksVisible, setBooksVisible] = useState(false);
+  const [booksWave, setBooksWave] = useState(false);
+
+  const experienceEntries = content?.experience?.experienceList ?? [];
+  const visibleJobs = experienceEntries.filter((_, index) => index !== 1).slice(0, 5);
+  const bookEntries = visibleJobs.map((job, index) => ({
+    id: `book-${index + 1}`,
+    image: bookImages[index % bookImages.length],
+    label: job.position,
+  }));
 
   useEffect(() => {
     async function fetchContent() {
@@ -27,16 +46,26 @@ export default function ResumePage() {
     fetchContent();
   }, []);
 
-  const experienceEntries = content?.experience?.experienceList ?? [];
-  const visibleJobs = experienceEntries.filter((_, index) => index !== 1).slice(0, 5);
-  const bookEntries = visibleJobs.map((job, index) => ({
-    id: `book-${index + 1}`,
-    image: bookImages[index % bookImages.length],
-    label: job.position,
-  }));
+  useEffect(() => {
+    if (!showResume) {
+      setBooksVisible(false);
+      setBooksWave(false);
+      return;
+    }
+
+    const revealTimeout = setTimeout(() => setBooksVisible(true), 50);
+    const waveTimeout = setTimeout(() => setBooksWave(true), (bookEntries.length * 170) + 500);
+
+    return () => {
+      clearTimeout(revealTimeout);
+      clearTimeout(waveTimeout);
+    };
+  }, [showResume, bookEntries.length]);
+
+  const selectedIndex = Number(selectedBook.replace('book-', '')) - 1;
+  const activeBookPalette = bookPalette[selectedIndex] || bookPalette[0];
 
   const selectedContent = (() => {
-    const selectedIndex = Number(selectedBook.replace('book-', '')) - 1;
     const job = visibleJobs[selectedIndex];
 
     if (!job) {
@@ -65,7 +94,15 @@ export default function ResumePage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#eaf7ff] px-6 py-16 text-slate-800">
+    <main className="relative flex min-h-screen items-center justify-center bg-[#7a4f3a] px-6 py-16 text-slate-800">
+      <button
+        type="button"
+        onClick={() => router.push('/homepage?skipIntro=1')}
+        aria-label="Go back to homepage"
+        className="absolute left-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-[#695687] bg-white/80 text-xl font-bold text-[#695687] shadow-md transition-transform duration-200 hover:scale-105"
+      >
+        ←
+      </button>
       <div className="w-full max-w-5xl rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur-sm">
         <h1 className="mb-8 text-center text-4xl font-bold">Resume</h1>
 
@@ -116,6 +153,7 @@ height: 'min(620px, 80vh)',
           <div className="relative h-[240px] w-[340px] pb-2">
             {bookEntries.map((book, index) => {
               const isActive = book.id === selectedBook;
+              const waveOffset = booksWave ? -((index + 1) * 18) : 0;
 
               return (
                 <div
@@ -125,11 +163,11 @@ height: 'min(620px, 80vh)',
                     left: '20px',
                     top: `${index * 55}px`,
                     zIndex: bookEntries.length - index,
-                    transform: 'translateY(0) scale(1)',
-                    transition: 'opacity 0.2s ease, filter 0.2s ease',
+                    transform: booksVisible ? `translateY(${waveOffset}px) scale(1)` : 'translateY(24px) scale(0.96)',
+                    transition: `opacity 0.35s ease ${index * 120}ms, transform 1s cubic-bezier(0.12, 0.8, 0.2, 1.8) ${index * 160}ms, filter 0.3s ease ${index * 120}ms`,
                     width: 300,
                     height: 49,
-                    opacity: isActive ? 1 : 0.78,
+                    opacity: booksVisible ? (isActive ? 1 : 0.78) : 0,
                     filter: isActive ? 'brightness(1.08) saturate(1.12)' : 'brightness(0.92) saturate(0.9)',
                     pointerEvents: 'none',
                   }}
@@ -165,8 +203,11 @@ height: 'min(620px, 80vh)',
             })}
           </div>
 
-          <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-inner">
-            <div className="bg-slate-100 px-5 py-4">
+          <div
+            className="w-full max-w-2xl overflow-hidden rounded-2xl border border-slate-200 shadow-inner transition-colors duration-300"
+            style={{ backgroundColor: activeBookPalette.light }}
+          >
+            <div className="px-5 py-4" style={{ backgroundColor: `${activeBookPalette.light}CC` }}>
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-slate-500">Selected</p>
@@ -182,6 +223,7 @@ height: 'min(620px, 80vh)',
                 maxHeight: '260px',
                 opacity: 1,
                 transform: 'translateY(0)',
+                backgroundColor: activeBookPalette.light,
               }}
             >
               <ul className="list-disc space-y-2 pl-5 text-slate-700">

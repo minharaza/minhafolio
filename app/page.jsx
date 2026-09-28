@@ -1,12 +1,5 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-import './globals.css';
-
-import Welcome from './components/welcome';
+import HouseLanding from '../house/house_landing';
 
 export default function WelcomePage() {
-  const router = useRouter();
-
-  return <Welcome onClose={() => router.push('/homepage')} />;
+  return <HouseLanding />;
 }

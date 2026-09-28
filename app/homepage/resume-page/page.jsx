@@ -94,7 +94,7 @@ export default function ResumePage() {
   }
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center bg-[#7a4f3a] px-6 py-16 text-slate-800">
+    <main className="relative flex min-h-screen items-center justify-center bg-[#7a4f3a] px-6 py-16 text-slate-800" style={{ fontFamily: "'Signika', sans-serif" }}>
       <button
         type="button"
         onClick={() => router.push('/homepage?skipIntro=1')}
@@ -104,7 +104,7 @@ export default function ResumePage() {
         ←
       </button>
       <div className="w-full max-w-5xl rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur-sm">
-        <h1 className="mb-8 text-center text-4xl font-bold">Resume</h1>
+        <h1 className="mb-8 text-center text-4xl font-bold" style={{ fontFamily: "'Lily Script One', cursive" }}>Resume</h1>
 
         {!showResume ? (
           <div className="flex min-h-[640px] items-center justify-center">

@@ -1,5 +1,10 @@
-import HouseLanding from '../house/house_landing';
+import { Suspense } from 'react';
+import HouseLanding from './house/house_landing';
 
 export default function WelcomePage() {
-  return <HouseLanding />;
+  return (
+    <Suspense fallback={null}>
+      <HouseLanding />
+    </Suspense>
+  );
 }

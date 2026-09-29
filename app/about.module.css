@@ -1,0 +1,195 @@
+.aboutPage {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  background: #fff0f6;
+  padding: 1rem;
+}
+
+.scene {
+  position: relative;
+  width: min(92vw, 75vh, 68rem);
+  width: min(92vw, 75dvh, 68rem);
+  aspect-ratio: 1132 / 1383;
+  isolation: isolate;
+}
+
+.bed {
+  z-index: -1;
+  object-fit: contain;
+}
+
+.item {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0.4rem 0.4rem rgb(80 34 51 / 15%));
+  transition: transform 180ms ease;
+}
+
+.item:hover {
+  transform: scale(1.045) rotate(0deg);
+  z-index: 5;
+}
+
+.airport {
+  top: 17%;
+  left: 3%;
+  z-index: 1;
+  width: 27%;
+  transform: rotate(-7deg);
+}
+
+.galleryTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.galleryTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.galleryTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 4px;
+}
+
+.galleryBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(48 27 39 / 58%);
+  backdrop-filter: blur(5px);
+}
+
+.galleryDialog {
+  position: relative;
+  width: min(100%, 56rem);
+  min-height: 22rem;
+  max-height: min(85dvh, 52rem);
+  overflow: auto;
+  padding: 2rem;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 1.25rem;
+  background: #fff8fb;
+  box-shadow: 0 1.5rem 5rem rgb(35 14 25 / 28%);
+}
+
+.galleryDialog h2 {
+  margin: 0 3rem 1.5rem 0;
+  color: #5f3d50;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.galleryClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f7e4ed;
+  color: #5f3d50;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.galleryEmpty {
+  display: grid;
+  min-height: 14rem;
+  place-items: center;
+  margin: 0;
+  border: 1px dashed #d8aebe;
+  border-radius: 0.75rem;
+  color: #785a69;
+  text-align: center;
+}
+
+.camera {
+  top: 14%;
+  right: 2%;
+  z-index: 1;
+  width: 29%;
+  transform: rotate(6deg);
+}
+
+.notebook {
+  top: 43%;
+  left: 3%;
+  z-index: 2;
+  width: 28%;
+  transform: rotate(-8deg);
+}
+
+.purse {
+  top: 39%;
+  right: 1%;
+  z-index: 3;
+  width: 34%;
+  transform: rotate(7deg);
+}
+
+.shirt {
+  top: 28%;
+  left: 27%;
+  z-index: 2;
+  width: 48%;
+  transform: rotate(-2deg);
+}
+
+.head {
+  top: 8%;
+  left: 30%;
+  z-index: 4;
+  width: 40%;
+}
+
+.skirt {
+  top: 53%;
+  left: 32%;
+  z-index: 3;
+  width: 39%;
+  transform: rotate(4deg);
+}
+
+.shoes {
+  top: 65%;
+  left: 4%;
+  z-index: 4;
+  width: 32%;
+  transform: rotate(-5deg);
+}
+
+@media (max-width: 480px) {
+  .aboutPage {
+    padding: 0.4rem;
+  }
+
+  .scene {
+    width: min(98vw, 75dvh);
+  }
+
+  .item:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item {
+    transition: none;
+  }
+}

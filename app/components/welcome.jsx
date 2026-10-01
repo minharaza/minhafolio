@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import './welcome.css';
 
@@ -24,15 +23,6 @@ export default function Welcome({ onClose }) {
 
   return (
     <div className="welcome-screen">
-      <button
-        type="button"
-        onClick={() => router.push('/homepage')}
-        aria-label="Go back to homepage"
-        className="welcome-back-button"
-      >
-        ←
-      </button>
-
       <div className="welcome-bg">
         <img src="/images/Brick.png" alt="" />
       </div>

@@ -1,10 +1,10 @@
-import { Suspense } from 'react';
-import HouseLanding from './house/house_landing';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import Welcome from './components/welcome';
 
 export default function WelcomePage() {
-  return (
-    <Suspense fallback={null}>
-      <HouseLanding />
-    </Suspense>
-  );
+  const router = useRouter();
+
+  return <Welcome onClose={() => router.push('/homepage')} />;
 }

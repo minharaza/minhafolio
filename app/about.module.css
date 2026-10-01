@@ -17,6 +17,70 @@
   padding: 1rem;
 }
 
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid rgb(105 86 135 / 70%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 78%);
+  color: #695687;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.backButton:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 14%);
+}
+
+.backButton:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.aboutTitle {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  z-index: 2;
+  margin: 0;
+  color: #695687;
+  font-family: 'Ballet', cursive;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.aboutMessage {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  z-index: 2;
+  width: min(92vw, 42rem);
+  margin: 0;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(255 248 251 / 82%);
+  color: #5f3d50;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: 0 0.75rem 2rem rgb(80 34 51 / 14%);
+  transform: translateX(-50%);
+}
+
 .aboutPage::before,
 .aboutPage::after {
   position: absolute;
@@ -49,6 +113,22 @@
   color: #d8bf83;
   content: '\2727';
   animation-delay: -2.5s;
+}
+
+.starsCrazy::before,
+.starsCrazy::after {
+  animation: star-spin 900ms linear infinite;
+  filter: drop-shadow(0 0 0.6rem rgb(255 255 255 / 90%));
+}
+
+@keyframes star-spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+
+  to {
+    transform: scale(3.2) rotate(360deg);
+  }
 }
 
 .scene {
@@ -103,6 +183,44 @@
 .galleryTrigger:focus-visible {
   outline: 3px solid #8f6fc8;
   outline-offset: 4px;
+}
+
+.headTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.headTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.headTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.swapTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.swapTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.swapTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
 }
 
 .galleryBackdrop {
@@ -283,9 +401,9 @@
 
 .skirt {
   top: 53%;
-  left: 32%;
+  left: 27%;
   z-index: 3;
-  width: 39%;
+  width: 49%;
   transform: rotate(4deg);
 }
 

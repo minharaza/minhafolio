@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './about.module.css';
 
@@ -8,11 +9,11 @@ const collageItems = [
   { src: '/images/About_Me_Airport.png', alt: 'Travel keepsakes', className: 'airport' },
   { src: '/images/About_Me_Camera.png', alt: 'My camera and favorite accessories', className: 'camera' },
   { src: '/images/About_Me_Notebook_.png', alt: 'My decorated notebook', className: 'notebook' },
-  { src: '/images/About_Me_Purse.png', alt: 'My favorite purse', className: 'purse' },
-  { src: '/images/About_Me_Shoes.png', alt: 'My red shoes', className: 'shoes' },
+  { src: '/images/About_Me_Purse.png', alternateSrc: '/images/About_Me_Purse_2.png', alt: 'My favorite purse', className: 'purse' },
+  { src: '/images/About_Me_Shoes.png', alternateSrc: '/images/About_Me_Shoe_2.png', alt: 'My red shoes', className: 'shoes' },
   { src: '/images/about-me-head.png', alt: 'My portrait', className: 'head' },
-  { src: '/images/about-me-shirt.png', alt: 'A favorite band shirt', className: 'shirt' },
-  { src: '/images/About-me-skirt.png', alt: 'A favorite skirt', className: 'skirt' },
+  { src: '/images/about-me-shirt.png', alternateSrc: '/images/About_Me_Shirt_2.png', alt: 'A favorite band shirt', className: 'shirt' },
+  { src: '/images/About-me-skirt.png', alternateSrc: '/images/About_Me_Skirt2.png', alt: 'A favorite skirt', className: 'skirt' },
   { src: '/images/Tennis_Racquet.png', alt: 'A pink tennis racquet', className: 'tennisRacquet' },
   { src: '/images/Tennis_Ball.png', alt: 'A pink tennis ball', className: 'tennisBall' },
 ];
@@ -73,10 +74,20 @@ const travelPhotos = [
 ];
 
 const About = () => {
+  const router = useRouter();
   const [activeGallery, setActiveGallery] = useState(null);
   const [enlargedPhoto, setEnlargedPhoto] = useState(null);
   const [ballBounceSequence, setBallBounceSequence] = useState(0);
+  const [alternateItems, setAlternateItems] = useState({});
+  const [starsCrazy, setStarsCrazy] = useState(false);
+  const [activeMessage, setActiveMessage] = useState(null);
   const isGalleryOpen = activeGallery !== null;
+
+  const closeGallery = () => {
+    if (activeGallery === 'travel') setActiveMessage('travel');
+    setActiveGallery(null);
+    setEnlargedPhoto(null);
+  };
 
   useEffect(() => {
     if (!isGalleryOpen) return undefined;
@@ -86,7 +97,7 @@ const About = () => {
         if (enlargedPhoto) {
           setEnlargedPhoto(null);
         } else {
-          setActiveGallery(null);
+          closeGallery();
         }
       }
     };
@@ -96,7 +107,16 @@ const About = () => {
   }, [isGalleryOpen, enlargedPhoto]);
 
   return (
-    <main className={styles.aboutPage}>
+    <main className={`${styles.aboutPage}${starsCrazy ? ` ${styles.starsCrazy}` : ''}`}>
+      <button
+        type="button"
+        className={styles.backButton}
+        onClick={() => router.push('/homepage?skipIntro=1')}
+        aria-label="Go back to homepage"
+      >
+        &larr;
+      </button>
+      <h1 className={styles.aboutTitle}>About me</h1>
       <div className={styles.scene} aria-label="A collage of things that represent me, arranged on a pink bed">
         <Image
           src="/images/top-of-bed.png"
@@ -111,8 +131,25 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles[item.className]} ${styles.galleryTrigger}`}
-            onClick={() => setActiveGallery(item.className === 'airport' ? 'travel' : 'photography')}
+            onClick={() => {
+              const gallery = item.className === 'airport' ? 'travel' : 'photography';
+              setActiveMessage(gallery === 'photography' ? 'photography' : null);
+              setActiveGallery(gallery);
+            }}
             aria-label={`Open ${item.className === 'airport' ? 'travel' : 'photography'} photo gallery`}
+          >
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} />
+          </button>
+        ) : item.className === 'head' ? (
+          <button
+            key={item.src}
+            type="button"
+            className={`${styles.item} ${styles.head} ${styles.headTrigger}`}
+            onClick={() => {
+              setStarsCrazy(true);
+              window.setTimeout(() => setStarsCrazy(false), 1800);
+            }}
+            aria-label="Make the background stars sparkle"
           >
             <Image src={item.src} alt={item.alt} width={2048} height={2048} />
           </button>
@@ -121,7 +158,10 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles.tennisRacquet} ${styles.tennisRacquetTrigger}`}
-            onClick={() => setBallBounceSequence((sequence) => sequence + 1)}
+            onClick={() => {
+              setBallBounceSequence((sequence) => sequence + 1);
+              setActiveMessage('tennis');
+            }}
             aria-label="Make the tennis ball bounce"
           >
             <Image src={item.src} alt={item.alt} width={2048} height={2048} />
@@ -131,10 +171,34 @@ const About = () => {
             key={`${item.src}-${ballBounceSequence}`}
             type="button"
             className={`${styles.item} ${styles.tennisBall} ${styles.tennisBallTrigger}${ballBounceSequence ? ` ${styles.bouncing}` : ''}`}
-            onClick={() => setBallBounceSequence((sequence) => sequence + 1)}
+            onClick={() => {
+              setBallBounceSequence((sequence) => sequence + 1);
+              setActiveMessage('tennis');
+            }}
             aria-label="Make the tennis ball bounce"
           >
             <Image src={item.src} alt={item.alt} width={2048} height={2048} />
+          </button>
+        ) : item.alternateSrc ? (
+          <button
+            key={item.src}
+            type="button"
+            className={`${styles.item} ${styles[item.className]} ${styles.swapTrigger}`}
+            onClick={() => {
+              setAlternateItems((current) => ({
+                ...current,
+                [item.className]: !current[item.className],
+              }));
+              setActiveMessage('fashion');
+            }}
+            aria-label={`Switch ${item.className} image`}
+          >
+            <Image
+              src={alternateItems[item.className] ? item.alternateSrc : item.src}
+              alt={item.alt}
+              width={2048}
+              height={2048}
+            />
           </button>
         ) : (
           <Image
@@ -147,8 +211,19 @@ const About = () => {
           />
         ))}
       </div>
+      {activeMessage && (
+        <p className={styles.aboutMessage}>
+          {activeMessage === 'travel'
+            ? 'I love to travel! Fun fact: I\'ve been to 17 countries!'
+            : activeMessage === 'photography'
+              ? 'Photography is a hobby of mine'
+              : activeMessage === 'fashion'
+                ? 'I love fashion I love to change it up!'
+              : 'I love tennis! I\'ve been playing since I was 6!'}
+        </p>
+      )}
       {isGalleryOpen && (
-        <div className={styles.galleryBackdrop} onClick={() => setActiveGallery(null)}>
+        <div className={styles.galleryBackdrop} onClick={closeGallery}>
           <section
             className={styles.galleryDialog}
             role="dialog"
@@ -159,7 +234,7 @@ const About = () => {
             <button
               type="button"
               className={styles.galleryClose}
-              onClick={() => setActiveGallery(null)}
+              onClick={closeGallery}
               aria-label="Close photo gallery"
             >
               &times;

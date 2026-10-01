@@ -22,6 +22,7 @@ export default function ResumePage() {
   const [isShelfHovered, setIsShelfHovered] = useState(false);
   const [booksVisible, setBooksVisible] = useState(false);
   const [booksWave, setBooksWave] = useState(false);
+  const [shelfVisible, setShelfVisible] = useState(false);
 
   const experienceEntries = content?.experience?.experienceList ?? [];
   const visibleJobs = experienceEntries.filter((_, index) => index !== 1).slice(0, 5);
@@ -50,15 +51,18 @@ export default function ResumePage() {
     if (!showResume) {
       setBooksVisible(false);
       setBooksWave(false);
+      setShelfVisible(false);
       return;
     }
 
     const revealTimeout = setTimeout(() => setBooksVisible(true), 50);
     const waveTimeout = setTimeout(() => setBooksWave(true), (bookEntries.length * 170) + 500);
+    const shelfTimeout = setTimeout(() => setShelfVisible(true), (bookEntries.length * 170) + 1600);
 
     return () => {
       clearTimeout(revealTimeout);
       clearTimeout(waveTimeout);
+      clearTimeout(shelfTimeout);
     };
   }, [showResume, bookEntries.length]);
 
@@ -150,7 +154,26 @@ height: 'min(620px, 80vh)',
           </div>
         ) : (
         <section className="mb-8 flex flex-col items-center justify-center gap-8">
-          <div className="relative h-[240px] w-[340px] pb-2">
+          <div className="relative h-[290px] w-[340px] pb-2">
+            <Image
+              src="/images/Shelf2.png"
+              alt=""
+              aria-hidden="true"
+              width={340}
+              height={340}
+              style={{
+                position: 'absolute',
+                top: '15px',
+                left: 0,
+                zIndex: 0,
+                width: 340,
+                height: 340,
+                maxWidth: 'none',
+                pointerEvents: 'none',
+                opacity: shelfVisible ? 1 : 0,
+                transition: 'opacity 650ms ease',
+              }}
+            />
             {bookEntries.map((book, index) => {
               const isActive = book.id === selectedBook;
               const waveOffset = booksWave ? -((index + 1) * 18) : 0;

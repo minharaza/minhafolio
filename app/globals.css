@@ -83,6 +83,20 @@ code {
   }
 }
 
+@keyframes star-drift-global {
+  from {
+    transform: translateY(0) rotate(-16deg) scale(0.9);
+  }
+
+  to {
+    transform: translateY(-1rem) rotate(16deg) scale(1.12);
+  }
+}
+
+.animate-star-drift {
+  animation: star-drift-global 3.2s ease-in-out infinite alternate;
+}
+
 .fade-in {
   animation: fadeIn 1s ease-in-out forwards;
 }

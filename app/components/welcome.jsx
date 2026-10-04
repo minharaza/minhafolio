@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import './welcome.css';
 
 export default function Welcome({ onClose }) {
-  const router = useRouter();
   useEffect(() => {
     const previousOverflowX = document.documentElement.style.overflowX;
     const previousOverflowY = document.body.style.overflowY;

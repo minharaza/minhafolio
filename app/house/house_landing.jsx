@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import './house_landing.css';
 
@@ -20,6 +21,8 @@ const houseItems = [
 ];
 
 export default function HousePage() {
+  const searchParams = useSearchParams();
+  const skipIntro = searchParams.get('skipIntro') === '1';
   const [showPout, setShowPout] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [showFollowupBubble, setShowFollowupBubble] = useState(false);
@@ -35,17 +38,36 @@ export default function HousePage() {
   const [showMatcha, setShowMatcha] = useState(true);
   const [isCutoutReady, setIsCutoutReady] = useState(false);
 
+  useEffect(() => {
+    if (skipIntro) {
+      setShowSpeechBubble(false);
+      setShowFollowupBubble(false);
+      setShowFinalBubble(false);
+      setShowExploreBubble(false);
+      setIsExplorePopping(false);
+      setShowMatcha(false);
+      setShowLandscapeOnly(true);
+      setShowStarsBackground(false);
+      setIsMatchaLeaving(false);
+      setIsMatchaExiting(false);
+    }
+  }, [skipIntro]);
+
   const toggleBackground = () => {
     setShowStarsBackground((current) => !current);
   };
 
   useEffect(() => {
+    if (skipIntro) {
+      return;
+    }
+
     const speechBubbleTimer = setTimeout(() => {
       setShowSpeechBubble(true);
     }, 3000);
 
     return () => clearTimeout(speechBubbleTimer);
-  }, []);
+  }, [skipIntro]);
 
   useEffect(() => {
     const cutoutImage = new Image();

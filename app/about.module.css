@@ -1,0 +1,535 @@
+.aboutPage {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  background-color: #e9f5ef;
+  background-image:
+    radial-gradient(circle, rgb(173 151 200 / 32%) 1.3px, transparent 1.8px),
+    radial-gradient(circle, rgb(236 190 119 / 38%) 1.2px, transparent 1.8px),
+    linear-gradient(rgb(233 245 239 / 50%), rgb(233 245 239 / 50%)),
+    url('/images/whimiscal.png');
+  background-position: 0 0, 22px 31px, center, center;
+  background-size: 42px 42px, 67px 67px, 100% 100%, cover;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  padding: 1rem;
+}
+
+.backButton {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid rgb(105 86 135 / 70%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 78%);
+  color: #695687;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.backButton:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 14%);
+}
+
+.backButton:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.aboutTitle {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  z-index: 2;
+  margin: 0;
+  color: #695687;
+  font-family: 'Ballet', cursive;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.aboutMessage {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  z-index: 2;
+  width: min(92vw, 42rem);
+  margin: 0;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(255 248 251 / 82%);
+  color: #5f3d50;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: 0 0.75rem 2rem rgb(80 34 51 / 14%);
+  transform: translateX(-50%);
+}
+
+.aboutPage::before,
+.aboutPage::after {
+  position: absolute;
+  z-index: 0;
+  color: #c79bc4;
+  content: '\2726';
+  font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+  pointer-events: none;
+  text-shadow:
+    17vw 15vh 0 #e5b96f,
+    36vw -5vh 0 #a6c9bb,
+    59vw 12vh 0 #d8a6bf,
+    78vw -3vh 0 #d8bf83,
+    11vw 39vh 0 #d8a6bf,
+    30vw 61vh 0 #d8bf83,
+    52vw 47vh 0 #a6c9bb,
+    71vw 70vh 0 #e5b96f,
+    91vw 43vh 0 #d8a6bf;
+  animation: star-drift 5s ease-in-out infinite alternate;
+}
+
+.aboutPage::before {
+  top: 9%;
+  left: 7%;
+}
+
+.aboutPage::after {
+  right: 10%;
+  bottom: 9%;
+  color: #d8bf83;
+  content: '\2727';
+  animation-delay: -2.5s;
+}
+
+.starsCrazy::before,
+.starsCrazy::after {
+  animation: star-spin 900ms linear infinite;
+  filter: drop-shadow(0 0 0.6rem rgb(255 255 255 / 90%));
+}
+
+@keyframes star-spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+
+  to {
+    transform: scale(3.2) rotate(360deg);
+  }
+}
+
+.scene {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 75vh, 68rem);
+  width: min(92vw, 75dvh, 68rem);
+  aspect-ratio: 1132 / 1383;
+  isolation: isolate;
+}
+
+.bed {
+  z-index: -1;
+  object-fit: contain;
+}
+
+.item {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0.4rem 0.4rem rgb(80 34 51 / 15%));
+  transition: transform 180ms ease;
+}
+
+.item:hover {
+  transform: scale(1.045) rotate(0deg);
+  z-index: 5;
+}
+
+.airport {
+  top: 17%;
+  left: 3%;
+  z-index: 1;
+  width: 27%;
+  transform: rotate(-7deg);
+}
+
+.galleryTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.galleryTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.galleryTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 4px;
+}
+
+.headTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.headTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.headTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.swapTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.swapTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.swapTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.galleryBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(48 27 39 / 58%);
+  backdrop-filter: blur(5px);
+}
+
+.galleryDialog {
+  position: relative;
+  width: min(100%, 68rem);
+  min-height: 22rem;
+  max-height: min(85dvh, 52rem);
+  overflow: auto;
+  padding: 2rem;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 1.25rem;
+  background: #fff8fb;
+  box-shadow: 0 1.5rem 5rem rgb(35 14 25 / 28%);
+}
+
+.galleryDialog h2 {
+  margin: 0 3rem 1.5rem 0;
+  color: #5f3d50;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.galleryClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f7e4ed;
+  color: #5f3d50;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.galleryEmpty {
+  display: grid;
+  min-height: 14rem;
+  place-items: center;
+  margin: 0;
+  border: 1px dashed #d8aebe;
+  border-radius: 0.75rem;
+  color: #785a69;
+  text-align: center;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  gap: 0.9rem;
+}
+
+.galleryPhoto {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0.65rem;
+  background: #f7e4ed;
+  cursor: zoom-in;
+}
+
+.galleryPhoto img {
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
+.galleryPhoto:hover img {
+  transform: scale(1.04);
+}
+
+.galleryPhoto:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.photoViewerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: rgb(24 16 21 / 88%);
+}
+
+.photoViewer {
+  position: relative;
+  width: min(100%, 90rem);
+  height: min(88dvh, 60rem);
+}
+
+.photoViewerImage {
+  position: absolute;
+  inset: 0;
+}
+
+.photoViewerImage img {
+  object-fit: contain;
+}
+
+.photoViewer .galleryClose {
+  z-index: 1;
+  top: -1rem;
+  right: -1rem;
+}
+
+@media (max-width: 600px) {
+  .photoViewerBackdrop {
+    padding: 1rem;
+  }
+
+  .photoViewer {
+    height: 82dvh;
+  }
+
+  .photoViewer .galleryClose {
+    top: -0.5rem;
+    right: -0.5rem;
+  }
+}
+
+.camera {
+  top: 14%;
+  right: 2%;
+  z-index: 1;
+  width: 29%;
+  transform: rotate(6deg);
+}
+
+.notebook {
+  top: 43%;
+  left: 3%;
+  z-index: 2;
+  width: 28%;
+  transform: rotate(-8deg);
+}
+
+.purse {
+  top: 39%;
+  right: 1%;
+  z-index: 3;
+  width: 34%;
+  transform: rotate(7deg);
+}
+
+.shirt {
+  top: 28%;
+  left: 27%;
+  z-index: 2;
+  width: 48%;
+  transform: rotate(-2deg);
+}
+
+.head {
+  top: 8%;
+  left: 30%;
+  z-index: 4;
+  width: 40%;
+}
+
+.skirt {
+  top: 53%;
+  left: 27%;
+  z-index: 3;
+  width: 49%;
+  transform: rotate(4deg);
+}
+
+.shoes {
+  top: 65%;
+  left: 4%;
+  z-index: 4;
+  width: 32%;
+  transform: rotate(-5deg);
+}
+
+.tennisRacquet {
+  top: 67%;
+  left: 68%;
+  z-index: 5;
+  width: 30%;
+  transform: rotate(-8deg);
+}
+
+.tennisRacquetTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.tennisRacquetTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tennisRacquetTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.tennisBall {
+  top: 71%;
+  left: 85%;
+  z-index: 6;
+  width: 8%;
+  transform-origin: center bottom;
+}
+
+.tennisBallTrigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.tennisBallTrigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tennisBallTrigger:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.tennisBall.bouncing {
+  animation: tennis-ball-bounce 850ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes tennis-ball-bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  38% {
+    transform: translateY(-4.5rem) scale(1.04);
+  }
+
+  58% {
+    transform: translateY(0) scale(1.12, 0.88);
+  }
+
+  76% {
+    transform: translateY(-1.5rem) scale(0.96, 1.04);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes star-drift {
+  from {
+    transform: translateY(0) rotate(-8deg);
+    opacity: 0.72;
+  }
+
+  to {
+    transform: translateY(-0.5rem) rotate(8deg);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutPage {
+    padding: 0.4rem;
+  }
+
+  .scene {
+    width: min(98vw, 75dvh);
+  }
+
+  .item:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .aboutPage::before,
+  .aboutPage::after {
+    transition: none;
+    animation: none;
+  }
+
+  .tennisBall.bouncing {
+    animation: none;
+  }
+}

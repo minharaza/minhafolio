@@ -1,0 +1,287 @@
+.page {
+  position: relative;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: #7a4f3a;
+  color: #263142;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
+}
+
+.backgroundTexture {
+  position: fixed;
+  inset: -15%;
+  z-index: 0;
+  background:
+    linear-gradient(rgb(122 79 58 / 72%), rgb(122 79 58 / 72%)),
+    url('/images/tablecloth.png') center / cover;
+  /* transform: rotate(90deg) scale(1.15); */
+}
+
+.page::before,
+.page::after {
+  position: fixed;
+  z-index: 0;
+  color: #ead18b;
+  content: '✦';
+  font-family: sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  pointer-events: none;
+  animation: drift 4s ease-in-out infinite alternate;
+}
+
+.page::before {
+  top: 16%;
+  left: 8%;
+}
+
+.page::after {
+  right: 9%;
+  bottom: 18%;
+  color: #dba9bd;
+  content: '✧';
+  animation-delay: -2s;
+}
+
+.backButton {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid rgb(105 86 135 / 70%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 88%);
+  color: #695687;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1rem rgb(35 22 29 / 18%);
+  transition: transform 180ms ease;
+}
+
+.backButton:hover,
+.backButton:focus-visible {
+  transform: scale(1.08);
+}
+
+.backButton:focus-visible,
+.filter:focus-visible,
+.links a:focus-visible {
+  outline: 3px solid #f6dc6f;
+  outline-offset: 3px;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 76rem);
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 42rem;
+  margin: 3rem auto 2.5rem;
+  color: #fff8f1;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  color: #f4d678;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 0;
+  color: #fff8f1;
+  font-family: 'Ballet', cursive;
+  font-size: clamp(4rem, 9vw, 7.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.intro {
+  max-width: 32rem;
+  margin: 1rem auto 0;
+  color: rgb(255 248 241 / 82%);
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-bottom: 2rem;
+}
+
+.filter {
+  min-height: 2.4rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 999px;
+  background: rgb(255 248 241 / 14%);
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.filter:hover {
+  transform: translateY(-2px);
+}
+
+.activeFilter {
+  border-color: #f6dc6f;
+  background: #f6dc6f;
+  color: #4e3429;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.project {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 62%);
+  border-radius: 1.25rem;
+  background: rgb(255 248 241 / 92%);
+  box-shadow: 0 1rem 2rem rgb(46 27 28 / 18%);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.project:hover {
+  transform: translateY(-0.4rem);
+  box-shadow: 0 1.5rem 2.5rem rgb(46 27 28 / 26%);
+}
+
+.imageFrame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #d8c9c0;
+}
+
+.projectImage {
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.project:hover .projectImage {
+  transform: scale(1.04);
+}
+
+.projectNumber {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: rgb(38 49 66 / 78%);
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.8rem;
+}
+
+.projectBody {
+  padding: 1.3rem 1.4rem 1.5rem;
+}
+
+.projectBody h2 {
+  margin: 0;
+  color: #263142;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.projectBody p {
+  margin: 0.7rem 0 1rem;
+  color: #536073;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tags span {
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #d7eef0;
+  color: #315567;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.78rem;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.links a {
+  color: #8c4d42;
+  font-family: 'Happy Monkey', cursive;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: #b36e58;
+  text-decoration: underline;
+}
+
+.loading,
+.empty,
+.error {
+  padding: 3rem;
+  border-radius: 1rem;
+  background: rgb(255 248 241 / 90%);
+  color: #536073;
+  font-family: 'Happy Monkey', cursive;
+  text-align: center;
+}
+
+@keyframes drift {
+  from { transform: translateY(0) rotate(-8deg); }
+  to { transform: translateY(-0.6rem) rotate(8deg); }
+}
+
+@media (max-width: 700px) {
+  .page {
+    padding-top: 1rem;
+  }
+
+  .header {
+    margin-top: 3.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page::before,
+  .page::after,
+  .project,
+  .projectImage,
+  .filter,
+  .backButton {
+    animation: none;
+    transition: none;
+  }
+}

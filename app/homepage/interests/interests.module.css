@@ -1,0 +1,88 @@
+.page {
+  position: relative;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  padding: 6rem 1.25rem;
+  background: #8edce4 url('/images/Landscape.png') center / cover fixed;
+  color: #56334a;
+}
+
+.content {
+  width: min(100%, 42rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  border: 3px solid rgb(135 51 87 / 55%);
+  border-radius: 1.25rem;
+  background: rgb(255 248 232 / 94%);
+  box-shadow: 0 1rem 3rem rgb(37 83 80 / 24%);
+  text-align: center;
+}
+
+.backButton {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top));
+  left: max(1rem, env(safe-area-inset-left));
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid #873357;
+  border-radius: 50%;
+  background: #fff8e8;
+  color: #57334a;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.backButton:focus-visible,
+.projectsLink:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: #9b3158;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+}
+
+.content h1 {
+  margin: 0;
+  color: #873357;
+  font-family: 'Ballet', cursive;
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.description,
+.message {
+  margin: 1rem 0 0;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.projectsLink {
+  display: inline-block;
+  margin-top: 1.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.4rem;
+  background: #873357;
+  color: #fff8e8;
+  font-family: 'Happy Monkey', cursive;
+  text-decoration: none;
+}
+
+.projectsLink:hover {
+  background: #692743;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backButton,
+  .projectsLink {
+    transition: none;
+  }
+}

@@ -12,9 +12,8 @@
   inset: -15%;
   z-index: 0;
   background:
-    linear-gradient(rgb(122 79 58 / 72%), rgb(122 79 58 / 72%)),
-    url('/images/tablecloth.png') center / cover;
-  /* transform: rotate(90deg) scale(1.15); */
+    linear-gradient(rgba(156, 90, 57, 0.568), rgba(219, 132, 132, 0.358)),
+    url('/images/Tablecloth.png') 0 0 / 540px 720px repeat;
 }
 
 .page::before,
@@ -81,8 +80,13 @@
 }
 
 .header {
-  max-width: 42rem;
+  box-sizing: border-box;
+  width: min(100%, 46rem);
   margin: 3rem auto 2.5rem;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem) 1.5rem;
+  border-radius: 8px;
+  background: rgb(74 39 34 / 76%);
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
   color: #fff8f1;
   text-align: center;
 }
@@ -102,7 +106,7 @@
   font-family: 'Ballet', cursive;
   font-size: clamp(4rem, 9vw, 7.5rem);
   font-weight: 400;
-  line-height: 0.95;
+  line-height: 1.25;
 }
 
 .intro {

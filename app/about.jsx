@@ -6,17 +6,19 @@ import { useEffect, useState } from 'react';
 import styles from './about.module.css';
 
 const collageItems = [
-  { src: '/images/About_Me_Airport.png', alt: 'Travel keepsakes', className: 'airport' },
-  { src: '/images/About_Me_Camera.png', alt: 'My camera and favorite accessories', className: 'camera' },
-  { src: '/images/About_Me_Notebook_.png', alt: 'My decorated notebook', className: 'notebook' },
-  { src: '/images/About_Me_Purse.png', alternateSrc: '/images/About_Me_Purse_2.png', alt: 'My favorite purse', className: 'purse' },
-  { src: '/images/About_Me_Shoes.png', alternateSrc: '/images/About_Me_Shoe_2.png', alt: 'My red shoes', className: 'shoes' },
-  { src: '/images/about-me-head.png', alt: 'My portrait', className: 'head' },
-  { src: '/images/about-me-shirt.png', alternateSrc: '/images/About_Me_Shirt_2.png', alt: 'A favorite band shirt', className: 'shirt' },
-  { src: '/images/About-me-skirt.png', alternateSrc: '/images/About_Me_Skirt2.png', alt: 'A favorite skirt', className: 'skirt' },
+  { src: '/images/about-me/About_Me_Airport.png', alt: 'Travel keepsakes', className: 'airport' },
+  { src: '/images/about-me/About_Me_Camera.png', alt: 'My camera and favorite accessories', className: 'camera' },
+  { src: '/images/about-me/About_Me_Notebook_.png', alt: 'My decorated notebook', className: 'notebook' },
+  { src: '/images/about-me/About_Me_Purse.png', alternateSrc: '/images/about-me/About_Me_Purse_2.png', alt: 'My favorite purse', className: 'purse' },
+  { src: '/images/about-me/About_Me_Shoes.png', alternateSrc: '/images/about-me/About_Me_Shoe_2.png', alt: 'My red shoes', className: 'shoes' },
+  { src: '/images/about-me/about-me-head.png', alt: 'My portrait', className: 'head' },
+  { src: '/images/about-me/about-me-shirt.png', alternateSrc: '/images/about-me/About_Me_Shirt_2.png', alt: 'A favorite band shirt', className: 'shirt' },
+  { src: '/images/about-me/About-me-skirt.png', alternateSrc: '/images/about-me/About_Me_Skirt2.png', alt: 'A favorite skirt', className: 'skirt' },
   { src: '/images/Tennis_Racquet.png', alt: 'A pink tennis racquet', className: 'tennisRacquet' },
   { src: '/images/Tennis_Ball.png', alt: 'A pink tennis ball', className: 'tennisBall' },
 ];
+
+const collageImageSizes = '(max-width: 700px) 46vw, 37vh';
 
 const travelPhotos = [
   '0701E767-A800-42C0-AC42-506DEBF4F43E_4_5005_c.jpeg',
@@ -123,6 +125,7 @@ const About = () => {
           alt="A pink bed"
           fill
           priority
+          loading="eager"
           sizes="(max-width: 700px) 92vw, 75vh"
           className={styles.bed}
         />
@@ -138,7 +141,7 @@ const About = () => {
             }}
             aria-label={`Open ${item.className === 'airport' ? 'travel' : 'photography'} photo gallery`}
           >
-            <Image src={item.src} alt={item.alt} width={2048} height={2048} />
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
           </button>
         ) : item.className === 'head' ? (
           <button
@@ -151,7 +154,7 @@ const About = () => {
             }}
             aria-label="Make the background stars sparkle"
           >
-            <Image src={item.src} alt={item.alt} width={2048} height={2048} />
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
           </button>
         ) : item.className === 'tennisRacquet' ? (
           <button
@@ -164,7 +167,7 @@ const About = () => {
             }}
             aria-label="Make the tennis ball bounce"
           >
-            <Image src={item.src} alt={item.alt} width={2048} height={2048} />
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
           </button>
         ) : item.className === 'tennisBall' ? (
           <button
@@ -177,7 +180,7 @@ const About = () => {
             }}
             aria-label="Make the tennis ball bounce"
           >
-            <Image src={item.src} alt={item.alt} width={2048} height={2048} />
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
           </button>
         ) : item.alternateSrc ? (
           <button
@@ -198,6 +201,8 @@ const About = () => {
               alt={item.alt}
               width={2048}
               height={2048}
+              sizes={collageImageSizes}
+              loading="eager"
             />
           </button>
         ) : (
@@ -207,6 +212,8 @@ const About = () => {
             alt={item.alt}
             width={2048}
             height={2048}
+            sizes={collageImageSizes}
+            loading="eager"
             className={`${styles.item} ${styles[item.className]}`}
           />
         ))}

@@ -51,11 +51,11 @@ export default function ProjectsPage() {
       </button>
 
       <section className={styles.content}>
-        <header className={styles.header}>
+        {/* <header className={styles.header}>
           <p className={styles.eyebrow}>A small collection</p>
           <h1>Projects</h1>
           <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
-        </header>
+        </header> */}
 
         <div className={styles.filters} aria-label="Filter projects by technology">
           {technologies.map((technology) => (

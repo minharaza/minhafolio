@@ -1,7 +1,9 @@
 .page {
+  box-sizing: border-box;
   position: relative;
-  min-height: 100dvh;
+  height: 100dvh;
   overflow-x: hidden;
+  overflow-y: auto;
   background: #7a4f3a;
   color: #263142;
   padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
@@ -75,14 +77,15 @@
 .content {
   position: relative;
   z-index: 1;
-  width: min(100%, 76rem);
+  width: min(100%, 96rem);
   margin: 0 auto;
+  padding: 1rem clamp(0.75rem, 2.5vw, 2.5rem) 3rem;
 }
 
 .header {
   box-sizing: border-box;
   width: min(100%, 46rem);
-  margin: 3rem auto 2.5rem;
+  margin: 1.5rem auto 2.75rem;
   padding: 1.25rem clamp(1rem, 3vw, 2rem) 1.5rem;
   border-radius: 8px;
   background: rgb(74 39 34 / 76%);
@@ -150,113 +153,38 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: stretch;
+  padding: 0.25rem 0.25rem 2rem;
 }
 
-.project {
-  overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 62%);
-  border-radius: 1.25rem;
-  background: rgb(255 248 241 / 92%);
-  box-shadow: 0 1rem 2rem rgb(46 27 28 / 18%);
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
-.project:hover {
-  transform: translateY(-0.4rem);
-  box-shadow: 0 1.5rem 2.5rem rgb(46 27 28 / 26%);
-}
-
-.imageFrame {
+.matCard {
   position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #d8c9c0;
+  width: 94%;
+  margin: 0 auto;
+  min-width: 0;
+  aspect-ratio: 1.5;
 }
 
-.projectImage {
-  object-fit: cover;
-  transition: transform 350ms ease;
+.matImage {
+  z-index: 0;
+  object-fit: contain;
 }
 
-.project:hover .projectImage {
-  transform: scale(1.04);
-}
-
-.projectNumber {
+.platePositioner {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 999px;
-  background: rgb(38 49 66 / 78%);
-  color: #fff8f1;
-  font-family: 'Happy Monkey', cursive;
-  font-size: 0.8rem;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: min(38%, 40rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
 }
 
-.projectBody {
-  padding: 1.3rem 1.4rem 1.5rem;
-}
-
-.projectBody h2 {
-  margin: 0;
-  color: #263142;
-  font-family: 'Happy Monkey', cursive;
-  font-size: clamp(1.25rem, 2vw, 1.65rem);
-}
-
-.projectBody p {
-  margin: 0.7rem 0 1rem;
-  color: #536073;
-  font-family: 'Happy Monkey', cursive;
-  font-size: 0.95rem;
-  line-height: 1.55;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.tags span {
-  padding: 0.25rem 0.55rem;
-  border-radius: 0.4rem;
-  background: #d7eef0;
-  color: #315567;
-  font-family: 'Happy Monkey', cursive;
-  font-size: 0.78rem;
-}
-
-.links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.2rem;
-}
-
-.links a {
-  color: #8c4d42;
-  font-family: 'Happy Monkey', cursive;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.links a:hover {
-  color: #b36e58;
-  text-decoration: underline;
-}
-
-.loading,
-.empty,
-.error {
-  padding: 3rem;
-  border-radius: 1rem;
-  background: rgb(255 248 241 / 90%);
-  color: #536073;
-  font-family: 'Happy Monkey', cursive;
-  text-align: center;
+.plateImage {
+  object-fit: contain;
+  filter: drop-shadow(0 0.35rem 0.5rem rgb(35 22 29 / 24%));
 }
 
 @keyframes drift {
@@ -266,24 +194,22 @@
 
 @media (max-width: 700px) {
   .page {
-    padding-top: 1rem;
+    padding: 1rem 0.75rem 3rem;
   }
 
-  .header {
-    margin-top: 3.5rem;
+  .content {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .page::before,
   .page::after,
-  .project,
-  .projectImage,
-  .filter,
   .backButton {
     animation: none;
     transition: none;

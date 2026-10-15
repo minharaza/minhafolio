@@ -83,11 +83,11 @@ export default function ProjectsPage() {
                 />
               </button>
               {mat.project === 'Project1' && (
-                <svg className={styles.toastCaption} viewBox="0 0 320 150" aria-hidden="true">
+                <svg className={styles.toastCaption} viewBox="0 0 500 130" aria-hidden="true">
                   <defs>
-                    <path id="toast-caption-arc" d="M 15 130 Q 160 8 305 130" />
+                    <path id="toast-caption-arc" d="M 20 110 Q 250 -50 480 110" />
                   </defs>
-                  <text>
+                  <text fill="currentColor">
                     <textPath href="#toast-caption-arc" startOffset="50%" textAnchor="middle">
                       Helping a local business with a
                     </textPath>

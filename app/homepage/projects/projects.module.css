@@ -112,6 +112,345 @@
   line-height: 1.25;
 }
 
+.header h1.projectTitle {
+  font-family: 'Lily Script One', cursive;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.15;
+}
+
+.projectHeader {
+  width: min(100%, 76rem);
+}
+
+.projectNumberTitle {
+  margin: 0 auto 1rem;
+  color: #fff8f1;
+  font-family: 'Ballet', cursive;
+  font-size: clamp(6rem, 12vw, 11rem);
+  font-weight: 400;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.projectSection {
+  display: grid;
+  width: min(100%, 76rem);
+  grid-column: 1 / -1;
+  gap: 1rem;
+  justify-self: center;
+}
+
+.swotHeading {
+  margin: 0;
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  text-align: center;
+}
+
+.swotGrid {
+  display: grid;
+  width: min(100%, 38rem);
+  grid-column: 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  justify-self: center;
+}
+
+.swotBoard {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 38rem) minmax(8rem, 1fr);
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.personaSection {
+  display: grid;
+  width: 100%;
+  grid-column: 1 / -1;
+  gap: 1rem;
+  justify-self: center;
+}
+
+.personaBoard {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 10rem) minmax(0, 1fr) minmax(0, 10rem);
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  justify-self: center;
+}
+
+.swotHint {
+  display: block;
+  width: min(100%, 10rem);
+  justify-self: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.swotHintLeft {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.swotHintRight {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.swotHint img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 0.55rem rgb(255 248 241 / 80%));
+  animation: hint-glow 1.3s ease-in-out infinite alternate;
+}
+
+.swotHint:focus-visible {
+  outline: 3px solid #fff8f1;
+  outline-offset: 3px;
+}
+
+.swotTile {
+  display: flex;
+  min-width: 0;
+  min-height: 14rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 8px;
+  color: #1b211d;
+  cursor: pointer;
+  text-align: center;
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.swotTile:hover {
+  filter: brightness(1.04);
+}
+
+.swotTile:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid #fff8f1;
+  outline-offset: 3px;
+}
+
+.swotLetter {
+  font-family: var(--font-quicksand), sans-serif;
+  font-size: clamp(4.5rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.swotTitle {
+  font-family: var(--font-quicksand), sans-serif;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 700;
+}
+
+.swotDescription {
+  max-width: 26rem;
+  margin-top: 0.45rem;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.swotDescription[hidden] {
+  display: none;
+}
+
+.swotTileExpanded {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.strengths {
+  background: #fff8e8;
+}
+
+.weaknesses {
+  background: #f7eed3;
+}
+
+.opportunities {
+  background: #aab396;
+}
+
+.threats {
+  background: #674636;
+}
+
+.swotTile.threats {
+  color: #fff8e8;
+}
+
+.personaGrid {
+  display: grid;
+  width: 100%;
+  grid-column: 2;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+  justify-self: center;
+}
+
+.personaButton {
+  display: flex;
+  min-width: 0;
+  min-height: 14rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 8px;
+  color: #1b211d;
+  cursor: pointer;
+  text-align: center;
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.personaButton:nth-child(1) {
+  background: #d8a2a2;
+}
+
+.personaButton:nth-child(2) {
+  background: #ffdcdc;
+}
+
+.personaButton:nth-child(3) {
+  background: #fff9d6;
+}
+
+.personaButton:nth-child(4) {
+  background: #8ea66b;
+}
+
+.personaButton:hover {
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+}
+
+.personaButton:focus-visible {
+  outline: 3px solid #fff8f1;
+  outline-offset: 3px;
+}
+
+.personaLogo {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: contain;
+}
+
+.personaName {
+  font-family: var(--font-quicksand), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.personaDetails {
+  max-width: 34rem;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.personaDetails[hidden] {
+  display: none;
+}
+
+.personaButtonExpanded {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.researchInsights {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.researchInsights ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.researchVisual {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+}
+
+.researchVisualFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8 / 7;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.researchVisualImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 60%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.projectDetails {
+  display: grid;
+  width: min(100%, 76rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 auto;
+}
+
+.projectDetail {
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  background: rgba(121, 135, 120, 0.84);
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+  color: #fff8f1;
+}
+
+.projectDetail h2 {
+  margin: 0 0 0.75rem;
+  color: #f4d678;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.projectDetail p {
+  margin: 0;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 .intro {
   max-width: 32rem;
   margin: 1rem auto 0;
@@ -220,17 +559,19 @@
 
 .toastCaption {
   position: absolute;
-  top: 14%;
+  top: 35%;
   left: 50%;
   z-index: 6;
-  width: 48%;
-  height: 20%;
-  overflow: visible;
-  fill: #57334a;
+  width: max-content;
+  font-weight: 700;
+  max-width: 55%;
+  color: #472411;
   font-family: 'Happy Monkey', cursive;
-  font-size: 15px;
+  font-size: clamp(0.9rem, 1vw, 1.5rem);
+  line-height: 1.25;
+  text-align: center;
   pointer-events: none;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .utensilPositioner {
@@ -280,6 +621,16 @@
   to { transform: translateY(-0.6rem) rotate(8deg); }
 }
 
+@keyframes hint-flash {
+  from { opacity: 0.88; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes hint-glow {
+  from { filter: drop-shadow(0 0 0.4rem rgb(255 248 241 / 70%)); }
+  to { filter: drop-shadow(0 0 1rem rgb(255 248 241 / 100%)); }
+}
+
 @media (max-width: 700px) {
   .page {
     padding: 1rem 0.75rem 3rem;
@@ -293,6 +644,78 @@
   .grid {
     gap: 1.25rem;
   }
+
+  .projectDetails {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .researchInsights {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .researchVisual {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .researchVisualFrame {
+    aspect-ratio: 3 / 4;
+  }
+
+  .researchVisualImage {
+    width: 133.333%;
+  }
+
+  .swotTile {
+    min-height: 11rem;
+    padding: 0.75rem;
+  }
+
+  .swotBoard {
+    grid-template-columns: minmax(3.25rem, 0.28fr) minmax(0, 1fr) minmax(3.25rem, 0.28fr);
+    gap: 0.5rem;
+  }
+
+  .personaBoard {
+    grid-template-columns: minmax(3.25rem, 0.28fr) minmax(0, 1fr) minmax(3.25rem, 0.28fr);
+    gap: 0.5rem;
+  }
+
+  .personaSection {
+    width: 100%;
+  }
+
+  .swotHint {
+    width: 100%;
+  }
+
+  .swotDescription {
+    font-size: 0.85rem;
+  }
+
+  .personaButton {
+    min-height: 11rem;
+    padding: 0.75rem;
+  }
+
+  .personaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .personaLogo {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .personaName {
+    font-size: 0.9rem;
+  }
+
+  .personaDetails {
+    font-size: 0.8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -301,5 +724,14 @@
   .backButton {
     animation: none;
     transition: none;
+  }
+
+  .swotHint {
+    animation: none;
+  }
+
+  .swotHint img {
+    animation: none;
+    filter: drop-shadow(0 0 0.4rem rgb(255 248 241 / 65%));
   }
 }

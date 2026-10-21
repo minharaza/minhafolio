@@ -411,11 +411,209 @@
   top: 50%;
   left: 50%;
   display: block;
-  width: 60%;
+  width: 80%;
   max-width: none;
   height: auto;
   object-fit: contain;
   transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.designProcessGallery {
+  display: grid;
+  width: min(100%, 76rem);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 2fr);
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  justify-self: center;
+}
+
+.designProcessSketches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.designProcessArrow {
+  display: flex;
+  width: max-content;
+  min-width: 4.25rem;
+  height: 3rem;
+  padding: 0 0.25rem;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  position: relative;
+  left: -1.5rem;
+  border: 0;
+  background: transparent;
+  color: #4a2722;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.designProcessImageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.designProcessImage {
+  object-fit: contain;
+}
+
+.designProcessStepImage {
+  display: block;
+  width: min(100%, 34rem);
+  height: auto;
+  justify-self: center;
+  border-radius: 8px;
+}
+
+.designProcessVisuals {
+  display: grid;
+  width: min(100%, 76rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+  justify-self: center;
+}
+
+.designProcessVisualImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.designProcessScrapbookRow {
+  display: grid;
+  width: min(100%, 76rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+  justify-self: center;
+}
+
+.designProcessScrapbookImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.finalDesignLayout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 5rem minmax(0, 1fr) 5rem;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.finalDesignHintLeft {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.finalDesignHintRight {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.finalDesignHintLeft,
+.finalDesignHintRight {
+  width: 8rem;
+  max-width: none;
+}
+
+.finalDesignGallery {
+  display: grid;
+  width: 100%;
+  max-width: 76rem;
+  min-width: 0;
+  grid-column: 2;
+  grid-row: 1;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.4rem, 1vw, 0.85rem);
+  overflow-x: auto;
+}
+
+.finalDesignImageButton {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.finalDesignImageButton:focus-visible,
+.finalDesignModalClose:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.finalDesignImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.finalDesignSeparator {
+  color: #4a2722;
+  font-size: clamp(0.85rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.finalDesignModalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(25 20 19 / 88%);
+}
+
+.finalDesignModal {
+  position: relative;
+  width: min(92vw, 64rem);
+  height: min(90vh, 58rem);
+}
+
+.finalDesignModalImageFrame {
+  position: absolute;
+  inset: 0;
+}
+
+.finalDesignModalImage {
+  object-fit: contain;
+}
+
+.finalDesignModalClose {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  z-index: 1;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgb(255 248 241 / 70%);
+  border-radius: 50%;
+  background: #4a2722;
+  color: #fff8f1;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .projectDetails {
@@ -665,7 +863,50 @@
   }
 
   .researchVisualImage {
-    width: 133.333%;
+    width: 145%;
+  }
+
+  .designProcessGallery {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .designProcessVisuals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .designProcessScrapbookRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .finalDesignGallery {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    grid-template-columns: 12rem auto 12rem auto 12rem auto 12rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .finalDesignLayout {
+    grid-template-columns: minmax(2.5rem, 0.22fr) minmax(0, 1fr) minmax(2.5rem, 0.22fr);
+    gap: 0.4rem;
+  }
+
+  .swotHint.finalDesignHintLeft,
+  .swotHint.finalDesignHintRight {
+    width: 4rem;
+  }
+
+  .finalDesignModal {
+    width: 90vw;
+    height: 84vh;
+  }
+
+  .designProcessArrow {
+    justify-self: center;
+    left: 0;
+    transform: rotate(90deg);
   }
 
   .swotTile {

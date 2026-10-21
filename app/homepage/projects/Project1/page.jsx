@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import styles from '../projects.module.css';
 
 const swotItems = [
@@ -70,11 +70,20 @@ const personas = [
   },
 ];
 
+const finalDesignImages = [
+  { src: '/images/project-sec/final-01.png', alt: 'Final website design, screen 1', width: 862, height: 1646 },
+  { src: '/images/project-sec/final-02.png', alt: 'Final website design, screen 2', width: 822, height: 1558 },
+  { src: '/images/project-sec/final-03.png', alt: 'Final website design, screen 3', width: 826, height: 1556 },
+  { src: '/images/project-sec/final-04.png', alt: 'Final website design, screen 4', width: 818, height: 1552 },
+];
+
 export default function ProjectOnePage() {
   const [expandedSwot, setExpandedSwot] = useState(null);
   const [expandedPersona, setExpandedPersona] = useState(null);
   const [showSwotHints, setShowSwotHints] = useState(true);
   const [showPersonaHints, setShowPersonaHints] = useState(true);
+  const [showFinalDesignHints, setShowFinalDesignHints] = useState(true);
+  const [selectedFinalImage, setSelectedFinalImage] = useState(null);
 
   return (
     <main className={styles.page}>
@@ -289,9 +298,198 @@ export default function ProjectOnePage() {
         <section className={styles.projectSection} aria-labelledby="design-process-heading">
           <h1 className={styles.projectNumberTitle}>03</h1>
           <h2 className={styles.swotHeading} id="design-process-heading">Design Process</h2>
+          <article className={styles.projectDetail}>
+            <p>
+              By taking what was learneed from the research analysis, I was then able to approach the design process with
+              a better understanding of the needs. Learning from the websites current strengths and pain points allowed
+              me to take what was working and reform what was not. For this showcase, I felt the most strongly about improving
+              upon the landing home page, where users first point of contact occurs. I found this to be one of the most critical
+              points of the application, meaning that it's design should be intentional and impactful in a positive way.
+              <br />  <br />
+              I started my process with reflecting upon the research against the front landing page, and jumping into the old school method of sketching!
+              This simple redesign wireframe was extremely layout focused. The white space of the original design bugged me. 
+              The question kept arising, "How can we ultize layout to display conentent in a better way?" 
+              <br />  <br />
+              Below is the original landing page design, followed by a simple sketch of content layout reimagined. 
+
+
+              </p>
+          </article>
+          <div className={styles.designProcessGallery}>
+            <div className={styles.designProcessImageFrame}>
+              <Image
+                className={styles.designProcessImage}
+                src="/images/project-sec/og-layout.png"
+                alt="Original Indigo Hippo landing page layout"
+                fill
+                sizes="(max-width: 700px) 100vw, 25vw"
+              />
+            </div>
+            <span className={styles.designProcessArrow} role="img" aria-label="leads to redesigned sketches">
+              ⋆˚𓏲ּ｡➹
+            </span>
+            <div className={styles.designProcessSketches}>
+              <div className={styles.designProcessImageFrame}>
+              <Image
+                className={styles.designProcessImage}
+                src="/images/project-sec/randa2-converted.png"
+                alt="Design process board showing the second stage of the Indigo Hippo website redesign"
+                fill
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              </div>
+              <div className={styles.designProcessImageFrame}>
+              <Image
+                className={styles.designProcessImage}
+                src="/images/project-sec/randa3-converted.png"
+                alt="Design process board showing the third stage of the Indigo Hippo website redesign"
+                fill
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              </div>
+            </div>
+          </div>
+          <article className={styles.projectDetail}>
+            <p>
+              Using figma, I was then able to bring my reimagined layout to the screen. Additionally, I took the opportunity
+              to add content that was not originally on this page. The intention behind this came from certain important 
+              information being hidden behind too many drop down menu navigations, which could be easily missed. I found 
+              the new arrangment would make important information more accessbile while being highlighted on the first landing page.
+              </p>
+          </article>
+          <Image
+            className={styles.designProcessStepImage}
+            src="/images/project-sec/step2.png"
+            alt="Step 2 digital layout concept alongside the original Indigo Hippo landing page"
+            width={1382}
+            height={1220}
+            sizes="(max-width: 700px) 100vw, 60rem"
+          />
+          <div className={styles.designProcessScrapbookRow}>
+            <Image
+              className={styles.designProcessScrapbookImage}
+              src="/images/project-sec/scarpbooking-layout.png"
+              alt="Scrapbook-inspired Indigo Hippo landing page layout concept"
+              width={1336}
+              height={844}
+              sizes="(max-width: 700px) 100vw, 50vw"
+            />
+            <article className={styles.projectDetail}>
+              <p>
+                After establishing a basic wireframe of a more impactful layout, I researched ways to emphasize Indigo Hippo's playful, unique character in a digital format. As a customer, I reflected on the materials that have supported my school projects and art escapades. A digital scrapbook felt like the right way to capture the brand's identity, so I researched examples and explored how that visual direction could shape the site.
+                <br />  <br />
+                I also explored typography to complement the scrappy, playful design, balancing character with readability.
+              </p>
+            </article>
+          </div>
+          <div className={styles.designProcessVisuals}>
+            <Image
+              className={styles.designProcessVisualImage}
+              src="/images/project-sec/Brand-identiy.png"
+              alt="Three visual identity and website design directions"
+              width={1808}
+              height={982}
+              sizes="(max-width: 700px) 100vw, 50vw"
+            />
+            <Image
+              className={styles.designProcessVisualImage}
+              src="/images/project-sec/typography.png"
+              alt="Typography explorations for the Indigo Hippo brand"
+              width={710}
+              height={344}
+              sizes="(max-width: 700px) 100vw, 50vw"
+            />
+          </div>
+        </section>
+        <section className={styles.projectSection} aria-labelledby="final-design-heading">
+          <h1 className={styles.projectNumberTitle}>04</h1>
+          <h2 className={styles.swotHeading} id="final-design-heading">Final Design</h2>
+          <div className={styles.finalDesignLayout}>
+            {showFinalDesignHints && (
+              <>
+                <button
+                  className={`${styles.swotHint} ${styles.finalDesignHintLeft}`}
+                  type="button"
+                  onClick={() => setShowFinalDesignHints(false)}
+                  aria-label="Dismiss left click me hint"
+                >
+                  <img src="/images/Click_Me.png" alt="Click me" />
+                </button>
+                <button
+                  className={`${styles.swotHint} ${styles.finalDesignHintRight}`}
+                  type="button"
+                  onClick={() => setShowFinalDesignHints(false)}
+                  aria-label="Dismiss right click me hint"
+                >
+                  <img src="/images/Click_Me_Left_.png" alt="Click me" />
+                </button>
+              </>
+            )}
+            <div className={styles.finalDesignGallery}>
+              {finalDesignImages.map((image, index) => (
+                <Fragment key={image.src}>
+                  <button
+                    className={styles.finalDesignImageButton}
+                    type="button"
+                    onClick={() => {
+                      setShowFinalDesignHints(false);
+                      setSelectedFinalImage(image);
+                    }}
+                    aria-label={`Enlarge ${image.alt}`}
+                  >
+                    <Image
+                      className={styles.finalDesignImage}
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      sizes="(max-width: 700px) 240px, 18vw"
+                    />
+                  </button>
+                  {index < finalDesignImages.length - 1 && (
+                    <span className={styles.finalDesignSeparator} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+          </div>
+          <article className={styles.projectDetail}>
+            <p>
+              The final design brings the research and visual explorations together in a more organized, welcoming landing page. Clearer content sections make key information easier to find, while the scrapbook-inspired imagery and playful typography reflect Indigo Hippo's creative community.
+            </p>
+          </article>
         </section>
       </section>
       </section>
+      {selectedFinalImage && (
+        <div className={styles.finalDesignModalBackdrop} onClick={() => setSelectedFinalImage(null)}>
+          <div
+            className={styles.finalDesignModal}
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedFinalImage.alt}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className={styles.finalDesignModalClose}
+              type="button"
+              onClick={() => setSelectedFinalImage(null)}
+              aria-label="Close enlarged image"
+            >
+              &times;
+            </button>
+            <div className={styles.finalDesignModalImageFrame}>
+              <Image
+                src={selectedFinalImage.src}
+                alt={selectedFinalImage.alt}
+                fill
+                sizes="90vw"
+                className={styles.finalDesignModalImage}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

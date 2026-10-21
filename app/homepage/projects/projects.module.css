@@ -532,27 +532,29 @@
 }
 
 .finalDesignLayout {
+  display: block;
+  width: 100%;
+}
+
+.finalDesignProgressionSide {
+  position: relative;
   display: grid;
   width: 100%;
-  grid-template-columns: 5rem minmax(0, 1fr) 5rem;
-  align-items: center;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
-}
-
-.finalDesignHintLeft {
+  height: 100%;
   grid-column: 1;
   grid-row: 1;
+  align-self: stretch;
+  justify-self: stretch;
+  align-items: center;
+  justify-items: center;
 }
 
-.finalDesignHintRight {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.finalDesignHintLeft,
-.finalDesignHintRight {
-  width: 8rem;
-  max-width: none;
+.swotHint.finalDesignProgressionHint {
+  position: absolute;
+  top: 22%;
+  right: -1.75rem;
+  z-index: 1;
+  width: 7rem;
 }
 
 .finalDesignGallery {
@@ -560,21 +562,73 @@
   width: 100%;
   max-width: 76rem;
   min-width: 0;
-  grid-column: 2;
-  grid-row: 1;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  margin: 0 auto;
+  grid-template-columns: minmax(4rem, 8rem) minmax(0, 30rem) minmax(4rem, 8rem);
   align-items: center;
-  gap: clamp(0.4rem, 1vw, 0.85rem);
-  overflow-x: auto;
+  justify-content: center;
+  justify-items: center;
+  column-gap: clamp(0.5rem, 2vw, 1.25rem);
 }
 
 .finalDesignImageButton {
   display: block;
   min-width: 0;
+  max-height: min(68vh, 48rem);
+  grid-row: 1;
+}
+
+.finalDesignImageButton {
+  grid-column: 2;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: zoom-in;
+}
+
+.finalDesignPreviousControl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.finalDesignPreviousControl:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.finalDesignImageButton[hidden] {
+  display: none;
+}
+
+.finalDesignCarouselControl {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid rgb(74 39 34 / 70%);
+  border-radius: 50%;
+  background: rgb(255 248 241 / 92%);
+  color: #4a2722;
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.finalDesignCarouselControl:hover {
+  transform: scale(1.08);
+  background: #fff8f1;
+}
+
+.finalDesignCarouselControl:focus-visible,
+.finalDesignCarouselDot:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.finalDesignNextControl {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: center;
 }
 
 .finalDesignImageButton:focus-visible,
@@ -585,12 +639,59 @@
 
 .finalDesignImage {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 100%;
+  height: min(68vh, 48rem);
+  object-fit: contain;
   border-radius: 6px;
 }
 
-.finalDesignSeparator {
+.finalDesignCarouselPagination {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.5rem;
+}
+
+.finalDesignCarouselDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: 1px solid #4a2722;
+  border-radius: 50%;
+  background: rgb(255 248 241 / 75%);
+  cursor: pointer;
+}
+
+.finalDesignCarouselDot[aria-current='true'] {
+  background: #4a2722;
+  box-shadow: inset 0 0 0 2px #fff8f1;
+}
+
+.comparisonList {
+  display: grid;
+  width: min(100%, 76rem);
+  gap: 1.5rem;
+  justify-self: center;
+}
+
+.comparisonRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 1.25rem);
+}
+
+.comparisonImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.comparisonArrow {
   color: #4a2722;
   font-size: clamp(0.85rem, 1.5vw, 1.3rem);
   font-weight: 700;
@@ -904,27 +1005,37 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .comparisonRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .comparisonArrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
   .swotHint.finalDesignFeatureHint {
     width: 5rem;
   }
 
+  .finalDesignImageButton,
+  .finalDesignImage {
+    height: min(62vh, 42rem);
+  }
+
   .finalDesignGallery {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    grid-template-columns: 12rem auto 12rem auto 12rem auto 12rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
+    grid-template-columns: minmax(3rem, 4rem) minmax(0, 1fr) minmax(3rem, 4rem);
+    gap: 0.35rem;
   }
 
-  .finalDesignLayout {
-    grid-template-columns: minmax(2.5rem, 0.22fr) minmax(0, 1fr) minmax(2.5rem, 0.22fr);
-    gap: 0.4rem;
+  .finalDesignCarouselControl {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
-  .swotHint.finalDesignHintLeft,
-  .swotHint.finalDesignHintRight {
-    width: 4rem;
+  .swotHint.finalDesignProgressionHint {
+    right: -1rem;
+    width: 5.5rem;
   }
 
   .finalDesignModal {

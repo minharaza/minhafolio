@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import styles from '../projects.module.css';
 
 const swotItems = [
@@ -70,7 +70,15 @@ const personas = [
   },
 ];
 
+const comparisonPairs = [
+  { id: '/images/project-sec/ID-01.png', idWidth: 1334, idHeight: 876, fd: '/images/project-sec/FD-01.png', fdWidth: 1906, fdHeight: 1158 },
+  { id: '/images/project-sec/ID-02.png', idWidth: 1318, idHeight: 390, fd: '/images/project-sec/FD-02.png', fdWidth: 1782, fdHeight: 710 },
+  { id: '/images/project-sec/ID-03.png', idWidth: 1338, idHeight: 512, fd: '/images/project-sec/FD-03.png', fdWidth: 1778, fdHeight: 682 },
+  { id: '/images/project-sec/ID-04.png', idWidth: 1332, idHeight: 792, fd: '/images/project-sec/FD-04.png', fdWidth: 1780, fdHeight: 1058 },
+];
+
 const finalDesignImages = [
+  { src: '/images/project-sec/complete-original.png', alt: 'Complete original Indigo Hippo website', width: 856, height: 1634 },
   { src: '/images/project-sec/final-01.png', alt: 'Final website design, screen 1', width: 862, height: 1646 },
   { src: '/images/project-sec/final-02.png', alt: 'Final website design, screen 2', width: 822, height: 1558 },
   { src: '/images/project-sec/final-03.png', alt: 'Final website design, screen 3', width: 826, height: 1556 },
@@ -82,8 +90,9 @@ export default function ProjectOnePage() {
   const [expandedPersona, setExpandedPersona] = useState(null);
   const [showSwotHints, setShowSwotHints] = useState(true);
   const [showPersonaHints, setShowPersonaHints] = useState(true);
-  const [showFinalDesignHints, setShowFinalDesignHints] = useState(true);
   const [showFeatureHint, setShowFeatureHint] = useState(true);
+  const [showProgressionHint, setShowProgressionHint] = useState(true);
+  const [activeProgressionImage, setActiveProgressionImage] = useState(0);
   const [selectedFinalImage, setSelectedFinalImage] = useState(null);
 
   return (
@@ -451,60 +460,129 @@ export default function ProjectOnePage() {
               )}
             </div>
           </div>
+          <h2 className={styles.swotHeading} id="personas-heading">Design Progression</h2>
           <div className={styles.finalDesignLayout}>
-            {showFinalDesignHints && (
-              <>
-                <button
-                  className={`${styles.swotHint} ${styles.finalDesignHintLeft}`}
-                  type="button"
-                  onClick={() => setShowFinalDesignHints(false)}
-                  aria-label="Dismiss left click me hint"
-                >
-                  <img src="/images/other/Click_Me.png" alt="Click me" />
-                </button>
-                <button
-                  className={`${styles.swotHint} ${styles.finalDesignHintRight}`}
-                  type="button"
-                  onClick={() => setShowFinalDesignHints(false)}
-                  aria-label="Dismiss right click me hint"
-                >
-                  <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
-                </button>
-              </>
-            )}
-            <div className={styles.finalDesignGallery}>
-              {finalDesignImages.map((image, index) => (
-                <Fragment key={image.src}>
+            <div className={styles.finalDesignGallery} aria-label="Design progression carousel">
+              <div className={styles.finalDesignProgressionSide}>
+                {showProgressionHint && (
                   <button
-                    className={styles.finalDesignImageButton}
+                    className={`${styles.swotHint} ${styles.finalDesignProgressionHint}`}
                     type="button"
-                    onClick={() => {
-                      setShowFinalDesignHints(false);
-                      setSelectedFinalImage(image);
-                    }}
-                    aria-label={`Enlarge ${image.alt}`}
+                    onClick={() => setShowProgressionHint(false)}
+                    aria-label="Dismiss click me hint"
                   >
-                    <Image
-                      className={styles.finalDesignImage}
-                      src={image.src}
-                      alt={image.alt}
-                      width={image.width}
-                      height={image.height}
-                      sizes="(max-width: 700px) 240px, 18vw"
-                    />
+                    <img src="/images/other/Click_Me.png" alt="Click me" />
                   </button>
-                  {index < finalDesignImages.length - 1 && (
-                    <span className={styles.finalDesignSeparator} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                  )}
-                </Fragment>
+                )}
+                <button
+                  className={`${styles.finalDesignCarouselControl} ${styles.finalDesignPreviousControl}`}
+                  type="button"
+                  onClick={() => setActiveProgressionImage((activeProgressionImage - 1 + finalDesignImages.length) % finalDesignImages.length)}
+                  aria-label="Show previous design"
+                >
+                  &#8592;
+                </button>
+              </div>
+              {finalDesignImages.map((image, index) => (
+                <button
+                  className={styles.finalDesignImageButton}
+                  type="button"
+                  key={image.src}
+                  onClick={() => setSelectedFinalImage(image)}
+                  aria-label={`Enlarge ${image.alt}`}
+                  hidden={index !== activeProgressionImage}
+                >
+                  <Image
+                    className={styles.finalDesignImage}
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    sizes="(max-width: 700px) 75vw, 30rem"
+                  />
+                </button>
               ))}
+              <button
+                className={`${styles.finalDesignCarouselControl} ${styles.finalDesignNextControl}`}
+                type="button"
+                onClick={() => setActiveProgressionImage((activeProgressionImage + 1) % finalDesignImages.length)}
+                aria-label="Show next design"
+              >
+                &#8594;
+              </button>
+              <div className={styles.finalDesignCarouselPagination} aria-label="Choose a design">
+                {finalDesignImages.map((image, index) => (
+                  <button
+                    className={styles.finalDesignCarouselDot}
+                    type="button"
+                    key={image.src}
+                    onClick={() => setActiveProgressionImage(index)}
+                    aria-label={`Show design ${index + 1} of ${finalDesignImages.length}`}
+                    aria-current={index === activeProgressionImage ? 'true' : undefined}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           <article className={styles.projectDetail}>
-            <p>
-              
+              <p>
+                When dissecting the final design, we can easily see how intentional choices resolved many of the pain
+                points involved in the user experience.
+                <br /> <br />
+                Starting with the <strong>introductory</strong> section, intially the ineffective typography was very apparent. The readability
+                was below ideal, leaving the user most likely not knowing where to navigate from here. In spirit of reusuing 
+                materials, the design leans heavility into the scrapbook visual. The new approach uses the original image, but 
+                in an exciting visual, along with enlarging the typography for better impact and readability. The navigation
+                bar is not lost upon the user, and the overall mission of the non-profit business is clearly communicated
+                as a "shout" on first glace.
+                <br /> <br />
+                Moving onto the <strong>"How Indigo Hippo Works"</strong> section, there is excessive whitespace and the 
+                prevelant theme of lacking readability continues. Seeing as this is a quite important section of information,
+                one of the first section relaying text and calling to action, it was absolutely critical to reimagine the presenation
+                of the information. By continuing the use of "materials," the design ultizes paper and fabric textures layered behind
+                the text. The ripped paper edges add a continuous feel for the application as well. The white space feels more intentional,
+                finding balance between overuse and effectiveness.
+                <br /> <br />
+                And additionally section was added that was not in the original design. Furthering the solution for
+                excessive whitespace, this section was added to highlight important events within the organization. 
+                When observing painpoints in my own user journey, this was something that came to my attention. It is required 
+                to naviagate through the top bar in order to find out about the donation box. This causes many users to miss
+                this vital information that would highly benefit the organization. The intetional decision to have a carousel 
+                in the form of a "notebook," allows fundraising and other efforts to be displayed in the front page. This avoids
+                any chances of users missing important updates.
+                <br /> <br />
+                Finally, the <strong>"Contact & Visit" section </strong>and the<strong> "Stay Connect & Sponser" section</strong> were
+                converted into smaller sections, maximizing the use of space. The common problems of the original design
+                persevered to the end. The redesign once again uses the concept of layering "materials" to display
+                information, while keeping the original essence intact. This section especially leans into their mission
+                of giving pieces and parts an new life. The display of information is amusing and enjoyable, without taking
+                away from the necessary information or user experience.
+
               </p>
-          </article>
+            </article>
+          <div className={styles.comparisonList}>
+            {comparisonPairs.map((pair, index) => (
+              <div className={styles.comparisonRow} key={pair.id}>
+                <Image
+                  className={styles.comparisonImage}
+                  src={pair.id}
+                  alt={`Original website, section ${index + 1}`}
+                  width={pair.idWidth}
+                  height={pair.idHeight}
+                  sizes="(max-width: 700px) 100vw, 40vw"
+                />
+                <span className={styles.comparisonArrow} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                <Image
+                  className={styles.comparisonImage}
+                  src={pair.fd}
+                  alt={`Final design, section ${index + 1}`}
+                  width={pair.fdWidth}
+                  height={pair.fdHeight}
+                  sizes="(max-width: 700px) 100vw, 40vw"
+                />
+              </div>
+            ))}
+          </div>
         </section>
       </section>
       </section>

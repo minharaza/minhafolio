@@ -775,6 +775,96 @@
   line-height: 1.65;
 }
 
+.finalThoughtsSection {
+  width: min(100%, 76rem);
+  margin: 2rem auto 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  background: rgba(121, 135, 120, 0.94);
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+  color: #fff8f1;
+}
+
+.finalThoughtsLayout {
+  display: grid;
+  width: min(100%, 76rem);
+  margin: 1rem auto 0;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.finalThoughtsImage {
+  display: block;
+  width: 100%;
+  max-height: 20rem;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.finalThoughtsIcons {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.finalThoughtsClickHint {
+  width: 5rem;
+  flex: 0 1 5rem;
+}
+
+.finalThoughtsHintLeft {
+  margin-right: 0.5rem;
+}
+
+.finalThoughtsHintRight {
+  margin-left: 0.5rem;
+}
+
+.finalThoughtsIconButton {
+  display: grid;
+  width: 8rem;
+  height: 8rem;
+  place-items: center;
+  border-radius: 8px;
+  transition: transform 160ms ease;
+}
+
+.finalThoughtsIconButton:hover {
+  transform: scale(1.06);
+}
+
+.finalThoughtsIconButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.finalThoughtsIcon {
+  display: block;
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.thoughtsHeading {
+  margin: 0 0 0.75rem;
+  color: #f4d678;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.thoughtsContent p {
+  margin: 0;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 .intro {
   max-width: 32rem;
   margin: 1rem auto 0;

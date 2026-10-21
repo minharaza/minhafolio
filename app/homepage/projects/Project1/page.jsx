@@ -10,25 +10,25 @@ const swotItems = [
     letter: 'S',
     title: 'Strengths',
     className: 'strengths',
-    description: 'A strong, impactful mission improving the community. Simple, plainly layed out information',
+    description: 'A strong, impactful mission improving the community. Simple, plainly laid-out information',
   },
   {
     letter: 'W',
     title: 'Weaknesses',
     className: 'weaknesses',
-    description: 'Too much navigation, confusing catagorization of information. Not a good use of space. Too much blank space. Inaccessbile font styling choices.',
+    description: 'Too much navigation, confusing categorization of information. Not a good use of space. Too much blank space. Inaccessible font styling choices.',
   },
   {
     letter: 'O',
     title: 'Opportunities',
     className: 'opportunities',
-    description: 'Creating a better layout of information to allow users to connect with information better. Introduce the community to other opportunties involving the organization in a more efficient manner.',
+    description: 'Creating a better layout of information to allow users to connect with information better. Introduce the community to other opportunities involving the organization in a more efficient manner.',
   },
   {
     letter: 'T',
     title: 'Threats',
     className: 'threats',
-    description: 'Due to the nature of information layout, user may disconnect with the online presense, detering them from their initial goal of donating or checking out the business.',
+    description: 'Due to the nature of information layout, user may disconnect with the online presence, deterring them from their initial goal of donating or checking out the business.',
   },
 ];
 
@@ -38,7 +38,7 @@ const personas = [
     name: 'The Budget-Conscious Artist',
     image: '/images/project-sec/Artist.png',
     className: 'strengths',
-    details: 'As apart of the strong local art community, they are always looking for sustaiable ways to create.',
+    details: 'As a part of the strong local art community, they are always looking for sustainable ways to create.',
   },
   {
     id: 'parent',
@@ -52,7 +52,7 @@ const personas = [
     name: 'The Student ',
     image: '/images/project-sec/Student.png',
     className: 'opportunities',
-    details: 'As a student apart of the University of Cincinnatis DAAP program, they are always looking for materials for school and passion projects.',
+    details: 'As a student and part of the University of Cincinnati\'s DAAP program, they are always looking for materials for school and passion projects.',
   },
   {
     id: 'educator',
@@ -92,6 +92,7 @@ export default function ProjectOnePage() {
   const [showPersonaHints, setShowPersonaHints] = useState(true);
   const [showFeatureHint, setShowFeatureHint] = useState(true);
   const [showProgressionHint, setShowProgressionHint] = useState(true);
+  const [showFinalThoughtsHint, setShowFinalThoughtsHint] = useState(true);
   const [activeProgressionImage, setActiveProgressionImage] = useState(0);
   const [selectedFinalImage, setSelectedFinalImage] = useState(null);
 
@@ -123,7 +124,7 @@ export default function ProjectOnePage() {
               This project aims to reflect Indigo Hippo's mission within website design, offering a case study on 
               certain pain points that inhibit the overall experience when connecting with customers online.
               This case study explores how design can not only reflect the passion behind the business, but also
-              improve customers experience when shopping and donating online. 
+              improve customers' experience when shopping and donating online. 
             </p>
           </article>
           <article className={styles.projectDetail}>
@@ -143,12 +144,12 @@ export default function ProjectOnePage() {
             <h2>The Approach</h2>
             <p>
             The research provided a clear view of the current user experience: the positives, the pain points, and the 
-            space for improvement and opportunity. Using the SWOT anaylsis framework, the aspects of the website were
-            mapped out. This discovered information expanded upon the understading of where the application 
+            space for improvement and opportunity. Using the SWOT analysis framework, the aspects of the website were
+            mapped out. This discovered information expanded upon the understanding of where the application 
             could more strongly communicate to its users.<br></br><br></br>
 
             This approach could be expanded upon in the future if this included the business's participation in the process. 
-            User and customer reviews and survey feedback would also be essential for the process. Due to the constaints of this personal
+            User and customer reviews and survey feedback would also be essential for the process. Due to the constraints of this personal
             study outside of the business direct involvement, certain processes were not available.
             
             </p>
@@ -233,8 +234,8 @@ export default function ProjectOnePage() {
               <article className={styles.projectDetail}>
                 <h2>UX Research & Interviews</h2>
                 <p>
-                  In spirit of proper UX research, I conducted a number of user interviews to gain some authentic user 
-                  feedback about the website. I asked them questions based on their experiences in person versus their online
+                  In the spirit of proper UX research, I conducted a number of user interviews to gain some authentic user
+                  feedback about the website. I asked them questions based on their experiences in-person versus their online
                   interactions with the non-profit. This insight was integral to moulding my design process and goals. It provided insight
                   into where users were struggling and what pain points arose during their time donating and shopping in an online setting.
                   <br></br><br></br>
@@ -310,15 +311,15 @@ export default function ProjectOnePage() {
           <h2 className={styles.swotHeading} id="design-process-heading">Design Process</h2>
           <article className={styles.projectDetail}>
             <p>
-              By taking what was learneed from the research analysis, I was then able to approach the design process with
-              a better understanding of the needs. Learning from the websites current strengths and pain points allowed
+              By taking what was learned from the research analysis, I was then able to approach the design process with
+              a better understanding of the needs. Learning from the website's current strengths and pain points allowed
               me to take what was working and reform what was not. For this showcase, I felt the most strongly about improving
               upon the landing home page, where users first point of contact occurs. I found this to be one of the most critical
-              points of the application, meaning that it's design should be intentional and impactful in a positive way.
+              points of the application, meaning that its design should be intentional and impactful in a positive way.
               <br />  <br />
-              I started my process with reflecting upon the research against the front landing page, and jumping into the old school method of sketching!
+              I started my process with reflecting upon the research against the front landing page, and jumping into the old-school method of sketching!
               This simple redesign wireframe was extremely layout focused. The white space of the original design bugged me. 
-              The question kept arising, "How can we ultize layout to display conentent in a better way?" 
+              The question kept arising, "How can we utilize layout to display content in a better way?" 
               <br />  <br />
               Below is the original landing page design, followed by a simple sketch of content layout reimagined. 
 
@@ -364,7 +365,7 @@ export default function ProjectOnePage() {
               Using figma, I was then able to bring my reimagined layout to the screen. Additionally, I took the opportunity
               to add content that was not originally on this page. The intention behind this came from certain important 
               information being hidden behind too many drop down menu navigations, which could be easily missed. I found 
-              the new arrangment would make important information more accessbile while being highlighted on the first landing page.
+              the new arrangement would make important information more accessible while being highlighted on the first landing page.
               </p>
           </article>
           <Image
@@ -417,10 +418,10 @@ export default function ProjectOnePage() {
           <div className={styles.designProcessScrapbookRow}>
             <article className={styles.projectDetail}>
               <p>
-                And here is the final mockup that truly encapsulates the livley nature of Indigo Hippo! 
+                And here is the final mockup that truly encapsulates the lively nature of Indigo Hippo!
                 Not only does this design tackle the issue of a lack of brand identity, but it also
                 acknowledges the overuse of whitespace. By reimagining the use of space, the design was able to be way
-                more impactful and present more relevent information to users right away with the first impression of
+                more impactful and present more relevant information to users right away with the first impression of
                 the landing page. This reimagined approach creates a better engaging atmosphere that prioritizes ever
                 user need.
 
@@ -529,29 +530,29 @@ export default function ProjectOnePage() {
                 When dissecting the final design, we can easily see how intentional choices resolved many of the pain
                 points involved in the user experience.
                 <br /> <br />
-                Starting with the <strong>introductory</strong> section, intially the ineffective typography was very apparent. The readability
-                was below ideal, leaving the user most likely not knowing where to navigate from here. In spirit of reusuing 
-                materials, the design leans heavility into the scrapbook visual. The new approach uses the original image, but 
+                Starting with the <strong>introductory</strong> section, initially the ineffective typography was very apparent. The readability
+                was below ideal, leaving the user most likely not knowing where to navigate from here. In the spirit of reusing
+                materials, the design leans heavily into the scrapbook visual. The new approach uses the original image, but
                 in an exciting visual, along with enlarging the typography for better impact and readability. The navigation
                 bar is not lost upon the user, and the overall mission of the non-profit business is clearly communicated
-                as a "shout" on first glace.
+                as a "shout" on first glance.
                 <br /> <br />
                 Moving onto the <strong>"How Indigo Hippo Works"</strong> section, there is excessive whitespace and the 
-                prevelant theme of lacking readability continues. Seeing as this is a quite important section of information,
-                one of the first section relaying text and calling to action, it was absolutely critical to reimagine the presenation
-                of the information. By continuing the use of "materials," the design ultizes paper and fabric textures layered behind
+                prevalent theme of lacking readability continues. Seeing as this is a quite important section of information,
+                one of the first sections relaying text and calling to action, it was absolutely critical to reimagine the presentation
+                of the information. By continuing the use of "materials," the design utilizes paper and fabric textures layered behind
                 the text. The ripped paper edges add a continuous feel for the application as well. The white space feels more intentional,
                 finding balance between overuse and effectiveness.
                 <br /> <br />
                 And additionally section was added that was not in the original design. Furthering the solution for
                 excessive whitespace, this section was added to highlight important events within the organization. 
-                When observing painpoints in my own user journey, this was something that came to my attention. It is required 
-                to naviagate through the top bar in order to find out about the donation box. This causes many users to miss
-                this vital information that would highly benefit the organization. The intetional decision to have a carousel 
+                When observing pain points in my own user journey, this was something that came to my attention. It is required
+                to navigate through the top bar in order to find out about the donation box. This causes many users to miss
+                this vital information that would highly benefit the organization. The intentional decision to have a carousel
                 in the form of a "notebook," allows fundraising and other efforts to be displayed in the front page. This avoids
                 any chances of users missing important updates.
                 <br /> <br />
-                Finally, the <strong>"Contact & Visit" section </strong>and the<strong> "Stay Connect & Sponser" section</strong> were
+                Finally, the <strong>"Contact & Visit" section </strong>and the<strong> "Stay Connected & Sponsor" section</strong> were
                 converted into smaller sections, maximizing the use of space. The common problems of the original design
                 persevered to the end. The redesign once again uses the concept of layering "materials" to display
                 information, while keeping the original essence intact. This section especially leans into their mission
@@ -585,7 +586,92 @@ export default function ProjectOnePage() {
           </div>
         </section>
       </section>
+<h2 className={styles.swotHeading} id="final-thoughts-heading">Final Thoughts</h2>
+
+
+<section className={styles.finalThoughtsLayout} aria-label="Design concept">
+              <Image
+                className={styles.finalThoughtsImage}
+                src="/images/other/Logo.png"
+                alt="Indigo Hippo logo"
+                width={3024}
+                height={1024}
+              />
+              <article className={styles.projectDetail}>
+                <p>As this case study wraps up, it's time for some final reflections upon the overall experience.
+                  I chose a local business that I personally was passionate about, especially as someone who loves
+                  to #SupportLocal! Indigo Hippo was a 3rd place for my college years where I spent many hours volunteering, 
+                  and shopping. 
+                  <br /> <br />
+                  The key issues in the organizations online precense was a lack of readability, poor use of layout, and 
+                  no real sense of identity throughout the application. This redesign was aimed to improve the user experience
+                  by pinpointing these struggles and reforming them to highlight the buisness's mission and unique identity.
+                  <br /> <br />
+                  This case study could be built upon in a number of ways if further resources and research was manageable.
+                  For instance, customer participation and feedback would be greatly considered if that were available to me.
+                  <br /> <br />
+                  I hope to build upon the redesign further in the future, and plan to share with the business to give back
+                  to such an integral part of the Cincinnati community!
+
+                  <br /> <br />
+                  Thank you for exploring this case study with me!
+
+                </p>
+              </article>
       </section>
+      <div className={styles.finalThoughtsIcons} aria-label="Project tools">
+        {showFinalThoughtsHint && (
+          <button
+            className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintLeft}`}
+            type="button"
+            onClick={() => setShowFinalThoughtsHint(false)}
+            aria-label="Dismiss click me hint"
+          >
+            <img src="/images/other/Click_Me.png" alt="Click me" />
+          </button>
+        )}
+        <a
+          className={styles.finalThoughtsIconButton}
+          href="https://github.com/minharaza/minhafolio/tree/master/app/homepage/projects/Project1"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="View Project One source on GitHub"
+        >
+              <Image
+                className={styles.finalThoughtsIcon}
+                src="/images/other/GitHub_Invertocat_Black_Clearspace.svg"
+                alt=""
+                width={48}
+                height={48}
+              />
+        </a>
+        <a
+          className={styles.finalThoughtsIconButton}
+          href="https://www.figma.com/design/CKu4xMwI7lTadvvPNbr4QD/Indigo-Hippo-Redesign?node-id=0-1&t=TEFqdWshpaYjZlB5-1"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open the Indigo Hippo redesign in Figma"
+        >
+              <Image
+                className={styles.finalThoughtsIcon}
+                src="/images/other/figma-svgrepo-com.svg"
+                alt=""
+                width={48}
+                height={48}
+              />
+        </a>
+        {showFinalThoughtsHint && (
+          <button
+            className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintRight}`}
+            type="button"
+            onClick={() => setShowFinalThoughtsHint(false)}
+            aria-label="Dismiss click me hint"
+          >
+            <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
+          </button>
+        )}
+      </div>
+                </section>
       {selectedFinalImage && (
         <div className={styles.finalDesignModalBackdrop} onClick={() => setSelectedFinalImage(null)}>
           <div
@@ -614,6 +700,8 @@ export default function ProjectOnePage() {
             </div>
           </div>
         </div>
+        
+        
       )}
     </main>
   );

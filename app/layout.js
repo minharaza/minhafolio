@@ -11,7 +11,7 @@ const quicksand = Quicksand({
 
 export const metadata = {
   icons: {
-    icon: '/images/Logo.png',
+    icon: '/images/other/Logo.png',
   },
 };
 

@@ -15,7 +15,7 @@
   z-index: 0;
   background:
     linear-gradient(rgba(156, 90, 57, 0.568), rgba(219, 132, 132, 0.358)),
-    url('/images/Tablecloth.png') 0 0 / 540px 720px repeat;
+    url('/images/other/Tablecloth.png') 0 0 / 540px 720px repeat;
 }
 
 .page::before,
@@ -506,6 +506,31 @@
   border-radius: 8px;
 }
 
+.finalDesignFeatureImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.finalDesignFeature {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.finalDesignFeatureButton {
+  flex: 0 1 22rem;
+  width: min(100%, 22rem);
+}
+
+.swotHint.finalDesignFeatureHint {
+  flex: none;
+  width: 8rem;
+}
+
 .finalDesignLayout {
   display: grid;
   width: 100%;
@@ -877,6 +902,10 @@
 
   .designProcessScrapbookRow {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .swotHint.finalDesignFeatureHint {
+    width: 5rem;
   }
 
   .finalDesignGallery {

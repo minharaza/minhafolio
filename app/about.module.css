@@ -10,7 +10,7 @@
     radial-gradient(circle, rgb(173 151 200 / 32%) 1.3px, transparent 1.8px),
     radial-gradient(circle, rgb(236 190 119 / 38%) 1.2px, transparent 1.8px),
     linear-gradient(rgb(233 245 239 / 50%), rgb(233 245 239 / 50%)),
-    url('/images/whimiscal.png');
+    url('/images/other/whimiscal.png');
   background-position: 0 0, 22px 31px, center, center;
   background-size: 42px 42px, 67px 67px, 100% 100%, cover;
   background-repeat: repeat, repeat, no-repeat, no-repeat;

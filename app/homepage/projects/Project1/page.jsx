@@ -64,7 +64,7 @@ const personas = [
   {
     id: 'community-member',
     name: 'The Community Member',
-    image: '/images/Logo.png',
+    image: '/images/other/Logo.png',
     className: 'opportunities',
     details: 'As a member of the vibrant community, they are looking to find office materials to help mail bills and find materials for work. They are looking for ways to gain items they need without the large price tag.',
   },
@@ -83,6 +83,7 @@ export default function ProjectOnePage() {
   const [showSwotHints, setShowSwotHints] = useState(true);
   const [showPersonaHints, setShowPersonaHints] = useState(true);
   const [showFinalDesignHints, setShowFinalDesignHints] = useState(true);
+  const [showFeatureHint, setShowFeatureHint] = useState(true);
   const [selectedFinalImage, setSelectedFinalImage] = useState(null);
 
   return (
@@ -152,7 +153,7 @@ export default function ProjectOnePage() {
                     onClick={() => setShowSwotHints(false)}
                     aria-label="Dismiss click me hint"
                   >
-                    <img src="/images/Click_Me.png" alt="Click me" />
+                    <img src="/images/other/Click_Me.png" alt="Click me" />
                   </button>
                   <button
                     className={`${styles.swotHint} ${styles.swotHintRight}`}
@@ -160,7 +161,7 @@ export default function ProjectOnePage() {
                     onClick={() => setShowSwotHints(false)}
                     aria-label="Dismiss click me hint"
                   >
-                    <img src="/images/Click_Me_Left_.png" alt="Click me" />
+                    <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
                   </button>
                 </>
               )}
@@ -248,7 +249,7 @@ export default function ProjectOnePage() {
                       onClick={() => setShowPersonaHints(false)}
                       aria-label="Dismiss left user persona hint"
                     >
-                      <img src="/images/Click_Me.png" alt="Click me" />
+                      <img src="/images/other/Click_Me.png" alt="Click me" />
                     </button>
                     <button
                       className={`${styles.swotHint} ${styles.swotHintRight}`}
@@ -256,7 +257,7 @@ export default function ProjectOnePage() {
                       onClick={() => setShowPersonaHints(false)}
                       aria-label="Dismiss right user persona hint"
                     >
-                      <img src="/images/Click_Me_Left_.png" alt="Click me" />
+                      <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
                     </button>
                   </>
                 )}
@@ -403,7 +404,53 @@ export default function ProjectOnePage() {
         </section>
         <section className={styles.projectSection} aria-labelledby="final-design-heading">
           <h1 className={styles.projectNumberTitle}>04</h1>
-          <h2 className={styles.swotHeading} id="final-design-heading">Final Design</h2>
+          <h2 className={styles.swotHeading} id="final-design-heading">Final Design and Analysis</h2>
+          <div className={styles.designProcessScrapbookRow}>
+            <article className={styles.projectDetail}>
+              <p>
+                And here is the final mockup that truly encapsulates the livley nature of Indigo Hippo! 
+                Not only does this design tackle the issue of a lack of brand identity, but it also
+                acknowledges the overuse of whitespace. By reimagining the use of space, the design was able to be way
+                more impactful and present more relevent information to users right away with the first impression of
+                the landing page. This reimagined approach creates a better engaging atmosphere that prioritizes ever
+                user need.
+
+              </p>
+            </article>
+            <div className={styles.finalDesignFeature}>
+              <button
+                className={`${styles.finalDesignImageButton} ${styles.finalDesignFeatureButton}`}
+                type="button"
+                onClick={() => {
+                  setShowFeatureHint(false);
+                  setSelectedFinalImage({
+                    src: '/images/project-sec/final-04.png',
+                    alt: 'Final Indigo Hippo landing page with a scrapbook-style collage layout',
+                  });
+                }}
+                aria-label="Enlarge final landing page design"
+              >
+                <Image
+                  className={styles.finalDesignFeatureImage}
+                  src="/images/project-sec/final-04.png"
+                  alt="Final Indigo Hippo landing page with a scrapbook-style collage layout"
+                  width={818}
+                  height={1552}
+                  sizes="(max-width: 700px) 100vw, 22rem"
+                />
+              </button>
+              {showFeatureHint && (
+                <button
+                  className={`${styles.swotHint} ${styles.finalDesignFeatureHint}`}
+                  type="button"
+                  onClick={() => setShowFeatureHint(false)}
+                  aria-label="Dismiss click me hint"
+                >
+                  <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
+                </button>
+              )}
+            </div>
+          </div>
           <div className={styles.finalDesignLayout}>
             {showFinalDesignHints && (
               <>
@@ -413,7 +460,7 @@ export default function ProjectOnePage() {
                   onClick={() => setShowFinalDesignHints(false)}
                   aria-label="Dismiss left click me hint"
                 >
-                  <img src="/images/Click_Me.png" alt="Click me" />
+                  <img src="/images/other/Click_Me.png" alt="Click me" />
                 </button>
                 <button
                   className={`${styles.swotHint} ${styles.finalDesignHintRight}`}
@@ -421,7 +468,7 @@ export default function ProjectOnePage() {
                   onClick={() => setShowFinalDesignHints(false)}
                   aria-label="Dismiss right click me hint"
                 >
-                  <img src="/images/Click_Me_Left_.png" alt="Click me" />
+                  <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
                 </button>
               </>
             )}
@@ -455,8 +502,8 @@ export default function ProjectOnePage() {
           </div>
           <article className={styles.projectDetail}>
             <p>
-              The final design brings the research and visual explorations together in a more organized, welcoming landing page. Clearer content sections make key information easier to find, while the scrapbook-inspired imagery and playful typography reflect Indigo Hippo's creative community.
-            </p>
+              
+              </p>
           </article>
         </section>
       </section>

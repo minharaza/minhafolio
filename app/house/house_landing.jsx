@@ -16,13 +16,20 @@ const rooms = [
 const houseItems = [
   { label: 'Resume', href: '/homepage/resume-page', image: '/images/Bookshelf.png', className: 'house-item-bookshelf' },
   { label: 'About', href: '/homepage/about-page', image: '/images/Bed.png', className: 'house-item-bed' },
-  { label: 'Projects', href: '/homepage/experience', image: '/images/Table.png', className: 'house-item-table' },
-  { label: 'Interests', href: '/homepage/projects', image: '/images/Bathtub.png', className: 'house-item-bathtub' },
+  { label: 'Projects', href: '/homepage/projects', image: '/images/Table.png', className: 'house-item-table' },
+  { label: 'Interests', href: '/homepage/interests', image: '/images/Bathtub.png', className: 'house-item-bathtub' },
+];
+
+const ingredientMenuItems = [
+  { label: 'About Me', href: '/homepage/about-page', image: '/images/Lettuce.png' },
+  { label: 'Projects', href: '/homepage/projects', image: '/images/Tomato.png' },
+  { label: 'Resume', href: '/homepage/resume-page', image: '/images/Bun.png' },
 ];
 
 export default function HousePage() {
   const searchParams = useSearchParams();
   const skipIntro = searchParams.get('skipIntro') === '1';
+  const [isIngredientMenuOpen, setIsIngredientMenuOpen] = useState(false);
   const [showPout, setShowPout] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [showFollowupBubble, setShowFollowupBubble] = useState(false);
@@ -92,10 +99,54 @@ export default function HousePage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isIngredientMenuOpen) return undefined;
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') setIsIngredientMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isIngredientMenuOpen]);
+
   return (
     <main
       className={`house-landing${showStarsBackground ? ' stars-background' : ''}${showLandscapeOnly ? ' landscape-only' : ''}`}
     >
+      <nav className={`ingredient-menu${isIngredientMenuOpen ? ' is-open' : ''}`} aria-label="Quick navigation">
+        <button
+          type="button"
+          className="ingredient-menu-toggle"
+          onClick={() => setIsIngredientMenuOpen((isOpen) => !isOpen)}
+          aria-label={isIngredientMenuOpen ? 'Close quick navigation' : 'Open quick navigation'}
+          aria-expanded={isIngredientMenuOpen}
+          aria-controls="ingredient-menu-links"
+        >
+          <img src="/images/Hamburger.png" alt="" aria-hidden="true" />
+        </button>
+        <div
+          className="ingredient-menu-links"
+          id="ingredient-menu-links"
+          aria-hidden={!isIngredientMenuOpen}
+        >
+          {ingredientMenuItems.map((item, index) => (
+            <Link
+              key={item.href}
+              className="ingredient-menu-link"
+              href={item.href}
+              tabIndex={isIngredientMenuOpen ? 0 : -1}
+              onClick={() => setIsIngredientMenuOpen(false)}
+              style={{ '--menu-delay': `${index * 70}ms` }}
+            >
+              <span className="ingredient-menu-image">
+                <img src={item.image} alt="" aria-hidden="true" />
+              </span>
+              <span className="ingredient-menu-label">{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
       <nav aria-label="Portfolio sections">
         {rooms.map((room) => (
           <Link key={room.href} href={room.href}>

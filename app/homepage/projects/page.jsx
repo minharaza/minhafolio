@@ -2,41 +2,16 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
 import styles from './projects.module.css';
+
+const mats = [
+  { src: '/images/project-sec/Mat1.png', plate: '/images/Plate1.png', drink: '/images/project-sec/Drink1.png', food: '/images/project-sec/Toast.png', project: 'Project1', foodAlt: 'Toast', alt: 'Pink place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat2.png', plate: '/images/Plate2.png', drink: '/images/project-sec/Drink2.png', food: '/images/project-sec/Waffle.png', project: 'Project2', foodAlt: 'Waffle', alt: 'Orange place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat3.png', plate: '/images/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/project-sec/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
+];
 
 export default function ProjectsPage() {
   const router = useRouter();
-  const [projects, setProjects] = useState([]);
-  const [activeTechnology, setActiveTechnology] = useState('All');
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchProjects() {
-      try {
-        const response = await fetch('/api/content');
-        if (!response.ok) throw new Error('Failed to fetch project content');
-        const data = await response.json();
-        setProjects(data.projects?.projectList ?? []);
-      } catch (fetchError) {
-        setError(fetchError.message || 'Unable to load projects');
-      }
-    }
-
-    fetchProjects();
-  }, []);
-
-  const technologies = useMemo(() => (
-    ['All', ...new Set(projects.flatMap((project) => project.technologies ?? []))]
-  ), [projects]);
-
-  const filteredProjects = activeTechnology === 'All'
-    ? projects
-    : projects.filter((project) => project.technologies?.includes(activeTechnology));
-
-  if (error) {
-    return <main className={styles.page}><p className={styles.error}>{error}</p></main>;
-  }
 
   return (
     <main className={styles.page}>
@@ -50,70 +25,87 @@ export default function ProjectsPage() {
         &larr;
       </button>
 
-      <section className={styles.content}>
+      <section className={styles.content} aria-label="Project mats">
         <header className={styles.header}>
           <p className={styles.eyebrow}>A small collection</p>
           <h1>Projects</h1>
           <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
         </header>
-
-        <div className={styles.filters} aria-label="Filter projects by technology">
-          {technologies.map((technology) => (
-            <button
-              key={technology}
-              type="button"
-              className={`${styles.filter} ${activeTechnology === technology ? styles.activeFilter : ''}`}
-              onClick={() => setActiveTechnology(technology)}
-              aria-pressed={activeTechnology === technology}
-            >
-              {technology}
-            </button>
+        <div className={styles.grid}>
+          {mats.map((mat) => (
+            <figure className={styles.matCard} key={mat.src}>
+              <Image
+                src={mat.src}
+                alt=""
+                fill
+                sizes="(max-width: 700px) 92vw, (max-width: 1100px) 44vw, 31vw"
+                className={styles.matImage}
+              />
+              <span className={`${styles.utensilPositioner} ${styles.forkPositioner}`} aria-hidden="true">
+                <Image
+                  src="/images/project-sec/Fork.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 28vw, 16rem"
+                  className={styles.utensilImage}
+                />
+              </span>
+              <span className={`${styles.utensilPositioner} ${styles.knifePositioner}`} aria-hidden="true">
+                <Image
+                  src="/images/project-sec/Knife.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 28vw, 16rem"
+                  className={styles.utensilImage}
+                />
+              </span>
+              <span className={styles.platePositioner}>
+                <Image
+                  src={mat.plate}
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 38vw, 22rem"
+                  className={styles.plateImage}
+                />
+              </span>
+              <button
+                type="button"
+                className={styles.foodButton}
+                onClick={() => router.push(`/homepage/projects/${mat.project}`)}
+                aria-label={`Open ${mat.project}`}
+              >
+                <Image
+                  src={mat.food}
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 20vw, 14rem"
+                  className={styles.foodImage}
+                />
+              </button>
+              {mat.project === 'Project1' && (
+                <svg className={styles.toastCaption} viewBox="0 0 500 130" aria-hidden="true">
+                  <defs>
+                    <path id="toast-caption-arc" d="M 20 110 Q 250 -50 480 110" />
+                  </defs>
+                  <text fill="currentColor">
+                    <textPath href="#toast-caption-arc" startOffset="50%" textAnchor="middle">
+                      Helping a local business with a
+                    </textPath>
+                  </text>
+                </svg>
+              )}
+              <span className={styles.drinkPositioner} aria-hidden="true">
+                <Image
+                  src={mat.drink}
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 18vw, 12rem"
+                  className={styles.drinkImage}
+                />
+              </span>
+            </figure>
           ))}
         </div>
-
-        {!projects.length ? (
-          <p className={styles.loading}>Loading projects...</p>
-        ) : (
-          <div className={styles.grid}>
-            {filteredProjects.map((project, index) => (
-              <article className={styles.project} key={project.title}>
-                <div className={styles.imageFrame}>
-                  <Image
-                    src={project.imagePath}
-                    alt=""
-                    fill
-                    sizes="(max-width: 700px) 92vw, (max-width: 1100px) 44vw, 31vw"
-                    className={styles.projectImage}
-                    priority={index < 2}
-                  />
-                  <span className={styles.projectNumber}>0{index + 1}</span>
-                </div>
-                <div className={styles.projectBody}>
-                  <h2>{project.title}</h2>
-                  <p>{project.description}</p>
-                  <div className={styles.tags}>
-                    {(project.technologies ?? []).map((technology) => (
-                      <span key={technology}>{technology}</span>
-                    ))}
-                  </div>
-                  {project.links?.length > 0 && (
-                    <div className={styles.links}>
-                      {project.links.map((link) => (
-                        <a key={link.url} href={link.url} target="_blank" rel="noreferrer">
-                          {link.name} <span aria-hidden="true">&nearr;</span>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-
-        {projects.length > 0 && filteredProjects.length === 0 && (
-          <p className={styles.empty}>No projects use {activeTechnology} yet.</p>
-        )}
       </section>
     </main>
   );

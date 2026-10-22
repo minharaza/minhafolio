@@ -958,6 +958,7 @@
   color: inherit;
   cursor: pointer;
   transform: translate(-50%, -50%);
+  animation: food-button-breathe 2.4s ease-in-out infinite;
 }
 
 .foodButton:focus-visible {
@@ -968,7 +969,24 @@
 
 .foodImage {
   object-fit: contain;
-  filter: drop-shadow(0 0.25rem 0.35rem rgb(35 22 29 / 22%));
+  filter: drop-shadow(0 0.25rem 0.35rem rgb(35 22 29 / 22%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 50%));
+}
+
+.foodClickHint {
+  position: absolute;
+  top: 38%;
+  left: 31%;
+  z-index: 6;
+  display: block;
+  width: min(12%, 8rem);
+  aspect-ratio: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.foodClickHint img {
+  object-fit: contain;
 }
 
 .toastCaption {
@@ -1003,6 +1021,16 @@
 
 .knifePositioner {
   left: 72%;
+}
+
+.matCard:nth-child(2) .foodClickHint {
+  top: 39%;
+  left: 30%;
+}
+
+.matCard:nth-child(3) .foodClickHint {
+  top: 40%;
+  left: 30%;
 }
 
 .utensilImage {
@@ -1045,6 +1073,11 @@
   to { filter: drop-shadow(0 0 1rem rgb(255 248 241 / 100%)); }
 }
 
+@keyframes food-button-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.045); }
+}
+
 @media (max-width: 700px) {
   .page {
     padding: 1rem 0.75rem 3rem;
@@ -1080,6 +1113,10 @@
 
   .researchVisualImage {
     width: 145%;
+  }
+
+  .foodClickHint {
+    width: min(14%, 5.5rem);
   }
 
   .designProcessGallery {
@@ -1204,5 +1241,10 @@
   .swotHint img {
     animation: none;
     filter: drop-shadow(0 0 0.4rem rgb(255 248 241 / 65%));
+  }
+
+  .foodButton,
+  .foodClickHint {
+    animation: none;
   }
 }

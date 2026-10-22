@@ -82,6 +82,14 @@ export default function ProjectsPage() {
                   className={styles.foodImage}
                 />
               </button>
+              <span className={styles.foodClickHint} aria-hidden="true">
+                <Image
+                  src="/images/other/Click_Me.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 12vw, 8rem"
+                />
+              </span>
               {mat.project === 'Project1' && (
                 <svg className={styles.toastCaption} viewBox="0 0 500 130" aria-hidden="true">
                   <defs>

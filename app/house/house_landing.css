@@ -24,16 +24,16 @@
 
 .house-landing::before {
 	z-index: 0;
-	background-image: url('/images/Landscape.png');
+	background-image: url('/images/other/Landscape.png');
 }
 
 .house-landing::after {
 	z-index: 2;
-	background-image: url('/images/Cut_Out.png');
+	background-image: url('/images/other/Cut_Out.png');
 }
 
 .house-landing.stars-background::after {
-	background-image: url('/images/Cut_Out_Of_Stars.png');
+	background-image: url('/images/other/Cut_Out_Of_Stars.png');
 }
 
 .house-landing.landscape-only {

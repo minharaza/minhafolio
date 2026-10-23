@@ -15,7 +15,7 @@
   z-index: 0;
   background:
     linear-gradient(rgba(156, 90, 57, 0.568), rgba(219, 132, 132, 0.358)),
-    url('/images/Tablecloth.png') 0 0 / 540px 720px repeat;
+    url('/images/other/Tablecloth.png') 0 0 / 540px 720px repeat;
 }
 
 .page::before,
@@ -506,28 +506,55 @@
   border-radius: 8px;
 }
 
+.finalDesignFeatureImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.finalDesignFeature {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.finalDesignFeatureButton {
+  flex: 0 1 22rem;
+  width: min(100%, 22rem);
+}
+
+.swotHint.finalDesignFeatureHint {
+  flex: none;
+  width: 8rem;
+}
+
 .finalDesignLayout {
+  display: block;
+  width: 100%;
+}
+
+.finalDesignProgressionSide {
+  position: relative;
   display: grid;
   width: 100%;
-  grid-template-columns: 5rem minmax(0, 1fr) 5rem;
-  align-items: center;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
-}
-
-.finalDesignHintLeft {
+  height: 100%;
   grid-column: 1;
   grid-row: 1;
+  align-self: stretch;
+  justify-self: stretch;
+  align-items: center;
+  justify-items: center;
 }
 
-.finalDesignHintRight {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.finalDesignHintLeft,
-.finalDesignHintRight {
-  width: 8rem;
-  max-width: none;
+.swotHint.finalDesignProgressionHint {
+  position: absolute;
+  top: 22%;
+  right: -1.75rem;
+  z-index: 1;
+  width: 7rem;
 }
 
 .finalDesignGallery {
@@ -535,21 +562,73 @@
   width: 100%;
   max-width: 76rem;
   min-width: 0;
-  grid-column: 2;
-  grid-row: 1;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  margin: 0 auto;
+  grid-template-columns: minmax(4rem, 8rem) minmax(0, 30rem) minmax(4rem, 8rem);
   align-items: center;
-  gap: clamp(0.4rem, 1vw, 0.85rem);
-  overflow-x: auto;
+  justify-content: center;
+  justify-items: center;
+  column-gap: clamp(0.5rem, 2vw, 1.25rem);
 }
 
 .finalDesignImageButton {
   display: block;
   min-width: 0;
+  max-height: min(68vh, 48rem);
+  grid-row: 1;
+}
+
+.finalDesignImageButton {
+  grid-column: 2;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: zoom-in;
+}
+
+.finalDesignPreviousControl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.finalDesignPreviousControl:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.finalDesignImageButton[hidden] {
+  display: none;
+}
+
+.finalDesignCarouselControl {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid rgb(74 39 34 / 70%);
+  border-radius: 50%;
+  background: rgb(255 248 241 / 92%);
+  color: #4a2722;
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.finalDesignCarouselControl:hover {
+  transform: scale(1.08);
+  background: #fff8f1;
+}
+
+.finalDesignCarouselControl:focus-visible,
+.finalDesignCarouselDot:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.finalDesignNextControl {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: center;
 }
 
 .finalDesignImageButton:focus-visible,
@@ -560,12 +639,59 @@
 
 .finalDesignImage {
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 100%;
+  height: min(68vh, 48rem);
+  object-fit: contain;
   border-radius: 6px;
 }
 
-.finalDesignSeparator {
+.finalDesignCarouselPagination {
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.5rem;
+}
+
+.finalDesignCarouselDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: 1px solid #4a2722;
+  border-radius: 50%;
+  background: rgb(255 248 241 / 75%);
+  cursor: pointer;
+}
+
+.finalDesignCarouselDot[aria-current='true'] {
+  background: #4a2722;
+  box-shadow: inset 0 0 0 2px #fff8f1;
+}
+
+.comparisonList {
+  display: grid;
+  width: min(100%, 76rem);
+  gap: 1.5rem;
+  justify-self: center;
+}
+
+.comparisonRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 1.25rem);
+}
+
+.comparisonImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.comparisonArrow {
   color: #4a2722;
   font-size: clamp(0.85rem, 1.5vw, 1.3rem);
   font-weight: 700;
@@ -643,6 +769,96 @@
 }
 
 .projectDetail p {
+  margin: 0;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.finalThoughtsSection {
+  width: min(100%, 76rem);
+  margin: 2rem auto 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  background: rgba(121, 135, 120, 0.94);
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+  color: #fff8f1;
+}
+
+.finalThoughtsLayout {
+  display: grid;
+  width: min(100%, 76rem);
+  margin: 1rem auto 0;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.finalThoughtsImage {
+  display: block;
+  width: 100%;
+  max-height: 20rem;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.finalThoughtsIcons {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.finalThoughtsClickHint {
+  width: 5rem;
+  flex: 0 1 5rem;
+}
+
+.finalThoughtsHintLeft {
+  margin-right: 0.5rem;
+}
+
+.finalThoughtsHintRight {
+  margin-left: 0.5rem;
+}
+
+.finalThoughtsIconButton {
+  display: grid;
+  width: 8rem;
+  height: 8rem;
+  place-items: center;
+  border-radius: 8px;
+  transition: transform 160ms ease;
+}
+
+.finalThoughtsIconButton:hover {
+  transform: scale(1.06);
+}
+
+.finalThoughtsIconButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.finalThoughtsIcon {
+  display: block;
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.thoughtsHeading {
+  margin: 0 0 0.75rem;
+  color: #f4d678;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.thoughtsContent p {
   margin: 0;
   font-family: 'Happy Monkey', cursive;
   font-size: 1rem;
@@ -742,6 +958,7 @@
   color: inherit;
   cursor: pointer;
   transform: translate(-50%, -50%);
+  animation: food-button-breathe 2.4s ease-in-out infinite;
 }
 
 .foodButton:focus-visible {
@@ -752,7 +969,24 @@
 
 .foodImage {
   object-fit: contain;
-  filter: drop-shadow(0 0.25rem 0.35rem rgb(35 22 29 / 22%));
+  filter: drop-shadow(0 0.25rem 0.35rem rgb(35 22 29 / 22%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 50%));
+}
+
+.foodClickHint {
+  position: absolute;
+  top: 38%;
+  left: 31%;
+  z-index: 6;
+  display: block;
+  width: min(12%, 8rem);
+  aspect-ratio: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.foodClickHint img {
+  object-fit: contain;
 }
 
 .toastCaption {
@@ -787,6 +1021,16 @@
 
 .knifePositioner {
   left: 72%;
+}
+
+.matCard:nth-child(2) .foodClickHint {
+  top: 39%;
+  left: 30%;
+}
+
+.matCard:nth-child(3) .foodClickHint {
+  top: 40%;
+  left: 30%;
 }
 
 .utensilImage {
@@ -829,6 +1073,11 @@
   to { filter: drop-shadow(0 0 1rem rgb(255 248 241 / 100%)); }
 }
 
+@keyframes food-button-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.045); }
+}
+
 @media (max-width: 700px) {
   .page {
     padding: 1rem 0.75rem 3rem;
@@ -866,6 +1115,10 @@
     width: 145%;
   }
 
+  .foodClickHint {
+    width: min(14%, 5.5rem);
+  }
+
   .designProcessGallery {
     width: 100%;
     grid-template-columns: minmax(0, 1fr);
@@ -879,23 +1132,37 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .comparisonRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .comparisonArrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .swotHint.finalDesignFeatureHint {
+    width: 5rem;
+  }
+
+  .finalDesignImageButton,
+  .finalDesignImage {
+    height: min(62vh, 42rem);
+  }
+
   .finalDesignGallery {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    grid-template-columns: 12rem auto 12rem auto 12rem auto 12rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
+    grid-template-columns: minmax(3rem, 4rem) minmax(0, 1fr) minmax(3rem, 4rem);
+    gap: 0.35rem;
   }
 
-  .finalDesignLayout {
-    grid-template-columns: minmax(2.5rem, 0.22fr) minmax(0, 1fr) minmax(2.5rem, 0.22fr);
-    gap: 0.4rem;
+  .finalDesignCarouselControl {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
-  .swotHint.finalDesignHintLeft,
-  .swotHint.finalDesignHintRight {
-    width: 4rem;
+  .swotHint.finalDesignProgressionHint {
+    right: -1rem;
+    width: 5.5rem;
   }
 
   .finalDesignModal {
@@ -974,5 +1241,10 @@
   .swotHint img {
     animation: none;
     filter: drop-shadow(0 0 0.4rem rgb(255 248 241 / 65%));
+  }
+
+  .foodButton,
+  .foodClickHint {
+    animation: none;
   }
 }

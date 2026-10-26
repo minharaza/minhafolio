@@ -43,10 +43,7 @@ export default function ProjectThreePage() {
                     <button
                       className={styles.projectBusButton}
                       type="button"
-                      onClick={() => {
-                        setIsDriving(true);
-                        document.getElementById('project-step-01')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      }}
+                      onClick={() => setIsDriving(true)}
                       aria-label="Jump to step 1: Define"
                     >
                       <Image

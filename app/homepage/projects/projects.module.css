@@ -113,7 +113,7 @@
 }
 
 .header h1.projectTitle {
-  font-family: 'Lily Script One', cursive;
+  font-family: 'Ballet', cursive;
   font-size: clamp(2.5rem, 5vw, 5rem);
   line-height: 1.15;
 }
@@ -138,6 +138,95 @@
   grid-column: 1 / -1;
   gap: 1rem;
   justify-self: center;
+}
+
+.projectStepTitle {
+  margin: 0;
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.projectStepCard {
+  width: 100%;
+  justify-self: center;
+}
+
+.projectStepsGrid {
+  display: grid;
+  width: min(100%, 48rem);
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem 1.25rem;
+}
+
+.projectStepItem {
+  display: grid;
+  min-width: 0;
+  justify-items: center;
+  gap: 0.5rem;
+}
+
+.projectStepBusPrompt {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-self: start;
+  gap: 0.5rem;
+}
+
+.projectBusButton {
+  display: block;
+  width: min(34%, 14rem);
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.projectBusButton img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+  filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%));
+}
+
+.projectBusButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 4px;
+}
+
+.projectStepBusHint {
+  width: min(20%, 6rem);
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+}
+
+.projectStepCard {
+  display: flex;
+  width: 100%;
+  min-height: 5rem;
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  background: rgba(121, 135, 120, 0.84);
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+  color: #fff8f1;
+}
+
+.projectStepNumber {
+  margin: 0;
+}
+
+.projectStepCard h2 {
+  margin: 0;
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.2rem;
 }
 
 .swotHeading {
@@ -1095,6 +1184,10 @@
   .projectDetails {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.85rem;
+  }
+
+  .projectStepsGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .researchInsights {

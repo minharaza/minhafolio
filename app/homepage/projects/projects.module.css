@@ -92,6 +92,7 @@
   box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
   color: #fff8f1;
   text-align: center;
+  margin-bottom: 30rem;
 }
 
 .eyebrow {
@@ -169,16 +170,34 @@
 }
 
 .projectStepBusPrompt {
+  width: min(30rem, 40vw); /* was min(15rem, 28vw) */
   display: flex;
-  width: 100%;
+  position: fixed;
+  top: 45%;
+  left: 0.75rem;
+  z-index: 5;
   align-items: center;
-  justify-self: start;
-  gap: 0.5rem;
+  gap: 0.25rem;
+}
+
+.projectBusDriving {
+  animation: busDrive 6s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes busDrive {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100vw);
+  }
 }
 
 .projectBusButton {
   display: block;
-  width: min(34%, 14rem);
+  width: 100%;
   padding: 0;
   border: 0;
   border-radius: 8px;
@@ -200,7 +219,8 @@
 }
 
 .projectStepBusHint {
-  width: min(20%, 6rem);
+  width: 30%;
+  flex: none;
   height: auto;
   filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
 }

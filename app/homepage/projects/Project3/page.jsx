@@ -1,10 +1,12 @@
  'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../projects.module.css';
 
 export default function ProjectThreePage() {
+  const [isDriving, setIsDriving] = useState(false);
   const projectSteps = [
     'Define',
     'Research',
@@ -34,11 +36,17 @@ export default function ProjectThreePage() {
             {projectSteps.map((step, index) => (
               <div className={styles.projectStepItem} key={step}>
                 {index === 0 && (
-                  <div className={styles.projectStepBusPrompt}>
+                  <div
+                    className={`${styles.projectStepBusPrompt} ${isDriving ? styles.projectBusDriving : ''}`}
+                    onAnimationEnd={() => setIsDriving(false)}
+                  >
                     <button
                       className={styles.projectBusButton}
                       type="button"
-                      onClick={() => document.getElementById('project-step-01')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+                      onClick={() => {
+                        setIsDriving(true);
+                        document.getElementById('project-step-01')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }}
                       aria-label="Jump to step 1: Define"
                     >
                       <Image

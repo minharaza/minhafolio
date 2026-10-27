@@ -180,6 +180,31 @@
   gap: 0.25rem;
 }
 
+.busQuestion {
+  position: fixed;
+  top: calc(45% + 4rem);
+  left: 50%;
+  z-index: 4;
+  margin: 0;
+  color: #3b2217;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 3rem;
+  text-align: center;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.busQuestionLetter {
+  opacity: 0;
+  animation: busQuestionIn 0.5s ease forwards;
+}
+
+@keyframes busQuestionIn {
+  to {
+    opacity: 1;
+  }
+}
+
 .projectBusDriving {
   animation: busDrive 6s linear forwards;
   pointer-events: none;

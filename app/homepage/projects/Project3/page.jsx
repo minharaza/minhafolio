@@ -6,7 +6,9 @@ import Link from 'next/link';
 import styles from '../projects.module.css';
 
 export default function ProjectThreePage() {
+  const busQuestion = 'Have you ever tried to take the bus...?';
   const [isDriving, setIsDriving] = useState(false);
+  const [hasDriven, setHasDriven] = useState(false);
   const projectSteps = [
     'Define',
     'Research',
@@ -38,12 +40,18 @@ export default function ProjectThreePage() {
                 {index === 0 && (
                   <div
                     className={`${styles.projectStepBusPrompt} ${isDriving ? styles.projectBusDriving : ''}`}
-                    onAnimationEnd={() => setIsDriving(false)}
+                    onAnimationEnd={() => {
+                      setIsDriving(false);
+                      setHasDriven(true);
+                    }}
                   >
                     <button
                       className={styles.projectBusButton}
                       type="button"
-                      onClick={() => setIsDriving(true)}
+                      onClick={() => {
+                        setHasDriven(false);
+                        setIsDriving(true);
+                      }}
                       aria-label="Jump to step 1: Define"
                     >
                       <Image
@@ -62,6 +70,20 @@ export default function ProjectThreePage() {
                       height={300}
                     />
                   </div>
+                )}
+                {index === 0 && (isDriving || hasDriven) && (
+                  <p className={styles.busQuestion} aria-label={busQuestion}>
+                    {[...busQuestion].map((char, i) => (
+                      <span
+                        aria-hidden="true"
+                        className={styles.busQuestionLetter}
+                        key={i}
+                        style={{ animationDelay: `${0.3 + (i * 3) / busQuestion.length}s` }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </p>
                 )}
                 <h2 className={styles.projectNumberTitle}>{String(index + 1).padStart(2, '0')}</h2>
                 <article className={styles.projectStepCard} id={`project-step-${String(index + 1).padStart(2, '0')}`}>

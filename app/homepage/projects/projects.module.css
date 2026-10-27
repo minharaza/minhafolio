@@ -170,7 +170,6 @@
 }
 
 .projectStepBusPrompt {
-  width: min(30rem, 40vw); /* was min(15rem, 28vw) */
   display: flex;
   position: fixed;
   top: 45%;
@@ -181,8 +180,8 @@
 }
 
 .busQuestion {
-  position: fixed;
-  top: calc(45% + 4rem);
+  position: absolute;
+  top: calc(var(--bus-anchor, 45dvh) + 4rem);
   left: 50%;
   z-index: 4;
   margin: 0;
@@ -200,18 +199,18 @@
 }
 
 .busQuestion2 {
-  top: calc(45% + 12rem);
+  top: calc(var(--bus-anchor, 45dvh) + 12rem);
   font-size: min(3rem, 3.2vw);
 }
 
 .secondBus {
-  position: fixed;
-  top: calc(45% + 8rem);
-  right: 0.75rem;
+  position: absolute;
+  top: calc(var(--bus-anchor, 45dvh) + 8rem);
+  left: 0;
   z-index: 5;
   width: min(30rem, 40vw);
   pointer-events: none;
-  animation: busDriveLeft 7s linear forwards;
+  animation: busDriveLeft 7.5s linear forwards;
 }
 
 .secondBus img {
@@ -223,17 +222,17 @@
 }
 
 .busQuestion3 {
-  top: calc(45% + 18rem);
+  top: calc(var(--bus-anchor, 45dvh) + 18rem);
 }
 
 .thirdBus {
-  position: fixed;
-  top: calc(45% + 14rem);
-  left: 0.75rem;
+  position: absolute;
+  top: calc(var(--bus-anchor, 45dvh) + 14rem);
+  left: 0;
   z-index: 5;
   width: min(30rem, 40vw);
   pointer-events: none;
-  animation: busDriveRight 7s linear forwards;
+  animation: busDriveRight 5.5s linear forwards;
 }
 
 .thirdBus img {
@@ -245,7 +244,7 @@
 
 @keyframes busDriveRight {
   from {
-    transform: translateX(calc(-100% - 1rem));
+    transform: translateX(-50vw);
   }
 
   to {
@@ -255,11 +254,11 @@
 
 @keyframes busDriveLeft {
   from {
-    transform: translateX(calc(100% + 1rem));
+    transform: translateX(100vw);
   }
 
   to {
-    transform: translateX(-100vw);
+    transform: translateX(-50vw);
   }
 }
 
@@ -270,7 +269,10 @@
 }
 
 .projectBusDriving {
-  animation: busDrive 6s linear forwards;
+  position: absolute;
+  top: var(--bus-anchor);
+  left: var(--bus-left);
+  animation: busDrive 5s linear forwards;
   pointer-events: none;
 }
 
@@ -286,7 +288,8 @@
 
 .projectBusButton {
   display: block;
-  width: 100%;
+  width: min(30rem, 40vw);
+  flex: none;
   padding: 0;
   border: 0;
   border-radius: 8px;
@@ -332,7 +335,7 @@
 }
 
 .projectStepBusHint {
-  width: 30%;
+  width: min(9rem, 12vw);
   flex: none;
   height: auto;
   filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));

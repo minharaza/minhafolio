@@ -1,6 +1,6 @@
  'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../projects.module.css';
@@ -8,11 +8,13 @@ import styles from '../projects.module.css';
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
-  const busQuestion3 = 'Well I have!';
+  const busQuestion3 = 'Well I have! What a tragedy!';
   const [isDriving, setIsDriving] = useState(false);
   const [hasDriven, setHasDriven] = useState(false);
   const [secondPhase, setSecondPhase] = useState('idle');
   const [thirdPhase, setThirdPhase] = useState('idle');
+  const [busAnchor, setBusAnchor] = useState({ top: null, left: 0 });
+  const contentRef = useRef(null);
   const projectSteps = [
     'Define',
     'Research',
@@ -25,13 +27,16 @@ export default function ProjectThreePage() {
   ];
 
   return (
-    <main className={styles.page}>
+    <main
+      className={styles.page}
+      style={busAnchor.top === null ? undefined : { '--bus-anchor': `${busAnchor.top}px`, '--bus-left': `${busAnchor.left}px` }}
+    >
       <div className={styles.backgroundTexture} aria-hidden="true" />
       <Link className={styles.backButton} href="/homepage/projects" aria-label="Back to projects">
         &larr;
       </Link>
 
-      <section className={styles.content}>
+      <section className={styles.content} ref={contentRef}>
         <header className={styles.header}>
           <p className={styles.eyebrow}>A Deep Dive into:</p>
           <h1>Bus Stops:</h1>
@@ -41,7 +46,7 @@ export default function ProjectThreePage() {
           <div className={styles.projectStepsGrid}>
             {projectSteps.map((step, index) => (
               <div className={styles.projectStepItem} key={step}>
-                {index === 0 && (
+                {index === 0 && !hasDriven && (
                   <div
                     className={`${styles.projectStepBusPrompt} ${isDriving ? styles.projectBusDriving : ''} ${isDriving || hasDriven ? styles.projectBusClicked : ''}`}
                     onAnimationEnd={() => {
@@ -53,7 +58,10 @@ export default function ProjectThreePage() {
                     <button
                       className={styles.projectBusButton}
                       type="button"
-                      onClick={() => {
+                      onClick={(e) => {
+                        const busRect = e.currentTarget.parentElement.getBoundingClientRect();
+                        const contentRect = contentRef.current.getBoundingClientRect();
+                        setBusAnchor({ top: busRect.top - contentRect.top, left: busRect.left - contentRect.left });
                         setHasDriven(false);
                         setSecondPhase('idle');
                         setThirdPhase('idle');
@@ -126,7 +134,7 @@ export default function ProjectThreePage() {
                         aria-hidden="true"
                         className={styles.busQuestionLetter}
                         key={i}
-                        style={{ animationDelay: `${0.8 + (i * 3) / busQuestion3.length}s` }}
+                        style={{ animationDelay: `${1.4 + (i * 0.8) / busQuestion3.length}s` }}
                       >
                         {char}
                       </span>

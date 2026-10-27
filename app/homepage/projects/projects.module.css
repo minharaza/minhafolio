@@ -199,6 +199,70 @@
   animation: busQuestionIn 0.5s ease forwards;
 }
 
+.busQuestion2 {
+  top: calc(45% + 12rem);
+  font-size: min(3rem, 3.2vw);
+}
+
+.secondBus {
+  position: fixed;
+  top: calc(45% + 8rem);
+  right: 0.75rem;
+  z-index: 5;
+  width: min(30rem, 40vw);
+  pointer-events: none;
+  animation: busDriveLeft 7s linear forwards;
+}
+
+.secondBus img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scaleX(-1);
+  filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%));
+}
+
+.busQuestion3 {
+  top: calc(45% + 18rem);
+}
+
+.thirdBus {
+  position: fixed;
+  top: calc(45% + 14rem);
+  left: 0.75rem;
+  z-index: 5;
+  width: min(30rem, 40vw);
+  pointer-events: none;
+  animation: busDriveRight 7s linear forwards;
+}
+
+.thirdBus img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%));
+}
+
+@keyframes busDriveRight {
+  from {
+    transform: translateX(calc(-100% - 1rem));
+  }
+
+  to {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes busDriveLeft {
+  from {
+    transform: translateX(calc(100% + 1rem));
+  }
+
+  to {
+    transform: translateX(-100vw);
+  }
+}
+
 @keyframes busQuestionIn {
   to {
     opacity: 1;

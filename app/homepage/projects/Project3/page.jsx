@@ -7,8 +7,12 @@ import styles from '../projects.module.css';
 
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
+  const busQuestion2 = 'And then your bus stop was missing its bench?';
+  const busQuestion3 = 'Well I have!';
   const [isDriving, setIsDriving] = useState(false);
   const [hasDriven, setHasDriven] = useState(false);
+  const [secondPhase, setSecondPhase] = useState('idle');
+  const [thirdPhase, setThirdPhase] = useState('idle');
   const projectSteps = [
     'Define',
     'Research',
@@ -43,6 +47,7 @@ export default function ProjectThreePage() {
                     onAnimationEnd={() => {
                       setIsDriving(false);
                       setHasDriven(true);
+                      setSecondPhase('driving');
                     }}
                   >
                     <button
@@ -50,6 +55,8 @@ export default function ProjectThreePage() {
                       type="button"
                       onClick={() => {
                         setHasDriven(false);
+                        setSecondPhase('idle');
+                        setThirdPhase('idle');
                         setIsDriving(true);
                       }}
                       aria-label="Jump to step 1: Define"
@@ -79,6 +86,47 @@ export default function ProjectThreePage() {
                         className={styles.busQuestionLetter}
                         key={i}
                         style={{ animationDelay: `${0.3 + (i * 3) / busQuestion.length}s` }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </p>
+                )}
+                {index === 0 && secondPhase === 'driving' && (
+                  <div className={styles.secondBus} onAnimationEnd={() => {
+                      setSecondPhase('done');
+                      setThirdPhase('driving');
+                    }} aria-hidden="true">
+                    <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
+                  </div>
+                )}
+                {index === 0 && secondPhase !== 'idle' && (
+                  <p className={`${styles.busQuestion} ${styles.busQuestion2}`} aria-label={busQuestion2}>
+                    {[...busQuestion2].map((char, i) => (
+                      <span
+                        aria-hidden="true"
+                        className={styles.busQuestionLetter}
+                        key={i}
+                        style={{ animationDelay: `${0.8 + ((busQuestion2.length - 1 - i) * 4) / busQuestion2.length}s` }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </p>
+                )}
+                {index === 0 && thirdPhase === 'driving' && (
+                  <div className={styles.thirdBus} onAnimationEnd={() => setThirdPhase('done')} aria-hidden="true">
+                    <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
+                  </div>
+                )}
+                {index === 0 && thirdPhase !== 'idle' && (
+                  <p className={`${styles.busQuestion} ${styles.busQuestion3}`} aria-label={busQuestion3}>
+                    {[...busQuestion3].map((char, i) => (
+                      <span
+                        aria-hidden="true"
+                        className={styles.busQuestionLetter}
+                        key={i}
+                        style={{ animationDelay: `${0.8 + (i * 3) / busQuestion3.length}s` }}
                       >
                         {char}
                       </span>

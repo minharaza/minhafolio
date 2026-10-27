@@ -14,16 +14,16 @@ const rooms = [
 ];
 
 const houseItems = [
-  { label: 'Resume', href: '/homepage/resume-page', image: '/images/Bookshelf.png', className: 'house-item-bookshelf' },
-  { label: 'About', href: '/homepage/about-page', image: '/images/Bed.png', className: 'house-item-bed' },
-  { label: 'Projects', href: '/homepage/projects', image: '/images/Table.png', className: 'house-item-table' },
-  { label: 'Interests', href: '/homepage/interests', image: '/images/Bathtub.png', className: 'house-item-bathtub' },
+  { label: 'Resume', href: '/homepage/resume-page', image: '/images/other/Bookshelf.png', className: 'house-item-bookshelf' },
+  { label: 'About', href: '/homepage/about-page', image: '/images/other/Bed.png', className: 'house-item-bed' },
+  { label: 'Projects', href: '/homepage/projects', image: '/images/other/Table.png', className: 'house-item-table' },
+  { label: 'Interests', href: '/homepage/interests', image: '/images/other/Bathtub.png', className: 'house-item-bathtub' },
 ];
 
 const ingredientMenuItems = [
-  { label: 'About Me', href: '/homepage/about-page', image: '/images/Lettuce.png' },
-  { label: 'Projects', href: '/homepage/projects', image: '/images/Tomato.png' },
-  { label: 'Resume', href: '/homepage/resume-page', image: '/images/Bun.png' },
+  { label: 'About Me', href: '/homepage/about-page', image: '/images/other/Lettuce.png' },
+  { label: 'Projects', href: '/homepage/projects', image: '/images/other/Tomato.png' },
+  { label: 'Resume', href: '/homepage/resume-page', image: '/images/other/Bun.png' },
 ];
 
 export default function HousePage() {
@@ -90,8 +90,8 @@ export default function HousePage() {
 
     cutoutImage.onload = handleImageLoad;
     starsCutoutImage.onload = handleImageLoad;
-    cutoutImage.src = '/images/Cut_Out.png';
-    starsCutoutImage.src = '/images/Cut_Out_Of_Stars.png';
+    cutoutImage.src = '/images/other/Cut_Out.png';
+    starsCutoutImage.src = '/images/other/Cut_Out_Of_Stars.png';
 
     return () => {
       cutoutImage.onload = null;
@@ -123,7 +123,7 @@ export default function HousePage() {
           aria-expanded={isIngredientMenuOpen}
           aria-controls="ingredient-menu-links"
         >
-          <img src="/images/Hamburger.png" alt="" aria-hidden="true" />
+          <img src="/images/other/Hamburger.png" alt="" aria-hidden="true" />
         </button>
         <div
           className="ingredient-menu-links"
@@ -156,7 +156,7 @@ export default function HousePage() {
       </nav>
     {isCutoutReady && (
     <div className="house-scene">
-      <img className="house-image" src="/images/House.png" alt="" aria-hidden="true" />
+      <img className="house-image" src="/images/other/House.png" alt="" aria-hidden="true" />
       <div className={`house-items${showExploreBubble ? ' house-items-disabled' : ''}`} aria-label="Explore my house">
       {houseItems.map((item) => (
         <Link key={item.href} className={`house-item ${item.className}`} href={item.href}>
@@ -184,7 +184,7 @@ export default function HousePage() {
       >
         <img
           className="matcha-image"
-          src={showPout ? '/images/pout_with_matcha.png' : '/images/smiling_with_matcha.png'}
+          src={showPout ? '/images/other/Pout_With_Matcha.png' : '/images/other/Smiling_With_Matcha.png'}
           alt={showPout ? 'Pout with matcha' : 'Smiling with matcha'}
         />
       </div>
@@ -212,7 +212,7 @@ export default function HousePage() {
             }
           }}
         >
-          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Hello!! My name is Minha!</span>
         </div>
       )}
@@ -235,7 +235,7 @@ export default function HousePage() {
             }
           }}
         >
-          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Welcome to my house tour!</span>
         </div>
       )}
@@ -265,7 +265,7 @@ export default function HousePage() {
             }
           }}
         >
-          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Let&apos;s get started!</span>
         </div>
       )}
@@ -291,7 +291,7 @@ export default function HousePage() {
             }
           }}
         >
-          <img src="/images/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Feel free to explore my house to learn more about me and my work!</span>
         </div>
       )}

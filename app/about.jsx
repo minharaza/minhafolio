@@ -14,8 +14,8 @@ const collageItems = [
   { src: '/images/about-me/about-me-head.png', alt: 'My portrait', className: 'head' },
   { src: '/images/about-me/about-me-shirt.png', alternateSrc: '/images/about-me/About_Me_Shirt_2.png', alt: 'A favorite band shirt', className: 'shirt' },
   { src: '/images/about-me/About-me-skirt.png', alternateSrc: '/images/about-me/About_Me_Skirt2.png', alt: 'A favorite skirt', className: 'skirt' },
-  { src: '/images/Tennis_Racquet.png', alt: 'A pink tennis racquet', className: 'tennisRacquet' },
-  { src: '/images/Tennis_Ball.png', alt: 'A pink tennis ball', className: 'tennisBall' },
+  { src: '/images/other/Tennis_Racquet.png', alt: 'A pink tennis racquet', className: 'tennisRacquet' },
+  { src: '/images/other/Tennis_Ball.png', alt: 'A pink tennis ball', className: 'tennisBall' },
 ];
 
 const collageImageSizes = '(max-width: 700px) 46vw, 37vh';
@@ -121,7 +121,7 @@ const About = () => {
       <h1 className={styles.aboutTitle}>About me</h1>
       <div className={styles.scene} aria-label="A collage of things that represent me, arranged on a pink bed">
         <Image
-          src="/images/top-of-bed.png"
+          src="/images/other/top-of-bed.png"
           alt="A pink bed"
           fill
           priority

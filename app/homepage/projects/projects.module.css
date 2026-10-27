@@ -171,9 +171,9 @@
 
 .projectStepBusPrompt {
   display: flex;
-  position: fixed;
-  top: 45%;
-  left: 0.75rem;
+  position: absolute;
+  top: calc(45dvh - 2rem);
+  left: calc(0.75rem - clamp(1rem, 4vw, 4rem));
   z-index: 5;
   align-items: center;
   gap: 0.25rem;

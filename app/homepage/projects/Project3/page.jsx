@@ -39,7 +39,7 @@ export default function ProjectThreePage() {
               <div className={styles.projectStepItem} key={step}>
                 {index === 0 && (
                   <div
-                    className={`${styles.projectStepBusPrompt} ${isDriving ? styles.projectBusDriving : ''}`}
+                    className={`${styles.projectStepBusPrompt} ${isDriving ? styles.projectBusDriving : ''} ${isDriving || hasDriven ? styles.projectBusClicked : ''}`}
                     onAnimationEnd={() => {
                       setIsDriving(false);
                       setHasDriven(true);

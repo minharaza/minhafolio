@@ -236,6 +236,30 @@
   height: auto;
   border-radius: inherit;
   filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%));
+  animation: busBreathe 3s ease-in-out infinite;
+}
+
+@keyframes busBreathe {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%)) drop-shadow(0 0 0.4rem rgb(244 214 120 / 40%));
+  }
+
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%)) drop-shadow(0 0 1.4rem rgb(244 214 120 / 95%));
+  }
+}
+
+.projectBusClicked .projectBusButton img {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectBusButton img {
+    animation: none;
+  }
 }
 
 .projectBusButton:focus-visible {

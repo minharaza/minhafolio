@@ -5,6 +5,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../projects.module.css';
 
+const researchPersonas = [
+  {
+    id: 'student-commuter',
+    name: 'Student Commuter',
+    image: '/images/project-sec/Student.png',
+    details: 'This high school student has two working parents who cannot drop her off to school, so she depends fully on the bus as a mode of transportation on a daily basis to get to school. School is too far of a walk to do alone, especially since the streets are not supportive of pedrestrians around her neighborhood.',
+  },
+  {
+    id: 'parent-rider',
+    name: 'Parent Rider',
+    image: '/images/project-sec/Parent.png',
+    details: 'This parent depends on the bus to get around the city. Her daughter is still younger, so she needs an adult to ride with her to school. Sometimes the mornings are challenging because she needs to keep track of her daughter along with other things while waiting for the bus. This is challenging without a place to sit.',
+  },
+  {
+    id: 'educator-commuter',
+    name: 'Corporate Commuter',
+    image: '/images/project-sec/Educator.png',
+    details: 'This downtown local relied on the bus to get to work. If he were to walk everyday it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
+  },
+];
+
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
@@ -18,6 +39,8 @@ export default function ProjectThreePage() {
   const [benchClicked, setBenchClicked] = useState(false);
   const [researchBusPhase, setResearchBusPhase] = useState('idle');
   const [researchBusAnchor, setResearchBusAnchor] = useState({ top: null, left: 0 });
+  const [expandedResearchPersona, setExpandedResearchPersona] = useState(null);
+  const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
   const contentRef = useRef(null);
 
   return (
@@ -282,6 +305,81 @@ export default function ProjectThreePage() {
                   </div>
                 )}
                 <h2 className={styles.researchFindingIntro}>Based on my field research, discussing with other bus goers, here’s what I found:</h2>
+                <section className={styles.researchChallenges} aria-labelledby="research-challenges-title">
+                  <h3 className={styles.researchChallengesTitle} id="research-challenges-title">Challenges</h3>
+                  <ul className={styles.researchChallengeGrid}>
+                    <li>No Wifi Connection</li>
+                    <li>Incoming Bus Information Not Displayed Clearly</li>
+                    <li>No Seating</li>
+                    <li>Bus Drivers Missing Bus Stop Waiters</li>
+                    <li>Bus Only Takes Exact Change</li>
+                    <li>Disruption of Local Community</li>
+                    <li>No Weather Protection</li>
+                    <li>Bus Route Adjustment Information is Unclear</li>
+                    <li>Lack of Consideration for Passengers</li>
+                  </ul>
+                </section>
+                <section className={styles.researchInsights} aria-labelledby="research-userpersonas-title">
+                  <h3 className={styles.researchInsightsTitle} id="research-userpersonas-title">User Personas</h3>
+                  <div className={styles.researchPersonaBoard}>
+                    {showResearchPersonaHints && (
+                      <>
+                        <button
+                          className={`${styles.researchPersonaHint} ${styles.researchPersonaHintLeft}`}
+                          type="button"
+                          onClick={() => setShowResearchPersonaHints(false)}
+                          aria-label="Dismiss left persona hint"
+                        >
+                          <Image src="/images/other/Click_Me.png" alt="Click me" width={800} height={800} />
+                        </button>
+                        <button
+                          className={`${styles.researchPersonaHint} ${styles.researchPersonaHintRight}`}
+                          type="button"
+                          onClick={() => setShowResearchPersonaHints(false)}
+                          aria-label="Dismiss right persona hint"
+                        >
+                          <Image src="/images/other/Click_Me_Left_.png" alt="Click me" width={300} height={300} />
+                        </button>
+                      </>
+                    )}
+                    <div className={styles.researchPersonaGrid}>
+                    {researchPersonas.map((persona) => {
+                      const isExpanded = expandedResearchPersona === persona.id;
+                      const detailsId = `research-persona-details-${persona.id}`;
+
+                      return (
+                        <button
+                          className={`${styles.researchPersonaCard}${isExpanded ? ` ${styles.researchPersonaCardExpanded}` : ''}`}
+                          type="button"
+                          key={persona.id}
+                          aria-expanded={isExpanded}
+                          aria-controls={detailsId}
+                          onClick={() => {
+                            setShowResearchPersonaHints(false);
+                            setExpandedResearchPersona(isExpanded ? null : persona.id);
+                          }}
+                        >
+                          <Image
+                            className={styles.researchPersonaImage}
+                            src={persona.image}
+                            alt=""
+                            width={512}
+                            height={512}
+                            sizes="(max-width: 700px) 40vw, 12rem"
+                          />
+                          <span className={styles.researchPersonaName}>{persona.name}</span>
+                          <span className={styles.researchPersonaDetails} id={detailsId} hidden={!isExpanded}>
+                            {persona.details}
+                          </span>
+                        </button>
+                      );
+                    })}
+                    </div>
+                  </div>
+                </section>
+                <section className={styles.projectStepItem} id="project-step-02">
+                  <h2 className={styles.projectNumberTitle}>02</h2>
+                </section>
                 <article className={styles.projectDetail}>
                   <h2>Research</h2>
                   <p>Paragraph for Research.</p>

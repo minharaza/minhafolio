@@ -190,6 +190,7 @@
 .busOriginPhoto {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   box-shadow: 0 0.5rem 1.25rem rgb(35 22 29 / 22%);
@@ -346,6 +347,30 @@
   border-radius: 8px;
   background: transparent;
   cursor: pointer;
+}
+
+.researchBusPrompt {
+  display: flex;
+  width: 100%;
+  margin-left: calc(24rem - 50vw + clamp(1rem, 4vw, 4rem));
+  align-items: center;
+  justify-self: start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.researchBusButton {
+  width: min(30rem, 40vw);
+}
+
+.researchQuestion {
+  width: min(100%, 44rem);
+  margin: 0 auto 1rem;
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1.35;
+  text-align: center;
 }
 
 .projectBusButton img {
@@ -1477,6 +1502,10 @@
 
   .projectStepsGrid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .researchBusPrompt {
+    margin-left: 0;
   }
 
   .researchInsights {

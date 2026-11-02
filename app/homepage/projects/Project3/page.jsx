@@ -9,12 +9,14 @@ export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
   const busQuestion3 = 'Well I have! What a tragedy!';
+  const researchQuestion = 'How can we build a better bus stop?';
   const [isDriving, setIsDriving] = useState(false);
   const [hasDriven, setHasDriven] = useState(false);
   const [secondPhase, setSecondPhase] = useState('idle');
   const [thirdPhase, setThirdPhase] = useState('idle');
   const [busAnchor, setBusAnchor] = useState({ top: null, left: 0 });
   const [benchClicked, setBenchClicked] = useState(false);
+  const [researchQuestionVisible, setResearchQuestionVisible] = useState(false);
   const contentRef = useRef(null);
 
   return (
@@ -219,6 +221,35 @@ export default function ProjectThreePage() {
               </figure>
               <div className={styles.projectStepItem} id="project-step-02">
                 <h2 className={styles.projectNumberTitle}>02</h2>
+                <div className={styles.researchBusPrompt}>
+                  <button
+                    className={`${styles.projectBusButton} ${styles.researchBusButton}`}
+                    type="button"
+                    onClick={() => setResearchQuestionVisible(true)}
+                    aria-label="Reveal the research question"
+                    aria-expanded={researchQuestionVisible}
+                  >
+                    <Image
+                      src="/images/project-sec/Bus.png"
+                      alt=""
+                      width={2160}
+                      height={1620}
+                      sizes="(max-width: 700px) 55vw, 18rem"
+                    />
+                  </button>
+                  {!researchQuestionVisible && (
+                    <Image
+                      className={styles.projectStepBusHint}
+                      src="/images/other/Click_Me_Left_.png"
+                      alt="Click me"
+                      width={300}
+                      height={300}
+                    />
+                  )}
+                </div>
+                {researchQuestionVisible && (
+                  <p className={styles.researchQuestion} role="status">{researchQuestion}</p>
+                )}
                 <article className={styles.projectDetail}>
                   <h2>Research</h2>
                   <p>Paragraph for Research.</p>

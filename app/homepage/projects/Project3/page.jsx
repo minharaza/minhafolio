@@ -534,6 +534,26 @@ export default function ProjectThreePage() {
                     ))}
                   </ul>
                 </section>
+                <article className={styles.projectDetail}>
+                  <p>Overall, the benefits public art has within a community’s mental safety is enormous! 
+                    The Cincinnati local government and organizations have invested in murals on building 
+                    facades all over the Over-The-Rhine area. This initiative has given a breath of life 
+                    into the area, especially in recent decades. 
+                    <br /><br />
+                    ArtsWave is the driving engine for the Cincinnati arts community, which has helped 
+                    transform the city fueling the community’s Identity. Of the public art benefits listed 
+                    above, ArtsWave has encapsulated each area at an immense impact. The non-profit 
+                    organization has supported over 150 organizations across the city, and most notably, 
+                    had a $1.6 billion economic impact upon the city. This organization has been truly 
+                    groundbreaking to the city, and has transformed its identity from one of unrest to a 
+                    revitalized effort highlighting the vibrancy of its community members.
+                    <br /><br />
+                    Cincinnati is the perfect case study for how public art can channel positive 
+                    change into benefiting community health. 
+
+
+                    </p>
+                </article>
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>

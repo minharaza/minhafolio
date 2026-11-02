@@ -172,12 +172,24 @@ export default function ProjectThreePage() {
                       />
                     )}
                     <Image
-                      className={styles.projectBenchCharacter}
+                      className={`${styles.projectBenchCharacter} ${benchClicked ? styles.projectBenchCharacterSad : ''}`}
                       src={benchClicked ? '/images/project-sec/Sad.png' : '/images/project-sec/Happy.png'}
                       alt={benchClicked ? 'Sad character where the bus stop bench stood' : 'Happy character sitting on the bus stop bench'}
                       width={1024}
                       height={1536}
                     />
+                    {benchClicked && (
+                      <span className={styles.projectBenchSpeech}>
+                        <Image
+                          src="/images/other/Speech_Bubble.png"
+                          alt=""
+                          aria-hidden="true"
+                          fill
+                          sizes="(max-width: 700px) 40vw, 12rem"
+                        />
+                        <span>I miss the bench!</span>
+                      </span>
+                    )}
                   </button>
                 </div>
               </div>

@@ -1092,6 +1092,35 @@
   pointer-events: none;
 }
 
+.projectBenchCharacterSad {
+  left: 34%;
+}
+
+.projectBenchSpeech {
+  position: absolute;
+  top: 20%;
+  left: 51%;
+  display: grid;
+  width: 48%;
+  aspect-ratio: 1;
+  place-items: center;
+  color: #4a2722;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1.5rem, 1.1vw, 0.9rem);
+  line-height: 1.15;
+  text-align: center;
+  pointer-events: none;
+}
+
+.projectBenchSpeech img {
+  object-fit: contain;
+}
+
+.projectBenchSpeech > span {
+  position: relative;
+  width: 68%;
+}
+
 .projectBenchHint {
   grid-column: 1;
   grid-row: 1;

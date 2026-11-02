@@ -14,7 +14,7 @@ export default function ProjectThreePage() {
   const [secondPhase, setSecondPhase] = useState('idle');
   const [thirdPhase, setThirdPhase] = useState('idle');
   const [busAnchor, setBusAnchor] = useState({ top: null, left: 0 });
-  const [showBench, setShowBench] = useState(true);
+  const [benchClicked, setBenchClicked] = useState(false);
   const contentRef = useRef(null);
 
   return (
@@ -146,38 +146,40 @@ export default function ProjectThreePage() {
                      </p>
                   
                 </article>
-                {showBench && (
                 <div className={styles.projectBenchRow}>
-                  <Image
-                    className={styles.projectBenchHint}
-                    src="/images/other/Click_Me.png"
-                    alt="Click me"
-                    width={800}
-                    height={800}
-                  />
+                  {!benchClicked && (
+                    <Image
+                      className={styles.projectBenchHint}
+                      src="/images/other/Click_Me.png"
+                      alt="Click me"
+                      width={800}
+                      height={800}
+                    />
+                  )}
                   <button
                     className={styles.projectBenchButton}
                     type="button"
-                    onClick={() => setShowBench(false)}
-                    aria-label="Bus stop bench"
+                    onClick={() => setBenchClicked(true)}
+                    aria-label={benchClicked ? 'Sad rider where the bus stop bench stood' : 'Click the bus stop bench'}
                   >
+                    {!benchClicked && (
+                      <Image
+                        className={styles.projectStepImage}
+                        src="/images/project-sec/Bench.png"
+                        alt="Illustration of a bus stop with a bench"
+                        width={1932}
+                        height={1932}
+                      />
+                    )}
                     <Image
-                      className={styles.projectStepImage}
-                      src="/images/project-sec/Bench.png"
-                      alt="Illustration of a bus stop with a bench"
-                      width={1932}
-                      height={1932}
-                    />
-                    <Image
-                      className={styles.projectBenchHappy}
-                      src="/images/project-sec/Happy.png"
-                      alt="Happy character sitting on the bus stop bench"
+                      className={styles.projectBenchCharacter}
+                      src={benchClicked ? '/images/project-sec/Sad.png' : '/images/project-sec/Happy.png'}
+                      alt={benchClicked ? 'Sad character where the bus stop bench stood' : 'Happy character sitting on the bus stop bench'}
                       width={1024}
                       height={1536}
                     />
                   </button>
                 </div>
-                )}
               </div>
               <figure className={styles.busOriginStory} aria-label="The missing bus stop bench">
                 <div className={styles.busOriginPhotos}>

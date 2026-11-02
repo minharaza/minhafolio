@@ -1065,6 +1065,7 @@
   display: block;
   grid-column: 2;
   width: 100%;
+  aspect-ratio: 1;
   padding: 0;
   border: 0;
   background: transparent;
@@ -1081,7 +1082,7 @@
   margin: 0;
 }
 
-.projectBenchHappy {
+.projectBenchCharacter {
   position: absolute;
   top: 45%;
   left: 50%;

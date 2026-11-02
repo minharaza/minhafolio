@@ -62,6 +62,7 @@ export default function ProjectThreePage() {
   const busQuestion2 = 'And then your bus stop was missing its bench?';
   const busQuestion3 = 'Well I have! What a tragedy!';
   const researchQuestion = 'How can we build a better bus stop?';
+  const publicArtQuestion = 'Why is public art important to community?';
   const [isDriving, setIsDriving] = useState(false);
   const [hasDriven, setHasDriven] = useState(false);
   const [secondPhase, setSecondPhase] = useState('idle');
@@ -70,6 +71,8 @@ export default function ProjectThreePage() {
   const [benchClicked, setBenchClicked] = useState(false);
   const [researchBusPhase, setResearchBusPhase] = useState('idle');
   const [researchBusAnchor, setResearchBusAnchor] = useState({ top: null, left: 0 });
+  const [publicArtBusPhase, setPublicArtBusPhase] = useState('idle');
+  const [publicArtBusAnchor, setPublicArtBusAnchor] = useState({ top: null, left: 0 });
   const [expandedResearchPersona, setExpandedResearchPersona] = useState(null);
   const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
   const contentRef = useRef(null);
@@ -77,11 +80,13 @@ export default function ProjectThreePage() {
   return (
     <main
       className={styles.page}
-      style={busAnchor.top === null && researchBusAnchor.top === null ? undefined : {
+      style={busAnchor.top === null && researchBusAnchor.top === null && publicArtBusAnchor.top === null ? undefined : {
         '--bus-anchor': busAnchor.top === null ? undefined : `${busAnchor.top}px`,
         '--bus-left': busAnchor.top === null ? undefined : `${busAnchor.left}px`,
         '--research-bus-anchor': researchBusAnchor.top === null ? undefined : `${researchBusAnchor.top}px`,
         '--research-bus-left': researchBusAnchor.top === null ? undefined : `${researchBusAnchor.left}px`,
+        '--public-art-bus-anchor': publicArtBusAnchor.top === null ? undefined : `${publicArtBusAnchor.top}px`,
+        '--public-art-bus-left': publicArtBusAnchor.top === null ? undefined : `${publicArtBusAnchor.left}px`,
       }}
     >
       <div className={styles.backgroundTexture} aria-hidden="true" />
@@ -443,6 +448,53 @@ export default function ProjectThreePage() {
                      tap into the local cities character with the use of public art!
                     </p>
                 </article>
+                <div className={styles.publicArtBusPrompt}>
+                  <button
+                    className={`${styles.projectBusButton} ${styles.publicArtBusButton} ${publicArtBusPhase !== 'idle' ? styles.researchBusButtonInactive : ''}`}
+                    type="button"
+                    disabled={publicArtBusPhase !== 'idle'}
+                    onClick={(event) => {
+                      const busRect = event.currentTarget.getBoundingClientRect();
+                      const contentRect = contentRef.current.getBoundingClientRect();
+                      setPublicArtBusAnchor({
+                        top: busRect.top - contentRect.top,
+                        left: busRect.left - contentRect.left,
+                      });
+                      setPublicArtBusPhase('driving');
+                    }}
+                    aria-label="Reveal why public art is important to community"
+                  >
+                    <Image src="/images/project-sec/Bus.png" alt="Click to continue" width={2160} height={1620} sizes="(max-width: 700px) 65vw, 30rem" />
+                  </button>
+                  {publicArtBusPhase === 'idle' && (
+                    <Image
+                      className={styles.projectStepBusHint}
+                      src="/images/other/Click_Me_Left_.png"
+                      alt="Click me"
+                      width={300}
+                      height={300}
+                    />
+                  )}
+                </div>
+                {publicArtBusPhase !== 'idle' && (
+                  <p className={styles.publicArtQuestion} role="status" aria-label={publicArtQuestion}>
+                    {[...publicArtQuestion].map((char, index) => (
+                      <span
+                        aria-hidden="true"
+                        className={styles.busQuestionLetter}
+                        key={index}
+                        style={{ animationDelay: `${0.2 + (index * 2.4) / publicArtQuestion.length}s` }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </p>
+                )}
+                {publicArtBusPhase === 'driving' && (
+                  <div className={styles.publicArtBusDriving} onAnimationEnd={() => setPublicArtBusPhase('done')} aria-hidden="true">
+                    <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
+                  </div>
+                )}
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>

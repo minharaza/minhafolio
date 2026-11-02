@@ -409,6 +409,54 @@
   pointer-events: none;
 }
 
+.publicArtBusPrompt {
+  display: flex;
+  width: 100%;
+  margin-left: calc(24rem - 50vw + clamp(1rem, 4vw, 4rem));
+  align-items: center;
+  justify-self: start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+
+.publicArtBusButton {
+  width: min(30rem, 65vw);
+}
+
+.publicArtBusDriving {
+  position: absolute;
+  top: var(--public-art-bus-anchor);
+  left: var(--public-art-bus-left);
+  z-index: 5;
+  width: min(30rem, 40vw);
+  pointer-events: none;
+  animation: busDrive 5s linear forwards;
+}
+
+.publicArtBusDriving img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%));
+}
+
+.publicArtQuestion {
+  position: absolute;
+  top: calc(var(--public-art-bus-anchor) + min(11.25rem, 15vw) - 20px);
+  left: 50%;
+  z-index: 4;
+  width: min(96vw, 72rem);
+  margin: 0;
+  color: #4a2722;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 4.5vw, 3rem);
+  line-height: 1.35;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
 .projectBusButton img {
   display: block;
   width: 100%;
@@ -1797,6 +1845,10 @@
   }
 
   .researchBusPrompt {
+    margin-left: 0;
+  }
+
+  .publicArtBusPrompt {
     margin-left: 0;
   }
 

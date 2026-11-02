@@ -26,6 +26,37 @@ const researchPersonas = [
   },
 ];
 
+const transportationBenefits = [
+  {
+    label: 'Economic Opportunity',
+    icon: '/images/project-sec/proj%203/increase-svgrepo-com.svg',
+  },
+  {
+    label: 'Better Safety',
+    icon: '/images/project-sec/proj%203/safety-svgrepo-com.svg',
+  },
+  {
+    label: 'Higher Affordability',
+    icon: '/images/project-sec/proj%203/save-money-cash-savings-money-reserve-svgrepo-com.svg',
+  },
+  {
+    label: 'Less Gas Consumption',
+    icon: '/images/project-sec/proj%203/gasoline-svgrepo-com.svg',
+  },
+  {
+    label: 'Reduces Air Pollution',
+    icon: '/images/project-sec/proj%203/pollution-contamination-environmental-pollution-industrian-waste-svgrepo-com.svg',
+  },
+  {
+    label: 'Better Accessibility',
+    icon: '/images/project-sec/proj%203/wheelchair-svgrepo-com.svg',
+  },
+  {
+    label: 'Promotes Healthy Lifestyle',
+    icon: '/images/project-sec/proj%203/walking-1-svgrepo-com.svg',
+  },
+];
+
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
@@ -377,12 +408,40 @@ export default function ProjectThreePage() {
                     </div>
                   </div>
                 </section>
-                <section className={styles.projectStepItem} id="project-step-02">
-                  <h2 className={styles.projectNumberTitle}>02</h2>
+                <section className={`${styles.researchInsights} ${styles.transportationBenefitsSection}`} aria-labelledby="transportation-benefits-title">
+                  <h3 className={styles.researchInsightsTitle} id="transportation-benefits-title">Benefits of Investing in Public Transportation</h3>
+                  <ul className={styles.transportationBenefitsGrid}>
+                    {transportationBenefits.map((benefit) => (
+                      <li className={styles.transportationBenefit} key={benefit.label}>
+                        <span className={styles.transportationBenefitIcon}>
+                          <Image src={benefit.icon} alt="" width={128} height={128} sizes="(max-width: 700px) 7rem, 9rem" />
+                        </span>
+                        <span className={styles.transportationBenefitLabel}>{benefit.label}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </section>
                 <article className={styles.projectDetail}>
-                  <h2>Research</h2>
-                  <p>Paragraph for Research.</p>
+                  <p>It is unequivocally evident that research shows how public transportation is vital 
+                    to the health of cities and local communities. Bus stops become a portal into opportunity 
+                    and resources, especially within the Downtown Cincinnati area. This raises curiosity 
+                    about how such a vital point within thousands of people’s everyday lives is overlooked. 
+                    Whether a city is large or small, a bus stop guarantees community members to spend time 
+                    in a location point waiting for transportation. If cities invest in public spaces, 
+                    there would be a large positive impact on not only the individual residents, 
+                    but the overall health of the city. 
+                    <br /><br />
+                    There are two categories of improvement that can be considered when redesigning a bus stop. 
+                    Utilitarian improvements are solutions that alleviate an operational needs such as 
+                    improving accessibility or providing a bench at a stop. Aesthetic design improvements 
+                    are solutions aimed to improvement the quality of an experience through culturally 
+                    intertwined design. 
+                     <br /><br />
+                     My goal in a solution for this opportunity is to combine both utilitarianism and 
+                     aesthetics into a design that creates a comforting space for bus-goers. Not only 
+                     should the function of the bus stop be catered to all users needs, but also it should 
+                     tap into the local cities character with the use of public art!
+                    </p>
                 </article>
               </div>
               <div className={styles.projectStepItem} id="project-step-03">

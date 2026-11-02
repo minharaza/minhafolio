@@ -281,6 +281,7 @@ export default function ProjectThreePage() {
                     <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
                   </div>
                 )}
+                <h2 className={styles.researchFindingIntro}>Based on my field research, discussing with other bus goers, here’s what I found:</h2>
                 <article className={styles.projectDetail}>
                   <h2>Research</h2>
                   <p>Paragraph for Research.</p>

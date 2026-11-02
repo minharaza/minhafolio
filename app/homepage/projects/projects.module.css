@@ -396,13 +396,14 @@
   top: calc(var(--research-bus-anchor) + min(11.25rem, 15vw) - 20px);
   left: 50%;
   z-index: 4;
-  width: min(90vw, 54rem);
+  width: min(96vw, 72rem);
   margin: 0;
   color: #4a2722;
   font-family: 'Happy Monkey', cursive;
-  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-size: clamp(1rem, 4.5vw, 3rem);
   line-height: 1.35;
   text-align: center;
+  white-space: nowrap;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
@@ -1203,6 +1204,16 @@
   font-family: 'Happy Monkey', cursive;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.researchFindingIntro {
+  width: 100%;
+  margin: 0 0 0.5rem;
+  color: #fff;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .projectDetail p {

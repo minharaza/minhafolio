@@ -788,7 +788,8 @@
   text-align: center;
 }
 
-.transportationBenefitsSection {
+.transportationBenefitsSection,
+.publicArtBenefitsSection {
   width: min(calc(100vw - 3rem), 76rem);
   margin-top: 1.75rem;
   justify-self: center;
@@ -824,6 +825,14 @@
   grid-column: 2 / span 2;
 }
 
+.transportationBenefit:nth-child(6) {
+  grid-column: 4 / span 2;
+}
+
+.transportationBenefit:nth-child(7) {
+  grid-column: 6 / span 2;
+}
+
 .transportationBenefitIcon {
   display: grid;
   width: min(100%, 10rem);
@@ -833,7 +842,8 @@
   background: #2b73c8;
 }
 
-.transportationBenefitIcon img {
+.transportationBenefitIcon img,
+.publicArtBenefitIcon img {
   display: block;
   width: 68%;
   height: 68%;
@@ -844,12 +854,50 @@
   max-width: 14rem;
 }
 
-.transportationBenefit:nth-child(6) {
-  grid-column: 4 / span 2;
+.publicArtBenefitsGrid {
+  display: grid;
+  margin: 0;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem 0;
+  border-radius: 2rem;
+  background: rgb(74 39 34 / 78%);
+  list-style: none;
 }
 
-.transportationBenefit:nth-child(7) {
-  grid-column: 6 / span 2;
+.publicArtBenefit {
+  display: flex;
+  min-width: 0;
+  grid-column: span 2;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  color: #fff;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.publicArtBenefit:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.publicArtBenefitIcon {
+  display: grid;
+  width: min(100%, 10rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #2b73c8;
+}
+
+.publicArtBenefitLabel {
+  max-width: 14rem;
+}
+
+.publicArtBenefit:nth-child(5) {
+  grid-column: 4 / span 2;
 }
 
 .researchPersonaBoard {
@@ -1857,7 +1905,8 @@
     gap: 0.85rem;
   }
 
-  .transportationBenefitsSection {
+  .transportationBenefitsSection,
+  .publicArtBenefitsSection {
     width: 100%;
     margin-top: 1.25rem;
     gap: 1rem;
@@ -1879,12 +1928,29 @@
     width: min(100%, 7rem);
   }
 
-  .transportationBenefit:nth-child(5),
-  .transportationBenefit:nth-child(6) {
-    grid-column: auto;
+  .transportationBenefit:nth-child(7) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 0.75rem) / 2);
   }
 
-  .transportationBenefit:nth-child(7) {
+  .publicArtBenefitsGrid {
+    padding: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 0.75rem;
+    border-radius: 1rem;
+  }
+
+  .publicArtBenefit {
+    grid-column: auto;
+    font-size: 0.95rem;
+  }
+
+  .publicArtBenefitIcon {
+    width: min(100%, 7rem);
+  }
+
+  .publicArtBenefit:nth-child(5) {
     grid-column: 1 / -1;
     justify-self: center;
     width: calc((100% - 0.75rem) / 2);

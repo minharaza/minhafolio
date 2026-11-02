@@ -57,6 +57,29 @@ const transportationBenefits = [
   },
 ];
 
+const publicArtBenefits = [
+  {
+    label: 'Economic Growth',
+    icon: '/images/project-sec/proj%203/pub%20health/money-cash-svgrepo-com.svg',
+  },
+  {
+    label: 'Increased Cultural Identity',
+    icon: '/images/project-sec/proj%203/pub%20health/gender-male-female-svgrepo-com.svg',
+  },
+  {
+    label: 'Validates Local Artists',
+    icon: '/images/project-sec/proj%203/pub%20health/artist-palette-art-artistic-svgrepo-com.svg',
+  },
+  {
+    label: 'Reinforces Social Connection',
+    icon: '/images/project-sec/proj%203/pub%20health/connection-svgrepo-com.svg',
+  },
+  {
+    label: 'Benefits Public Mental Health',
+    icon: '/images/project-sec/proj%203/pub%20health/mental-health-fill-svgrepo-com.svg',
+  },
+];
+
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
@@ -495,6 +518,22 @@ export default function ProjectThreePage() {
                     <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
                   </div>
                 )}
+                <section
+                  className={`${styles.researchInsights} ${styles.publicArtBenefitsSection}`}
+                  aria-labelledby="public-art-benefits-title"
+                >
+                  <h3 className={styles.researchInsightsTitle} id="public-art-benefits-title">Benefits of Investing in Public Art</h3>
+                  <ul className={styles.publicArtBenefitsGrid}>
+                    {publicArtBenefits.map((benefit) => (
+                      <li className={styles.publicArtBenefit} key={benefit.label}>
+                        <span className={styles.publicArtBenefitIcon}>
+                          <Image src={benefit.icon} alt="" width={128} height={128} sizes="(max-width: 700px) 7rem, 9rem" />
+                        </span>
+                        <span className={styles.publicArtBenefitLabel}>{benefit.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>

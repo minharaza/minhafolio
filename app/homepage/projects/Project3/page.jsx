@@ -36,7 +36,7 @@ export default function ProjectThreePage() {
       </Link>
 
       <section className={styles.content} ref={contentRef}>
-        <header className={styles.header}>
+        <header className={`${styles.header} ${styles.projectThreeHeader}`}>
           <p className={styles.eyebrow}>A Deep Dive into:</p>
           <h1>Bus Stops:</h1>
           <p className={styles.eyebrow}>The Cornerstones of Community!</p>

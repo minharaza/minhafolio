@@ -16,13 +16,19 @@ export default function ProjectThreePage() {
   const [thirdPhase, setThirdPhase] = useState('idle');
   const [busAnchor, setBusAnchor] = useState({ top: null, left: 0 });
   const [benchClicked, setBenchClicked] = useState(false);
-  const [researchQuestionVisible, setResearchQuestionVisible] = useState(false);
+  const [researchBusPhase, setResearchBusPhase] = useState('idle');
+  const [researchBusAnchor, setResearchBusAnchor] = useState({ top: null, left: 0 });
   const contentRef = useRef(null);
 
   return (
     <main
       className={styles.page}
-      style={busAnchor.top === null ? undefined : { '--bus-anchor': `${busAnchor.top}px`, '--bus-left': `${busAnchor.left}px` }}
+      style={busAnchor.top === null && researchBusAnchor.top === null ? undefined : {
+        '--bus-anchor': busAnchor.top === null ? undefined : `${busAnchor.top}px`,
+        '--bus-left': busAnchor.top === null ? undefined : `${busAnchor.left}px`,
+        '--research-bus-anchor': researchBusAnchor.top === null ? undefined : `${researchBusAnchor.top}px`,
+        '--research-bus-left': researchBusAnchor.top === null ? undefined : `${researchBusAnchor.left}px`,
+      }}
     >
       <div className={styles.backgroundTexture} aria-hidden="true" />
       <Link className={styles.backButton} href="/homepage/projects" aria-label="Back to projects">
@@ -223,11 +229,20 @@ export default function ProjectThreePage() {
                 <h2 className={styles.projectNumberTitle}>02</h2>
                 <div className={styles.researchBusPrompt}>
                   <button
-                    className={`${styles.projectBusButton} ${styles.researchBusButton}`}
+                    className={`${styles.projectBusButton} ${styles.researchBusButton} ${researchBusPhase !== 'idle' ? styles.researchBusButtonInactive : ''}`}
                     type="button"
-                    onClick={() => setResearchQuestionVisible(true)}
-                    aria-label="Reveal the research question"
-                    aria-expanded={researchQuestionVisible}
+                    onClick={(event) => {
+                      const busRect = event.currentTarget.getBoundingClientRect();
+                      const contentRect = contentRef.current.getBoundingClientRect();
+                      setResearchBusAnchor({
+                        top: busRect.top - contentRect.top,
+                        left: busRect.left - contentRect.left,
+                      });
+                      setResearchBusPhase('driving');
+                    }}
+                    aria-label="Start the bus and reveal the research question"
+                    aria-expanded={researchBusPhase !== 'idle'}
+                    disabled={researchBusPhase !== 'idle'}
                   >
                     <Image
                       src="/images/project-sec/Bus.png"
@@ -237,7 +252,7 @@ export default function ProjectThreePage() {
                       sizes="(max-width: 700px) 55vw, 18rem"
                     />
                   </button>
-                  {!researchQuestionVisible && (
+                  {researchBusPhase === 'idle' && (
                     <Image
                       className={styles.projectStepBusHint}
                       src="/images/other/Click_Me_Left_.png"
@@ -247,8 +262,24 @@ export default function ProjectThreePage() {
                     />
                   )}
                 </div>
-                {researchQuestionVisible && (
-                  <p className={styles.researchQuestion} role="status">{researchQuestion}</p>
+                {researchBusPhase !== 'idle' && (
+                  <p className={styles.researchQuestion} role="status" aria-label={researchQuestion}>
+                    {[...researchQuestion].map((char, index) => (
+                      <span
+                        aria-hidden="true"
+                        className={styles.busQuestionLetter}
+                        key={index}
+                        style={{ animationDelay: `${0.2 + (index * 2.4) / researchQuestion.length}s` }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </p>
+                )}
+                {researchBusPhase === 'driving' && (
+                  <div className={styles.researchBusDriving} onAnimationEnd={() => setResearchBusPhase('done')} aria-hidden="true">
+                    <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
+                  </div>
                 )}
                 <article className={styles.projectDetail}>
                   <h2>Research</h2>

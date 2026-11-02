@@ -363,14 +363,45 @@
   width: min(30rem, 40vw);
 }
 
+.researchBusButtonInactive {
+  visibility: hidden;
+}
+
+.researchBusButtonInactive img {
+  animation: none;
+}
+
+.researchBusDriving {
+  position: absolute;
+  top: var(--research-bus-anchor);
+  left: var(--research-bus-left);
+  z-index: 5;
+  width: min(30rem, 40vw);
+  pointer-events: none;
+  animation: busDrive 5s linear forwards;
+}
+
+.researchBusDriving img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0.3rem 0.5rem rgb(35 22 29 / 25%));
+}
+
 .researchQuestion {
-  width: min(100%, 44rem);
-  margin: 0 auto 1rem;
-  color: #fff8f1;
+  position: absolute;
+  top: calc(var(--research-bus-anchor) + min(11.25rem, 15vw) - 20px);
+  left: 50%;
+  z-index: 4;
+  width: min(90vw, 54rem);
+  margin: 0;
+  color: #4a2722;
   font-family: 'Happy Monkey', cursive;
   font-size: clamp(1.25rem, 2.4vw, 2rem);
   line-height: 1.35;
   text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .projectBusButton img {

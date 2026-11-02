@@ -1061,6 +1061,7 @@
 }
 
 .projectBenchButton {
+  position: relative;
   display: block;
   grid-column: 2;
   width: 100%;
@@ -1078,6 +1079,16 @@
 .projectBenchButton .projectStepImage {
   width: 100%;
   margin: 0;
+}
+
+.projectBenchHappy {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 32%;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .projectBenchHint {

@@ -168,6 +168,13 @@ export default function ProjectThreePage() {
                       width={1932}
                       height={1932}
                     />
+                    <Image
+                      className={styles.projectBenchHappy}
+                      src="/images/project-sec/Happy.png"
+                      alt="Happy character sitting on the bus stop bench"
+                      width={1024}
+                      height={1536}
+                    />
                   </button>
                 </div>
                 )}

@@ -80,6 +80,80 @@ const publicArtBenefits = [
   },
 ];
 
+const worksCitedBooks = [
+  {
+    id: '1',
+    image: '/images/other/Book_1.png',
+    author: 'ArtsWave',
+    year: 'n.d.',
+    title: 'ArtsWave economic impact report',
+    format: '[PDF].',
+    url: 'https://artswave.org/wp-content/uploads/artswaveeconomicimpact_final.pdf',
+  },
+  {
+    id: '2',
+    image: '/images/other/Book_2.png',
+    author: 'ArtsWave',
+    year: 'n.d.',
+    title: 'ArtsWave',
+    url: 'https://artswave.org/',
+  },
+  {
+    id: '3',
+    image: '/images/other/Book_3.png',
+    author: 'University of Cincinnati',
+    year: '2025, July',
+    title: 'How street murals impact communities: A study',
+    site: 'University of Cincinnati News.',
+    url: 'https://www.uc.edu/news/articles/2025/07/how-street-murals-impact-communities-a-study.html',
+  },
+  {
+    id: '4',
+    image: '/images/other/Book_4.png',
+    author: 'Fancourt, D., & Finn, S.',
+    year: '2019',
+    title: 'What is the evidence on the role of the arts in improving health and well-being? A scoping review',
+    site: 'World Health Organization Regional Office for Europe.',
+    url: 'http://www.euro.who.int/en/publications/abstracts/what-is-the-evidence-on-the-role-of-the-arts-in-improving-health-and-well-being-a-scoping-review-2019',
+  },
+  {
+    id: '5',
+    image: '/images/other/Book_1.png',
+    author: 'Destination Station',
+    year: 'n.d.',
+    title: 'Destination Station report (Version 2)',
+    format: '[PDF].',
+    url: 'https://cdn.prod.website-files.com/581110f944272e4a11871c01/5f0dfdb527350349d9092a42_5d3b6d4acb7dfd23ddee1fd5_Destination%20Station%20Report%20v2.pdf',
+  },
+  {
+    id: '6',
+    image: '/images/other/Book_2.png',
+    author: 'Americans for the Arts',
+    year: 'n.d.',
+    title: 'Why public art matters',
+    format: '[PDF].',
+    url: 'https://www.americansforthearts.org/sites/default/files/Why%20Public%20Art%20Matters_FINAL_web.pdf',
+  },
+  {
+    id: '7',
+    image: '/images/other/Book_3.png',
+    author: 'PPTA',
+    year: 'n.d.',
+    title: 'Building better bus stops: Quick reference',
+    format: '[PDF].',
+    url: 'https://ppta.net/wp-content/uploads/2026/01/Building-Better-Bus-Stops-Quick-Reference.pdf',
+  },
+  {
+    id: '8',
+    image: '/images/other/Book_4.png',
+    author: 'Gulati, N.',
+    year: '2019, September 6',
+    title: 'How a humble bus stop can anchor a whole neighborhood',
+    site: 'Project for Public Spaces.',
+    url: 'https://www.pps.org/article/how-a-humble-bus-stop-can-anchor-a-whole-neighborhood',
+  },
+];
+
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
@@ -98,6 +172,7 @@ export default function ProjectThreePage() {
   const [publicArtBusAnchor, setPublicArtBusAnchor] = useState({ top: null, left: 0 });
   const [expandedResearchPersona, setExpandedResearchPersona] = useState(null);
   const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
+  const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
   const contentRef = useRef(null);
 
   return (
@@ -554,6 +629,65 @@ export default function ProjectThreePage() {
 
                     </p>
                 </article>
+                <section className={styles.worksCitedSection} aria-labelledby="works-cited-title">
+                  <h3 className={styles.researchInsightsTitle} id="works-cited-title">Works Cited</h3>
+                  <div className={styles.worksCitedShelves}>
+                    {[0, 1].map((shelfIndex) => {
+                      const shelfBooks = worksCitedBooks.slice(shelfIndex * 4, shelfIndex * 4 + 4);
+
+                      return (
+                        <div className={styles.worksCitedShelf} key={shelfIndex}>
+                          <Image
+                            className={styles.worksCitedShelfImage}
+                            src="/images/other/Shelf2.png"
+                            alt=""
+                            width={2048}
+                            height={2048}
+                            sizes="(max-width: 700px) 90vw, 36rem"
+                          />
+                          {shelfBooks.map((book, index) => (
+                            <Image
+                              className={styles.worksCitedBookArtwork}
+                              src={book.image}
+                              alt=""
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 90vw, 36rem"
+                              key={`art-${book.id}`}
+                              style={{ '--book-index': index }}
+                            />
+                          ))}
+                          {shelfBooks.map((book, index) => (
+                            <button
+                              className={styles.worksCitedBookButton}
+                              type="button"
+                              key={book.id}
+                              style={{ '--book-top': `${66.25 - (index * 15.625)}%`, '--book-index': index }}
+                              aria-label={`Show citation information for book ${book.id}`}
+                              aria-expanded={selectedWorksCitedBook === book.id}
+                              aria-controls="works-cited-book-details"
+                              onClick={() => setSelectedWorksCitedBook(book.id)}
+                            />
+                          ))}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {selectedWorksCitedBook && (
+                    <div className={styles.worksCitedDetails} id="works-cited-book-details" aria-live="polite">
+                      <h4>Book {selectedWorksCitedBook}</h4>
+                      {(() => {
+                        const citation = worksCitedBooks.find((book) => book.id === selectedWorksCitedBook);
+                        return (
+                          <p>
+                            {citation.author} ({citation.year}). <em>{citation.title}</em>{citation.format ? ` ${citation.format}` : '.'}{citation.site ? ` ${citation.site}` : ''}{' '}
+                            <a href={citation.url} target="_blank" rel="noreferrer">{citation.url}</a>
+                          </p>
+                        );
+                      })()}
+                    </div>
+                  )}
+                </section>
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>

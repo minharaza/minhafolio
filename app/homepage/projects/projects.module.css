@@ -900,6 +900,112 @@
   grid-column: 4 / span 2;
 }
 
+.worksCitedSection {
+  display: grid;
+  width: min(100%, 48rem);
+  grid-column: 1 / -1;
+  gap: 2rem;
+  justify-self: center;
+}
+
+.worksCitedShelves {
+  display: grid;
+  min-width: 0;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.worksCitedShelf {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 1.55 / 1;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.worksCitedShelfImage,
+.worksCitedBookArtwork {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.worksCitedShelfImage {
+  z-index: 0;
+  transform: translateY(10%);
+}
+
+.worksCitedBookArtwork {
+  z-index: calc(1 + var(--book-index));
+  transform: translateY(calc(var(--book-index) * -10%));
+  pointer-events: none;
+}
+
+.worksCitedBookButton {
+  position: absolute;
+  top: var(--book-top);
+  left: 0;
+  z-index: calc(5 + var(--book-index));
+  width: 100%;
+  height: 22.2%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.worksCitedBookButton:hover {
+  background: rgb(255 255 255 / 8%);
+}
+
+.worksCitedBookButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: -3px;
+}
+
+.worksCitedDetails {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  background: rgba(121, 135, 120, 0.84);
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+}
+
+.worksCitedDetails h4,
+.worksCitedDetails p {
+  margin: 0;
+}
+
+.worksCitedDetails h4 {
+  margin-bottom: 0.45rem;
+  color: #f4d678;
+}
+
+.worksCitedDetails p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.worksCitedDetails a {
+  color: inherit;
+  overflow-wrap: anywhere;
+  text-underline-offset: 0.15em;
+}
+
+.worksCitedDetails a:hover,
+.worksCitedDetails a:focus-visible {
+  color: #fff;
+}
+
 .researchPersonaBoard {
   position: relative;
   width: 100%;
@@ -1958,6 +2064,10 @@
 
   .researchPersonaGrid {
     width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .worksCitedShelves {
     grid-template-columns: minmax(0, 1fr);
   }
 

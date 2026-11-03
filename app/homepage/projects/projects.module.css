@@ -908,12 +908,51 @@
   justify-self: center;
 }
 
+.worksCitedBoard {
+  position: relative;
+  min-width: 0;
+}
+
 .worksCitedShelves {
   display: grid;
   min-width: 0;
-  width: 100%;
+  width: calc(100% - 9rem);
+  margin: 0 auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
+}
+
+.worksCitedHint {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 6cap;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.worksCitedHintLeft {
+  left: 0;
+}
+
+.worksCitedHintRight {
+  right: 0;
+}
+
+.worksCitedHint img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+}
+
+.worksCitedHint:focus-visible {
+  outline: 3px solid #fff8f1;
+  outline-offset: 3px;
 }
 
 .worksCitedShelf {
@@ -2068,7 +2107,26 @@
   }
 
   .worksCitedShelves {
+    width: 100%;
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .worksCitedBoard {
+    padding-top: 4.5rem;
+  }
+
+  .worksCitedHint {
+    top: 0;
+    width: 4rem;
+    transform: none;
+  }
+
+  .worksCitedHintLeft {
+    left: 20%;
+  }
+
+  .worksCitedHintRight {
+    right: 20%;
   }
 
   .researchPersonaBoard {

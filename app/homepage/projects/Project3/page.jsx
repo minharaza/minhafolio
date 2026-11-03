@@ -172,6 +172,7 @@ export default function ProjectThreePage() {
   const [publicArtBusAnchor, setPublicArtBusAnchor] = useState({ top: null, left: 0 });
   const [expandedResearchPersona, setExpandedResearchPersona] = useState(null);
   const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
+  const [showWorksCitedHints, setShowWorksCitedHints] = useState(true);
   const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
   const contentRef = useRef(null);
 
@@ -631,47 +632,72 @@ export default function ProjectThreePage() {
                 </article>
                 <section className={styles.worksCitedSection} aria-labelledby="works-cited-title">
                   <h3 className={styles.researchInsightsTitle} id="works-cited-title">Works Cited</h3>
-                  <div className={styles.worksCitedShelves}>
-                    {[0, 1].map((shelfIndex) => {
-                      const shelfBooks = worksCitedBooks.slice(shelfIndex * 4, shelfIndex * 4 + 4);
+                  <div className={styles.worksCitedBoard}>
+                    {showWorksCitedHints && (
+                      <>
+                        <button
+                          className={`${styles.worksCitedHint} ${styles.worksCitedHintLeft}`}
+                          type="button"
+                          aria-label="Dismiss left Works Cited click hint"
+                          onClick={() => setShowWorksCitedHints(false)}
+                        >
+                          <Image src="/images/other/Click_Me.png" alt="Click me" width={800} height={800} />
+                        </button>
+                        <button
+                          className={`${styles.worksCitedHint} ${styles.worksCitedHintRight}`}
+                          type="button"
+                          aria-label="Dismiss right Works Cited click hint"
+                          onClick={() => setShowWorksCitedHints(false)}
+                        >
+                          <Image src="/images/other/Click_Me_Left_.png" alt="Click me" width={300} height={300} />
+                        </button>
+                      </>
+                    )}
+                    <div className={styles.worksCitedShelves}>
+                      {[0, 1].map((shelfIndex) => {
+                        const shelfBooks = worksCitedBooks.slice(shelfIndex * 4, shelfIndex * 4 + 4);
 
-                      return (
-                        <div className={styles.worksCitedShelf} key={shelfIndex}>
-                          <Image
-                            className={styles.worksCitedShelfImage}
-                            src="/images/other/Shelf2.png"
-                            alt=""
-                            width={2048}
-                            height={2048}
-                            sizes="(max-width: 700px) 90vw, 36rem"
-                          />
-                          {shelfBooks.map((book, index) => (
+                        return (
+                          <div className={styles.worksCitedShelf} key={shelfIndex}>
                             <Image
-                              className={styles.worksCitedBookArtwork}
-                              src={book.image}
+                              className={styles.worksCitedShelfImage}
+                              src="/images/other/Shelf2.png"
                               alt=""
                               width={2048}
                               height={2048}
                               sizes="(max-width: 700px) 90vw, 36rem"
-                              key={`art-${book.id}`}
-                              style={{ '--book-index': index }}
                             />
-                          ))}
-                          {shelfBooks.map((book, index) => (
-                            <button
-                              className={styles.worksCitedBookButton}
-                              type="button"
-                              key={book.id}
-                              style={{ '--book-top': `${66.25 - (index * 15.625)}%`, '--book-index': index }}
-                              aria-label={`Show citation information for book ${book.id}`}
-                              aria-expanded={selectedWorksCitedBook === book.id}
-                              aria-controls="works-cited-book-details"
-                              onClick={() => setSelectedWorksCitedBook(book.id)}
-                            />
-                          ))}
-                        </div>
-                      );
-                    })}
+                            {shelfBooks.map((book, index) => (
+                              <Image
+                                className={styles.worksCitedBookArtwork}
+                                src={book.image}
+                                alt=""
+                                width={2048}
+                                height={2048}
+                                sizes="(max-width: 700px) 90vw, 36rem"
+                                key={`art-${book.id}`}
+                                style={{ '--book-index': index }}
+                              />
+                            ))}
+                            {shelfBooks.map((book, index) => (
+                              <button
+                                className={styles.worksCitedBookButton}
+                                type="button"
+                                key={book.id}
+                                style={{ '--book-top': `${66.25 - (index * 15.625)}%`, '--book-index': index }}
+                                aria-label={`Show citation information for book ${book.id}`}
+                                aria-expanded={selectedWorksCitedBook === book.id}
+                                aria-controls="works-cited-book-details"
+                                onClick={() => {
+                                  setShowWorksCitedHints(false);
+                                  setSelectedWorksCitedBook(book.id);
+                                }}
+                              />
+                            ))}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                   {selectedWorksCitedBook && (
                     <div className={styles.worksCitedDetails} id="works-cited-book-details" aria-live="polite">

@@ -23,29 +23,29 @@ export default function Welcome({ onClose }) {
   return (
     <div className="welcome-screen">
       <div className="welcome-bg">
-        <img src="/images/Brick.png" alt="" />
+        <img src="/images/other/Brick.png" alt="" />
       </div>
 
       <button type="button" onClick={onClose} aria-label="Close welcome screen" className="welcome-close">
-        <img src="/images/Key.png" alt="Close welcome screen" />
-        <img className="welcome-click-hint" src="/images/Click_Me.png" alt="" aria-hidden="true" />
+        <img src="/images/other/Key.png" alt="Close welcome screen" />
+        <img className="welcome-click-hint" src="/images/other/Click_Me.png" alt="" aria-hidden="true" />
       </button>
 
       <div className="welcome-plant left">
-        <img src="/images/Plant1.png" alt="Plant 1" />
+        <img src="/images/other/Plant1.png" alt="Plant 1" />
       </div>
 
       <div className="welcome-plant right">
-        <img src="/images/Plant2.png" alt="Plant 2" />
+        <img src="/images/other/Plant2.png" alt="Plant 2" />
       </div>
 
       <div className="welcome-mat">
-        <img src="/images/Welcome_Mat.png" alt="Welcome mat" />
+        <img src="/images/other/Welcome_Mat.png" alt="Welcome mat" />
       </div>
       <div className="welcome-text">
         <h1>
           Welc
-          <img className="welcome-logo-letter" src="/images/Logo.png" alt="o" />
+          <img className="welcome-logo-letter" src="/images/other/Logo.png" alt="o" />
           me
         </h1>
         <p>to my portfolio</p>

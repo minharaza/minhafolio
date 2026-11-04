@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const bookImages = ['/images/Book_1.png', '/images/Book_2.png', '/images/Book_3.png', '/images/Book_4.png', '/images/Book_1.png'];
+const bookImages = ['/images/other/Book_1.png', '/images/other/Book_2.png', '/images/other/Book_3.png', '/images/other/Book_4.png', '/images/other/Book_1.png'];
 const openBookFrames = [
-  '/images/Openbook1.png',
-  '/images/Openbook2.png',
-  '/images/Openbook3.png',
-  '/images/Openbook4.png',
-  '/images/Openbook6.png',
-  '/images/Openbook7.png',
+  '/images/other/Openbook1.png',
+  '/images/other/Openbook2.png',
+  '/images/other/Openbook3.png',
+  '/images/other/Openbook4.png',
+  '/images/other/Openbook6.png',
+  '/images/other/Openbook7.png',
 ];
 const bookPalette = [
   { dark: '#4fa8b8', light: '#cfeef3' },
@@ -136,7 +136,7 @@ export default function ResumePage() {
       className="relative flex min-h-screen items-center justify-center overflow-y-auto bg-[#7a4f3a] bg-cover bg-center px-6 py-16 text-slate-800"
       style={{
         fontFamily: "'Happy Monkey', cursive",
-        backgroundImage: "linear-gradient(rgba(122, 79, 58, 0.58), rgba(122, 79, 58, 0.58)), url('/images/brownaura.jpg')",
+        backgroundImage: "linear-gradient(rgba(122, 79, 58, 0.58), rgba(122, 79, 58, 0.58)), url('/images/other/brownaura.jpg')",
       }}
     >
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -208,7 +208,7 @@ export default function ResumePage() {
               }}
             >
               <Image
-                src="/images/Click_Me.png"
+                src="/images/other/Click_Me.png"
                 alt=""
                 aria-hidden="true"
                 width={150}
@@ -242,7 +242,7 @@ export default function ResumePage() {
         <section className="mb-8 flex flex-col items-center justify-center gap-8">
           <div className="relative h-[290px] w-[340px] pb-2">
             <Image
-              src="/images/Shelf2.png"
+              src="/images/other/Shelf2.png"
               alt=""
               aria-hidden="true"
               width={340}

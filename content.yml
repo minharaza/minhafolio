@@ -1,5 +1,5 @@
 name: "Minha Raza's portfolio"
-# headerIcon: "/images/avatar-portfolio.png" #optional
+# headerIcon: "/images/other/avatar-portfolio.png" #optional
 home:
   title: "Overview"
   tiles:
@@ -22,7 +22,7 @@ home:
 about:
   title: "About Me"
   description: "I am a dedicated software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success. Well-versed in technology and writing code to create systems that are reliable and user-friendly. Confident communicator, strategic thinker, and innovative creator to develop software that is customized to meet a company’s organizational needs, highlight their core competencies, and further their success."
-  imagePath: "/images/avatar-portfolio.png"
+  imagePath: "/images/other/avatar-portfolio.png"
 
 skills:
   title: "Skills"
@@ -34,27 +34,27 @@ skills:
     - "Tools"
   skillList:
   - name: Angular
-    image: "/images/angular.png"
+    image: "/images/other/angular.png"
     tags:
       - Frontend
   - name: Node.js
-    image: "/images/nodejs.svg"
+    image: "/images/other/nodejs.svg"
     tags:
       - Backend
   - name: Java
-    image: "/images/java.svg"
+    image: "/images/other/java.svg"
     tags:
       - Backend
   - name: PostgreSQL
-    image: "/images/postgresql.png"
+    image: "/images/other/postgresql.png"
     tags:
       - Database
   - name: AWS
-    image: "/images/aws.png"
+    image: "/images/other/aws.png"
     tags:
       - Tools
   - name: Python
-    image: "/images/python.png"
+    image: "/images/other/python.png"
     tags:
       - Backend
 
@@ -65,7 +65,7 @@ experience:
     startDate: "Jul 2025"
     endDate: "Present"
     company: "Brooksource"
-    logo: "/images/jquery.png"
+    logo: "/images/other/jquery.png"
     location: "Remote"
     keywords:
       - Angular
@@ -82,7 +82,7 @@ experience:
     startDate: "Jan 2024"
     endDate: "Aug 2024"
     company: "GE Appliances, A Haier Company"
-    logo: "/images/jquery.png"
+    logo: "/images/other/jquery.png"
     location: "United States"
     keywords:
       - Flutter
@@ -97,7 +97,7 @@ experience:
     startDate: "Jan 2024"
     endDate: "Aug 2024"
     company: "GE Appliances, A Haier Company"
-    logo: "/images/jquery.png"
+    logo: "/images/other/jquery.png"
     location: "United States"
     keywords:
       - Flutter
@@ -112,7 +112,7 @@ experience:
     startDate: "Jan 2024"
     endDate: "Aug 2024"
     company: "GE Appliances, A Haier Company"
-    logo: "/images/jquery.png"
+    logo: "/images/other/jquery.png"
     location: "United States"
     keywords:
       - Embedded Systems
@@ -128,7 +128,7 @@ experience:
     startDate: "Sep 2022"
     endDate: "Dec 2022"
     company: "BECO Ventures Pte. Ltd."
-    logo: "/images/jquery.png"
+    logo: "/images/other/jquery.png"
     location: "Singapore"
     keywords:
       - UX/UI
@@ -144,7 +144,7 @@ experience:
     startDate: "Jan 2022"
     endDate: "Apr 2022"
     company: "TENET3 Cybernetics"
-    logo: "/images/jquery.png"
+    logo: "/images/other/jquery.png"
     location: "United States"
     keywords:
       - Selenium
@@ -173,7 +173,7 @@ projects:
       - Angular
       - Node.js
       - PostgreSQL
-    imagePath: "/images/credit-card.webp"
+    imagePath: "/images/other/credit-card.webp"
     links:
       - name: "GitHub"
         url: "https://github.com/johndoe/e-commerce-platform"
@@ -183,7 +183,7 @@ projects:
       - Angular
       - Node.js
       - PostgreSQL
-    imagePath: "/images/credit-card.webp"
+    imagePath: "/images/other/credit-card.webp"
     links:
       - name: "GitHub"
         url: "https://github.com/johndoe/chat-application"
@@ -192,7 +192,7 @@ projects:
     technologies:
       - Angular
       - Node.js
-    imagePath: "/images/credit-card.webp"
+    imagePath: "/images/other/credit-card.webp"
     links:
       - name: "GitHub"
         url: "https://github.com/johndoe/weather-dashboard"
@@ -201,7 +201,7 @@ projects:
     technologies:
       - Angular
       - Node.js
-    imagePath: "/images/credit-card.webp"
+    imagePath: "/images/other/credit-card.webp"
     links:
       - name: "GitHub"
         url: "https://github.com/johndoe/portfolio-website"

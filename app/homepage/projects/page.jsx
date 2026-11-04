@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import styles from './projects.module.css';
 
 const mats = [
-  { src: '/images/project-sec/Mat1.png', plate: '/images/Plate1.png', drink: '/images/project-sec/Drink1.png', food: '/images/project-sec/Toast.png', project: 'Project1', foodAlt: 'Toast', alt: 'Pink place setting with plate, drink, fork, and knife' },
-  { src: '/images/project-sec/Mat2.png', plate: '/images/Plate2.png', drink: '/images/project-sec/Drink2.png', food: '/images/project-sec/Waffle.png', project: 'Project2', foodAlt: 'Waffle', alt: 'Orange place setting with plate, drink, fork, and knife' },
-  { src: '/images/project-sec/Mat3.png', plate: '/images/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/project-sec/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat1.png', plate: '/images/project-sec/Plate1.png', drink: '/images/project-sec/Drink1.png', food: '/images/project-sec/Toast.png', project: 'Project1', foodAlt: 'Toast', alt: 'Pink place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat2.png', plate: '/images/project-sec/Plate2.png', drink: '/images/project-sec/Drink2.png', food: '/images/project-sec/Waffle.png', project: 'Project2', foodAlt: 'Waffle', alt: 'Orange place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat3.png', plate: '/images/project-sec/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/project-sec/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
 ];
 
 export default function ProjectsPage() {
@@ -82,6 +82,14 @@ export default function ProjectsPage() {
                   className={styles.foodImage}
                 />
               </button>
+              <span className={styles.foodClickHint} aria-hidden="true">
+                <Image
+                  src="/images/other/Click_Me.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 12vw, 8rem"
+                />
+              </span>
               {mat.project === 'Project1' && (
                 <svg className={styles.toastCaption} viewBox="0 0 500 130" aria-hidden="true">
                   <defs>

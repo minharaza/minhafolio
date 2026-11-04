@@ -80,6 +80,30 @@ const publicArtBenefits = [
   },
 ];
 
+const busStopDesignGroups = [
+  {
+    id: 'technology-driven',
+    title: 'Technology Driven Designs',
+    photos: [
+      { src: '/images/project-sec/proj%203/busstops/mod-bs.png', alt: 'Modern Seoul bus stop with route map, digital displays, and seating' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs2.png', alt: 'Contemporary bus stop shelter with a broad canopy and accessible seating' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs3.png', alt: 'Transit stop featuring a digital interactive display and passenger seating' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs4.png', alt: 'Technology-driven bus stop design, image 4' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs5.png', alt: 'Technology-driven bus stop design, image 5' },
+    ],
+  },
+  {
+    id: 'culture-driven',
+    title: 'Culture Driven Designs',
+    photos: [
+      { src: '/images/project-sec/proj%203/busstops/cool-bs.png', alt: 'Fruit-shaped bus stop shelters beside the waterfront' },
+      { src: '/images/project-sec/proj%203/busstops/cool-bs2.png', alt: 'Bus stop designed as a colorful strawberry shelter' },
+      { src: '/images/project-sec/proj%203/busstops/cool-bs3.png', alt: 'Bus stop transformed into a whimsical living-room scene with a red sofa bench' },
+      { src: '/images/project-sec/proj%203/busstops/cool-bs4.png', alt: 'Bus stop with a large umbrella canopy and brick shelter inspired by local character' },
+    ],
+  },
+];
+
 const worksCitedBooks = [
   {
     id: '1',
@@ -298,8 +322,9 @@ export default function ProjectThreePage() {
                   </p>
                 )}
                 <h2 className={styles.projectNumberTitle}>01</h2>
+                <h2 className={styles.researchInsightsTitle}>A Little Overview</h2>
                 <article className={styles.projectDetail}>
-                  <h2>A Little Overview</h2>
+
                   <p>Living within the Over-the-Rhine neighborhood of Cincinnati, the bus has become a consistent
                     step within my daily routine. Whether there were leaves to crunch underfoot or springtime 
                     drizzles pattering on my forehead, the morning '21' slowly became one of the best parts of my mornings.
@@ -717,11 +742,50 @@ export default function ProjectThreePage() {
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>
+                <h2 className={styles.researchInsightsTitle}>Analysis &amp; Planning</h2>
                 <article className={styles.projectDetail}>
-                  <h2>Analysis &amp; Planning</h2>
-                  <p>Paragraph for Analysis &amp; Planning.</p>
+                  <p> After researching a few visuals of bus stop designs, some with a techologically functional focus 
+                    along with others with a cultural art focus, a lot of inspiration could be drawn from both categories.
+                    The functional designs leaned upon innovation, specifically by adding features like a screen with live updates 
+                    or solar panels that generating heating and electricity for the stop. Most of these took a modern simplistic
+                    approach that focused on the advanced additions. 
+                    
+                    Contrastly, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
+                    fruit bus stop installations have gain worldwide attention for their uniqueness and ecclectic pressence. They
+                    have become landmarks, attracting tourists from far and wide.
+
+                    Successfully blending technical innovation with artisitic expression may be a mighty challenge, however, the
+                    lasting, positive impact upon the communtiy would be leave a city for the better.
+                      </p>
                 </article>
+                <section className={styles.busStopDesignComparison} aria-label="Bus stop design inspiration">
+                  {busStopDesignGroups.map((group) => (
+                    <section className={styles.busStopDesignGroup} key={group.id} aria-labelledby={`${group.id}-title`}>
+                      <h3 className={styles.busStopDesignTitle} id={`${group.id}-title`}>{group.title}</h3>
+                      <div className={styles.busStopDesignPhotos}>
+                        {group.photos.map((photo) => (
+                          <figure className={styles.busStopDesignPhoto} key={photo.src}>
+                            <Image
+                              src={photo.src}
+                              alt={photo.alt}
+                              width={1200}
+                              height={900}
+                              sizes="(max-width: 700px) 90vw, 36vw"
+                            />
+                          </figure>
+                        ))}
+                      </div>
+                    </section>
+                    
+                  ))}
+                  
+                </section>
               </div>
+              <article className={styles.projectDetail}>
+                  <p>
+
+                      </p>
+                </article>
               <div className={styles.projectStepItem} id="project-step-04">
                 <h2 className={styles.projectNumberTitle}>04</h2>
                 <article className={styles.projectDetail}>

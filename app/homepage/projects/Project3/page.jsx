@@ -322,9 +322,9 @@ export default function ProjectThreePage() {
                   </p>
                 )}
                 <h2 className={styles.projectNumberTitle}>01</h2>
-                <h2 className={styles.researchInsightsTitle}>A Little Overview</h2>
+                <h2 className={styles.researchInsightsTitle}>Overview</h2>
                 <article className={styles.projectDetail}>
-
+                   <h2>A Little Insight into the Inspiration for the Project</h2>
                   <p>Living within the Over-the-Rhine neighborhood of Cincinnati, the bus has become a consistent
                     step within my daily routine. Whether there were leaves to crunch underfoot or springtime 
                     drizzles pattering on my forehead, the morning '21' slowly became one of the best parts of my mornings.
@@ -392,7 +392,7 @@ export default function ProjectThreePage() {
                     alt="Rider waiting beneath the blue shelter at the bus stop"
                     width={3024}
                     height={4032}
-                    sizes="(max-width: 700px) 85vw, 22rem"
+                    sizes="(max-width: 700px) 85vw, 30rem"
                   />
                   <span className={styles.busOriginOrnament} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
                   <Image
@@ -401,10 +401,11 @@ export default function ProjectThreePage() {
                     alt="The sidewalk where the bus stop bench was removed"
                     width={1536}
                     height={2048}
-                    sizes="(max-width: 700px) 85vw, 22rem"
+                    sizes="(max-width: 700px) 85vw, 30rem"
                   />
                 </div>
                 <figcaption className={styles.busOriginCaption}>
+                  <p className={styles.thoughtsHeading}>The Inspiration</p>
                   In the aftermath of “The Tragedy,” my mornings consisted of unintentionally experience research. Other bus users complained immensely about this change, and rightfully so. I heard commentary about a number of issues that arose with the removal, which led the gears in my brain to turn a little extra. I was experiencing firsthand the effects of a decision with an nonequivalent impact. How can a seemingly small change affect a community at large? The question weighed on me greatly, to a point of invention!
                 </figcaption>
               </figure>
@@ -551,6 +552,7 @@ export default function ProjectThreePage() {
                   </ul>
                 </section>
                 <article className={styles.projectDetail}>
+                  <h2>Public Transportation Rocks!</h2>
                   <p>It is unequivocally evident that research shows how public transportation is vital 
                     to the health of cities and local communities. Bus stops become a portal into opportunity 
                     and resources, especially within the Downtown Cincinnati area. This raises curiosity 
@@ -636,6 +638,7 @@ export default function ProjectThreePage() {
                   </ul>
                 </section>
                 <article className={styles.projectDetail}>
+                  <h2>Public Art Rocks Too!</h2>
                   <p>Overall, the benefits public art has within a community’s mental safety is enormous! 
                     The Cincinnati local government and organizations have invested in murals on building 
                     facades all over the Over-The-Rhine area. This initiative has given a breath of life 
@@ -742,7 +745,7 @@ export default function ProjectThreePage() {
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>
-                <h2 className={styles.researchInsightsTitle}>Analysis &amp; Planning</h2>
+                <h2 className={styles.researchInsightsTitle}>Research Consideration &amp; Planning</h2>
                 <article className={styles.projectDetail}>
                   <p> After researching a few visuals of bus stop designs, some with a techologically functional focus 
                     along with others with a cultural art focus, a lot of inspiration could be drawn from both categories.
@@ -788,11 +791,11 @@ export default function ProjectThreePage() {
                     a touchscreen user interface seemed to be the most natural and effective solution to solving any issues with 
                     displaying relevent bus information.
                     <br /><br />
-                    Afterbrainstorming a bit, a list of important functions was created allowing for
+                    After brainstorming a bit, a list of important functions was created allowing for
                     a basic design to brew into fruition.
                   </p>
                 </article>
-                <figure className={styles.busStopNeedsFigure}>
+               <figure className={styles.busStopNeedsFigure}>
                   <Image
                     className={styles.busStopNeedsImage}
                     src="/images/project-sec/proj%203/busstops/busstop-needs.png"
@@ -803,6 +806,11 @@ export default function ProjectThreePage() {
                   />
                 </figure>
               </section>
+              <div className={styles.projectStepItem} id="project-step-04">
+                <h2 className={styles.projectNumberTitle}>04</h2>
+                <h2 className={styles.researchFindingIntro}>Design Breakdown</h2>
+                <h2 className={styles.researchInsightsTitle}>Bus Stop Screen User Interface</h2>
+            
               <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
                 <figure className={styles.busStopDesignProgressionImage}>
                   <Image
@@ -823,13 +831,74 @@ export default function ProjectThreePage() {
                     sizes="(max-width: 10rem) 150vw, 100rem"
                   />
                 </figure>
-              </section>
-              <div className={styles.projectStepItem} id="project-step-04">
-                <h2 className={styles.projectNumberTitle}>04</h2>
+                </section>
                 <article className={styles.projectDetail}>
-                  <h2>Design</h2>
-                  <p>Paragraph for Design.</p>
+                  <p>Using the ideas laid out in the brainstorming session, a wireframe for an electronic
+                    user interface was developed. The goal of the design is to create a screen that acknowledges
+                    user's needs in one simple, but efficient layout. With the user personas in mind, the created wireframe
+                    aims to be a user-friendly addition to a traditional bus stop, where technology would benefit the community.
+                  </p>
                 </article>
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop interface design">
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma-0.png"
+                    alt="Figma mockup of the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                    alt="Figma mockup of the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                </section>
+                <div className={styles.busStopFeatureExplanations}>
+                <article className={styles.projectDetail}>
+                  <h2>Device Layout Feature Explanation</h2>
+                  <p>
+                    The design begins with an outer interface with three main components: An 'SOS' help button, 
+                    a money slot, an a ticket printer. Within the field research, it was found that bus tickets are currently 
+                    bought on the bus. This poses a challenge due to the nature of the system for buying. Sometimes, buses get 
+                    held up due to ticket purchasing causing delays. Newer bus goers mentioned the unclarity of where to purchase when initially
+                    utilizing the bus system. The ticket printer feature aims to alleviate this issue, so that bus goers can
+                    easily purchase tickets at the physical bus stops. 
+                    <br /><br />
+                    The "Change Exchanger" money slot aims to work similarly to that of an ATM machine. Another challenge discovered in the field research was that
+                    users faced difficulties since the bus only accepts exact change. Currently, the Cincinnati Metro costs $2.20 per bus ride. Many frequent riders
+                    tended to use cash instead of a digital bus pass. This caused some people to lose money if they did not have exact change. Moreover, this resulted
+                    in more bus delays due to the nature of counting change. In order to improve upon this challenge, the money slot was added so that bus riders could
+                    more easily obtain exact change per bus ride at any stop, reducing any type of unnecessary money loss or bus delays.
+                    <br /><br />
+                    Finally, an 'SOS' button was added in order to provide immediate access during any emergency. This allows for a wholistic solution
+                    to a multiple of problems extending into other areas of the city outside of public transport.
+                    </p>
+                </article>
+                <article className={styles.projectDetail}>
+                  <h2>User Interface Layout Feature Explanation</h2>
+                  <p>
+                    The actual interface aims to be as user friendly as possible, especially considering the diversity of 
+                    riders with different technology proficiency levels. With the screen the overall layout consists of 
+                    a map. Within it, a side menu with incoming buses along with the duration of their arrival. Each bus
+                    is color-coded differently to make it visually apparent to differentiate between them. Additionally,
+                    each incoming bus is displayed upon the map, providing a real-time visual of the bus numbers and their
+                    respection locations. This furthers the overall idea of making bus information readily available
+                    without much effort for the user.
+                    <br /><br />
+                    Along with the largely displayed bus information, there are four icons in the bottom left-hand corner: A home menu icon, 
+                    a money exchanger icon, a ticket print icon, and a search icon. In spirit of making information apparent, yet simple,
+                    the icons are place strategically to ensure less confusion. These icons functionally will be explained further, and it is
+                    important to highlight that these icons to not take away from any of the bus information at any time.
+                    </p>
+                </article>
+                </div>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>

@@ -939,7 +939,10 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail}>
                   <h2>Clicking on a Bus Card</h2>
-                  <p></p>
+                  <p>After the user taps on a bus on a bus card, this screen displays. If you look on the upper right
+                    hand corner, the bus cards changed from displaying the different bus numbers to the same bus number 
+                    with each future incoming bus with its respective arrival time.  
+                  </p>
                 </article>
                 <article className={styles.projectDetail}>
                   <h2>Clicking on the Home Icon</h2>

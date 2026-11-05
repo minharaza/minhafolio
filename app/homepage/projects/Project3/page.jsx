@@ -178,6 +178,29 @@ const worksCitedBooks = [
   },
 ];
 
+function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label }) {
+  return (
+    <figure className={styles.busStopDesignProgressionImage}>
+      <button
+        className={styles.busStopDesignImageButton}
+        type="button"
+        onClick={onClick}
+        aria-label={label}
+        aria-expanded={expanded}
+        aria-controls={controls}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={2000}
+          height={2000}
+          sizes="(max-width: 10rem) 150vw, 100rem"
+        />
+      </button>
+    </figure>
+  );
+}
+
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
@@ -198,7 +221,11 @@ export default function ProjectThreePage() {
   const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
   const [showWorksCitedHints, setShowWorksCitedHints] = useState(true);
   const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
+  const [expandedDesignDetails, setExpandedDesignDetails] = useState({});
   const contentRef = useRef(null);
+  const toggleDesignDetails = (id) => {
+    setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
+  };
 
   return (
     <main
@@ -812,27 +839,25 @@ export default function ProjectThreePage() {
                 <h2 className={styles.researchInsightsTitle}>Bus Stop Screen User Interface</h2>
             
               <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
-                    alt="Hand-drawn wireframe for the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
+                  alt="Hand-drawn wireframe for the bus stop touchscreen interface"
+                  controls="design-detail-wireframe"
+                  expanded={Boolean(expandedDesignDetails.wireframe)}
+                  onClick={() => toggleDesignDetails('wireframe')}
+                  label="Show or hide the wireframe explanation"
+                />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
-                    alt="Figma mockup of the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                  alt="Figma mockup of the bus stop touchscreen interface"
+                  controls="design-detail-wireframe"
+                  expanded={Boolean(expandedDesignDetails.wireframe)}
+                  onClick={() => toggleDesignDetails('wireframe')}
+                  label="Show or hide the wireframe explanation"
+                />
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-wireframe" hidden={!expandedDesignDetails.wireframe}>
                   <p>Using the ideas laid out in the brainstorming session, a wireframe for an electronic
                     user interface was developed. The goal of the design is to create a screen that acknowledges
                     user's needs in one simple, but efficient layout. With the user personas in mind, the created wireframe
@@ -840,17 +865,16 @@ export default function ProjectThreePage() {
                   </p>
                 </article>
                 <section>
-                  <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
+                  <ExpandableDesignImage
                     src="/images/project-sec/proj%203/busstops/figma/color-palette.png"
                     alt="Color palette for the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
+                    controls="design-detail-color"
+                    expanded={Boolean(expandedDesignDetails.color)}
+                    onClick={() => toggleDesignDetails('color')}
+                    label="Show or hide the color palette explanation"
                   />
-                </figure>
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-color" hidden={!expandedDesignDetails.color}>
                   <h2>Choosing Color</h2>
                   <p>The color palette was an easy choice. In hopes of these designs being implemented in the future, it
                     would be important to work with the city metro. Naturally, using the color scheme of organization was the obvious
@@ -858,28 +882,26 @@ export default function ProjectThreePage() {
                 </article>
               
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop interface design">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma-0.png"
-                    alt="Figma mockup of the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma-0.png"
+                  alt="Figma mockup of the bus stop touchscreen interface"
+                  controls="design-detail-device design-detail-interface"
+                  expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
+                  onClick={() => toggleDesignDetails('interfaceFeatures')}
+                  label="Show or hide the interface feature explanations"
+                />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
-                    alt="Figma mockup of the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                  alt="Figma mockup of the bus stop touchscreen interface"
+                  controls="design-detail-device design-detail-interface"
+                  expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
+                  onClick={() => toggleDesignDetails('interfaceFeatures')}
+                  label="Show or hide the interface feature explanations"
+                />
                 </section>
                 <div className={styles.busStopFeatureExplanations}>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-device" hidden={!expandedDesignDetails.interfaceFeatures}>
                   <h2>Device Layout Feature Explanation</h2>
                   <p>
                     The design begins with an outer interface with three main components: An 'SOS' help button, 
@@ -899,7 +921,7 @@ export default function ProjectThreePage() {
                     to a multiple of problems extending into other areas of the city outside of public transport.
                     </p>
                 </article>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-interface" hidden={!expandedDesignDetails.interfaceFeatures}>
                   <h2>User Interface Layout Feature Explanation</h2>
                   <p>
                     The actual interface aims to be as user friendly as possible, especially considering the diversity of 
@@ -917,137 +939,128 @@ export default function ProjectThreePage() {
                     </p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma2.png"
-                    alt="Bus stop interface showing incoming buses and their arrival times"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma2.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  controls="design-detail-bus-card design-detail-home-icon"
+                  expanded={Boolean(expandedDesignDetails.busScreens)}
+                  onClick={() => toggleDesignDetails('busScreens')}
+                  label="Show or hide the bus card and home screen explanations"
+                />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma3.png"
-                    alt="Bus stop interface home screen with a resource guide over the city map"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma3.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  controls="design-detail-bus-card design-detail-home-icon"
+                  expanded={Boolean(expandedDesignDetails.busScreens)}
+                  onClick={() => toggleDesignDetails('busScreens')}
+                  label="Show or hide the bus card and home screen explanations"
+                />
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-bus-card" hidden={!expandedDesignDetails.busScreens}>
                   <h2>Clicking on a Bus Card</h2>
                   <p>After the user taps on a bus on a bus card, this screen displays. If you look on the upper right
                     hand corner, the bus cards changed from displaying the different bus numbers to the same bus number 
                     with each future incoming bus with its respective arrival time.  
                   </p>
                 </article>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-home-icon" hidden={!expandedDesignDetails.busScreens}>
                   <h2>Clicking on the Home Icon</h2>
                   <p></p>
                 </article>
                  <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma4.png"
-                    alt="Bus stop interface showing incoming buses and their arrival times"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma4.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  controls="design-detail-money design-detail-money-flow"
+                  expanded={Boolean(expandedDesignDetails.money)}
+                  onClick={() => toggleDesignDetails('money')}
+                  label="Show or hide the money exchange explanation"
+                />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma4-1.png"
-                    alt="Bus stop interface home screen with a resource guide over the city map"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma4-1.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  controls="design-detail-money design-detail-money-flow"
+                  expanded={Boolean(expandedDesignDetails.money)}
+                  onClick={() => toggleDesignDetails('money')}
+                  label="Show or hide the money exchange explanation"
+                />
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-money" hidden={!expandedDesignDetails.money}>
                   <h2>Money Exchange Icon</h2>
                   <p></p>
                 </article>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-money-flow" hidden={!expandedDesignDetails.money}>
                   <h2>Pop Up Flow</h2>
                   <p></p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma5.png"
-                    alt="Bus stop interface showing incoming buses and their arrival times"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma5.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  controls="design-detail-ticket design-detail-ticket-flow"
+                  expanded={Boolean(expandedDesignDetails.ticket)}
+                  onClick={() => toggleDesignDetails('ticket')}
+                  label="Show or hide the ticket printer explanation"
+                />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma5-1.png"
-                    alt="Bus stop interface home screen with a resource guide over the city map"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma5-1.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  controls="design-detail-ticket design-detail-ticket-flow"
+                  expanded={Boolean(expandedDesignDetails.ticket)}
+                  onClick={() => toggleDesignDetails('ticket')}
+                  label="Show or hide the ticket printer explanation"
+                />
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-ticket" hidden={!expandedDesignDetails.ticket}>
                   <h2>Ticket Printer Icon</h2>
                   <p></p>
                 </article>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={!expandedDesignDetails.ticket}>
                   <h2>Pop Up Flow</h2>
                   <p></p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma6.png"
-                    alt="Bus stop interface showing incoming buses and their arrival times"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma6.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  controls="design-detail-search design-detail-search-flow"
+                  expanded={Boolean(expandedDesignDetails.search)}
+                  onClick={() => toggleDesignDetails('search')}
+                  label="Show or hide the search explanation"
+                />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
-                    src="/images/project-sec/proj%203/busstops/figma/bs-figma6-1.png"
-                    alt="Bus stop interface home screen with a resource guide over the city map"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
-                  />
-                </figure>                
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma6-1.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  controls="design-detail-search design-detail-search-flow"
+                  expanded={Boolean(expandedDesignDetails.search)}
+                  onClick={() => toggleDesignDetails('search')}
+                  label="Show or hide the search explanation"
+                />
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-search" hidden={!expandedDesignDetails.search}>
                   <h2>Search Icon</h2>
                   <p></p>
                 </article>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-search-flow" hidden={!expandedDesignDetails.search}>
                   <h2>Pop Up Flow</h2>
                   <p></p>
                 </article>
                 </div>
                 <section>
-                  <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
+                  <ExpandableDesignImage
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma7.png"
-                    alt="Color palette for the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
+                    alt="Bus stop interface showing the SOS emergency control"
+                    controls="design-detail-sos"
+                    expanded={Boolean(expandedDesignDetails.sos)}
+                    onClick={() => toggleDesignDetails('sos')}
+                    label="Show or hide the SOS button explanation"
                   />
-                </figure>
                 </section>
-                <article className={styles.projectDetail}>
+                <article className={styles.projectDetail} id="design-detail-sos" hidden={!expandedDesignDetails.sos}>
                   <h2>Pressing on SOS Button</h2>
                   <p>
                      </p>

@@ -1290,6 +1290,21 @@
   place-items: center;
 }
 
+.busStopDesignImageButton {
+  display: grid;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.busStopDesignImageButton:focus-visible {
+  outline: 3px solid #4a2722;
+  outline-offset: 4px;
+}
+
 .busStopDesignProgressionImage img {
   display: block;
   width: 100%;

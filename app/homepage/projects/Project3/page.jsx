@@ -808,19 +808,19 @@ export default function ProjectThreePage() {
                   <Image
                     src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
                     alt="Hand-drawn wireframe for the bus stop touchscreen interface"
-                    width={1940}
-                    height={1800}
-                    sizes="(max-width: 700px) 90vw, 48rem"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
                   />
                 </figure>
-                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">&#8594;</span>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
                 <figure className={styles.busStopDesignProgressionImage}>
                   <Image
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
                     alt="Figma mockup of the bus stop touchscreen interface"
-                    width={1644}
-                    height={1092}
-                    sizes="(max-width: 700px) 90vw, 48rem"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
                   />
                 </figure>
               </section>

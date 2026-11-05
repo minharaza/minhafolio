@@ -196,6 +196,16 @@ function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label })
           height={2000}
           sizes="(max-width: 10rem) 150vw, 100rem"
         />
+        {!expanded && (
+          <Image
+            className={styles.busStopDesignClickHint}
+            src="/images/other/Click_Me.png"
+            alt=""
+            aria-hidden="true"
+            width={800}
+            height={800}
+          />
+        )}
       </button>
     </figure>
   );
@@ -839,25 +849,27 @@ export default function ProjectThreePage() {
                 <h2 className={styles.researchInsightsTitle}>Bus Stop Screen User Interface</h2>
             
               <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
-                <ExpandableDesignImage
-                  src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
-                  alt="Hand-drawn wireframe for the bus stop touchscreen interface"
-                  controls="design-detail-wireframe"
-                  expanded={Boolean(expandedDesignDetails.wireframe)}
-                  onClick={() => toggleDesignDetails('wireframe')}
-                  label="Show or hide the wireframe explanation"
-                />
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
+                    alt="Hand-drawn wireframe for the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <ExpandableDesignImage
-                  src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
-                  alt="Figma mockup of the bus stop touchscreen interface"
-                  controls="design-detail-wireframe"
-                  expanded={Boolean(expandedDesignDetails.wireframe)}
-                  onClick={() => toggleDesignDetails('wireframe')}
-                  label="Show or hide the wireframe explanation"
-                />
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                    alt="Figma mockup of the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
                 </section>
-                <article className={styles.projectDetail} id="design-detail-wireframe" hidden={!expandedDesignDetails.wireframe}>
+                <article className={styles.projectDetail}>
                   <p>Using the ideas laid out in the brainstorming session, a wireframe for an electronic
                     user interface was developed. The goal of the design is to create a screen that acknowledges
                     user's needs in one simple, but efficient layout. With the user personas in mind, the created wireframe

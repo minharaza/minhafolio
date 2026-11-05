@@ -1291,6 +1291,7 @@
 }
 
 .busStopDesignImageButton {
+  position: relative;
   display: grid;
   width: 100%;
   padding: 0;
@@ -1300,9 +1301,27 @@
   place-items: center;
 }
 
+.busStopDesignImageButton .busStopDesignClickHint {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  width: clamp(2.75rem, 7vw, 4.5rem);
+  max-height: none;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
 .busStopDesignImageButton:focus-visible {
   outline: 3px solid #4a2722;
   outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .busStopDesignImageButton .busStopDesignClickHint {
+    animation: none;
+  }
 }
 
 .busStopDesignProgressionImage img {

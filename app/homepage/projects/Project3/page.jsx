@@ -937,7 +937,7 @@ export default function ProjectThreePage() {
                     sizes="(max-width: 10rem) 150vw, 100rem"
                   />
                 </figure>
-                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
                 <figure className={styles.busStopDesignProgressionImage}>
                   <Image
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma4-1.png"
@@ -956,7 +956,64 @@ export default function ProjectThreePage() {
                   <h2>hello2</h2>
                   <p></p>
                 </article>
-                
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma5.png"
+                    alt="Bus stop interface showing incoming buses and their arrival times"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma5-1.png"
+                    alt="Bus stop interface home screen with a resource guide over the city map"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                </section>
+                <article className={styles.projectDetail}>
+                  <h2>hello</h2>
+                  <p></p>
+                </article>
+                <article className={styles.projectDetail}>
+                  <h2>hello2</h2>
+                  <p></p>
+                </article>
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma6.png"
+                    alt="Bus stop interface showing incoming buses and their arrival times"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma6-1.png"
+                    alt="Bus stop interface home screen with a resource guide over the city map"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                </section>
+                <article className={styles.projectDetail}>
+                  <h2>hello</h2>
+                  <p></p>
+                </article>
+                <article className={styles.projectDetail}>
+                  <h2>hello2</h2>
+                  <p></p>
+                </article>
                 </div>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">

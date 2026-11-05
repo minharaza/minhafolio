@@ -839,6 +839,22 @@ export default function ProjectThreePage() {
                     aims to be a user-friendly addition to a traditional bus stop, where technology would benefit the community.
                   </p>
                 </article>
+                <section>
+                  <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/color-palette.png"
+                    alt="Color palette for the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                </section>
+                <article className={styles.projectDetail}>
+                  <h2>Choosing Color</h2>
+                  <p>ghjkl</p>
+                </article>
+              
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop interface design">
                 <figure className={styles.busStopDesignProgressionImage}>
                   <Image
@@ -1004,7 +1020,7 @@ export default function ProjectThreePage() {
                     height={2000}
                     sizes="(max-width: 10rem) 150vw, 100rem"
                   />
-                </figure>
+                </figure>                
                 </section>
                 <article className={styles.projectDetail}>
                   <h2>hello</h2>
@@ -1015,6 +1031,21 @@ export default function ProjectThreePage() {
                   <p></p>
                 </article>
                 </div>
+                <section>
+                  <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma7.png"
+                    alt="Color palette for the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                </section>
+                <article className={styles.projectDetail}>
+                  <h2>Choosing Color</h2>
+                  <p>ghjkl</p>
+                </article>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>

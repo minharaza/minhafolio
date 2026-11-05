@@ -852,7 +852,9 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail}>
                   <h2>Choosing Color</h2>
-                  <p>ghjkl</p>
+                  <p>The color palette was an easy choice. In hopes of these designs being implemented in the future, it
+                    would be important to work with the city metro. Naturally, using the color scheme of organization was the obvious
+                    choice for a cohesive design overall.</p>
                 </article>
               
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop interface design">
@@ -936,11 +938,11 @@ export default function ProjectThreePage() {
                 </figure>
                 </section>
                 <article className={styles.projectDetail}>
-                  <h2>hello</h2>
+                  <h2>Clicking on a Bus Card</h2>
                   <p></p>
                 </article>
                 <article className={styles.projectDetail}>
-                  <h2>hello2</h2>
+                  <h2>Clicking on the Home Icon</h2>
                   <p></p>
                 </article>
                  <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
@@ -965,11 +967,11 @@ export default function ProjectThreePage() {
                 </figure>
                 </section>
                 <article className={styles.projectDetail}>
-                  <h2>hello</h2>
+                  <h2>Money Exchange Icon</h2>
                   <p></p>
                 </article>
                 <article className={styles.projectDetail}>
-                  <h2>hello2</h2>
+                  <h2>Pop Up Flow</h2>
                   <p></p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
@@ -994,11 +996,11 @@ export default function ProjectThreePage() {
                 </figure>
                 </section>
                 <article className={styles.projectDetail}>
-                  <h2>hello</h2>
+                  <h2>Ticket Printer Icon</h2>
                   <p></p>
                 </article>
                 <article className={styles.projectDetail}>
-                  <h2>hello2</h2>
+                  <h2>Pop Up Flow</h2>
                   <p></p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
@@ -1023,11 +1025,11 @@ export default function ProjectThreePage() {
                 </figure>                
                 </section>
                 <article className={styles.projectDetail}>
-                  <h2>hello</h2>
+                  <h2>Search Icon</h2>
                   <p></p>
                 </article>
                 <article className={styles.projectDetail}>
-                  <h2>hello2</h2>
+                  <h2>Pop Up Flow</h2>
                   <p></p>
                 </article>
                 </div>
@@ -1043,8 +1045,9 @@ export default function ProjectThreePage() {
                 </figure>
                 </section>
                 <article className={styles.projectDetail}>
-                  <h2>Choosing Color</h2>
-                  <p>ghjkl</p>
+                  <h2>Pressing on SOS Button</h2>
+                  <p>
+                     </p>
                 </article>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">

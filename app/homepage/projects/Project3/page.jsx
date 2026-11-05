@@ -749,14 +749,13 @@ export default function ProjectThreePage() {
                     The functional designs leaned upon innovation, specifically by adding features like a screen with live updates 
                     or solar panels that generating heating and electricity for the stop. Most of these took a modern simplistic
                     approach that focused on the advanced additions. 
-                    
+                    <br /><br />
                     Contrastly, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
                     fruit bus stop installations have gain worldwide attention for their uniqueness and ecclectic pressence. They
                     have become landmarks, attracting tourists from far and wide.
-
+                    <br /><br />
                     Successfully blending technical innovation with artisitic expression may be a mighty challenge, however, the
-                    lasting, positive impact upon the communtiy would be leave a city for the better.
-                      </p>
+                    lasting, positive impact upon the communtiy leaves the city for the better.  </p>
                 </article>
                 <section className={styles.busStopDesignComparison} aria-label="Bus stop design inspiration">
                   {busStopDesignGroups.map((group) => (
@@ -781,11 +780,50 @@ export default function ProjectThreePage() {
                   
                 </section>
               </div>
-              <article className={styles.projectDetail}>
+              <section className={styles.busStopNeedsLayout} aria-label="Bus stop interface planning">
+                <article className={styles.projectDetail}>
                   <p>
-
-                      </p>
+                    One aspect of redesigning the bus stop that seemed to easily solve a lot of issues riders
+                    were experiencing was the lack of information readily available. In this bus stop redesign, 
+                    a touchscreen user interface seemed to be the most natural and effective solution to solving any issues with 
+                    displaying relevent bus information.
+                    <br /><br />
+                    Afterbrainstorming a bit, a list of important functions was created allowing for
+                    a basic design to brew into fruition.
+                  </p>
                 </article>
+                <figure className={styles.busStopNeedsFigure}>
+                  <Image
+                    className={styles.busStopNeedsImage}
+                    src="/images/project-sec/proj%203/busstops/busstop-needs.png"
+                    alt="Handwritten planning notes listing bus rider touchscreen needs and additional community resources"
+                    width={1154}
+                    height={1308}
+                    sizes="(max-width: 700px) 90vw, 23rem"
+                  />
+                </figure>
+              </section>
+              <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
+                    alt="Hand-drawn wireframe for the bus stop touchscreen interface"
+                    width={1940}
+                    height={1800}
+                    sizes="(max-width: 700px) 90vw, 48rem"
+                  />
+                </figure>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">&#8594;</span>
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                    alt="Figma mockup of the bus stop touchscreen interface"
+                    width={1644}
+                    height={1092}
+                    sizes="(max-width: 700px) 90vw, 48rem"
+                  />
+                </figure>
+              </section>
               <div className={styles.projectStepItem} id="project-step-04">
                 <h2 className={styles.projectNumberTitle}>04</h2>
                 <article className={styles.projectDetail}>

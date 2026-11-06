@@ -196,17 +196,17 @@ function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label })
           height={2000}
           sizes="(max-width: 10rem) 150vw, 100rem"
         />
-        {!expanded && (
-          <Image
-            className={styles.busStopDesignClickHint}
-            src="/images/other/Click_Me.png"
-            alt=""
-            aria-hidden="true"
-            width={800}
-            height={800}
-          />
-        )}
       </button>
+      {!expanded && (
+        <Image
+          className={styles.busStopDesignClickHint}
+          src="/images/other/Click_Me_Left_.png"
+          alt=""
+          aria-hidden="true"
+          width={800}
+          height={800}
+        />
+      )}
     </figure>
   );
 }

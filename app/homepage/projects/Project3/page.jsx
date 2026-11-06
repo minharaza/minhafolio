@@ -982,7 +982,10 @@ export default function ProjectThreePage() {
                 </article>
                 <article className={styles.projectDetail} id="design-detail-home-icon" hidden={!expandedDesignDetails.busScreens}>
                   <h2>Clicking on the Home Icon</h2>
-                  <p></p>
+                  <p>When click on the home icon, a pop up expands with a number of resource icons along with a search bar at
+                    the bottom. This is a resource guide that can connect users with city announcements, local events, food banks,
+                    and other resource information that may not otherwise be readily available.
+                  </p>
                 </article>
                  <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
                 <ExpandableDesignImage
@@ -1007,11 +1010,18 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail} id="design-detail-money" hidden={!expandedDesignDetails.money}>
                   <h2>Money Exchange Icon</h2>
-                  <p></p>
+                  <p>
+                    The money exchange icon aims to create a neo-ATM money exchanger that gives exact change for bus tickets. 
+                    In this feature, the user will press the icon and the money slot would be blinking green, indicating that money should
+                    go in. Then the pop up flow would be prompted.
+                  </p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-money-flow" hidden={!expandedDesignDetails.money}>
                   <h2>Pop Up Flow</h2>
-                  <p></p>
+                  <p>Within this money exchange pop up flow, each step is supposed to clearly address the user similar to an ATM interface.
+                    Since the bus is $2.20 per ride, the machine would calculate exact change for the amount of bus tickets the user asks
+                    for.
+                  </p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
                 <ExpandableDesignImage
@@ -1036,11 +1046,16 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail} id="design-detail-ticket" hidden={!expandedDesignDetails.ticket}>
                   <h2>Ticket Printer Icon</h2>
-                  <p></p>
+                  <p>The ticket printer icon would give the user the ability to print a number of bus tickets. It would allow users to input money in the
+                    money slot for the change exchanger, and print tickets according to the user's input.
+                  </p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={!expandedDesignDetails.ticket}>
                   <h2>Pop Up Flow</h2>
-                  <p></p>
+                  <p>
+                Similar to the above flow, the ticket printer pop up aims to clearly guild and confirm with the user for how many tickets
+                to be print and purchased.
+                  </p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
                 <ExpandableDesignImage
@@ -1065,11 +1080,17 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail} id="design-detail-search" hidden={!expandedDesignDetails.search}>
                   <h2>Search Icon</h2>
-                  <p></p>
+                  <p>The search icon acts as a map guide for finding bus routes to any location, similar to
+                     any traditional navigation application. This would allow users who do not have access to cellular phones to still
+                     be able to look at updated bus routes to any location of their choosing.</p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-search-flow" hidden={!expandedDesignDetails.search}>
                   <h2>Pop Up Flow</h2>
-                  <p></p>
+                  <p>In this flow, the user is prompted with a keyboard to search their location. After entering their response, 
+                    the destination search displays specific bus route directions. The user is then allowed to print these directions using the
+                    ticket printer if needed. This really considers those who may be in need of accessible information, but do not have the
+                    technology on hand at all times.
+                  </p>
                 </article>
                 </div>
                 <section>
@@ -1085,6 +1106,10 @@ export default function ProjectThreePage() {
                 <article className={styles.projectDetail} id="design-detail-sos" hidden={!expandedDesignDetails.sos}>
                   <h2>Pressing on SOS Button</h2>
                   <p>
+                    When a bus rider presses on the physical SOS button, it prompts a notifying alert telling the user that the police
+                    will be called. The numbers on the screen woulkd act as a live timer, indicating how much time until the call goes 
+                    through to the local authories. This allows the user to cancel if needed, along with simplified steps in case of actual
+                    emergent situations.
                      </p>
                 </article>
               </div>

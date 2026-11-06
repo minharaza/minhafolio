@@ -1283,6 +1283,7 @@
 }
 
 .busStopDesignProgressionImage {
+  --bus-stop-hint-size: clamp(3.5rem, 7vw, 5.5rem);
   position: relative;
   display: grid;
   width: 100%;
@@ -1291,10 +1292,14 @@
   place-items: center start;
 }
 
+.busStopDesignProgressionImageRight {
+  place-items: center end;
+}
+
 .busStopDesignImageButton {
   position: relative;
   display: grid;
-  width: calc(100% - clamp(2.5rem, 6vw, 3.75rem));
+  width: calc(100% - var(--bus-stop-hint-size));
   padding: 0;
   border: 0;
   background: transparent;
@@ -1307,12 +1312,17 @@
   top: 50%;
   right: 0;
   z-index: 1;
-  width: clamp(2.5rem, 6vw, 3.75rem);
+  width: var(--bus-stop-hint-size);
   max-height: none;
   transform: translateY(-50%);
   filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
   animation: hint-flash 1.3s ease-in-out infinite alternate;
   pointer-events: none;
+}
+
+.busStopDesignProgressionImageRight .busStopDesignClickHint {
+  right: auto;
+  left: 0;
 }
 
 .busStopDesignImageButton:focus-visible {

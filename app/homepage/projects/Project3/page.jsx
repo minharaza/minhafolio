@@ -178,9 +178,9 @@ const worksCitedBooks = [
   },
 ];
 
-function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label }) {
+function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label, hintDirection = 'left' }) {
   return (
-    <figure className={styles.busStopDesignProgressionImage}>
+    <figure className={`${styles.busStopDesignProgressionImage} ${hintDirection === 'right' ? styles.busStopDesignProgressionImageRight : ''}`}>
       <button
         className={styles.busStopDesignImageButton}
         type="button"
@@ -200,7 +200,7 @@ function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label })
       {!expanded && (
         <Image
           className={styles.busStopDesignClickHint}
-          src="/images/other/Click_Me_Left_.png"
+          src={hintDirection === 'left' ? '/images/other/Click_Me_Left_.png' : '/images/other/Click_Me.png'}
           alt=""
           aria-hidden="true"
           width={800}
@@ -897,6 +897,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma-0.png"
                   alt="Figma mockup of the bus stop touchscreen interface"
+                  hintDirection="left"
                   controls="design-detail-device design-detail-interface"
                   expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
                   onClick={() => toggleDesignDetails('interfaceFeatures')}
@@ -906,6 +907,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
                   alt="Figma mockup of the bus stop touchscreen interface"
+                  hintDirection="right"
                   controls="design-detail-device design-detail-interface"
                   expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
                   onClick={() => toggleDesignDetails('interfaceFeatures')}
@@ -954,6 +956,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma2.png"
                   alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
                   controls="design-detail-bus-card design-detail-home-icon"
                   expanded={Boolean(expandedDesignDetails.busScreens)}
                   onClick={() => toggleDesignDetails('busScreens')}
@@ -963,6 +966,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma3.png"
                   alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
                   controls="design-detail-bus-card design-detail-home-icon"
                   expanded={Boolean(expandedDesignDetails.busScreens)}
                   onClick={() => toggleDesignDetails('busScreens')}
@@ -984,6 +988,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma4.png"
                   alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
                   controls="design-detail-money design-detail-money-flow"
                   expanded={Boolean(expandedDesignDetails.money)}
                   onClick={() => toggleDesignDetails('money')}
@@ -993,6 +998,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma4-1.png"
                   alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
                   controls="design-detail-money design-detail-money-flow"
                   expanded={Boolean(expandedDesignDetails.money)}
                   onClick={() => toggleDesignDetails('money')}
@@ -1011,6 +1017,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma5.png"
                   alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
                   controls="design-detail-ticket design-detail-ticket-flow"
                   expanded={Boolean(expandedDesignDetails.ticket)}
                   onClick={() => toggleDesignDetails('ticket')}
@@ -1020,6 +1027,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma5-1.png"
                   alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
                   controls="design-detail-ticket design-detail-ticket-flow"
                   expanded={Boolean(expandedDesignDetails.ticket)}
                   onClick={() => toggleDesignDetails('ticket')}
@@ -1038,6 +1046,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma6.png"
                   alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
                   controls="design-detail-search design-detail-search-flow"
                   expanded={Boolean(expandedDesignDetails.search)}
                   onClick={() => toggleDesignDetails('search')}
@@ -1047,6 +1056,7 @@ export default function ProjectThreePage() {
                 <ExpandableDesignImage
                   src="/images/project-sec/proj%203/busstops/figma/bs-figma6-1.png"
                   alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
                   controls="design-detail-search design-detail-search-flow"
                   expanded={Boolean(expandedDesignDetails.search)}
                   onClick={() => toggleDesignDetails('search')}

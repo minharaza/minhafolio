@@ -1112,6 +1112,22 @@ export default function ProjectThreePage() {
                     emergent situations.
                      </p>
                 </article>
+                 <h2 className={styles.researchInsightsTitle}>Bus Stop Structure</h2>
+                    <div className={styles.busStopStructureLayout}>
+                      <figure className={styles.busStopStructureFigure}>
+                        <Image
+                          className={styles.busStopStructureImage}
+                          src="/images/project-sec/proj%203/busstops/art/art-bs1.png"
+                          alt="Handwritten planning notes for improving the physical bus stop experience"
+                          width={1248}
+                          height={1254}
+                          sizes="(max-width: 700px) 90vw, 23rem"
+                        />
+                      </figure>
+                      <article className={styles.projectDetail}>
+                        <p>meow</p>
+                      </article>
+                    </div>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>

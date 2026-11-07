@@ -1272,6 +1272,28 @@
   box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
 }
 
+.busStopStructureLayout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+}
+
+.busStopStructureFigure {
+  min-width: 0;
+  margin: 0;
+}
+
+.busStopStructureImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+}
+
 .busStopDesignProgression {
   display: grid;
   width:min(calc(100vw - 3rem), 70rem);
@@ -2334,6 +2356,10 @@
   }
 
   .busStopNeedsLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .busStopStructureLayout {
     grid-template-columns: minmax(0, 1fr);
   }
 

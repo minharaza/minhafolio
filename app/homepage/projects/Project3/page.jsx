@@ -232,6 +232,7 @@ export default function ProjectThreePage() {
   const [showWorksCitedHints, setShowWorksCitedHints] = useState(true);
   const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
   const [expandedDesignDetails, setExpandedDesignDetails] = useState({});
+  const [flippedStructureSketches, setFlippedStructureSketches] = useState([]);
   const contentRef = useRef(null);
   const toggleDesignDetails = (id) => {
     setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
@@ -1128,6 +1129,71 @@ export default function ProjectThreePage() {
                         <p>meow</p>
                       </article>
                     </div>
+                    <section className={styles.busStopStructureSketches} aria-label="Bus stop structure design sketches">
+                      {[
+                        {
+                          title: 'Planted roof and fruit-shaped bench',
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs2.png',
+                          photoWidth: 1300,
+                          photoHeight: 992,
+                          drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_1.png',
+                          drawingAlt: 'Bus stop concept drawing with a planted roof and citrus-slice bench',
+                        },
+                        {
+                          title: 'Solar shelter with a community mural',
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs3.png',
+                          photoWidth: 1292,
+                          photoHeight: 762,
+                          drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_2.png',
+                          drawingAlt: 'Bus stop concept drawing with solar panels, heating and cooling, mural, and bench',
+                        },
+                        {
+                          title: 'Solar roof and hanging plants',
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs4.png',
+                          photoWidth: 1226,
+                          photoHeight: 708,
+                          drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_3.png',
+                          drawingAlt: 'Bus stop concept drawing with a solar roof, hanging plants, and branded bench',
+                        },
+                      ].map((sketch, index) => {
+                        const isFlipped = flippedStructureSketches.includes(index);
+
+                        return (
+                          <figure key={sketch.photo}>
+                            <button
+                              className={`${styles.busStopStructureSketchCard}${isFlipped ? ` ${styles.busStopStructureSketchCardFlipped}` : ''}`}
+                              type="button"
+                              aria-label={`${isFlipped ? 'Show photo' : 'Show drawing'}: ${sketch.title}`}
+                              aria-pressed={isFlipped}
+                              onClick={() => setFlippedStructureSketches((current) => (
+                                isFlipped ? current.filter((item) => item !== index) : [...current, index]
+                              ))}
+                            >
+                              <span className={styles.busStopStructureSketchCardInner}>
+                                <span className={styles.busStopStructureSketchCardFront} aria-hidden={isFlipped}>
+                                  <Image
+                                    src={sketch.photo}
+                                    alt=""
+                                    width={sketch.photoWidth}
+                                    height={sketch.photoHeight}
+                                    sizes="(max-width: 700px) 18rem, 24rem"
+                                  />
+                                </span>
+                                <span className={styles.busStopStructureSketchCardBack} aria-hidden={!isFlipped}>
+                                  <Image
+                                    src={sketch.drawing}
+                                    alt=""
+                                    width={2048}
+                                    height={2048}
+                                    sizes="(max-width: 700px) 18rem, 24rem"
+                                  />
+                                </span>
+                              </span>
+                            </button>
+                          </figure>
+                        );
+                      })}
+                    </section>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>

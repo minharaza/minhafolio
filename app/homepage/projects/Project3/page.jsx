@@ -234,6 +234,7 @@ export default function ProjectThreePage() {
   const [expandedDesignDetails, setExpandedDesignDetails] = useState({});
   const [flippedStructureSketches, setFlippedStructureSketches] = useState([]);
   const [showStructureSketchHints, setShowStructureSketchHints] = useState(true);
+  const [showBusStopMemoryDrawing, setShowBusStopMemoryDrawing] = useState(false);
   const contentRef = useRef(null);
   const toggleDesignDetails = (id) => {
     setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
@@ -1221,12 +1222,45 @@ export default function ProjectThreePage() {
                         );
                       })}
                     </section>
-                    <article className={styles.projectDetail}>
-                      <p>
-                        fart
-
-                        </p>
-                    </article>
+                      {showBusStopMemoryDrawing ? (
+                        <figure className={styles.busStopMemoryDrawing} id="bus-stop-memory-drawing">
+                          <Image
+                            src="/images/project-sec/proj%203/busstops/art/Bus_Stop_Drawing_combo.png"
+                            alt="Hand-drawn bus stop with a planted roof and fruit-shaped bench"
+                            width={2048}
+                            height={2048}
+                            sizes="(max-width: 700px) 90vw, 48rem"
+                          />
+                        </figure>
+                      ) : (
+                        <div className={styles.busStopMemoryScene}>
+                          <Image
+                            className={styles.busStopMemoryCharacter}
+                            src="/images/project-sec/Sad.png"
+                            alt="A sad person missing the bus stop"
+                            width={2048}
+                            height={2048}
+                            sizes="(max-width: 700px) 55vw, 18rem"
+                          />
+                          <button
+                            className={styles.busStopMemoryBubble}
+                            type="button"
+                            onClick={() => setShowBusStopMemoryDrawing(true)}
+                            aria-label="I still miss the bus stop. Show the bus stop drawing"
+                            aria-controls="bus-stop-memory-drawing"
+                          >
+                            <Image
+                              src="/images/other/Speech_Bubble.png"
+                              alt=""
+                              aria-hidden="true"
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 65vw, 24rem"
+                            />
+                            <span>I still miss the bus stop!</span>
+                          </button>
+                        </div>
+                      )}
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>

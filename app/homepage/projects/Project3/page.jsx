@@ -1293,8 +1293,8 @@ export default function ProjectThreePage() {
                     className={styles.finalThoughtsLogo}
                     src="/images/other/Logo.png"
                     alt=""
-                    width={2048}
-                    height={2048}
+                    width={3024}
+                    height={1024}
                     sizes="(max-width: 700px) 55vw, 22rem"
                   />
                   <article className={styles.projectDetail}>

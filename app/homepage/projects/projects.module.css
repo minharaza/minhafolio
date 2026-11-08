@@ -1916,7 +1916,7 @@
 .finalThoughts {
   display: grid;
   width: 100%;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
   align-items: center;
   gap: clamp(1rem, 3vw, 2.5rem);
 }
@@ -1924,8 +1924,9 @@
 .finalThoughtsLogo {
   display: block;
   width: 100%;
-  max-width: 22rem;
+  max-height: 20rem;
   height: auto;
+  object-fit: contain;
   justify-self: center;
 }
 
@@ -2411,7 +2412,7 @@
   }
 
   .finalThoughtsLogo {
-    width: min(60%, 18rem);
+    width: min(100%, 20rem);
   }
 
   .researchChallengeGrid {

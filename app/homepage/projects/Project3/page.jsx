@@ -1231,6 +1231,20 @@ export default function ProjectThreePage() {
                             height={2048}
                             sizes="(max-width: 700px) 90vw, 48rem"
                           />
+                          <figcaption className={styles.projectDetail}>
+                            <p>
+                              In this final design, I decided to choose my personal favorite elements from all three of the designs. 
+                              On the left-hand side, the screen interface is built as apart of the structure, in reference to the the earlier
+                              user interface breakdown. As a frequent visitor and user of the Findley Market bus stop, I wanted to capture
+                              the essence of community and the overall celebration of the local market within the design. The fruit bench is 
+                              an ode to the many farmer's market booths in the historial shed. The very top of the structure features a 
+                              giant flower bed filled with plants. Findley market has it's own local plant buisiness, along with many giant pots
+                              decorated for the summer and spring seasons with plants! In reference to this, I wanted to incorporate another
+                              reflection of the market within every inch of the design. The show stopped would be the mural at the back part
+                              of the structure, which truly captures the essence of the overall area in addition to the market. The 
+                              neighborhood is filled with public mural for all to see, whether it's visitors or  locals.
+                            </p>
+                          </figcaption>
                         </figure>
                       ) : (
                         <div className={styles.busStopMemoryScene}>
@@ -1273,10 +1287,20 @@ export default function ProjectThreePage() {
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Reflection & Analysis</h2>
-                  <p>Paragraph for Prototyping.</p>
-                </article>
+                <h2 className={styles.researchInsightsTitle}>Final Thoughts</h2>
+                <section className={styles.finalThoughts} aria-labelledby="final-thoughts-title">
+                  <Image
+                    className={styles.finalThoughtsLogo}
+                    src="/images/other/Logo.png"
+                    alt=""
+                    width={2048}
+                    height={2048}
+                    sizes="(max-width: 700px) 55vw, 22rem"
+                  />
+                  <article className={styles.projectDetail}>
+                    <p>Write your final thoughts here.</p>
+                  </article>
+                </section>
               </div>
           </div>
         </section>

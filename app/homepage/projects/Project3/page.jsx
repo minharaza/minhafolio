@@ -233,6 +233,7 @@ export default function ProjectThreePage() {
   const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
   const [expandedDesignDetails, setExpandedDesignDetails] = useState({});
   const [flippedStructureSketches, setFlippedStructureSketches] = useState([]);
+  const [showStructureSketchHints, setShowStructureSketchHints] = useState(true);
   const contentRef = useRef(null);
   const toggleDesignDetails = (id) => {
     setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
@@ -1126,10 +1127,33 @@ export default function ProjectThreePage() {
                         />
                       </figure>
                       <article className={styles.projectDetail}>
-                        <p>meow</p>
+                        <p>When redesigning the physical structure of the bus stop, a brainstorming session was utilized to lay out ideas for improvements.
+                          These ideas were stewed upon to create a couple of rough sketches with the consideration of the conclusion notes. The bus stop 
+                          ideations depict various possible renderings of the bus stop covering along with the bench. c
+                        </p>
                       </article>
                     </div>
                     <section className={styles.busStopStructureSketches} aria-label="Bus stop structure design sketches">
+                      {showStructureSketchHints && (
+                        <>
+                          <button
+                            className={`${styles.busStopStructureHint} ${styles.busStopStructureHintLeft}`}
+                            type="button"
+                            onClick={() => setShowStructureSketchHints(false)}
+                            aria-label="Dismiss left sketch click hint"
+                          >
+                            <Image src="/images/other/Click_Me.png" alt="Click me" width={800} height={800} />
+                          </button>
+                          <button
+                            className={`${styles.busStopStructureHint} ${styles.busStopStructureHintRight}`}
+                            type="button"
+                            onClick={() => setShowStructureSketchHints(false)}
+                            aria-label="Dismiss right sketch click hint"
+                          >
+                            <Image src="/images/other/Click_Me_Left_.png" alt="Click me" width={300} height={300} />
+                          </button>
+                        </>
+                      )}
                       {[
                         {
                           title: 'Planted roof and fruit-shaped bench',
@@ -1141,17 +1165,17 @@ export default function ProjectThreePage() {
                         },
                         {
                           title: 'Solar shelter with a community mural',
-                          photo: '/images/project-sec/proj%203/busstops/art/art-bs3.png',
-                          photoWidth: 1292,
-                          photoHeight: 762,
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs4.png',
+                          photoWidth: 1226,
+                          photoHeight: 708,
                           drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_2.png',
                           drawingAlt: 'Bus stop concept drawing with solar panels, heating and cooling, mural, and bench',
                         },
                         {
                           title: 'Solar roof and hanging plants',
-                          photo: '/images/project-sec/proj%203/busstops/art/art-bs4.png',
-                          photoWidth: 1226,
-                          photoHeight: 708,
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs3.png',
+                          photoWidth: 1292,
+                          photoHeight: 762,
                           drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_3.png',
                           drawingAlt: 'Bus stop concept drawing with a solar roof, hanging plants, and branded bench',
                         },
@@ -1165,9 +1189,12 @@ export default function ProjectThreePage() {
                               type="button"
                               aria-label={`${isFlipped ? 'Show photo' : 'Show drawing'}: ${sketch.title}`}
                               aria-pressed={isFlipped}
-                              onClick={() => setFlippedStructureSketches((current) => (
-                                isFlipped ? current.filter((item) => item !== index) : [...current, index]
-                              ))}
+                              onClick={() => {
+                                setShowStructureSketchHints(false);
+                                setFlippedStructureSketches((current) => (
+                                  isFlipped ? current.filter((item) => item !== index) : [...current, index]
+                                ));
+                              }}
                             >
                               <span className={styles.busStopStructureSketchCardInner}>
                                 <span className={styles.busStopStructureSketchCardFront} aria-hidden={isFlipped}>
@@ -1194,33 +1221,18 @@ export default function ProjectThreePage() {
                         );
                       })}
                     </section>
+                    <article className={styles.projectDetail}>
+                      <p>
+                        fart
+
+                        </p>
+                    </article>
               </div>
               <div className={styles.projectStepItem} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>
                 <article className={styles.projectDetail}>
-                  <h2>Prototyping</h2>
+                  <h2>Reflection & Analysis</h2>
                   <p>Paragraph for Prototyping.</p>
-                </article>
-              </div>
-              <div className={styles.projectStepItem} id="project-step-06">
-                <h2 className={styles.projectNumberTitle}>06</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Testing</h2>
-                  <p>Paragraph for Testing.</p>
-                </article>
-              </div>
-              <div className={styles.projectStepItem} id="project-step-07">
-                <h2 className={styles.projectNumberTitle}>07</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Launch</h2>
-                  <p>Paragraph for Launch.</p>
-                </article>
-              </div>
-              <div className={styles.projectStepItem} id="project-step-08">
-                <h2 className={styles.projectNumberTitle}>08</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Iteration</h2>
-                  <p>Paragraph for Iteration.</p>
                 </article>
               </div>
           </div>

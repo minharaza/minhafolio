@@ -1915,10 +1915,17 @@
 
 .finalThoughts {
   display: grid;
-  width: 100%;
+  width: min(100%, 76rem);
+  margin: 1rem auto 0;
   grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
   align-items: center;
   gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.projectFinalThoughtsStep {
+  grid-column: 1 / -1;
+  width: min(76rem, calc(100vw - 3rem));
+  justify-self: center;
 }
 
 .finalThoughtsLogo {

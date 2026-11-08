@@ -235,6 +235,7 @@ export default function ProjectThreePage() {
   const [flippedStructureSketches, setFlippedStructureSketches] = useState([]);
   const [showStructureSketchHints, setShowStructureSketchHints] = useState(true);
   const [showBusStopMemoryDrawing, setShowBusStopMemoryDrawing] = useState(false);
+  const [showProjectLinkHints, setShowProjectLinkHints] = useState(true);
   const contentRef = useRef(null);
   const toggleDesignDetails = (id) => {
     setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
@@ -1285,7 +1286,7 @@ export default function ProjectThreePage() {
                         </div>
                       )}
               </div>
-              <div className={styles.projectStepItem} id="project-step-05">
+              <div className={`${styles.projectStepItem} ${styles.projectFinalThoughtsStep}`} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>
                 <h2 className={styles.researchInsightsTitle}>Final Thoughts</h2>
                 <section className={styles.finalThoughts} aria-labelledby="final-thoughts-title">
@@ -1298,10 +1299,33 @@ export default function ProjectThreePage() {
                     sizes="(max-width: 700px) 55vw, 22rem"
                   />
                   <article className={styles.projectDetail}>
-                    <p>Write your final thoughts here.</p>
+                    <p>When certain aspects of life become mundane, our brains tend to easily overlook them. Key components that
+                      we touch day-to-day somehow become a relic of the past, while simultaneously being integral into our present.
+                      They go unnoticed until they are gone. 
+                      <br />  <br />
+                      This project has reminded me of how an everyday experience, such as riding the bus, has so much
+                      impact on our daily lives. Why would we not invest more thought and intention into the experience?
+                      The similarities between the benefits of public transport and public art allows for the opportuntiy to
+                      rethink our everyday lives. Taking the threads of both areas and weaving them into a solution that
+                      deepens the level of communtiy, especially in an critical point such as a bus stop.
+                      <br /><br />
+                      Cincinatti's Over-the-Rhine neighborhood has a unique opportunity to not only pump a new life into the city,
+                      but also impact the overall communtiy in ways that benefits the locals on such a large, and daily scale. Investing in
+                      a public need, while simultenously supporting local artists richens the fabric of the city.
+                       </p>
                   </article>
                 </section>
                 <div className={styles.finalThoughtsIcons} aria-label="Project links">
+                  {showProjectLinkHints && (
+                    <button
+                      className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintLeft}`}
+                      type="button"
+                      onClick={() => setShowProjectLinkHints(false)}
+                      aria-label="Dismiss left project links click hint"
+                    >
+                      <img src="/images/other/Click_Me.png" alt="Click me" />
+                    </button>
+                  )}
                   <a
                     className={styles.finalThoughtsIconButton}
                     href="https://github.com/minharaza/minhafolio/tree/master/app/homepage/projects/Project3"
@@ -1332,6 +1356,16 @@ export default function ProjectThreePage() {
                       height={128}
                     />
                   </a>
+                  {showProjectLinkHints && (
+                    <button
+                      className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintRight}`}
+                      type="button"
+                      onClick={() => setShowProjectLinkHints(false)}
+                      aria-label="Dismiss right project links click hint"
+                    >
+                      <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
+                    </button>
+                  )}
                 </div>
               </div>
           </div>

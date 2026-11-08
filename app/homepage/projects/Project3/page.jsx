@@ -1301,6 +1301,38 @@ export default function ProjectThreePage() {
                     <p>Write your final thoughts here.</p>
                   </article>
                 </section>
+                <div className={styles.finalThoughtsIcons} aria-label="Project links">
+                  <a
+                    className={styles.finalThoughtsIconButton}
+                    href="https://github.com/minharaza/minhafolio/tree/master/app/homepage/projects/Project3"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="View Project Three source on GitHub"
+                  >
+                    <Image
+                      className={styles.finalThoughtsIcon}
+                      src="/images/other/GitHub_Invertocat_Black_Clearspace.svg"
+                      alt=""
+                      width={128}
+                      height={128}
+                    />
+                  </a>
+                  <a
+                    className={styles.finalThoughtsIconButton}
+                    href="https://www.figma.com/design/f6LnebCPjSXbI16atbm3eq/Grad-school-application?node-id=14-8&t=ORCSb2uUyjjz2mZ6-0"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open the Project Three design in Figma"
+                  >
+                    <Image
+                      className={styles.finalThoughtsIcon}
+                      src="/images/other/figma-svgrepo-com.svg"
+                      alt=""
+                      width={128}
+                      height={128}
+                    />
+                  </a>
+                </div>
               </div>
           </div>
         </section>

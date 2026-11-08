@@ -1258,6 +1258,15 @@ export default function ProjectThreePage() {
                               sizes="(max-width: 700px) 65vw, 24rem"
                             />
                             <span>I still miss the bus stop!</span>
+                            <Image
+                              className={styles.busStopMemoryHint}
+                              src="/images/other/Click_Me_Left_.png"
+                              alt=""
+                              aria-hidden="true"
+                              width={300}
+                              height={300}
+                            />
+                            
                           </button>
                         </div>
                       )}

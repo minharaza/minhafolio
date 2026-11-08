@@ -1306,10 +1306,12 @@
 
 .busStopMemoryScene {
   display: flex;
+  box-sizing: border-box;
   width: min(100%, 38rem);
   align-items: center;
   justify-content: center;
   margin: 2rem auto;
+  padding-right: 3.5rem;
 }
 
 .busStopMemoryCharacter {
@@ -1328,10 +1330,21 @@
   cursor: pointer;
 }
 
-.busStopMemoryBubble img {
+.busStopMemoryBubble > img:first-child {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.busStopMemoryHint {
+  position: absolute;
+  top: 50%;
+  right: -4.5rem;
+  width: 7rem;
+  height: auto;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
 }
 
 .busStopMemoryBubble span {

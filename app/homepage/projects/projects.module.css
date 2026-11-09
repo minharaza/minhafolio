@@ -585,7 +585,6 @@
   border: 0;
   background: transparent;
   cursor: pointer;
-  animation: hint-flash 1.3s ease-in-out infinite alternate;
 }
 
 .swotHintLeft {
@@ -602,8 +601,8 @@
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 0.55rem rgb(255 248 241 / 80%));
-  animation: hint-glow 1.3s ease-in-out infinite alternate;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
 }
 
 .swotHint:focus-visible {
@@ -1195,6 +1194,398 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
+.busStopDesignComparison {
+  display: grid;
+  width: 100%;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+}
+
+.busStopDesignGroup {
+  display: grid;
+  min-width: 0;
+  gap: 0.75rem;
+}
+
+.busStopDesignTitle {
+  margin: 0;
+  color: #fff;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.35rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.busStopDesignPhotos {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.busStopDesignPhoto {
+  display: grid;
+  min-width: 0;
+  min-height: 12rem;
+  margin: 0;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgb(255 248 241 / 35%);
+  border-radius: 8px;
+  background: rgb(74 39 34 / 28%);
+}
+
+.busStopDesignPhoto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 32rem;
+  object-fit: contain;
+}
+
+.busStopNeedsLayout {
+  display: grid;
+  width: min(100%, 48rem);
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+  justify-self: center;
+}
+
+.busStopNeedsLayout .projectDetail {
+  height: 100%;
+}
+
+.busStopNeedsFigure {
+  min-width: 0;
+  margin: 0;
+}
+
+.busStopNeedsImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+}
+
+.busStopStructureLayout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+}
+
+.busStopStructureFigure {
+  min-width: 0;
+  margin: 0;
+}
+
+.busStopStructureImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(255 248 241 / 38%);
+  border-radius: 8px;
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+}
+
+.busStopStructureSketches {
+  position: relative;
+  display: grid;
+  width: min(calc(100vw - 3rem), 76rem);
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-self: center;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.busStopMemoryScene {
+  display: flex;
+  box-sizing: border-box;
+  width: min(100%, 38rem);
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  padding-right: 3.5rem;
+}
+
+.busStopMemoryCharacter {
+  display: block;
+  width: 45%;
+  height: auto;
+}
+
+.busStopMemoryBubble {
+  position: relative;
+  display: block;
+  width: 55%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.busStopMemoryBubble > img:first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.busStopMemoryHint {
+  position: absolute;
+  top: 50%;
+  right: -4.5rem;
+  width: 7rem;
+  height: auto;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.busStopMemoryBubble span {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: 65%;
+  color: #382023;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.busStopMemoryBubble:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 4px;
+}
+
+.busStopMemoryDrawing {
+  width: min(100%, 48rem);
+  margin: 2rem auto;
+}
+
+.busStopMemoryArtwork {
+  position: relative;
+  width: 100%;
+}
+
+.busStopMemoryArtwork > img:first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.busStopMemoryArtwork .busStopMemoryBenchCharacter {
+  position: absolute;
+  top: 60%;
+  left: 38.5%;
+  z-index: 1;
+  width: 23%;
+  height: auto;
+  pointer-events: none;
+}
+
+.busStopMemoryDrawing img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.busStopStructureHint {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: clamp(4rem, 7vw, 6rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.busStopStructureHintLeft {
+  left: clamp(-7rem, -7vw, -4.5rem);
+}
+
+.busStopStructureHintRight {
+  right: clamp(-7rem, -7vw, -4.5rem);
+}
+
+.busStopStructureHint img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+}
+
+.busStopStructureHint:focus-visible {
+  outline: 3px solid #fff8f1;
+  outline-offset: 3px;
+}
+
+.busStopStructureSketches figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.busStopStructureSketchCard {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.busStopStructureSketchCard:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 4px;
+}
+
+.busStopStructureSketchCardInner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+  transition: transform 600ms ease;
+}
+
+.busStopStructureSketchCard:hover .busStopStructureSketchCardInner,
+.busStopStructureSketchCard:focus-visible .busStopStructureSketchCardInner,
+.busStopStructureSketchCardFlipped .busStopStructureSketchCardInner {
+  transform: rotateY(180deg);
+}
+
+.busStopStructureSketchCardFront,
+.busStopStructureSketchCardBack {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  
+  border-radius: 8px;
+  background: rgba(240, 158, 158, 0);
+  box-shadow: 0 0.35rem 1rem rgb(46 27 28 / 18%);
+  backface-visibility: hidden;
+}
+
+.busStopStructureSketchCardBack {
+  transform: rotateY(180deg);
+}
+
+.busStopStructureSketchCardFront img,
+.busStopStructureSketchCardBack img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.busStopDesignProgression {
+  display: grid;
+  width:min(calc(100vw - 3rem), 70rem);
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  justify-self: center;
+}
+
+.busStopDesignProgressionImage {
+  --bus-stop-hint-size: clamp(3.5rem, 7vw, 5.5rem);
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  place-items: center start;
+}
+
+.busStopDesignProgressionImageRight {
+  place-items: center end;
+}
+
+.busStopDesignImageButton {
+  position: relative;
+  display: grid;
+  width: calc(100% - var(--bus-stop-hint-size));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.busStopDesignProgressionImage .busStopDesignClickHint {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  width: var(--bus-stop-hint-size);
+  max-height: none;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.busStopDesignProgressionImageRight .busStopDesignClickHint {
+  right: auto;
+  left: 0;
+}
+
+.busStopDesignImageButton:focus-visible {
+  outline: 3px solid #4a2722;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .busStopDesignProgressionImage .busStopDesignClickHint {
+    animation: none;
+  }
+}
+
+.busStopDesignProgressionImage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 42rem;
+  object-fit: contain;
+}
+
+.busStopDesignProgressionDivider {
+  color:#4a2722;;
+  font-family: var(--font-quicksand), sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.busStopFeatureExplanations {
+  display: grid;
+  width: min(calc(100vw - 3rem), 76rem);
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1rem;
+  justify-self: center;
+}
+
 .designProcessGallery {
   display: grid;
   width: min(100%, 76rem);
@@ -1540,6 +1931,30 @@
 .projectStepItem .projectDetail {
   box-sizing: border-box;
   width: 100%;
+}
+
+.finalThoughts {
+  display: grid;
+  width: min(100%, 76rem);
+  margin: 1rem auto 0;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.projectFinalThoughtsStep {
+  grid-column: 1 / -1;
+  width: min(76rem, calc(100vw - 3rem));
+  justify-self: center;
+}
+
+.finalThoughtsLogo {
+  display: block;
+  width: 100%;
+  max-height: 20rem;
+  height: auto;
+  object-fit: contain;
+  justify-self: center;
 }
 
 .projectBenchRow {
@@ -1923,6 +2338,15 @@
   transform: translate(-50%, -50%);
 }
 
+.projectThreeCaption {
+  top: 37%;
+  width: min(38%, 40rem);
+  max-width: 38%;
+  font-size: clamp(1.25rem, 0.9vw, 1.2rem);
+  color: #ffffff;
+  text-shadow: 0 0.1rem 0.2rem rgb(50, 46, 48);
+}
+
 .utensilPositioner {
   position: absolute;
   top: 50%;
@@ -2016,6 +2440,15 @@
 
   .projectStepsGrid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .finalThoughts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .finalThoughtsLogo {
+    width: min(100%, 20rem);
   }
 
   .researchChallengeGrid {
@@ -2161,6 +2594,70 @@
     gap: 0.85rem;
   }
 
+  .busStopDesignComparison {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .busStopNeedsLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .busStopStructureLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .busStopStructureSketches {
+    padding-top: 4.5rem;
+    grid-auto-columns: minmax(18rem, 1fr);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .busStopStructureHint {
+    top: 0;
+    width: 4rem;
+    transform: none;
+  }
+
+  .busStopStructureHintLeft {
+    left: 18%;
+  }
+
+  .busStopStructureHintRight {
+    right: 18%;
+  }
+
+  .busStopStructureSketches figure {
+    scroll-snap-align: start;
+  }
+
+  .busStopFeatureExplanations {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .busStopDesignProgression {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .busStopDesignProgressionDivider {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .busStopFeatureExplanations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .busStopDesignTitle {
+    font-size: 1.2rem;
+  }
+
   .researchVisualFrame {
     aspect-ratio: 3 / 4;
   }
@@ -2281,6 +2778,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .busStopStructureHint {
+    animation: none;
+  }
+
+  .busStopStructureSketchCardInner {
+    transition: none;
+  }
+
   .page::before,
   .page::after,
   .backButton {
@@ -2294,7 +2799,7 @@
 
   .swotHint img {
     animation: none;
-    filter: drop-shadow(0 0 0.4rem rgb(255 248 241 / 65%));
+    filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
   }
 
   .foodButton,

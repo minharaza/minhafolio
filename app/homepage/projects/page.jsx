@@ -102,6 +102,18 @@ export default function ProjectsPage() {
                   </text>
                 </svg>
               )}
+              {mat.project === 'Project3' && (
+                <svg className={`${styles.toastCaption} ${styles.projectThreeCaption}`} viewBox="0 -35 500 170" aria-hidden="true">
+                  <defs>
+                    <path id="pancake-caption-arc" d="M 20 110 Q 270 -140 480 110" />
+                  </defs>
+                  <text fill="currentColor">
+                    <textPath href="#pancake-caption-arc" startOffset="50%" textAnchor="middle">
+                      Reimagining the Urban Experience through a
+                    </textPath>
+                  </text>
+                </svg>
+              )}
               <span className={styles.drinkPositioner} aria-hidden="true">
                 <Image
                   src={mat.drink}

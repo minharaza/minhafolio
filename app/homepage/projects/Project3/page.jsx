@@ -10,7 +10,7 @@ const researchPersonas = [
     id: 'student-commuter',
     name: 'Student Commuter',
     image: '/images/project-sec/Student.png',
-    details: 'This high school student has two working parents who cannot drop her off to school, so she depends fully on the bus as a mode of transportation on a daily basis to get to school. School is too far of a walk to do alone, especially since the streets are not supportive of pedrestrians around her neighborhood.',
+    details: 'This high school student has two working parents who cannot drop her off to school, so she depends fully on the bus as a mode of transportation on a daily basis to get to school. School is too far of a walk to do alone, especially since the streets are not supportive of pedestrians around her neighborhood.',
   },
   {
     id: 'parent-rider',
@@ -22,7 +22,7 @@ const researchPersonas = [
     id: 'educator-commuter',
     name: 'Corporate Commuter',
     image: '/images/project-sec/Educator.png',
-    details: 'This downtown local relied on the bus to get to work. If he were to walk everyday it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
+    details: 'This downtown local relied on the bus to get to work. If he were to walk every day it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
   },
 ];
 
@@ -77,6 +77,30 @@ const publicArtBenefits = [
   {
     label: 'Benefits Public Mental Health',
     icon: '/images/project-sec/proj%203/pub%20health/mental-health-fill-svgrepo-com.svg',
+  },
+];
+
+const busStopDesignGroups = [
+  {
+    id: 'technology-driven',
+    title: 'Technology Driven Designs',
+    photos: [
+      { src: '/images/project-sec/proj%203/busstops/mod-bs.png', alt: 'Modern Seoul bus stop with route map, digital displays, and seating' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs2.png', alt: 'Contemporary bus stop shelter with a broad canopy and accessible seating' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs3.png', alt: 'Transit stop featuring a digital interactive display and passenger seating' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs4.png', alt: 'Technology-driven bus stop design, image 4' },
+      { src: '/images/project-sec/proj%203/busstops/mod-bs5.png', alt: 'Technology-driven bus stop design, image 5' },
+    ],
+  },
+  {
+    id: 'culture-driven',
+    title: 'Culture Driven Designs',
+    photos: [
+      { src: '/images/project-sec/proj%203/busstops/cool-bs.png', alt: 'Fruit-shaped bus stop shelters beside the waterfront' },
+      { src: '/images/project-sec/proj%203/busstops/cool-bs2.png', alt: 'Bus stop designed as a colorful strawberry shelter' },
+      { src: '/images/project-sec/proj%203/busstops/cool-bs3.png', alt: 'Bus stop transformed into a whimsical living-room scene with a red sofa bench' },
+      { src: '/images/project-sec/proj%203/busstops/cool-bs4.png', alt: 'Bus stop with a large umbrella canopy and brick shelter inspired by local character' },
+    ],
   },
 ];
 
@@ -154,6 +178,39 @@ const worksCitedBooks = [
   },
 ];
 
+function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label, hintDirection = 'left' }) {
+  return (
+    <figure className={`${styles.busStopDesignProgressionImage} ${hintDirection === 'right' ? styles.busStopDesignProgressionImageRight : ''}`}>
+      <button
+        className={styles.busStopDesignImageButton}
+        type="button"
+        onClick={onClick}
+        aria-label={label}
+        aria-expanded={expanded}
+        aria-controls={controls}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={2000}
+          height={2000}
+          sizes="(max-width: 10rem) 150vw, 100rem"
+        />
+      </button>
+      {!expanded && (
+        <Image
+          className={styles.busStopDesignClickHint}
+          src={hintDirection === 'left' ? '/images/other/Click_Me_Left_.png' : '/images/other/Click_Me.png'}
+          alt=""
+          aria-hidden="true"
+          width={800}
+          height={800}
+        />
+      )}
+    </figure>
+  );
+}
+
 export default function ProjectThreePage() {
   const busQuestion = 'Have you ever tried to take the bus...?';
   const busQuestion2 = 'And then your bus stop was missing its bench?';
@@ -174,7 +231,15 @@ export default function ProjectThreePage() {
   const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
   const [showWorksCitedHints, setShowWorksCitedHints] = useState(true);
   const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
+  const [expandedDesignDetails, setExpandedDesignDetails] = useState({});
+  const [flippedStructureSketches, setFlippedStructureSketches] = useState([]);
+  const [showStructureSketchHints, setShowStructureSketchHints] = useState(true);
+  const [showBusStopMemoryDrawing, setShowBusStopMemoryDrawing] = useState(false);
+  const [showProjectLinkHints, setShowProjectLinkHints] = useState(true);
   const contentRef = useRef(null);
+  const toggleDesignDetails = (id) => {
+    setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
+  };
 
   return (
     <main
@@ -298,8 +363,9 @@ export default function ProjectThreePage() {
                   </p>
                 )}
                 <h2 className={styles.projectNumberTitle}>01</h2>
+                <h2 className={styles.researchInsightsTitle}>Overview</h2>
                 <article className={styles.projectDetail}>
-                  <h2>A Little Overview</h2>
+                   <h2>A Little Insight into the Inspiration for the Project</h2>
                   <p>Living within the Over-the-Rhine neighborhood of Cincinnati, the bus has become a consistent
                     step within my daily routine. Whether there were leaves to crunch underfoot or springtime 
                     drizzles pattering on my forehead, the morning '21' slowly became one of the best parts of my mornings.
@@ -367,7 +433,7 @@ export default function ProjectThreePage() {
                     alt="Rider waiting beneath the blue shelter at the bus stop"
                     width={3024}
                     height={4032}
-                    sizes="(max-width: 700px) 85vw, 22rem"
+                    sizes="(max-width: 700px) 85vw, 30rem"
                   />
                   <span className={styles.busOriginOrnament} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
                   <Image
@@ -376,10 +442,11 @@ export default function ProjectThreePage() {
                     alt="The sidewalk where the bus stop bench was removed"
                     width={1536}
                     height={2048}
-                    sizes="(max-width: 700px) 85vw, 22rem"
+                    sizes="(max-width: 700px) 85vw, 30rem"
                   />
                 </div>
                 <figcaption className={styles.busOriginCaption}>
+                  <p className={styles.thoughtsHeading}>The Inspiration</p>
                   In the aftermath of “The Tragedy,” my mornings consisted of unintentionally experience research. Other bus users complained immensely about this change, and rightfully so. I heard commentary about a number of issues that arose with the removal, which led the gears in my brain to turn a little extra. I was experiencing firsthand the effects of a decision with an nonequivalent impact. How can a seemingly small change affect a community at large? The question weighed on me greatly, to a point of invention!
                 </figcaption>
               </figure>
@@ -526,6 +593,7 @@ export default function ProjectThreePage() {
                   </ul>
                 </section>
                 <article className={styles.projectDetail}>
+                  <h2>Public Transportation Rocks!</h2>
                   <p>It is unequivocally evident that research shows how public transportation is vital 
                     to the health of cities and local communities. Bus stops become a portal into opportunity 
                     and resources, especially within the Downtown Cincinnati area. This raises curiosity 
@@ -611,6 +679,7 @@ export default function ProjectThreePage() {
                   </ul>
                 </section>
                 <article className={styles.projectDetail}>
+                  <h2>Public Art Rocks Too!</h2>
                   <p>Overall, the benefits public art has within a community’s mental safety is enormous! 
                     The Cincinnati local government and organizations have invested in murals on building 
                     facades all over the Over-The-Rhine area. This initiative has given a breath of life 
@@ -717,45 +786,597 @@ export default function ProjectThreePage() {
               </div>
               <div className={styles.projectStepItem} id="project-step-03">
                 <h2 className={styles.projectNumberTitle}>03</h2>
+                <h2 className={styles.researchInsightsTitle}>Research Consideration &amp; Planning</h2>
                 <article className={styles.projectDetail}>
-                  <h2>Analysis &amp; Planning</h2>
-                  <p>Paragraph for Analysis &amp; Planning.</p>
+                  <p> After researching a few visuals of bus stop designs, some with a technologically functional focus 
+                    along with others with a cultural art focus, a lot of inspiration could be drawn from both categories.
+                    The functional designs leaned upon innovation, specifically by adding features like a screen with live updates 
+                    or solar panels that generating heating and electricity for the stop. Most of these took a modern simplistic
+                    approach that focused on the advanced additions. 
+                    <br /><br />
+                    In contrast, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
+                    fruit bus stop installations have gain worldwide attention for their uniqueness and eclectic presence. They
+                    have become landmarks, attracting tourists from far and wide.
+                    <br /><br />
+                    Successfully blending technical innovation with artistic expression may be a mighty challenge, however, the
+                    lasting, positive impact upon the community leaves the city for the better.  </p>
                 </article>
+                <section className={styles.busStopDesignComparison} aria-label="Bus stop design inspiration">
+                  {busStopDesignGroups.map((group) => (
+                    <section className={styles.busStopDesignGroup} key={group.id} aria-labelledby={`${group.id}-title`}>
+                      <h3 className={styles.busStopDesignTitle} id={`${group.id}-title`}>{group.title}</h3>
+                      <div className={styles.busStopDesignPhotos}>
+                        {group.photos.map((photo) => (
+                          <figure className={styles.busStopDesignPhoto} key={photo.src}>
+                            <Image
+                              src={photo.src}
+                              alt={photo.alt}
+                              width={1200}
+                              height={900}
+                              sizes="(max-width: 700px) 90vw, 36vw"
+                            />
+                          </figure>
+                        ))}
+                      </div>
+                    </section>
+                    
+                  ))}
+                  
+                </section>
               </div>
+              <section className={styles.busStopNeedsLayout} aria-label="Bus stop interface planning">
+                <article className={styles.projectDetail}>
+                  <p>
+                    One aspect of redesigning the bus stop that seemed to easily solve a lot of issues riders
+                    were experiencing was the lack of information readily available. In this bus stop redesign, 
+                    a touchscreen user interface seemed to be the most natural and effective solution to solving any issues with 
+                    displaying relevent bus information.
+                    <br /><br />
+                    After brainstorming a bit, a list of important functions was created allowing for
+                    a basic design to brew into fruition.
+                  </p>
+                </article>
+               <figure className={styles.busStopNeedsFigure}>
+                  <Image
+                    className={styles.busStopNeedsImage}
+                    src="/images/project-sec/proj%203/busstops/busstop-needs.png"
+                    alt="Handwritten planning notes listing bus rider touchscreen needs and additional community resources"
+                    width={1154}
+                    height={1308}
+                    sizes="(max-width: 700px) 90vw, 23rem"
+                  />
+                </figure>
+              </section>
               <div className={styles.projectStepItem} id="project-step-04">
                 <h2 className={styles.projectNumberTitle}>04</h2>
+                <h2 className={styles.researchFindingIntro}>Design Breakdown</h2>
+                <h2 className={styles.researchInsightsTitle}>Bus Stop Screen User Interface</h2>
+            
+              <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
+                    alt="Hand-drawn wireframe for the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                <figure className={styles.busStopDesignProgressionImage}>
+                  <Image
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                    alt="Figma mockup of the bus stop touchscreen interface"
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 10rem) 150vw, 100rem"
+                  />
+                </figure>
+                </section>
                 <article className={styles.projectDetail}>
-                  <h2>Design</h2>
-                  <p>Paragraph for Design.</p>
+                  <p>Using the ideas laid out in the brainstorming session, a wireframe for an electronic
+                    user interface was developed. The goal of the design is to create a screen that acknowledges
+                    user's needs in one simple, but efficient layout. With the user personas in mind, the created wireframe
+                    aims to be a user-friendly addition to a traditional bus stop, where technology would benefit the community.
+                  </p>
                 </article>
+                <section>
+                  <ExpandableDesignImage
+                    src="/images/project-sec/proj%203/busstops/figma/color-palette.png"
+                    alt="Color palette for the bus stop touchscreen interface"
+                    controls="design-detail-color"
+                    expanded={Boolean(expandedDesignDetails.color)}
+                    onClick={() => toggleDesignDetails('color')}
+                    label="Show or hide the color palette explanation"
+                  />
+                </section>
+                <article className={styles.projectDetail} id="design-detail-color" hidden={!expandedDesignDetails.color}>
+                  <h2>Choosing Color</h2>
+                  <p>The color palette was an easy choice. In hopes of these designs being implemented in the future, it
+                    would be important to work with the city metro. Naturally, using the color scheme of organization was the obvious
+                    choice for a cohesive design overall.</p>
+                </article>
+              
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop interface design">
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma-0.png"
+                  alt="Figma mockup of the bus stop touchscreen interface"
+                  hintDirection="left"
+                  controls="design-detail-device design-detail-interface"
+                  expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
+                  onClick={() => toggleDesignDetails('interfaceFeatures')}
+                  label="Show or hide the interface feature explanations"
+                />
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
+                  alt="Figma mockup of the bus stop touchscreen interface"
+                  hintDirection="right"
+                  controls="design-detail-device design-detail-interface"
+                  expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
+                  onClick={() => toggleDesignDetails('interfaceFeatures')}
+                  label="Show or hide the interface feature explanations"
+                />
+                </section>
+                <div className={styles.busStopFeatureExplanations}>
+                <article className={styles.projectDetail} id="design-detail-device" hidden={!expandedDesignDetails.interfaceFeatures}>
+                  <h2>Device Layout Feature Explanation</h2>
+                  <p>
+                    The design begins with an outer interface with three main components: An 'SOS' help button, 
+                    a money slot, an a ticket printer. Within the field research, it was found that bus tickets are currently 
+                    bought on the bus. This poses a challenge due to the nature of the system for buying. Sometimes, buses get 
+                    held up due to ticket purchasing causing delays. Newer bus goers mentioned the unclarity of where to purchase when initially
+                    utilizing the bus system. The ticket printer feature aims to alleviate this issue, so that bus goers can
+                    easily purchase tickets at the physical bus stops. 
+                    <br /><br />
+                    The "Change Exchanger" money slot aims to work similarly to that of an ATM machine. Another challenge discovered in the field research was that
+                    users faced difficulties since the bus only accepts exact change. Currently, the Cincinnati Metro costs $2.20 per bus ride. Many frequent riders
+                    tended to use cash instead of a digital bus pass. This caused some people to lose money if they did not have exact change. Moreover, this resulted
+                    in more bus delays due to the nature of counting change. In order to improve upon this challenge, the money slot was added so that bus riders could
+                    more easily obtain exact change per bus ride at any stop, reducing any type of unnecessary money loss or bus delays.
+                    <br /><br />
+                    Finally, an 'SOS' button was added in order to provide immediate access during any emergency. This allows for a wholistic solution
+                    to a multiple of problems extending into other areas of the city outside of public transport.
+                    </p>
+                </article>
+                <article className={styles.projectDetail} id="design-detail-interface" hidden={!expandedDesignDetails.interfaceFeatures}>
+                  <h2>User Interface Layout Feature Explanation</h2>
+                  <p>
+                    The actual interface aims to be as user friendly as possible, especially considering the diversity of 
+                    riders with different technology proficiency levels. With the screen the overall layout consists of 
+                    a map. Within it, a side menu with incoming buses along with the duration of their arrival. Each bus
+                    is color-coded differently to make it visually apparent to differentiate between them. Additionally,
+                    each incoming bus is displayed upon the map, providing a real-time visual of the bus numbers and their
+                    respection locations. This furthers the overall idea of making bus information readily available
+                    without much effort for the user.
+                    <br /><br />
+                    Along with the largely displayed bus information, there are four icons in the bottom left-hand corner: A home menu icon, 
+                    a money exchanger icon, a ticket print icon, and a search icon. In spirit of making information apparent, yet simple,
+                    the icons are place strategically to ensure less confusion. These icons functionally will be explained further, and it is
+                    important to highlight that these icons to not take away from any of the bus information at any time.
+                    </p>
+                </article>
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma2.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
+                  controls="design-detail-bus-card design-detail-home-icon"
+                  expanded={Boolean(expandedDesignDetails.busScreens)}
+                  onClick={() => toggleDesignDetails('busScreens')}
+                  label="Show or hide the bus card and home screen explanations"
+                />
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma3.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
+                  controls="design-detail-bus-card design-detail-home-icon"
+                  expanded={Boolean(expandedDesignDetails.busScreens)}
+                  onClick={() => toggleDesignDetails('busScreens')}
+                  label="Show or hide the bus card and home screen explanations"
+                />
+                </section>
+                <article className={styles.projectDetail} id="design-detail-bus-card" hidden={!expandedDesignDetails.busScreens}>
+                  <h2>Clicking on a Bus Card</h2>
+                  <p>After the user taps on a bus on a bus card, this screen displays. If you look on the upper right
+                    hand corner, the bus cards changed from displaying the different bus numbers to the same bus number 
+                    with each future incoming bus with its respective arrival time.  
+                  </p>
+                </article>
+                <article className={styles.projectDetail} id="design-detail-home-icon" hidden={!expandedDesignDetails.busScreens}>
+                  <h2>Clicking on the Home Icon</h2>
+                  <p>When click on the home icon, a pop up expands with a number of resource icons along with a search bar at
+                    the bottom. This is a resource guide that can connect users with city announcements, local events, food banks,
+                    and other resource information that may not otherwise be readily available.
+                  </p>
+                </article>
+                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma4.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
+                  controls="design-detail-money design-detail-money-flow"
+                  expanded={Boolean(expandedDesignDetails.money)}
+                  onClick={() => toggleDesignDetails('money')}
+                  label="Show or hide the money exchange explanation"
+                />
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma4-1.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
+                  controls="design-detail-money design-detail-money-flow"
+                  expanded={Boolean(expandedDesignDetails.money)}
+                  onClick={() => toggleDesignDetails('money')}
+                  label="Show or hide the money exchange explanation"
+                />
+                </section>
+                <article className={styles.projectDetail} id="design-detail-money" hidden={!expandedDesignDetails.money}>
+                  <h2>Money Exchange Icon</h2>
+                  <p>
+                    The money exchange icon aims to create a neo-ATM money exchanger that gives exact change for bus tickets. 
+                    In this feature, the user will press the icon and the money slot would be blinking green, indicating that money should
+                    go in. Then the pop up flow would be prompted.
+                  </p>
+                </article>
+                <article className={styles.projectDetail} id="design-detail-money-flow" hidden={!expandedDesignDetails.money}>
+                  <h2>Pop Up Flow</h2>
+                  <p>Within this money exchange pop up flow, each step is supposed to clearly address the user similar to an ATM interface.
+                    Since the bus is $2.20 per ride, the machine would calculate exact change for the amount of bus tickets the user asks
+                    for.
+                  </p>
+                </article>
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma5.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
+                  controls="design-detail-ticket design-detail-ticket-flow"
+                  expanded={Boolean(expandedDesignDetails.ticket)}
+                  onClick={() => toggleDesignDetails('ticket')}
+                  label="Show or hide the ticket printer explanation"
+                />
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma5-1.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
+                  controls="design-detail-ticket design-detail-ticket-flow"
+                  expanded={Boolean(expandedDesignDetails.ticket)}
+                  onClick={() => toggleDesignDetails('ticket')}
+                  label="Show or hide the ticket printer explanation"
+                />
+                </section>
+                <article className={styles.projectDetail} id="design-detail-ticket" hidden={!expandedDesignDetails.ticket}>
+                  <h2>Ticket Printer Icon</h2>
+                  <p>The ticket printer icon would give the user the ability to print a number of bus tickets. It would allow users to input money in the
+                    money slot for the change exchanger, and print tickets according to the user's input.
+                  </p>
+                </article>
+                <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={!expandedDesignDetails.ticket}>
+                  <h2>Pop Up Flow</h2>
+                  <p>
+                Similar to the above flow, the ticket printer pop up aims to clearly guide and confirm with the user for how many tickets
+                to be print and purchased.
+                  </p>
+                </article>
+                <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma6.png"
+                  alt="Bus stop interface showing incoming buses and their arrival times"
+                  hintDirection="left"
+                  controls="design-detail-search design-detail-search-flow"
+                  expanded={Boolean(expandedDesignDetails.search)}
+                  onClick={() => toggleDesignDetails('search')}
+                  label="Show or hide the search explanation"
+                />
+                <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
+                <ExpandableDesignImage
+                  src="/images/project-sec/proj%203/busstops/figma/bs-figma6-1.png"
+                  alt="Bus stop interface home screen with a resource guide over the city map"
+                  hintDirection="right"
+                  controls="design-detail-search design-detail-search-flow"
+                  expanded={Boolean(expandedDesignDetails.search)}
+                  onClick={() => toggleDesignDetails('search')}
+                  label="Show or hide the search explanation"
+                />
+                </section>
+                <article className={styles.projectDetail} id="design-detail-search" hidden={!expandedDesignDetails.search}>
+                  <h2>Search Icon</h2>
+                  <p>The search icon acts as a map guide for finding bus routes to any location, similar to
+                     any traditional navigation application. This would allow users who do not have access to cellular phones to still
+                     be able to look at updated bus routes to any location of their choosing.</p>
+                </article>
+                <article className={styles.projectDetail} id="design-detail-search-flow" hidden={!expandedDesignDetails.search}>
+                  <h2>Pop Up Flow</h2>
+                  <p>In this flow, the user is prompted with a keyboard to search their location. After entering their response, 
+                    the destination search displays specific bus route directions. The user is then allowed to print these directions using the
+                    ticket printer if needed. This really considers those who may be in need of accessible information, but do not have the
+                    technology on hand at all times.
+                  </p>
+                </article>
+                </div>
+                <section>
+                  <ExpandableDesignImage
+                    src="/images/project-sec/proj%203/busstops/figma/bs-figma7.png"
+                    alt="Bus stop interface showing the SOS emergency control"
+                    controls="design-detail-sos"
+                    expanded={Boolean(expandedDesignDetails.sos)}
+                    onClick={() => toggleDesignDetails('sos')}
+                    label="Show or hide the SOS button explanation"
+                  />
+                </section>
+                <article className={styles.projectDetail} id="design-detail-sos" hidden={!expandedDesignDetails.sos}>
+                  <h2>Pressing on SOS Button</h2>
+                  <p>
+                    When a bus rider presses on the physical SOS button, it prompts a notifying alert telling the user that the police
+                    will be called. The numbers on the screen would act as a live timer, indicating how much time until the call goes 
+                    through to the local authorities. This allows the user to cancel if needed, along with simplified steps in case of actual
+                    emergent situations.
+                     </p>
+                </article>
+                 <h2 className={styles.researchInsightsTitle}>Bus Stop Structure</h2>
+                    <div className={styles.busStopStructureLayout}>
+                      <figure className={styles.busStopStructureFigure}>
+                        <Image
+                          className={styles.busStopStructureImage}
+                          src="/images/project-sec/proj%203/busstops/art/art-bs1.png"
+                          alt="Handwritten planning notes for improving the physical bus stop experience"
+                          width={1248}
+                          height={1254}
+                          sizes="(max-width: 700px) 90vw, 23rem"
+                        />
+                      </figure>
+                      <article className={styles.projectDetail}>
+                        <p>When redesigning the physical structure of the bus stop, a brainstorming session was utilized to lay out ideas for improvements.
+                          These ideas were stewed upon to create a couple of rough sketches with the consideration of the conclusion notes. The bus stop 
+                          ideations depict various possible renderings of the bus stop covering along with the bench.
+                        </p>
+                      </article>
+                    </div>
+                    <section className={styles.busStopStructureSketches} aria-label="Bus stop structure design sketches">
+                      {showStructureSketchHints && (
+                        <>
+                          <button
+                            className={`${styles.busStopStructureHint} ${styles.busStopStructureHintLeft}`}
+                            type="button"
+                            onClick={() => setShowStructureSketchHints(false)}
+                            aria-label="Dismiss left sketch click hint"
+                          >
+                            <Image src="/images/other/Click_Me.png" alt="Click me" width={800} height={800} />
+                          </button>
+                          <button
+                            className={`${styles.busStopStructureHint} ${styles.busStopStructureHintRight}`}
+                            type="button"
+                            onClick={() => setShowStructureSketchHints(false)}
+                            aria-label="Dismiss right sketch click hint"
+                          >
+                            <Image src="/images/other/Click_Me_Left_.png" alt="Click me" width={300} height={300} />
+                          </button>
+                        </>
+                      )}
+                      {[
+                        {
+                          title: 'Planted roof and fruit-shaped bench',
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs2.png',
+                          photoWidth: 1300,
+                          photoHeight: 992,
+                          drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_1.png',
+                          drawingAlt: 'Bus stop concept drawing with a planted roof and citrus-slice bench',
+                        },
+                        {
+                          title: 'Solar shelter with a community mural',
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs4.png',
+                          photoWidth: 1226,
+                          photoHeight: 708,
+                          drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_2.png',
+                          drawingAlt: 'Bus stop concept drawing with solar panels, heating and cooling, mural, and bench',
+                        },
+                        {
+                          title: 'Solar roof and hanging plants',
+                          photo: '/images/project-sec/proj%203/busstops/art/art-bs3.png',
+                          photoWidth: 1292,
+                          photoHeight: 762,
+                          drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_3.png',
+                          drawingAlt: 'Bus stop concept drawing with a solar roof, hanging plants, and branded bench',
+                        },
+                      ].map((sketch, index) => {
+                        const isFlipped = flippedStructureSketches.includes(index);
+
+                        return (
+                          <figure key={sketch.photo}>
+                            <button
+                              className={`${styles.busStopStructureSketchCard}${isFlipped ? ` ${styles.busStopStructureSketchCardFlipped}` : ''}`}
+                              type="button"
+                              aria-label={`${isFlipped ? 'Show photo' : 'Show drawing'}: ${sketch.title}`}
+                              aria-pressed={isFlipped}
+                              onClick={() => {
+                                setShowStructureSketchHints(false);
+                                setFlippedStructureSketches((current) => (
+                                  isFlipped ? current.filter((item) => item !== index) : [...current, index]
+                                ));
+                              }}
+                            >
+                              <span className={styles.busStopStructureSketchCardInner}>
+                                <span className={styles.busStopStructureSketchCardFront} aria-hidden={isFlipped}>
+                                  <Image
+                                    src={sketch.photo}
+                                    alt=""
+                                    width={sketch.photoWidth}
+                                    height={sketch.photoHeight}
+                                    sizes="(max-width: 700px) 18rem, 24rem"
+                                  />
+                                </span>
+                                <span className={styles.busStopStructureSketchCardBack} aria-hidden={!isFlipped}>
+                                  <Image
+                                    src={sketch.drawing}
+                                    alt=""
+                                    width={2048}
+                                    height={2048}
+                                    sizes="(max-width: 700px) 18rem, 24rem"
+                                  />
+                                </span>
+                              </span>
+                            </button>
+                          </figure>
+                        );
+                      })}
+                    </section>
+                      {showBusStopMemoryDrawing ? (
+                        <figure className={styles.busStopMemoryDrawing} id="bus-stop-memory-drawing">
+                          <div className={styles.busStopMemoryArtwork}>
+                            <Image
+                              src="/images/project-sec/proj%203/busstops/art/Bus_Stop_Drawing_combo.png"
+                              alt="Hand-drawn bus stop with a planted roof and fruit-shaped bench"
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 90vw, 48rem"
+                            />
+                            <Image
+                              className={styles.busStopMemoryBenchCharacter}
+                              src="/images/project-sec/Happy.png"
+                              alt="A sad person sitting on the fruit-shaped bench"
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 24vw, 12rem"
+                            />
+                          </div>
+                          <figcaption className={styles.projectDetail}>
+                            <p>
+                              In this final design, I decided to choose my personal favorite elements from all three of the designs. 
+                              On the left-hand side, the screen interface is built as apart of the structure, in reference to the the earlier
+                              user interface breakdown. As a frequent visitor and user of the Findlay Market bus stop, I wanted to capture
+                              the essence of community and the overall celebration of the local market within the design. The fruit bench is 
+                              an ode to the many farmer's market booths in the historic shed. The very top of the structure features a 
+                              giant flower bed filled with plants. Findlay Market has its own local plant business, along with many giant pots
+                              decorated for the summer and spring seasons with plants! In reference to this, I wanted to incorporate another
+                              reflection of the market within every inch of the design. The showstopper would be the mural at the back part
+                              of the structure, which truly captures the essence of the overall area in addition to the market. The 
+                              neighborhood is filled with public mural for all to see, whether it's visitors or  locals.
+                            </p>
+                          </figcaption>
+                        </figure>
+                      ) : (
+                        <div className={styles.busStopMemoryScene}>
+                          <Image
+                            className={styles.busStopMemoryCharacter}
+                            src="/images/project-sec/Sad.png"
+                            alt="A sad person missing the bus stop"
+                            width={2048}
+                            height={2048}
+                            sizes="(max-width: 700px) 55vw, 18rem"
+                          />
+                          <button
+                            className={styles.busStopMemoryBubble}
+                            type="button"
+                            onClick={() => setShowBusStopMemoryDrawing(true)}
+                            aria-label="I still miss the bus stop. Show the bus stop drawing"
+                            aria-controls="bus-stop-memory-drawing"
+                          >
+                            <Image
+                              src="/images/other/Speech_Bubble.png"
+                              alt=""
+                              aria-hidden="true"
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 65vw, 24rem"
+                            />
+                            <span>I still miss the bus stop!</span>
+                            <Image
+                              className={styles.busStopMemoryHint}
+                              src="/images/other/Click_Me_Left_.png"
+                              alt=""
+                              aria-hidden="true"
+                              width={300}
+                              height={300}
+                            />
+                            
+                          </button>
+                        </div>
+                      )}
               </div>
-              <div className={styles.projectStepItem} id="project-step-05">
+              <div className={`${styles.projectStepItem} ${styles.projectFinalThoughtsStep}`} id="project-step-05">
                 <h2 className={styles.projectNumberTitle}>05</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Prototyping</h2>
-                  <p>Paragraph for Prototyping.</p>
-                </article>
-              </div>
-              <div className={styles.projectStepItem} id="project-step-06">
-                <h2 className={styles.projectNumberTitle}>06</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Testing</h2>
-                  <p>Paragraph for Testing.</p>
-                </article>
-              </div>
-              <div className={styles.projectStepItem} id="project-step-07">
-                <h2 className={styles.projectNumberTitle}>07</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Launch</h2>
-                  <p>Paragraph for Launch.</p>
-                </article>
-              </div>
-              <div className={styles.projectStepItem} id="project-step-08">
-                <h2 className={styles.projectNumberTitle}>08</h2>
-                <article className={styles.projectDetail}>
-                  <h2>Iteration</h2>
-                  <p>Paragraph for Iteration.</p>
-                </article>
+                <h2 className={styles.researchInsightsTitle}>Final Thoughts</h2>
+                <section className={styles.finalThoughts} aria-labelledby="final-thoughts-title">
+                  <Image
+                    className={styles.finalThoughtsLogo}
+                    src="/images/other/Logo.png"
+                    alt=""
+                    width={3024}
+                    height={1024}
+                    sizes="(max-width: 700px) 55vw, 22rem"
+                  />
+                  <article className={styles.projectDetail}>
+                    <p>When certain aspects of life become mundane, our brains tend to easily overlook them. Key components that
+                      we touch day-to-day somehow become a relic of the past, while simultaneously being integral into our present.
+                      They go unnoticed until they are gone. 
+                      <br />  <br />
+                      This project has reminded me of how an everyday experience, such as riding the bus, has so much
+                      impact on our daily lives. Why would we not invest more thought and intention into the experience?
+                      The similarities between the benefits of public transport and public art allows for the opportunity to
+                      rethink our everyday lives. Taking the threads of both areas and weaving them into a solution that
+                      deepens the level of community, especially in an critical point such as a bus stop.
+                      <br /><br />
+                      Cincinnati's Over-the-Rhine neighborhood has a unique opportunity to not only pump a new life into the city,
+                      but also impact the overall community in ways that benefits the locals on such a large, and daily scale. Investing in
+                      a public need, while simultaneously supporting local artists richens the fabric of the city.
+                       </p>
+                  </article>
+                </section>
+                <div className={styles.finalThoughtsIcons} aria-label="Project links">
+                  {showProjectLinkHints && (
+                    <button
+                      className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintLeft}`}
+                      type="button"
+                      onClick={() => setShowProjectLinkHints(false)}
+                      aria-label="Dismiss left project links click hint"
+                    >
+                      <img src="/images/other/Click_Me.png" alt="Click me" />
+                    </button>
+                  )}
+                  <a
+                    className={styles.finalThoughtsIconButton}
+                    href="https://github.com/minharaza/minhafolio/tree/master/app/homepage/projects/Project3"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="View Project Three source on GitHub"
+                  >
+                    <Image
+                      className={styles.finalThoughtsIcon}
+                      src="/images/other/GitHub_Invertocat_Black_Clearspace.svg"
+                      alt=""
+                      width={128}
+                      height={128}
+                    />
+                  </a>
+                  <a
+                    className={styles.finalThoughtsIconButton}
+                    href="https://www.figma.com/design/f6LnebCPjSXbI16atbm3eq/Grad-school-application?node-id=14-8&t=ORCSb2uUyjjz2mZ6-0"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open the Project Three design in Figma"
+                  >
+                    <Image
+                      className={styles.finalThoughtsIcon}
+                      src="/images/other/figma-svgrepo-com.svg"
+                      alt=""
+                      width={128}
+                      height={128}
+                    />
+                  </a>
+                  {showProjectLinkHints && (
+                    <button
+                      className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintRight}`}
+                      type="button"
+                      onClick={() => setShowProjectLinkHints(false)}
+                      aria-label="Dismiss right project links click hint"
+                    >
+                      <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
+                    </button>
+                  )}
+                </div>
               </div>
           </div>
         </section>

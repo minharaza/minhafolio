@@ -1225,13 +1225,23 @@ export default function ProjectThreePage() {
                     </section>
                       {showBusStopMemoryDrawing ? (
                         <figure className={styles.busStopMemoryDrawing} id="bus-stop-memory-drawing">
-                          <Image
-                            src="/images/project-sec/proj%203/busstops/art/Bus_Stop_Drawing_combo.png"
-                            alt="Hand-drawn bus stop with a planted roof and fruit-shaped bench"
-                            width={2048}
-                            height={2048}
-                            sizes="(max-width: 700px) 90vw, 48rem"
-                          />
+                          <div className={styles.busStopMemoryArtwork}>
+                            <Image
+                              src="/images/project-sec/proj%203/busstops/art/Bus_Stop_Drawing_combo.png"
+                              alt="Hand-drawn bus stop with a planted roof and fruit-shaped bench"
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 90vw, 48rem"
+                            />
+                            <Image
+                              className={styles.busStopMemoryBenchCharacter}
+                              src="/images/project-sec/Happy.png"
+                              alt="A sad person sitting on the fruit-shaped bench"
+                              width={2048}
+                              height={2048}
+                              sizes="(max-width: 700px) 24vw, 12rem"
+                            />
+                          </div>
                           <figcaption className={styles.projectDetail}>
                             <p>
                               In this final design, I decided to choose my personal favorite elements from all three of the designs. 

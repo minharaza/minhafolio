@@ -1370,6 +1370,27 @@
   margin: 2rem auto;
 }
 
+.busStopMemoryArtwork {
+  position: relative;
+  width: 100%;
+}
+
+.busStopMemoryArtwork > img:first-child {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.busStopMemoryArtwork .busStopMemoryBenchCharacter {
+  position: absolute;
+  top: 60%;
+  left: 38.5%;
+  z-index: 1;
+  width: 23%;
+  height: auto;
+  pointer-events: none;
+}
+
 .busStopMemoryDrawing img {
   display: block;
   width: 100%;

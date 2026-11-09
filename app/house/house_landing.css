@@ -222,34 +222,32 @@
 .house-item span {
 	position: absolute;
 	left: 50%;
-	bottom: 105%;
-	padding: 0.35rem 0.6rem;
-	border-radius: 0.35rem;
-	background: rgba(255, 255, 255, 0.9);
-	color: #695687;
-	font-family: 'Lily Script One', cursive;
+	bottom: 95%;
+	padding: 0.4rem 0.75rem;
+	border: 2px solid #fff;
+	border-radius: 999px;
+	background: #fff0f5;
+	box-shadow: 0 0.25rem 0.65rem rgba(120, 45, 80, 0.2);
+	color: #9b3158;
+	font-family: 'Happy Monkey', cursive;
 	font-size: clamp(0.9rem, 1.5vw, 1.4rem);
+	font-weight: 700;
 	white-space: nowrap;
 	opacity: 0;
-	transform: translateX(-50%) translateY(0.35rem);
+	transform: translateX(-50%) translateY(0.35rem) rotate(-3deg) scale(0.94);
 	transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .house-item:hover span,
 .house-item:focus-visible span {
 	opacity: 1;
-	transform: translateX(-50%) translateY(0);
+	transform: translateX(-50%) translateY(0) rotate(-3deg) scale(1);
 }
 
 .house-item-bookshelf {
 	left: 23%;
 	top: 69%;
 	width: 10%;
-}
-
-.house-item-bookshelf span {
-	left: 50%;
-	bottom: 100%;
 }
 
 .house-item-bed {

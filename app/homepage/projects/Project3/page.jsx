@@ -10,7 +10,7 @@ const researchPersonas = [
     id: 'student-commuter',
     name: 'Student Commuter',
     image: '/images/project-sec/Student.png',
-    details: 'This high school student has two working parents who cannot drop her off to school, so she depends fully on the bus as a mode of transportation on a daily basis to get to school. School is too far of a walk to do alone, especially since the streets are not supportive of pedrestrians around her neighborhood.',
+    details: 'This high school student has two working parents who cannot drop her off to school, so she depends fully on the bus as a mode of transportation on a daily basis to get to school. School is too far of a walk to do alone, especially since the streets are not supportive of pedestrians around her neighborhood.',
   },
   {
     id: 'parent-rider',
@@ -22,7 +22,7 @@ const researchPersonas = [
     id: 'educator-commuter',
     name: 'Corporate Commuter',
     image: '/images/project-sec/Educator.png',
-    details: 'This downtown local relied on the bus to get to work. If he were to walk everyday it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
+    details: 'This downtown local relied on the bus to get to work. If he were to walk every day it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
   },
 ];
 
@@ -788,18 +788,18 @@ export default function ProjectThreePage() {
                 <h2 className={styles.projectNumberTitle}>03</h2>
                 <h2 className={styles.researchInsightsTitle}>Research Consideration &amp; Planning</h2>
                 <article className={styles.projectDetail}>
-                  <p> After researching a few visuals of bus stop designs, some with a techologically functional focus 
+                  <p> After researching a few visuals of bus stop designs, some with a technologically functional focus 
                     along with others with a cultural art focus, a lot of inspiration could be drawn from both categories.
                     The functional designs leaned upon innovation, specifically by adding features like a screen with live updates 
                     or solar panels that generating heating and electricity for the stop. Most of these took a modern simplistic
                     approach that focused on the advanced additions. 
                     <br /><br />
-                    Contrastly, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
-                    fruit bus stop installations have gain worldwide attention for their uniqueness and ecclectic pressence. They
+                    In contrast, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
+                    fruit bus stop installations have gain worldwide attention for their uniqueness and eclectic presence. They
                     have become landmarks, attracting tourists from far and wide.
                     <br /><br />
-                    Successfully blending technical innovation with artisitic expression may be a mighty challenge, however, the
-                    lasting, positive impact upon the communtiy leaves the city for the better.  </p>
+                    Successfully blending technical innovation with artistic expression may be a mighty challenge, however, the
+                    lasting, positive impact upon the community leaves the city for the better.  </p>
                 </article>
                 <section className={styles.busStopDesignComparison} aria-label="Bus stop design inspiration">
                   {busStopDesignGroups.map((group) => (
@@ -1057,7 +1057,7 @@ export default function ProjectThreePage() {
                 <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={!expandedDesignDetails.ticket}>
                   <h2>Pop Up Flow</h2>
                   <p>
-                Similar to the above flow, the ticket printer pop up aims to clearly guild and confirm with the user for how many tickets
+                Similar to the above flow, the ticket printer pop up aims to clearly guide and confirm with the user for how many tickets
                 to be print and purchased.
                   </p>
                 </article>
@@ -1111,8 +1111,8 @@ export default function ProjectThreePage() {
                   <h2>Pressing on SOS Button</h2>
                   <p>
                     When a bus rider presses on the physical SOS button, it prompts a notifying alert telling the user that the police
-                    will be called. The numbers on the screen woulkd act as a live timer, indicating how much time until the call goes 
-                    through to the local authories. This allows the user to cancel if needed, along with simplified steps in case of actual
+                    will be called. The numbers on the screen would act as a live timer, indicating how much time until the call goes 
+                    through to the local authorities. This allows the user to cancel if needed, along with simplified steps in case of actual
                     emergent situations.
                      </p>
                 </article>
@@ -1131,7 +1131,7 @@ export default function ProjectThreePage() {
                       <article className={styles.projectDetail}>
                         <p>When redesigning the physical structure of the bus stop, a brainstorming session was utilized to lay out ideas for improvements.
                           These ideas were stewed upon to create a couple of rough sketches with the consideration of the conclusion notes. The bus stop 
-                          ideations depict various possible renderings of the bus stop covering along with the bench. c
+                          ideations depict various possible renderings of the bus stop covering along with the bench.
                         </p>
                       </article>
                     </div>
@@ -1236,12 +1236,12 @@ export default function ProjectThreePage() {
                             <p>
                               In this final design, I decided to choose my personal favorite elements from all three of the designs. 
                               On the left-hand side, the screen interface is built as apart of the structure, in reference to the the earlier
-                              user interface breakdown. As a frequent visitor and user of the Findley Market bus stop, I wanted to capture
+                              user interface breakdown. As a frequent visitor and user of the Findlay Market bus stop, I wanted to capture
                               the essence of community and the overall celebration of the local market within the design. The fruit bench is 
-                              an ode to the many farmer's market booths in the historial shed. The very top of the structure features a 
-                              giant flower bed filled with plants. Findley market has it's own local plant buisiness, along with many giant pots
+                              an ode to the many farmer's market booths in the historic shed. The very top of the structure features a 
+                              giant flower bed filled with plants. Findlay Market has its own local plant business, along with many giant pots
                               decorated for the summer and spring seasons with plants! In reference to this, I wanted to incorporate another
-                              reflection of the market within every inch of the design. The show stopped would be the mural at the back part
+                              reflection of the market within every inch of the design. The showstopper would be the mural at the back part
                               of the structure, which truly captures the essence of the overall area in addition to the market. The 
                               neighborhood is filled with public mural for all to see, whether it's visitors or  locals.
                             </p>
@@ -1305,13 +1305,13 @@ export default function ProjectThreePage() {
                       <br />  <br />
                       This project has reminded me of how an everyday experience, such as riding the bus, has so much
                       impact on our daily lives. Why would we not invest more thought and intention into the experience?
-                      The similarities between the benefits of public transport and public art allows for the opportuntiy to
+                      The similarities between the benefits of public transport and public art allows for the opportunity to
                       rethink our everyday lives. Taking the threads of both areas and weaving them into a solution that
-                      deepens the level of communtiy, especially in an critical point such as a bus stop.
+                      deepens the level of community, especially in an critical point such as a bus stop.
                       <br /><br />
-                      Cincinatti's Over-the-Rhine neighborhood has a unique opportunity to not only pump a new life into the city,
-                      but also impact the overall communtiy in ways that benefits the locals on such a large, and daily scale. Investing in
-                      a public need, while simultenously supporting local artists richens the fabric of the city.
+                      Cincinnati's Over-the-Rhine neighborhood has a unique opportunity to not only pump a new life into the city,
+                      but also impact the overall community in ways that benefits the locals on such a large, and daily scale. Investing in
+                      a public need, while simultaneously supporting local artists richens the fabric of the city.
                        </p>
                   </article>
                 </section>

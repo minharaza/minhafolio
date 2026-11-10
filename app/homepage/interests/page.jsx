@@ -7,7 +7,7 @@ import styles from './interests.module.css';
 
 const interestItems = [
   { id: 'baking', label: 'Baking', hoverLabel: 'Food Blog', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
-  { id: 'etsy', label: 'Etsy finds', src: '/images/interests/Etsy.png', position: 'interestEtsy' },
+  { id: 'etsy', label: 'Etsy finds', hoverLabel: 'My Etsy Store', src: '/images/interests/Etsy.png', position: 'interestEtsy' },
   { id: 'painting', label: 'Painting', src: '/images/interests/Painting.png', position: 'interestPainting' },
 ];
 
@@ -57,6 +57,10 @@ export default function InterestsPage() {
   const [selectedInterest, setSelectedInterest] = useState(null);
   const [bakingStarted, setBakingStarted] = useState(false);
   const [showBitesPosts, setShowBitesPosts] = useState(false);
+  const [etsyStarted, setEtsyStarted] = useState(false);
+  const [showEtsyIntro, setShowEtsyIntro] = useState(false);
+  const [showEtsyIterations, setShowEtsyIterations] = useState(false);
+  const [showEtsyContent, setShowEtsyContent] = useState(false);
   const [zoomedPost, setZoomedPost] = useState(null);
 
   useEffect(() => {
@@ -65,6 +69,13 @@ export default function InterestsPage() {
     const revealTimer = window.setTimeout(() => setShowBitesPosts(true), 1100);
     return () => window.clearTimeout(revealTimer);
   }, [bakingStarted]);
+
+  useEffect(() => {
+    if (!etsyStarted) return undefined;
+
+    const revealTimer = window.setTimeout(() => setShowEtsyIntro(true), 1100);
+    return () => window.clearTimeout(revealTimer);
+  }, [etsyStarted]);
 
   useEffect(() => {
     if (!zoomedPost) return undefined;
@@ -85,8 +96,18 @@ export default function InterestsPage() {
       return;
     }
 
+    if (id === 'etsy') {
+      if (etsyStarted) return;
+      setSelectedInterest(null);
+      setEtsyStarted(true);
+      return;
+    }
+
     setSelectedInterest((current) => current === id ? null : id);
   };
+
+  const isExploringInterest = bakingStarted || etsyStarted;
+  const interestContentVisible = showBitesPosts || showEtsyIntro || showEtsyIterations || showEtsyContent;
 
   return (
     <main className={`${styles.page}${bakingStarted ? ` ${styles.bakingStarted}` : ''}${showBitesPosts ? ` ${styles.showBitesPosts}` : ''}`}>
@@ -105,8 +126,8 @@ export default function InterestsPage() {
           />
         ))}
       </div>
-      {!showBitesPosts && (
-      <div className={`${styles.interestItems}${bakingStarted ? ` ${styles.interestItemsFlying}` : ''}`} aria-label="My interests">
+      {!interestContentVisible && (
+      <div className={`${styles.interestItems}${isExploringInterest ? ` ${styles.interestItemsFlying}` : ''}`} aria-label="My interests">
         {interestItems.map((item, index) => {
           const isSelected = selectedInterest === item.id;
 
@@ -116,7 +137,7 @@ export default function InterestsPage() {
               key={item.id}
               type="button"
               aria-label={item.label}
-              aria-pressed={item.id === 'baking' ? bakingStarted : isSelected}
+              aria-pressed={item.id === 'baking' ? bakingStarted : item.id === 'etsy' ? etsyStarted : isSelected}
               onClick={() => handleInterestClick(item.id)}
               style={{ '--interest-delay': `${index * -1.7}s` }}
             >
@@ -177,14 +198,92 @@ export default function InterestsPage() {
           )}
         </section>
       )}
-      {bakingStarted && (
+      {etsyStarted && (
+        <section className={styles.etsyExperience} aria-labelledby="etsy-title">
+          <div className={styles.bitesIntro}>
+            <p className={styles.bitesEyebrow}>Check out some of my creations in my Etsy store!</p>
+            <h1 id="etsy-title">@MasterpiecesByMinha</h1>
+          </div>
+          {showEtsyIntro && (
+            <div className={styles.etsyIntroStep}>
+              <Image
+                className={styles.etsyLogo}
+                src="/images/interests/minha%20logo.png"
+                alt="Masterpieces by Minha logo"
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 40vw, 18vw"
+              />
+              <p>
+                This year I decided to start an Etsy Store to share some of my crafts and designs! 
+                <br /><br />
+                I created my own logo thats show above, but it took a few iterations to get right!
+              </p>
+              <button
+                className={styles.etsyContinueButton}
+                type="button"
+                onClick={() => {
+                  setShowEtsyIntro(false);
+                  setShowEtsyIterations(true);
+                }}
+              >
+                Check them out! <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          )}
+          {showEtsyIterations && (
+            <div className={styles.etsyIterationsStage}>
+              <Image
+                className={styles.etsyIterationsImage}
+                src="/images/interests/Minha_iterations.png"
+                alt="Five iterations of the Masterpieces by Minha logo"
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 90vw, 65vw"
+                priority
+              />
+              <button
+                className={styles.etsyNextButton}
+                type="button"
+                aria-label="Continue to Meet Sonny"
+                onClick={() => {
+                  setShowEtsyIterations(false);
+                  setShowEtsyContent(true);
+                }}
+              >
+                &darr;
+              </button>
+            </div>
+          )}
+          {showEtsyContent && (
+            <div className={styles.etsyFeature}>
+              <Image
+                className={styles.sonnyImage}
+                src="/images/interests/sonny/sonny.webp"
+                alt="Sonny, a cheerful character wearing a red apple costume"
+                width={1000}
+                height={1000}
+                sizes="(max-width: 700px) 70vw, 32vw"
+              />
+              <p className={styles.etsyDescription}>
+                Meet Sonny, a little apple friend bringing a playful touch to my Etsy corner. This is a space for cheerful finds, creative inspiration, and things that make everyday life feel a bit more whimsical.
+              </p>
+            </div>
+          )}
+        </section>
+      )}
+      {isExploringInterest && (
         <button
           className={styles.bitesBackButton}
           type="button"
           onClick={() => {
             setShowBitesPosts(false);
             setBakingStarted(false);
+            setShowEtsyContent(false);
+            setShowEtsyIterations(false);
+            setEtsyStarted(false);
             setSelectedInterest(null);
+            setShowEtsyIntro(false);
           }}
         >
           <span aria-hidden="true">&larr;</span>

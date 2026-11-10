@@ -199,6 +199,15 @@
   padding: clamp(5.5rem, 11vh, 7rem) clamp(1rem, 3vw, 3rem) 2rem;
 }
 
+.etsyExperience {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(5.5rem, 11vh, 7rem) clamp(1rem, 3vw, 3rem) 2rem;
+}
+
 .bitesIntro {
   width: min(100%, 56rem);
   margin: 0 auto clamp(1rem, 2vh, 1.5rem);
@@ -209,6 +218,160 @@
   box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
   text-align: center;
   animation: bites-intro-in 550ms ease both;
+}
+
+.etsyLogo {
+  display: block;
+  width: clamp(11rem, 20vw, 20rem);
+  max-height: 30vh;
+  height: auto;
+  margin: 0 auto 0.25rem;
+  object-fit: contain;
+}
+
+.etsyFeature {
+  display: grid;
+  width: min(100%, 56rem);
+  min-height: min(58vh, 35rem);
+  margin: clamp(1rem, 3vh, 2rem) auto 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(235 247 255 / 82%);
+  box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
+  animation: bites-intro-in 600ms ease both;
+}
+
+.etsyIntroStep {
+  display: grid;
+  width: min(100%, 42rem);
+  justify-items: center;
+  gap: 0.25rem;
+  margin: clamp(2rem, 8vh, 5rem) auto 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(235 247 255 / 84%);
+  box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
+  text-align: center;
+  animation: bites-intro-in 600ms ease both;
+}
+
+.etsyIterationsStage {
+  position: relative;
+  display: block;
+  width: min(100%, 56rem);
+  height: min(68dvh, calc(100dvh - 14rem), 48rem);
+  min-height: 15rem;
+  margin: clamp(0.75rem, 2vh, 1.5rem) auto 0;
+  animation: bites-intro-in 500ms ease both;
+}
+
+.etsyIterationsImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% - 4.5rem);
+  object-fit: contain;
+}
+
+.etsyNextButton {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border: 2px solid rgb(135 51 87 / 60%);
+  border-radius: 50%;
+  background: #fff8fb;
+  box-shadow: 0 0.3rem 0.9rem rgb(40 79 105 / 24%);
+  color: #56334a;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateX(-50%);
+  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.etsyNextButton:hover {
+  background: #fff;
+  box-shadow: 0 0.5rem 1.2rem rgb(40 79 105 / 30%);
+  transform: translateX(-50%) translateY(0.15rem);
+}
+
+.etsyNextButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.etsyIntroStep p {
+  max-width: 34rem;
+  margin: 0;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  line-height: 1.65;
+}
+
+.etsyContinueButton {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid rgb(135 51 87 / 60%);
+  border-radius: 999px;
+  background: #fff8fb;
+  box-shadow: 0 0.3rem 0.9rem rgb(40 79 105 / 20%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.etsyContinueButton:hover {
+  transform: translateX(0.2rem);
+  background: #fff;
+  box-shadow: 0 0.45rem 1.1rem rgb(40 79 105 / 26%);
+}
+
+.etsyContinueButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.etsyContinueButton span {
+  font-size: 1.5rem;
+  line-height: 0.8;
+}
+
+.sonnyImage {
+  display: block;
+  width: min(100%, 24rem);
+  max-height: 52vh;
+  height: auto;
+  justify-self: center;
+  object-fit: contain;
+  filter: drop-shadow(0 0.7rem 0.9rem rgb(40 79 105 / 20%));
+}
+
+.etsyDescription {
+  max-width: 32rem;
+  margin: 0;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.7;
 }
 
 .bitesEyebrow {
@@ -532,7 +695,10 @@
 
   .interestItemsFlying .interestButton,
   .bitesIntro,
-  .bitesPost {
+  .bitesPost,
+  .etsyIntroStep,
+  .etsyIterationsStage,
+  .etsyFeature {
     animation: none;
     opacity: 1;
     transform: none;
@@ -540,7 +706,8 @@
 
   .backButton,
   .projectsLink,
-  .bitesBackButton {
+  .bitesBackButton,
+  .etsyContinueButton {
     transition: none;
   }
 }
@@ -569,6 +736,10 @@
     padding-top: 5.25rem;
   }
 
+  .etsyExperience {
+    padding: 5.25rem 1rem 1.5rem;
+  }
+
   .bitesIntro {
     margin-bottom: 0.85rem;
     padding: 0.65rem 0.8rem;
@@ -587,5 +758,52 @@
   .bitesGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.65rem;
+  }
+
+  .etsyFeature {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .etsyIntroStep {
+    gap: 0.25rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
+  }
+
+  .etsyIterationsStage {
+    width: 100%;
+    height: min(64dvh, calc(100dvh - 13rem), 42rem);
+    min-height: 13rem;
+    margin-top: 0.5rem;
+  }
+
+  .etsyIterationsImage {
+    height: calc(100% - 4.25rem);
+  }
+
+  .etsyNextButton {
+    bottom: 0;
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .etsyLogo {
+    width: clamp(7.5rem, 32vw, 10rem);
+    max-height: 20vh;
+    margin-bottom: 0;
+  }
+
+  .sonnyImage {
+    width: min(65vw, 15rem);
+    max-height: 34vh;
+  }
+
+  .etsyDescription {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }

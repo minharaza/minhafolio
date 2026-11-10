@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import confetti from 'canvas-confetti';
 import styles from './about.module.css';
 
 const collageItems = [
@@ -161,7 +162,18 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles.notebook} ${styles.galleryTrigger}`}
-            onClick={() => setActiveGallery('bts')}
+            onClick={() => {
+              setActiveGallery('bts');
+              confetti({
+                particleCount: 220,
+                spread: 150,
+                startVelocity: 48,
+                scalar: 1.15,
+                origin: { y: 0.56 },
+                colors: ['#f7d8e5', '#e5b96f', '#a6c9bb', '#8f6fc8', '#fff8fb'],
+                disableForReducedMotion: true,
+              });
+            }}
             aria-label="Open BTS photo gallery"
           >
             <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />

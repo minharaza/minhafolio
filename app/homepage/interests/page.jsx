@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import styles from './interests.module.css';
 
 const interestItems = [
-  { id: 'baking', label: 'Baking', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
+  { id: 'baking', label: 'Baking', hoverLabel: 'Food Blog', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
   { id: 'etsy', label: 'Etsy finds', src: '/images/interests/Etsy.png', position: 'interestEtsy' },
   { id: 'painting', label: 'Painting', src: '/images/interests/Painting.png', position: 'interestPainting' },
 ];
@@ -130,6 +130,11 @@ export default function InterestsPage() {
               <span className={styles.interestLabel} aria-hidden={!isSelected}>
                 {item.label}
               </span>
+              {item.hoverLabel && (
+                <span className={styles.interestHoverLabel} aria-hidden="true">
+                  {item.hoverLabel}
+                </span>
+              )}
             </button>
           );
         })}
@@ -138,9 +143,15 @@ export default function InterestsPage() {
       {bakingStarted && (
         <section className={styles.bitesExperience} aria-labelledby="bites-title">
           <div className={styles.bitesIntro}>
-            <p className={styles.bitesEyebrow}>A little food diary</p>
-            <h1 id="bites-title">Bites I remember</h1>
-            <p>Food is one of my favorite ways to explore a place. I love discovering cozy cafes, trying new dishes, and saving the moments that make each meal memorable.</p>
+            <p className={styles.bitesEyebrow}>Follow my food blog on instagram </p>
+            <h1 id="bites-title">@bitesintheam</h1>
+            <p>
+              As a born-and-raised Louisvillian going onto a Cincinnatian of 6 years, my friend and I have loved exploring by cafe hopping across our two cities! 
+              We decided to start this online food blog to share our discoveries in a fun, visual way. 
+              I have designed each post from scratch using my own design skills and the Procreate drawing application!
+              Check out some of my work.
+              
+              </p>
           </div>
           {showBitesPosts && (
             <div className={styles.bitesGrid}>

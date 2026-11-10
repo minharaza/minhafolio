@@ -57,6 +57,7 @@ export default function InterestsPage() {
   const [selectedInterest, setSelectedInterest] = useState(null);
   const [bakingStarted, setBakingStarted] = useState(false);
   const [showBitesPosts, setShowBitesPosts] = useState(false);
+  const [zoomedPost, setZoomedPost] = useState(null);
 
   useEffect(() => {
     if (!bakingStarted) return undefined;
@@ -64,6 +65,17 @@ export default function InterestsPage() {
     const revealTimer = window.setTimeout(() => setShowBitesPosts(true), 1100);
     return () => window.clearTimeout(revealTimer);
   }, [bakingStarted]);
+
+  useEffect(() => {
+    if (!zoomedPost) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setZoomedPost(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [zoomedPost]);
 
   const handleInterestClick = (id) => {
     if (id === 'baking') {
@@ -133,9 +145,12 @@ export default function InterestsPage() {
           {showBitesPosts && (
             <div className={styles.bitesGrid}>
               {bitesPosts.map((post, index) => (
-                <figure
+                <button
+                  type="button"
                   className={styles.bitesPost}
                   key={post.src}
+                  aria-label={`Zoom in: ${post.alt}`}
+                  onClick={() => setZoomedPost(post)}
                   style={{ '--post-delay': `${900 + index * 55}ms` }}
                 >
                   <Image
@@ -145,7 +160,7 @@ export default function InterestsPage() {
                     height={768}
                     sizes="(max-width: 600px) 44vw, (max-width: 1000px) 28vw, 18vw"
                   />
-                </figure>
+                </button>
               ))}
             </div>
           )}
@@ -154,6 +169,34 @@ export default function InterestsPage() {
       <Link className={styles.backButton} href="/homepage?skipIntro=1" aria-label="Back to the house">
         &larr;
       </Link>
+      {zoomedPost && (
+        <div className={styles.postViewerBackdrop} onClick={() => setZoomedPost(null)}>
+          <section
+            className={styles.postViewer}
+            role="dialog"
+            aria-modal="true"
+            aria-label={zoomedPost.alt}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className={styles.postViewerClose}
+              type="button"
+              aria-label="Close enlarged photo"
+              onClick={() => setZoomedPost(null)}
+            >
+              &times;
+            </button>
+            <Image
+              src={`/images/interests/bitesposts/${zoomedPost.src}`}
+              alt={zoomedPost.alt}
+              width={768}
+              height={768}
+              sizes="95vw"
+              priority
+            />
+          </section>
+        </div>
+      )}
     </main>
   );
 }

@@ -2,13 +2,27 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './interests.module.css';
 
 const interestItems = [
   { id: 'baking', label: 'Baking', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
   { id: 'etsy', label: 'Etsy finds', src: '/images/interests/Etsy.png', position: 'interestEtsy' },
   { id: 'painting', label: 'Painting', src: '/images/interests/Painting.png', position: 'interestPainting' },
+];
+
+const bitesPosts = [
+  { src: '272.png', alt: 'Food scrapbook page 1' },
+  { src: 'Bar_Vetti.png', alt: 'Food scrapbook page from Bar Vetti' },
+  { src: 'Cafe_Cotntinuum.png', alt: 'Food scrapbook page from Cafe Continuum' },
+  { src: 'Con_Huevos.png', alt: 'Food scrapbook page from Con Huevos' },
+  { src: 'Elliot.png', alt: 'Food scrapbook page from Elliot' },
+  { src: 'Gastropub_Crown_Republic.png', alt: 'Food scrapbook page from Crown Republic' },
+  { src: 'Guacamole_Post.png', alt: 'Guacamole food scrapbook page' },
+  { src: 'Haven_cafe.png', alt: 'Food scrapbook page from Haven Cafe' },
+  { src: 'Monarch_House.png', alt: 'Food scrapbook page from Monarch House' },
+  { src: 'Post1.png', alt: 'Food scrapbook page' },
+  { src: 'Untitled_Artwork 2.png', alt: 'Food scrapbook page' },
 ];
 
 const floatingBubbles = [
@@ -41,9 +55,29 @@ const floatingBubbles = [
 
 export default function InterestsPage() {
   const [selectedInterest, setSelectedInterest] = useState(null);
+  const [bakingStarted, setBakingStarted] = useState(false);
+  const [showBitesPosts, setShowBitesPosts] = useState(false);
+
+  useEffect(() => {
+    if (!bakingStarted) return undefined;
+
+    const revealTimer = window.setTimeout(() => setShowBitesPosts(true), 1100);
+    return () => window.clearTimeout(revealTimer);
+  }, [bakingStarted]);
+
+  const handleInterestClick = (id) => {
+    if (id === 'baking') {
+      if (bakingStarted) return;
+      setSelectedInterest(null);
+      setBakingStarted(true);
+      return;
+    }
+
+    setSelectedInterest((current) => current === id ? null : id);
+  };
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page}${bakingStarted ? ` ${styles.bakingStarted}` : ''}${showBitesPosts ? ` ${styles.showBitesPosts}` : ''}`}>
       <div className={styles.floatingBubbles} aria-hidden="true">
         {floatingBubbles.map((bubble, index) => (
           <span
@@ -59,7 +93,8 @@ export default function InterestsPage() {
           />
         ))}
       </div>
-      <div className={styles.interestItems} aria-label="My interests">
+      {!showBitesPosts && (
+      <div className={`${styles.interestItems}${bakingStarted ? ` ${styles.interestItemsFlying}` : ''}`} aria-label="My interests">
         {interestItems.map((item, index) => {
           const isSelected = selectedInterest === item.id;
 
@@ -69,8 +104,8 @@ export default function InterestsPage() {
               key={item.id}
               type="button"
               aria-label={item.label}
-              aria-pressed={isSelected}
-              onClick={() => setSelectedInterest(isSelected ? null : item.id)}
+              aria-pressed={item.id === 'baking' ? bakingStarted : isSelected}
+              onClick={() => handleInterestClick(item.id)}
               style={{ '--interest-delay': `${index * -1.7}s` }}
             >
               <Image
@@ -87,6 +122,35 @@ export default function InterestsPage() {
           );
         })}
       </div>
+      )}
+      {bakingStarted && (
+        <section className={styles.bitesExperience} aria-labelledby="bites-title">
+          <div className={styles.bitesIntro}>
+            <p className={styles.bitesEyebrow}>A little food diary</p>
+            <h1 id="bites-title">Bites I remember</h1>
+            <p>Food is one of my favorite ways to explore a place. I love discovering cozy cafes, trying new dishes, and saving the moments that make each meal memorable.</p>
+          </div>
+          {showBitesPosts && (
+            <div className={styles.bitesGrid}>
+              {bitesPosts.map((post, index) => (
+                <figure
+                  className={styles.bitesPost}
+                  key={post.src}
+                  style={{ '--post-delay': `${900 + index * 55}ms` }}
+                >
+                  <Image
+                    src={`/images/interests/bitesposts/${post.src}`}
+                    alt={post.alt}
+                    width={768}
+                    height={768}
+                    sizes="(max-width: 600px) 44vw, (max-width: 1000px) 28vw, 18vw"
+                  />
+                </figure>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
       <Link className={styles.backButton} href="/homepage?skipIntro=1" aria-label="Back to the house">
         &larr;
       </Link>

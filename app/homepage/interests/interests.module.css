@@ -126,6 +126,124 @@
   transform: translate(-50%, 0);
 }
 
+.interestItemsFlying .interestButton {
+  animation: interest-fly-out 900ms cubic-bezier(0.18, 0.72, 0.25, 1) var(--fly-delay) forwards;
+  pointer-events: none;
+}
+
+.interestItemsFlying .interestButton:nth-child(1) {
+  --fly-x: -110vw;
+  --fly-y: -75vh;
+  --fly-rotate: -80deg;
+  --fly-delay: 0ms;
+}
+
+.interestItemsFlying .interestButton:nth-child(2) {
+  --fly-x: 0vw;
+  --fly-y: -110vh;
+  --fly-rotate: 45deg;
+  --fly-delay: 100ms;
+}
+
+.interestItemsFlying .interestButton:nth-child(3) {
+  --fly-x: 110vw;
+  --fly-y: -65vh;
+  --fly-rotate: 90deg;
+  --fly-delay: 180ms;
+}
+
+@keyframes interest-fly-out {
+  from {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) rotate(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(calc(-50% + var(--fly-x)), calc(-50% + var(--fly-y)), 0) rotate(var(--fly-rotate)) scale(0.3);
+  }
+}
+
+.bitesExperience {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(5.5rem, 11vh, 7rem) clamp(1rem, 3vw, 3rem) 2rem;
+}
+
+.bitesIntro {
+  width: min(100%, 56rem);
+  margin: 0 auto clamp(1rem, 2vh, 1.5rem);
+  padding: 0.75rem clamp(1rem, 3vw, 2rem);
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 1rem;
+  background: rgb(235 247 255 / 82%);
+  box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
+  text-align: center;
+  animation: bites-intro-in 550ms ease both;
+}
+
+.bitesEyebrow {
+  margin: 0 0 0.15rem;
+  color: #875071;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.8rem;
+}
+
+.bitesIntro h1 {
+  margin: 0;
+  color: #56334a;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.bitesIntro > p:last-child {
+  max-width: 48rem;
+  margin: 0.35rem auto 0;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  line-height: 1.4;
+}
+
+.bitesGrid {
+  display: grid;
+  width: min(100%, 90rem);
+  margin: 0 auto;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.5rem, 1.4vw, 1.25rem);
+}
+
+.bitesPost {
+  min-width: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(1.5rem) scale(0.94);
+  animation: bites-post-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--post-delay) forwards;
+}
+
+.bitesPost img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.4rem 1rem rgb(40 60 85 / 24%);
+}
+
+@keyframes bites-intro-in {
+  from { opacity: 0; transform: translateY(-0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bites-post-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @keyframes interest-buoyancy {
   0%, 100% {
     transform: translate3d(calc(-50% - 0.65rem), calc(-50% + 0.9rem), 0) rotate(-5deg) scale(0.97);
@@ -205,7 +323,7 @@
   position: absolute;
   top: max(1rem, env(safe-area-inset-top));
   left: max(1rem, env(safe-area-inset-left));
-  z-index: 2;
+  z-index: 4;
   display: grid;
   width: 2.75rem;
   height: 2.75rem;
@@ -273,6 +391,19 @@
     animation: none;
   }
 
+  .interestItemsFlying .interestButton {
+    animation: none;
+    opacity: 0;
+  }
+
+  .interestItemsFlying .interestButton,
+  .bitesIntro,
+  .bitesPost {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
   .backButton,
   .projectsLink {
     transition: none;
@@ -297,5 +428,19 @@
   .interestPainting {
     top: 56%;
     left: 83%;
+  }
+
+  .bitesExperience {
+    padding-top: 5.25rem;
+  }
+
+  .bitesIntro {
+    margin-bottom: 0.85rem;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .bitesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
   }
 }

@@ -20,6 +20,12 @@ const collageItems = [
 
 const collageImageSizes = '(max-width: 700px) 46vw, 37vh';
 
+const btsImages = [
+  { src: '/images/bts/bts-1.gif', alt: 'BTS members together, image 1' },
+  { src: '/images/bts/bts-2.gif', alt: 'BTS members together, image 2' },
+  { src: '/images/bts/bts-3.gif', alt: 'BTS members together, image 3' },
+];
+
 const travelPhotos = [
   '0701E767-A800-42C0-AC42-506DEBF4F43E_4_5005_c.jpeg',
   '08ED415D-62E3-405A-91FA-38392CEF79EE_4_5005_c.jpeg',
@@ -150,6 +156,16 @@ const About = () => {
           >
             <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
           </button>
+        ) : item.className === 'notebook' ? (
+          <button
+            key={item.src}
+            type="button"
+            className={`${styles.item} ${styles.notebook} ${styles.galleryTrigger}`}
+            onClick={() => setActiveGallery('bts')}
+            aria-label="Open BTS photo gallery"
+          >
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
+          </button>
         ) : item.className === 'head' ? (
           <button
             key={item.src}
@@ -265,9 +281,9 @@ const About = () => {
         </div>
       )}
       {isGalleryOpen && (
-        <div className={styles.galleryBackdrop} onClick={closeGallery}>
+        <div className={`${styles.galleryBackdrop} ${activeGallery === 'bts' ? styles.btsGalleryBackdrop : ''}`} onClick={closeGallery}>
           <section
-            className={styles.galleryDialog}
+            className={`${styles.galleryDialog} ${activeGallery === 'bts' ? styles.btsGalleryDialog : ''}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="gallery-title"
@@ -281,7 +297,7 @@ const About = () => {
             >
               &times;
             </button>
-            <h2 id="gallery-title">{activeGallery === 'travel' ? 'Travel Memories' : 'Photography'}</h2>
+            <h2 id="gallery-title">{activeGallery === 'travel' ? 'Travel Memories' : activeGallery === 'bts' ? 'I LOVE BTS!!!!' : 'Photography'}</h2>
             {activeGallery === 'travel' ? (
               <div className={styles.galleryGrid}>
                 {travelPhotos.map((photo, index) => (
@@ -299,6 +315,15 @@ const About = () => {
                       sizes="(max-width: 600px) 42vw, (max-width: 1000px) 28vw, 220px"
                     />
                   </button>
+                ))}
+              </div>
+            ) : activeGallery === 'bts' ? (
+              <div className={styles.btsGalleryGrid}>
+                {btsImages.map((image, index) => (
+                  <figure className={styles.btsGalleryItem} key={image.src}>
+                    <img src={image.src} alt={image.alt} />
+                   
+                  </figure>
                 ))}
               </div>
             ) : (

@@ -35,16 +35,16 @@ export default function InterestsPage() {
         &larr;
       </Link>
       <section className={styles.content}>
-        <p className={styles.eyebrow}>A few things I enjoy</p>
-        <h1>Interests</h1>
+        <p className={styles.eyebrow}>WIP</p>
+        <h1>WIP</h1>
         {error ? (
           <p className={styles.message} role="alert">{error}</p>
         ) : interest ? (
           <p className={styles.description}>{interest.text}</p>
         ) : (
-          <p className={styles.message} role="status">Loading interests...</p>
+          <p className={styles.message} role="status">WIP</p>
         )}
-        <Link className={styles.projectsLink} href="/homepage/projects">Explore my projects</Link>
+        <Link className={styles.projectsLink} href="/homepage/projects">WIP</Link>
       </section>
     </main>
   );

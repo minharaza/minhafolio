@@ -61,10 +61,10 @@ skills:
 experience:
   title: "Experience"
   experienceList:
-  - position: "Angular UI Software Engineer"
+  - position: "Angular Frontend Software Engineer"
     startDate: "Jul 2025"
     endDate: "Present"
-    company: "Brooksource"
+    company: "Fifth Third Bank"
     logo: "/images/other/jquery.png"
     location: "Remote"
     keywords:

@@ -255,11 +255,11 @@ const About = () => {
             >
               &times;
             </button>
-            <p className={styles.directionsEyebrow}>A little guide</p>
-            <h2 id="about-directions-title">Explore my collage</h2>
+            <p className={styles.directionsEyebrow}>Time to Learn </p>
+            <h2 id="about-directions-title">A little about me!</h2>
             <p id="about-directions-copy">
-              Click the camera or travel keepsakes to open photo galleries. Try the clothes, portrait, and tennis gear for a few surprises.
-            </p>
+              Get to know me better by exploring and clicking on the different elements!
+               </p>
             <p className={styles.directionsPrompt}>Close this note to start exploring.</p>
           </section>
         </div>

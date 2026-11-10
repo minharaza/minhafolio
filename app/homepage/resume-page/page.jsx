@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const bookImages = ['/images/other/Book_1.png', '/images/other/Book_2.png', '/images/other/Book_3.png', '/images/other/Book_4.png', '/images/other/Book_1.png'];
 const openBookFrames = [
@@ -23,6 +23,8 @@ const bookPalette = [
 
 export default function ResumePage() {
   const router = useRouter();
+  const [showDirections, setShowDirections] = useState(true);
+  const directionsCloseRef = useRef(null);
   const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
   const [selectedBook, setSelectedBook] = useState('book-1');
@@ -37,6 +39,11 @@ export default function ResumePage() {
 
   const experienceEntries = content?.experience?.experienceList ?? [];
   const visibleJobs = experienceEntries.filter((_, index) => index !== 1).slice(0, 5);
+
+  useEffect(() => {
+    if (content && visibleJobs.length) directionsCloseRef.current?.focus();
+  }, [content, visibleJobs.length]);
+
   const bookEntries = visibleJobs.map((job, index) => ({
     id: `book-${index + 1}`,
     image: bookImages[index % bookImages.length],
@@ -139,6 +146,7 @@ export default function ResumePage() {
         backgroundImage: "linear-gradient(rgba(122, 79, 58, 0.58), rgba(122, 79, 58, 0.58)), url('/images/other/brownaura.jpg')",
       }}
     >
+      <div inert={showDirections ? '' : undefined} className="contents">
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         {[
           ['8%', '18%', '#e5b96f', '✦'],
@@ -348,6 +356,36 @@ export default function ResumePage() {
         </section>
         )}
       </div>
+      </div>
+      {showDirections && (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-[#301b27]/45 p-4 backdrop-blur-sm">
+          <section
+            className="relative w-full max-w-lg rounded-3xl border-2 border-white/90 bg-[#fff0f5] px-7 py-10 text-center text-[#5f3d50] shadow-2xl sm:px-10"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resume-directions-title"
+            aria-describedby="resume-directions-copy"
+          >
+            <button
+              ref={directionsCloseRef}
+              type="button"
+              className="absolute right-3 top-3 grid size-11 place-items-center rounded-full bg-[#f7d8e5] text-3xl leading-none text-[#7d3657] hover:bg-[#edbfd2] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#8f6fc8]"
+              onClick={() => setShowDirections(false)}
+              aria-label="Close directions and explore the resume"
+            >
+              &times;
+            </button>
+            <p className="mb-2 text-sm text-[#9b567a]">Check out </p>
+            <h2 id="resume-directions-title" className="mb-3 pr-7 text-4xl text-[#695687]" style={{ fontFamily: "'Fascinate', cursive" }}>
+              My Resume!
+            </h2>
+            <p id="resume-directions-copy" className="mx-auto max-w-md text-base leading-relaxed sm:text-lg">
+              Click the book and open it to my resume! Look through the shelf to explore my experiences!
+            </p>
+            <p className="mt-5 text-sm font-bold text-[#9b3158]">Close this note to get started.</p>
+          </section>
+        </div>
+      )}
     </main>
   );
 }

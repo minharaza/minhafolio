@@ -166,6 +166,20 @@ export default function InterestsPage() {
           )}
         </section>
       )}
+      {bakingStarted && (
+        <button
+          className={styles.bitesBackButton}
+          type="button"
+          onClick={() => {
+            setShowBitesPosts(false);
+            setBakingStarted(false);
+            setSelectedInterest(null);
+          }}
+        >
+          <span aria-hidden="true">&larr;</span>
+          Back to interests
+        </button>
+      )}
       <Link className={styles.backButton} href="/homepage?skipIntro=1" aria-label="Back to the house">
         &larr;
       </Link>

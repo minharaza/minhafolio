@@ -1,7 +1,15 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import styles from './interests.module.css';
+
+const interestItems = [
+  { id: 'baking', label: 'Baking', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
+  { id: 'etsy', label: 'Etsy finds', src: '/images/interests/Etsy.png', position: 'interestEtsy' },
+  { id: 'painting', label: 'Painting', src: '/images/interests/Painting.png', position: 'interestPainting' },
+];
 
 const floatingBubbles = [
   { left: '3%', size: 'clamp(4rem, 8vw, 8rem)', duration: '19s', delay: '-12s', drift: '7vw' },
@@ -32,6 +40,8 @@ const floatingBubbles = [
 ];
 
 export default function InterestsPage() {
+  const [selectedInterest, setSelectedInterest] = useState(null);
+
   return (
     <main className={styles.page}>
       <div className={styles.floatingBubbles} aria-hidden="true">
@@ -48,6 +58,34 @@ export default function InterestsPage() {
             }}
           />
         ))}
+      </div>
+      <div className={styles.interestItems} aria-label="My interests">
+        {interestItems.map((item, index) => {
+          const isSelected = selectedInterest === item.id;
+
+          return (
+            <button
+              className={`${styles.interestButton} ${styles[item.position]}${isSelected ? ` ${styles.interestButtonSelected}` : ''}`}
+              key={item.id}
+              type="button"
+              aria-label={item.label}
+              aria-pressed={isSelected}
+              onClick={() => setSelectedInterest(isSelected ? null : item.id)}
+              style={{ '--interest-delay': `${index * -1.7}s` }}
+            >
+              <Image
+                src={item.src}
+                alt=""
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 46vw, 25vw"
+              />
+              <span className={styles.interestLabel} aria-hidden={!isSelected}>
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
       </div>
       <Link className={styles.backButton} href="/homepage?skipIntro=1" aria-label="Back to the house">
         &larr;

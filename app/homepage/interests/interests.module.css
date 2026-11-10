@@ -39,6 +39,103 @@
   pointer-events: none;
 }
 
+.interestItems {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.interestButton {
+  position: absolute;
+  display: grid;
+  width: clamp(12rem, 22vw, 21rem);
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  animation: interest-buoyancy 4.8s ease-in-out var(--interest-delay) infinite;
+  transition: filter 180ms ease;
+}
+
+.interestButton img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0.6rem 0.8rem rgb(40 79 105 / 22%));
+  transition: filter 180ms ease;
+}
+
+.interestButton:hover img,
+.interestButton:focus-visible img,
+.interestButtonSelected img {
+  filter: drop-shadow(0 0.9rem 1rem rgb(40 79 105 / 32%));
+}
+
+.interestButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -1rem;
+  border-radius: 50%;
+}
+
+.interestCroissant {
+  top: 53%;
+  left: 21%;
+  animation-duration: 5.2s;
+}
+
+.interestEtsy {
+  top: 40%;
+  left: 50%;
+  animation-duration: 4.4s;
+}
+
+.interestPainting {
+  top: 57%;
+  left: 79%;
+  animation-duration: 5.8s;
+}
+
+.interestLabel {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  background: rgb(255 248 251 / 92%);
+  box-shadow: 0 0.25rem 0.8rem rgb(37 83 105 / 20%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.35rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+}
+
+.interestButtonSelected .interestLabel {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes interest-buoyancy {
+  0%, 100% {
+    transform: translate3d(calc(-50% - 0.65rem), calc(-50% + 0.9rem), 0) rotate(-5deg) scale(0.97);
+  }
+
+  50% {
+    transform: translate3d(calc(-50% + 0.65rem), calc(-50% - 3rem), 0) rotate(5deg) scale(1.04);
+  }
+}
+
 .bubble {
   position: absolute;
   bottom: -12vh;
@@ -172,8 +269,33 @@
     animation: none;
   }
 
+  .interestButton {
+    animation: none;
+  }
+
   .backButton,
   .projectsLink {
     transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .interestButton {
+    width: clamp(7.5rem, 32vw, 11rem);
+  }
+
+  .interestCroissant {
+    top: 54%;
+    left: 17%;
+  }
+
+  .interestEtsy {
+    top: 43%;
+    left: 50%;
+  }
+
+  .interestPainting {
+    top: 56%;
+    left: 83%;
   }
 }

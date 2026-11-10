@@ -41,6 +41,8 @@ export default function HousePage() {
   const [isMatchaLeaving, setIsMatchaLeaving] = useState(false);
   const [showExploreBubble, setShowExploreBubble] = useState(false);
   const [isExplorePopping, setIsExplorePopping] = useState(false);
+  const [showHouseInstructionsBubble, setShowHouseInstructionsBubble] = useState(false);
+  const [isHouseInstructionsPopping, setIsHouseInstructionsPopping] = useState(false);
   const [isMatchaExiting, setIsMatchaExiting] = useState(false);
   const [showMatcha, setShowMatcha] = useState(true);
   const [isCutoutReady, setIsCutoutReady] = useState(false);
@@ -52,6 +54,8 @@ export default function HousePage() {
       setShowFinalBubble(false);
       setShowExploreBubble(false);
       setIsExplorePopping(false);
+      setShowHouseInstructionsBubble(false);
+      setIsHouseInstructionsPopping(false);
       setShowMatcha(false);
       setShowLandscapeOnly(true);
       setShowStarsBackground(false);
@@ -157,7 +161,7 @@ export default function HousePage() {
     {isCutoutReady && (
     <div className="house-scene">
       <img className="house-image" src="/images/other/House.png" alt="" aria-hidden="true" />
-      <div className={`house-items${showExploreBubble ? ' house-items-disabled' : ''}`} aria-label="Explore my house">
+      <div className={`house-items${showExploreBubble || showHouseInstructionsBubble ? ' house-items-disabled' : ''}`} aria-label="Explore my house">
       {houseItems.map((item) => (
         <Link key={item.href} className={`house-item ${item.className}`} href={item.href}>
         <img src={item.image} alt="" aria-hidden="true" />
@@ -277,22 +281,49 @@ export default function HousePage() {
           aria-label="Explore the house"
           onClick={() => {
             setIsExplorePopping(true);
-            setIsMatchaExiting(true);
           }}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               setIsExplorePopping(true);
-              setIsMatchaExiting(true);
             }
           }}
           onAnimationEnd={(event) => {
             if (event.animationName === 'speech-bubble-pop') {
               setShowExploreBubble(false);
+              setShowHouseInstructionsBubble(true);
             }
           }}
         >
           <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Feel free to explore my house to learn more about me and my work!</span>
+        </div>
+      )}
+      {showHouseInstructionsBubble && (
+        <div
+          className={`speech-bubble speech-bubble-house-instructions${isHouseInstructionsPopping ? ' is-popping' : ''}`}
+          role="button"
+          tabIndex="0"
+          aria-label="Start exploring the house"
+          onClick={() => {
+            setIsHouseInstructionsPopping(true);
+            setIsMatchaExiting(true);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              setIsHouseInstructionsPopping(true);
+              setIsMatchaExiting(true);
+            }
+          }}
+          onAnimationEnd={(event) => {
+            if (event.animationName === 'speech-bubble-pop') {
+              setShowHouseInstructionsBubble(false);
+              setIsHouseInstructionsPopping(false);
+            }
+          }}
+        >
+          <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <span>Hover over different parts in the rooms to reveal different sections! Don&apos;t forget to click in!</span>
         </div>
       )}
     </main>

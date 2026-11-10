@@ -351,6 +351,13 @@
 	right: auto;
 }
 
+.speech-bubble-house-instructions {
+	top: 23%;
+	left: 24%;
+	right: auto;
+	width: clamp(15rem, 30vw, 26rem);
+}
+
 .speech-bubble span {
 	position: absolute;
 	top: 45%;
@@ -367,6 +374,12 @@
 .speech-bubble-explore span {
 	font-size: 1.70rem;
 	line-height: 1.1;
+}
+
+.speech-bubble-house-instructions span {
+	width: 84%;
+	font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+	line-height: 1.15;
 }
 
 @keyframes speech-bubble-in {

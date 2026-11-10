@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './about.module.css';
 
 const collageItems = [
@@ -77,6 +77,8 @@ const travelPhotos = [
 
 const About = () => {
   const router = useRouter();
+  const [showDirections, setShowDirections] = useState(true);
+  const directionsCloseRef = useRef(null);
   const [activeGallery, setActiveGallery] = useState(null);
   const [enlargedPhoto, setEnlargedPhoto] = useState(null);
   const [ballBounceSequence, setBallBounceSequence] = useState(0);
@@ -84,6 +86,10 @@ const About = () => {
   const [starsCrazy, setStarsCrazy] = useState(false);
   const [activeMessage, setActiveMessage] = useState(null);
   const isGalleryOpen = activeGallery !== null;
+
+  useEffect(() => {
+    directionsCloseRef.current?.focus();
+  }, []);
 
   const closeGallery = () => {
     if (activeGallery === 'travel') setActiveMessage('travel');
@@ -110,16 +116,17 @@ const About = () => {
 
   return (
     <main className={`${styles.aboutPage}${starsCrazy ? ` ${styles.starsCrazy}` : ''}`}>
-      <button
-        type="button"
-        className={styles.backButton}
-        onClick={() => router.push('/homepage?skipIntro=1')}
-        aria-label="Go back to homepage"
-      >
-        &larr;
-      </button>
-      <h1 className={styles.aboutTitle}>About me</h1>
-      <div className={styles.scene} aria-label="A collage of things that represent me, arranged on a pink bed">
+      <div inert={showDirections ? '' : undefined}>
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={() => router.push('/homepage?skipIntro=1')}
+          aria-label="Go back to homepage"
+        >
+          &larr;
+        </button>
+        <h1 className={styles.aboutTitle}>About me</h1>
+        <div className={styles.scene} aria-label="A collage of things that represent me, arranged on a pink bed">
         <Image
           src="/images/other/top-of-bed.png"
           alt="A pink bed"
@@ -217,17 +224,45 @@ const About = () => {
             className={`${styles.item} ${styles[item.className]}`}
           />
         ))}
+        </div>
+        {activeMessage && (
+          <p className={styles.aboutMessage}>
+            {activeMessage === 'travel'
+              ? 'I love to travel! Fun fact: I\'ve been to 17 countries!'
+              : activeMessage === 'photography'
+                ? 'Photography is a hobby of mine'
+                : activeMessage === 'fashion'
+                  ? 'I love fashion I love to change it up!'
+                  : 'I love tennis! I\'ve been playing since I was 6!'}
+          </p>
+        )}
       </div>
-      {activeMessage && (
-        <p className={styles.aboutMessage}>
-          {activeMessage === 'travel'
-            ? 'I love to travel! Fun fact: I\'ve been to 17 countries!'
-            : activeMessage === 'photography'
-              ? 'Photography is a hobby of mine'
-              : activeMessage === 'fashion'
-                ? 'I love fashion I love to change it up!'
-              : 'I love tennis! I\'ve been playing since I was 6!'}
-        </p>
+      {showDirections && (
+        <div className={styles.directionsBackdrop}>
+          <section
+            className={styles.directionsDialog}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="about-directions-title"
+            aria-describedby="about-directions-copy"
+          >
+            <button
+              ref={directionsCloseRef}
+              type="button"
+              className={styles.directionsClose}
+              onClick={() => setShowDirections(false)}
+              aria-label="Close directions and explore the About page"
+            >
+              &times;
+            </button>
+            <p className={styles.directionsEyebrow}>A little guide</p>
+            <h2 id="about-directions-title">Explore my collage</h2>
+            <p id="about-directions-copy">
+              Click the camera or travel keepsakes to open photo galleries. Try the clothes, portrait, and tennis gear for a few surprises.
+            </p>
+            <p className={styles.directionsPrompt}>Close this note to start exploring.</p>
+          </section>
+        </div>
       )}
       {isGalleryOpen && (
         <div className={styles.galleryBackdrop} onClick={closeGallery}>

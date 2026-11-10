@@ -110,14 +110,14 @@
 .header h1 {
   margin: 0;
   color: #fff8f1;
-  font-family: 'Ballet', cursive;
+  font-family: 'Fascinate', cursive;
   font-size: clamp(4rem, 9vw, 7.5rem);
   font-weight: 400;
   line-height: 1.25;
 }
 
 .header h1.projectTitle {
-  font-family: 'Ballet', cursive;
+  font-family: 'Fascinate', cursive;
   font-size: clamp(2.5rem, 5vw, 5rem);
   line-height: 1.15;
 }
@@ -129,7 +129,7 @@
 .projectNumberTitle {
   margin: 0 auto 1rem;
   color: #fff8f1;
-  font-family: 'Ballet', cursive;
+  font-family: 'Fascinate', cursive;
   font-size: clamp(6rem, 12vw, 11rem);
   font-weight: 400;
   line-height: 0.9;

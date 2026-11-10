@@ -54,7 +54,7 @@
   z-index: 2;
   margin: 0;
   color: #695687;
-  font-family: 'Ballet', cursive;
+  font-family: 'Fascinate', cursive;
   font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 400;
   line-height: 1;
@@ -268,6 +268,88 @@
   font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
+}
+
+.directionsBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(48 27 39 / 38%);
+  backdrop-filter: blur(4px);
+}
+
+.directionsDialog {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  border: 2px solid rgb(255 255 255 / 90%);
+  border-radius: 1.5rem;
+  background: #fff0f5;
+  box-shadow: 0 1.5rem 5rem rgb(35 14 25 / 30%);
+  color: #5f3d50;
+  text-align: center;
+}
+
+.directionsClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f7d8e5;
+  color: #7d3657;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.directionsClose:hover,
+.directionsClose:focus-visible {
+  background: #edbfd2;
+}
+
+.directionsClose:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.directionsEyebrow {
+  margin: 0 0 0.4rem;
+  color: #9b567a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+}
+
+.directionsDialog h2 {
+  margin: 0 2rem 0.75rem;
+  color: #695687;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(2.5rem, 7vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.directionsDialog > p:not(.directionsEyebrow):not(.directionsPrompt) {
+  margin: 0 auto;
+  max-width: 27rem;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.directionsPrompt {
+  margin: 1.25rem 0 0;
+  color: #9b3158;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .galleryEmpty {

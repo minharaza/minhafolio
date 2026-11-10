@@ -182,7 +182,7 @@ export default function ResumePage() {
         ←
       </button>
       <div className="relative z-10 w-full max-w-5xl rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur-sm">
-        <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Ballet', cursive" }}>Resume</h1>
+        <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Resume</h1>
 
         {!showResume ? (
           <div className="flex min-h-[640px] items-center justify-center">

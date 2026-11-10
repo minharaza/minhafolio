@@ -22,29 +22,6 @@
   top: 1rem;
   left: 1rem;
   z-index: 10;
-  display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
-  place-items: center;
-  border: 2px solid rgb(105 86 135 / 70%);
-  border-radius: 50%;
-  background: rgb(255 255 255 / 78%);
-  color: #695687;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.backButton:hover {
-  transform: scale(1.06);
-  box-shadow: 0 8px 16px rgb(0 0 0 / 14%);
-}
-
-.backButton:focus-visible {
-  outline: 3px solid #8f6fc8;
-  outline-offset: 3px;
 }
 
 .aboutTitle {

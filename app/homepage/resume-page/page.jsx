@@ -185,9 +185,9 @@ export default function ResumePage() {
         type="button"
         onClick={() => router.push('/homepage?skipIntro=1')}
         aria-label="Go back to homepage"
-        className="absolute left-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-[#695687] bg-white/80 text-xl font-bold text-[#695687] shadow-md transition-transform duration-200 hover:scale-105"
+        className="absolute left-4 top-4 z-20 back-navigation-button"
       >
-        ←
+        &larr;
       </button>
       <div className="relative z-10 w-full max-w-5xl rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur-sm">
         <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Resume</h1>

@@ -119,7 +119,7 @@ const About = () => {
       <div inert={showDirections ? '' : undefined}>
         <button
           type="button"
-          className={styles.backButton}
+          className={`${styles.backButton} back-navigation-button`}
           onClick={() => router.push('/homepage?skipIntro=1')}
           aria-label="Go back to homepage"
         >

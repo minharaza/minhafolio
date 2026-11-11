@@ -256,6 +256,13 @@ export default function ProjectThreePage() {
       }}
     >
       <div className={styles.backgroundTexture} aria-hidden="true" />
+      <nav className={styles.sectionNavigation} aria-label="Jump to project section">
+        <a href="#project-step-01" aria-label="Go to section 1, Overview">01</a>
+        <a href="#project-step-02" aria-label="Go to section 2, Research">02</a>
+        <a href="#project-step-03" aria-label="Go to section 3, Research Consideration and Planning">03</a>
+        <a href="#project-step-04" aria-label="Go to section 4, Design Breakdown">04</a>
+        <a href="#project-step-05" aria-label="Go to section 5, Final Thoughts">05</a>
+      </nav>
       <Link className={styles.backButton} href="/homepage/projects" aria-label="Back to projects">
         &larr;
       </Link>

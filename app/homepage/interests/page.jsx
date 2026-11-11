@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './interests.module.css';
 
 const interestItems = [
@@ -65,6 +65,8 @@ const floatingBubbles = [
 ];
 
 export default function InterestsPage() {
+  const [showDirections, setShowDirections] = useState(true);
+  const directionsCloseRef = useRef(null);
   const [selectedInterest, setSelectedInterest] = useState(null);
   const [bakingStarted, setBakingStarted] = useState(false);
   const [showBitesPosts, setShowBitesPosts] = useState(false);
@@ -74,6 +76,10 @@ export default function InterestsPage() {
   const [showEtsyContent, setShowEtsyContent] = useState(false);
   const [showSonnyStickers, setShowSonnyStickers] = useState(false);
   const [zoomedPost, setZoomedPost] = useState(null);
+
+  useEffect(() => {
+    directionsCloseRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     if (!bakingStarted) return undefined;
@@ -123,6 +129,7 @@ export default function InterestsPage() {
 
   return (
     <main className={`${styles.page}${bakingStarted ? ` ${styles.bakingStarted}` : ''}${showBitesPosts ? ` ${styles.showBitesPosts}` : ''}`}>
+      <div inert={showDirections ? '' : undefined}>
       <div className={styles.floatingBubbles} aria-hidden="true">
         {floatingBubbles.map((bubble, index) => (
           <span
@@ -371,6 +378,35 @@ export default function InterestsPage() {
               sizes="95vw"
               priority
             />
+          </section>
+        </div>
+      )}
+      </div>
+      {showDirections && (
+        <div className={styles.directionsBackdrop}>
+          <section
+            className={styles.directionsDialog}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="interests-directions-title"
+            aria-describedby="interests-directions-copy"
+          >
+            <button
+              ref={directionsCloseRef}
+              type="button"
+              className={styles.directionsClose}
+              onClick={() => setShowDirections(false)}
+              aria-label="Close directions and explore interests"
+            >
+              &times;
+            </button>
+            <p className={styles.directionsEyebrow}>Some extra design highlights in</p>
+            <h2 id="interests-directions-title">My Interests</h2>
+            <p id="interests-directions-copy">
+              As a girl who loves to craft and create, there are plenty of instances where design translates into my personal interests!
+              Feel free to click around and peak into some design hobbies I'm proud of!
+              </p>
+            <p className={styles.directionsPrompt}>Close this note to start exploring.</p>
           </section>
         </div>
       )}

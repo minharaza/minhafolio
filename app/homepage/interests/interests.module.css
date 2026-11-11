@@ -365,6 +365,98 @@
   filter: drop-shadow(0 0.7rem 0.9rem rgb(40 79 105 / 20%));
 }
 
+.sonnyButtonWrap {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+}
+
+.sonnyButton {
+  display: grid;
+  width: min(100%, 24rem);
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.sonnyButton:hover,
+.sonnyButton:focus-visible {
+  transform: scale(1.04);
+}
+
+.sonnyButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 0.25rem;
+}
+
+.sonnyButton .sonnyImage {
+  width: 100%;
+}
+
+.sonnyClickHint {
+  position: absolute;
+  top: 38%;
+  right: calc(100% - 2.5rem);
+  z-index: 1;
+  display: block;
+  width: clamp(5.5rem, 12vw, 11rem);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 0.2rem 0.35rem rgb(40 79 105 / 25%));
+  animation: sonny-click-hint-bob 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes sonny-click-hint-bob {
+  from { transform: translateY(-0.3rem) rotate(-5deg); }
+  to { transform: translateY(0.3rem) rotate(2deg); }
+}
+
+.sonnyStickerGallery {
+  width: min(100%, 90rem);
+  margin: clamp(1rem, 3vh, 2rem) auto 0;
+  padding-bottom: 2rem;
+  animation: bites-intro-in 500ms ease both;
+}
+
+.sonnyStickerGallery h2 {
+  margin: 0 0 1rem;
+  color: #56334a;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  text-align: center;
+  text-shadow: 0 1px 10px rgb(255 255 255 / 80%);
+}
+
+.sonnyStickerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.sonnySticker {
+  display: grid;
+  min-width: 0;
+  min-height: 12rem;
+  margin: 0;
+  place-items: center;
+}
+
+.sonnySticker img {
+  display: block;
+  width: 100%;
+  max-height: 38vh;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0.5rem 0.8rem rgb(40 79 105 / 24%));
+}
+
 .etsyDescription {
   max-width: 32rem;
   margin: 0;
@@ -801,9 +893,44 @@
     max-height: 34vh;
   }
 
+  .sonnyButtonWrap {
+    padding-top: 2rem;
+  }
+
+  .sonnyButton {
+    width: min(65vw, 15rem);
+  }
+
+  .sonnyClickHint {
+    top: -0.5rem;
+    right: auto;
+    left: 50%;
+    width: clamp(5.5rem, 27vw, 8rem);
+    transform: translateX(-50%);
+    animation-name: sonny-click-hint-bob-mobile;
+  }
+
+  .sonnyStickerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .sonnySticker {
+    min-height: 0;
+  }
+
+  .sonnySticker img {
+    max-height: 32vh;
+  }
+
   .etsyDescription {
     text-align: center;
     font-size: 1rem;
     line-height: 1.5;
   }
+}
+
+@keyframes sonny-click-hint-bob-mobile {
+  from { transform: translate(-50%, -0.2rem) rotate(-4deg); }
+  to { transform: translate(-50%, 0.2rem) rotate(3deg); }
 }

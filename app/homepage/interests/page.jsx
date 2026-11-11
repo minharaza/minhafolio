@@ -25,6 +25,17 @@ const bitesPosts = [
   { src: 'Untitled_Artwork 2.png', alt: 'Food scrapbook page' },
 ];
 
+const sonnyStickers = [
+  { src: 'Babysonny_Strawberry_(final).png', alt: 'Sonny wearing a strawberry costume' },
+  { src: 'Barista_(final).png', alt: 'Sonny dressed as a barista' },
+  { src: 'Doctor_(final).png', alt: 'Sonny dressed as a doctor' },
+  { src: 'Farmer_(final).png', alt: 'Sonny dressed as a farmer' },
+  { src: 'Matcharista_(final).png', alt: 'Sonny dressed as a matcha barista' },
+  { src: 'Me_N_Twin(final).png', alt: 'Sonny with a twin' },
+  { src: 'Teacher_(final).png', alt: 'Sonny dressed as a teacher' },
+  { src: 'Waiter(final).png', alt: 'Sonny dressed as a waiter' },
+];
+
 const floatingBubbles = [
   { left: '3%', size: 'clamp(4rem, 8vw, 8rem)', duration: '19s', delay: '-12s', drift: '7vw' },
   { left: '11%', size: 'clamp(3rem, 5vw, 5rem)', duration: '15s', delay: '-4s', drift: '-5vw' },
@@ -61,6 +72,7 @@ export default function InterestsPage() {
   const [showEtsyIntro, setShowEtsyIntro] = useState(false);
   const [showEtsyIterations, setShowEtsyIterations] = useState(false);
   const [showEtsyContent, setShowEtsyContent] = useState(false);
+  const [showSonnyStickers, setShowSonnyStickers] = useState(false);
   const [zoomedPost, setZoomedPost] = useState(null);
 
   useEffect(() => {
@@ -255,20 +267,60 @@ export default function InterestsPage() {
               </button>
             </div>
           )}
-          {showEtsyContent && (
+          {showEtsyContent && !showSonnyStickers && (
             <div className={styles.etsyFeature}>
-              <Image
-                className={styles.sonnyImage}
-                src="/images/interests/sonny/sonny.webp"
-                alt="Sonny, a cheerful character wearing a red apple costume"
-                width={1000}
-                height={1000}
-                sizes="(max-width: 700px) 70vw, 32vw"
-              />
+                  <div className={styles.sonnyButtonWrap}>
+                    <Image
+                      className={styles.sonnyClickHint}
+                      src="/images/other/Click_Me.png"
+                      alt=""
+                      aria-hidden="true"
+                      width={800}
+                      height={800}
+                      sizes="(max-width: 700px) 28vw, 14rem"
+                    />
+                    <button
+                      className={styles.sonnyButton}
+                      type="button"
+                      aria-label="Show Sonny stickers"
+                      onClick={() => setShowSonnyStickers(true)}
+                    >
+                      <Image
+                        className={styles.sonnyImage}
+                        src="/images/interests/sonny/sonny.webp"
+                        alt=""
+                        width={1000}
+                        height={1000}
+                        sizes="(max-width: 700px) 70vw, 32vw"
+                      />
+                    </button>
+                  </div>
               <p className={styles.etsyDescription}>
-                Meet Sonny, a little apple friend bringing a playful touch to my Etsy corner. This is a space for cheerful finds, creative inspiration, and things that make everyday life feel a bit more whimsical.
-              </p>
+                This is a Sonny Angel! These guys are collectible figurines that are sought after for their various hats!
+                They have become quite popular, especially over the past year, inspiring me to design some stickers in honor
+                of them! 
+                <br /> <br />
+                Click on sonny to see some stickers!
+                </p>
             </div>
+          )}
+          {showSonnyStickers && (
+            <section className={styles.sonnyStickerGallery} aria-labelledby="sonny-stickers-title">
+              <h2 id="sonny-stickers-title">Sonny Angel Sticker Collection</h2>
+              <div className={styles.sonnyStickerGrid}>
+                {sonnyStickers.map((sticker) => (
+                  <figure className={styles.sonnySticker} key={sticker.src}>
+                    <Image
+                      src={`/images/interests/sonny/${sticker.src}`}
+                      alt={sticker.alt}
+                      width={768}
+                      height={768}
+                      sizes="(max-width: 600px) 42vw, (max-width: 1000px) 25vw, 18vw"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </section>
           )}
         </section>
       )}
@@ -280,6 +332,7 @@ export default function InterestsPage() {
             setShowBitesPosts(false);
             setBakingStarted(false);
             setShowEtsyContent(false);
+            setShowSonnyStickers(false);
             setShowEtsyIterations(false);
             setEtsyStarted(false);
             setSelectedInterest(null);

@@ -586,6 +586,7 @@ export default function ProjectOnePage() {
           </div>
         </section>
       </section>
+<h1 className={styles.projectNumberTitle}>05</h1>
 <h2 className={styles.swotHeading} id="final-thoughts-heading">Final Thoughts</h2>
 
 

@@ -108,7 +108,7 @@ export default function ProjectOnePage() {
       </Link>
 
       <section className={styles.content}>
-        <header className={`${styles.header} ${styles.projectHeader}`}>
+        <header id="project-top" className={`${styles.header} ${styles.projectHeader}`}>
           <p className={styles.eyebrow}>Project One</p>
           <h1 className={styles.projectTitle}>Case Study: Redesigning Indigo Hippo's Website</h1>
         </header>
@@ -671,6 +671,17 @@ export default function ProjectOnePage() {
           </button>
         )}
       </div>
+      <nav className={styles.projectNavigation} aria-label="Project navigation">
+        <Link className={styles.projectNavigationButton} href="/homepage?skipIntro=1">
+          <span aria-hidden="true">&#8592;</span> Back to home
+        </Link>
+        <Link className={styles.projectNavigationButton} href="#project-top">
+          Top of the page
+        </Link>
+        <Link className={styles.projectNavigationButton} href="/homepage/projects/Project2">
+          Project 2 <span aria-hidden="true">&#8594;</span>
+        </Link>
+      </nav>
                 </section>
       {selectedFinalImage && (
         <div className={styles.finalDesignModalBackdrop} onClick={() => setSelectedFinalImage(null)}>

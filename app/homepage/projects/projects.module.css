@@ -4,6 +4,7 @@
   height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
   background: #7a4f3a;
   color: #263142;
   padding: 2rem clamp(1rem, 4vw, 4rem) 5rem;
@@ -2264,6 +2265,43 @@
   object-fit: contain;
 }
 
+.projectNavigation {
+  display: flex;
+  width: min(100%, 56rem);
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto 0;
+}
+
+.projectNavigationButton {
+  display: inline-flex;
+  min-height: 3rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.1rem;
+  border: 2px solid rgb(105 86 135 / 70%);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #493b60;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 0.4rem 1rem rgb(35 22 29 / 18%);
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.projectNavigationButton:hover {
+  transform: translateY(-2px);
+  background: #fff8f1;
+}
+
+.projectNavigationButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
 .thoughtsHeading {
   margin: 0 0 0.75rem;
   color: #f4d678;
@@ -2517,6 +2555,15 @@
   .content {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
+  }
+
+  .projectNavigation {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .projectNavigationButton {
+    flex: 1 1 auto;
   }
 
   .grid {
@@ -2868,6 +2915,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .page {
+    scroll-behavior: auto;
+  }
+
   .busStopStructureHint {
     animation: none;
   }

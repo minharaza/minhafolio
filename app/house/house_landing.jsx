@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './house_landing.css';
 
 const rooms = [
@@ -21,15 +21,18 @@ const houseItems = [
 ];
 
 const ingredientMenuItems = [
+  { label: 'Resume', href: '/homepage/resume-page', image: '/images/other/Bun.png' },
   { label: 'About Me', href: '/homepage/about-page', image: '/images/other/Lettuce.png' },
   { label: 'Projects', href: '/homepage/projects', image: '/images/other/Tomato.png' },
-  { label: 'Resume', href: '/homepage/resume-page', image: '/images/other/Bun.png' },
+  { label: 'AI Disclaimer', image: '/images/other/Patty.png', action: 'ai-disclaimer' },
 ];
 
 export default function HousePage() {
   const searchParams = useSearchParams();
   const skipIntro = searchParams.get('skipIntro') === '1';
   const [isIngredientMenuOpen, setIsIngredientMenuOpen] = useState(false);
+  const [isAiDisclaimerOpen, setIsAiDisclaimerOpen] = useState(false);
+  const aiDisclaimerCloseRef = useRef(null);
   const [showPout, setShowPout] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [showFollowupBubble, setShowFollowupBubble] = useState(false);
@@ -41,6 +44,8 @@ export default function HousePage() {
   const [isMatchaLeaving, setIsMatchaLeaving] = useState(false);
   const [showExploreBubble, setShowExploreBubble] = useState(false);
   const [isExplorePopping, setIsExplorePopping] = useState(false);
+  const [showHouseInstructionsBubble, setShowHouseInstructionsBubble] = useState(false);
+  const [isHouseInstructionsPopping, setIsHouseInstructionsPopping] = useState(false);
   const [isMatchaExiting, setIsMatchaExiting] = useState(false);
   const [showMatcha, setShowMatcha] = useState(true);
   const [isCutoutReady, setIsCutoutReady] = useState(false);
@@ -52,6 +57,8 @@ export default function HousePage() {
       setShowFinalBubble(false);
       setShowExploreBubble(false);
       setIsExplorePopping(false);
+      setShowHouseInstructionsBubble(false);
+      setIsHouseInstructionsPopping(false);
       setShowMatcha(false);
       setShowLandscapeOnly(true);
       setShowStarsBackground(false);
@@ -110,6 +117,23 @@ export default function HousePage() {
     return () => window.removeEventListener('keydown', handleEscape);
   }, [isIngredientMenuOpen]);
 
+  useEffect(() => {
+    if (!isAiDisclaimerOpen) return undefined;
+
+    aiDisclaimerCloseRef.current?.focus();
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsAiDisclaimerOpen(false);
+      } else if (event.key === 'Tab') {
+        event.preventDefault();
+        aiDisclaimerCloseRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isAiDisclaimerOpen]);
+
   return (
     <main
       className={`house-landing${showStarsBackground ? ' stars-background' : ''}${showLandscapeOnly ? ' landscape-only' : ''}`}
@@ -131,22 +155,74 @@ export default function HousePage() {
           aria-hidden={!isIngredientMenuOpen}
         >
           {ingredientMenuItems.map((item, index) => (
-            <Link
-              key={item.href}
-              className="ingredient-menu-link"
-              href={item.href}
-              tabIndex={isIngredientMenuOpen ? 0 : -1}
-              onClick={() => setIsIngredientMenuOpen(false)}
-              style={{ '--menu-delay': `${index * 70}ms` }}
-            >
-              <span className="ingredient-menu-image">
-                <img src={item.image} alt="" aria-hidden="true" />
-              </span>
-              <span className="ingredient-menu-label">{item.label}</span>
-            </Link>
+            item.action ? (
+              <button
+                key={item.action}
+                type="button"
+                className="ingredient-menu-link ingredient-menu-action"
+                tabIndex={isIngredientMenuOpen ? 0 : -1}
+                onClick={() => {
+                  setIsIngredientMenuOpen(false);
+                  setIsAiDisclaimerOpen(true);
+                }}
+                style={{ '--menu-delay': `${index * 70}ms` }}
+              >
+                <span className="ingredient-menu-image">
+                  <img src={item.image} alt="" aria-hidden="true" />
+                </span>
+                <span className="ingredient-menu-label">{item.label}</span>
+              </button>
+            ) : (
+              <Link
+                key={item.href}
+                className="ingredient-menu-link"
+                href={item.href}
+                tabIndex={isIngredientMenuOpen ? 0 : -1}
+                onClick={() => setIsIngredientMenuOpen(false)}
+                style={{ '--menu-delay': `${index * 70}ms` }}
+              >
+                <span className="ingredient-menu-image">
+                  <img src={item.image} alt="" aria-hidden="true" />
+                </span>
+                <span className="ingredient-menu-label">{item.label}</span>
+              </Link>
+            )
           ))}
         </div>
       </nav>
+      {isAiDisclaimerOpen && (
+        <div className="ai-disclaimer-backdrop">
+          <section
+            className="ai-disclaimer-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="ai-disclaimer-title"
+            aria-describedby="ai-disclaimer-copy"
+          >
+            <button
+              ref={aiDisclaimerCloseRef}
+              type="button"
+              className="ai-disclaimer-close"
+              onClick={() => setIsAiDisclaimerOpen(false)}
+              aria-label="Close AI disclaimer"
+            >
+              &times;
+            </button>
+            <p className="ai-disclaimer-eyebrow">Some insight into</p>
+            <h2 id="ai-disclaimer-title">AI Usage</h2>
+            <div className="ai-disclaimer-copy">
+              <p id="ai-disclaimer-copy">
+               As someone who is passionate about the human centered, and human made art. I found that I relied on myself
+               for drawing components digitally by hand for all of my projects. No AI was used in the planning or creation of this project.
+               Even in brainstorming sessions AI was not used within the development of my ideas. 
+               It was also not used in any part of the writing used in my projects.
+               <br/><br/>
+               Copilot AI was used as a tool to debug my code, and was only used in a software engineering capacity.
+              </p>
+            </div>
+          </section>
+        </div>
+      )}
       <nav aria-label="Portfolio sections">
         {rooms.map((room) => (
           <Link key={room.href} href={room.href}>
@@ -157,7 +233,7 @@ export default function HousePage() {
     {isCutoutReady && (
     <div className="house-scene">
       <img className="house-image" src="/images/other/House.png" alt="" aria-hidden="true" />
-      <div className={`house-items${showExploreBubble ? ' house-items-disabled' : ''}`} aria-label="Explore my house">
+      <div className={`house-items${showExploreBubble || showHouseInstructionsBubble ? ' house-items-disabled' : ''}`} aria-label="Explore my house">
       {houseItems.map((item) => (
         <Link key={item.href} className={`house-item ${item.className}`} href={item.href}>
         <img src={item.image} alt="" aria-hidden="true" />
@@ -277,22 +353,49 @@ export default function HousePage() {
           aria-label="Explore the house"
           onClick={() => {
             setIsExplorePopping(true);
-            setIsMatchaExiting(true);
           }}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               setIsExplorePopping(true);
-              setIsMatchaExiting(true);
             }
           }}
           onAnimationEnd={(event) => {
             if (event.animationName === 'speech-bubble-pop') {
               setShowExploreBubble(false);
+              setShowHouseInstructionsBubble(true);
             }
           }}
         >
           <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
           <span>Feel free to explore my house to learn more about me and my work!</span>
+        </div>
+      )}
+      {showHouseInstructionsBubble && (
+        <div
+          className={`speech-bubble speech-bubble-house-instructions${isHouseInstructionsPopping ? ' is-popping' : ''}`}
+          role="button"
+          tabIndex="0"
+          aria-label="Start exploring the house"
+          onClick={() => {
+            setIsHouseInstructionsPopping(true);
+            setIsMatchaExiting(true);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              setIsHouseInstructionsPopping(true);
+              setIsMatchaExiting(true);
+            }
+          }}
+          onAnimationEnd={(event) => {
+            if (event.animationName === 'speech-bubble-pop') {
+              setShowHouseInstructionsBubble(false);
+              setIsHouseInstructionsPopping(false);
+            }
+          }}
+        >
+          <img src="/images/other/Speech_Bubble.png" alt="" aria-hidden="true" />
+          <span>Hover over different parts in the rooms to reveal different sections! Don&apos;t forget to click in!</span>
         </div>
       )}
     </main>

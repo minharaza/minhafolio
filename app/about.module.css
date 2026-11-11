@@ -22,29 +22,6 @@
   top: 1rem;
   left: 1rem;
   z-index: 10;
-  display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
-  place-items: center;
-  border: 2px solid rgb(105 86 135 / 70%);
-  border-radius: 50%;
-  background: rgb(255 255 255 / 78%);
-  color: #695687;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.backButton:hover {
-  transform: scale(1.06);
-  box-shadow: 0 8px 16px rgb(0 0 0 / 14%);
-}
-
-.backButton:focus-visible {
-  outline: 3px solid #8f6fc8;
-  outline-offset: 3px;
 }
 
 .aboutTitle {
@@ -54,7 +31,7 @@
   z-index: 2;
   margin: 0;
   color: #695687;
-  font-family: 'Ballet', cursive;
+  font-family: 'Fascinate', cursive;
   font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 400;
   line-height: 1;
@@ -253,6 +230,30 @@
   font-size: clamp(1.5rem, 4vw, 2.25rem);
 }
 
+.btsGalleryBackdrop {
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.btsGalleryDialog {
+  width: min(96vw, 100rem);
+  max-height: 92dvh;
+  overflow: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.btsGalleryDialog h2 {
+  margin: 0 4rem 1.25rem;
+  color: #fff8fb;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  text-shadow: 0 2px 12px rgb(35 14 25 / 70%);
+}
+
 .galleryClose {
   position: absolute;
   top: 1rem;
@@ -270,6 +271,97 @@
   cursor: pointer;
 }
 
+.btsGalleryDialog .galleryClose {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 2;
+  background: #fff0f5;
+  box-shadow: 0 0.25rem 1rem rgb(35 14 25 / 35%);
+}
+
+.directionsBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(48 27 39 / 38%);
+  backdrop-filter: blur(4px);
+}
+
+.directionsDialog {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  border: 2px solid rgb(255 255 255 / 90%);
+  border-radius: 1.5rem;
+  background: #fff0f5;
+  box-shadow: 0 1.5rem 5rem rgb(35 14 25 / 30%);
+  color: #5f3d50;
+  text-align: center;
+}
+
+.directionsClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f7d8e5;
+  color: #7d3657;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.directionsClose:hover,
+.directionsClose:focus-visible {
+  background: #edbfd2;
+}
+
+.directionsClose:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+.directionsEyebrow {
+  margin: 0 0 0.4rem;
+  color: #9b567a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+}
+
+.directionsDialog h2 {
+  margin: 0 2rem 0.75rem;
+  color: #695687;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(2.5rem, 7vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.directionsDialog > p:not(.directionsEyebrow):not(.directionsPrompt) {
+  margin: 0 auto;
+  max-width: 27rem;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.directionsPrompt {
+  margin: 1.25rem 0 0;
+  color: #9b3158;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .galleryEmpty {
   display: grid;
   min-height: 14rem;
@@ -285,6 +377,36 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
   gap: 0.9rem;
+}
+
+.btsGalleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.btsGalleryItem {
+  min-width: 0;
+  margin: 0;
+}
+
+.btsGalleryItem img {
+  display: block;
+  width: 100%;
+  max-height: 68dvh;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 2rem rgb(20 12 22 / 40%);
+}
+
+.btsGalleryItem figcaption {
+  padding: 0.6rem 0 0;
+  color: #fff8fb;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.95rem;
+  text-align: center;
+  text-shadow: 0 1px 8px rgb(20 12 22 / 85%);
 }
 
 .galleryPhoto {
@@ -518,6 +640,16 @@
 
   .item:hover {
     transform: none;
+  }
+
+  .btsGalleryGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .btsGalleryItem img {
+    width: min(100%, 38rem);
+    max-height: 62dvh;
+    margin: 0 auto;
   }
 }
 

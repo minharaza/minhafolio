@@ -1,15 +1,704 @@
 .page {
   position: relative;
+  isolation: isolate;
   display: grid;
   min-height: 100dvh;
   place-items: center;
   overflow: hidden;
   padding: 6rem 1.25rem;
-  background: #8edce4 url('/images/other/Landscape.png') center / cover fixed;
+  background: #b7d8f1;
   color: #56334a;
 }
 
+.page::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #b7d8f1 url('/images/interests/blue-whimsy.jpg') center / contain no-repeat;
+  content: '';
+  pointer-events: none;
+}
+
+@media (orientation: landscape) {
+  .page::before {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 100dvh;
+    height: 100vw;
+    background-color: transparent;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.floatingBubbles {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.interestItems {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.interestButton {
+  position: absolute;
+  display: grid;
+  width: clamp(12rem, 22vw, 21rem);
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  animation: interest-buoyancy 4.8s ease-in-out var(--interest-delay) infinite;
+  transition: filter 180ms ease;
+}
+
+.interestButton img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0.6rem 0.8rem rgb(40 79 105 / 22%));
+  transition: filter 180ms ease;
+}
+
+.interestButton:hover img,
+.interestButton:focus-visible img,
+.interestButtonSelected img {
+  filter: drop-shadow(0 0.9rem 1rem rgb(40 79 105 / 32%));
+}
+
+.interestButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -1rem;
+  border-radius: 50%;
+}
+
+.interestCroissant {
+  top: 53%;
+  left: 21%;
+  animation-duration: 5.2s;
+}
+
+.interestEtsy {
+  top: 40%;
+  left: 50%;
+  animation-duration: 4.4s;
+}
+
+.interestPainting {
+  top: 57%;
+  left: 79%;
+  animation-duration: 5.8s;
+}
+
+.interestLabel {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  background: rgb(255 248 251 / 92%);
+  box-shadow: 0 0.25rem 0.8rem rgb(37 83 105 / 20%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.35rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+}
+
+.interestButtonSelected .interestLabel {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.interestHoverLabel {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 90%);
+  border-radius: 999px;
+  background: rgb(255 248 251 / 94%);
+  box-shadow: 0 0.25rem 0.8rem rgb(37 83 105 / 22%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.4rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+}
+
+.interestButton:hover .interestHoverLabel,
+.interestButton:focus-visible .interestHoverLabel {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.interestItemsFlying .interestButton {
+  animation: interest-fly-out 900ms cubic-bezier(0.18, 0.72, 0.25, 1) var(--fly-delay) forwards;
+  pointer-events: none;
+}
+
+.interestItemsFlying .interestButton:nth-child(1) {
+  --fly-x: -110vw;
+  --fly-y: -75vh;
+  --fly-rotate: -80deg;
+  --fly-delay: 0ms;
+}
+
+.interestItemsFlying .interestButton:nth-child(2) {
+  --fly-x: 0vw;
+  --fly-y: -110vh;
+  --fly-rotate: 45deg;
+  --fly-delay: 100ms;
+}
+
+.interestItemsFlying .interestButton:nth-child(3) {
+  --fly-x: 110vw;
+  --fly-y: -65vh;
+  --fly-rotate: 90deg;
+  --fly-delay: 180ms;
+}
+
+@keyframes interest-fly-out {
+  from {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) rotate(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(calc(-50% + var(--fly-x)), calc(-50% + var(--fly-y)), 0) rotate(var(--fly-rotate)) scale(0.3);
+  }
+}
+
+.bitesExperience {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(5.5rem, 11vh, 7rem) clamp(1rem, 3vw, 3rem) 2rem;
+}
+
+.etsyExperience {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(5.5rem, 11vh, 7rem) clamp(1rem, 3vw, 3rem) 2rem;
+}
+
+.bitesIntro {
+  width: min(100%, 56rem);
+  margin: 0 auto clamp(1rem, 2vh, 1.5rem);
+  padding: 0.75rem clamp(1rem, 3vw, 2rem);
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 1rem;
+  background: rgb(235 247 255 / 82%);
+  box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
+  text-align: center;
+  animation: bites-intro-in 550ms ease both;
+}
+
+.etsyLogo {
+  display: block;
+  width: clamp(11rem, 20vw, 20rem);
+  max-height: 30vh;
+  height: auto;
+  margin: 0 auto 0.25rem;
+  object-fit: contain;
+}
+
+.etsyFeature {
+  display: grid;
+  width: min(100%, 56rem);
+  min-height: min(58vh, 35rem);
+  margin: clamp(1rem, 3vh, 2rem) auto 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(235 247 255 / 82%);
+  box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
+  animation: bites-intro-in 600ms ease both;
+}
+
+.etsyIntroStep {
+  display: grid;
+  width: min(100%, 42rem);
+  justify-items: center;
+  gap: 0.25rem;
+  margin: clamp(2rem, 8vh, 5rem) auto 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 1rem;
+  background: rgb(235 247 255 / 84%);
+  box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
+  text-align: center;
+  animation: bites-intro-in 600ms ease both;
+}
+
+.etsyIterationsStage {
+  position: relative;
+  display: block;
+  width: min(100%, 56rem);
+  height: min(68dvh, calc(100dvh - 14rem), 48rem);
+  min-height: 15rem;
+  margin: clamp(0.75rem, 2vh, 1.5rem) auto 0;
+  animation: bites-intro-in 500ms ease both;
+}
+
+.etsyIterationsImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% - 4.5rem);
+  object-fit: contain;
+}
+
+.etsyNextButton {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border: 2px solid rgb(135 51 87 / 60%);
+  border-radius: 50%;
+  background: #fff8fb;
+  box-shadow: 0 0.3rem 0.9rem rgb(40 79 105 / 24%);
+  color: #56334a;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateX(-50%);
+  transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.etsyNextButton:hover {
+  background: #fff;
+  box-shadow: 0 0.5rem 1.2rem rgb(40 79 105 / 30%);
+  transform: translateX(-50%) translateY(0.15rem);
+}
+
+.etsyNextButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.etsyIntroStep p {
+  max-width: 34rem;
+  margin: 0;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  line-height: 1.65;
+}
+
+.etsyContinueButton {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid rgb(135 51 87 / 60%);
+  border-radius: 999px;
+  background: #fff8fb;
+  box-shadow: 0 0.3rem 0.9rem rgb(40 79 105 / 20%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.etsyContinueButton:hover {
+  transform: translateX(0.2rem);
+  background: #fff;
+  box-shadow: 0 0.45rem 1.1rem rgb(40 79 105 / 26%);
+}
+
+.etsyContinueButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.etsyContinueButton span {
+  font-size: 1.5rem;
+  line-height: 0.8;
+}
+
+.sonnyImage {
+  display: block;
+  width: min(100%, 24rem);
+  max-height: 52vh;
+  height: auto;
+  justify-self: center;
+  object-fit: contain;
+  filter: drop-shadow(0 0.7rem 0.9rem rgb(40 79 105 / 20%));
+}
+
+.sonnyButtonWrap {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+}
+
+.sonnyButton {
+  display: grid;
+  width: min(100%, 24rem);
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.sonnyButton:hover,
+.sonnyButton:focus-visible {
+  transform: scale(1.04);
+}
+
+.sonnyButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 0.25rem;
+}
+
+.sonnyButton .sonnyImage {
+  width: 100%;
+}
+
+.sonnyClickHint {
+  position: absolute;
+  top: 38%;
+  right: calc(100% - 2.5rem);
+  z-index: 1;
+  display: block;
+  width: clamp(5.5rem, 12vw, 11rem);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 0.2rem 0.35rem rgb(40 79 105 / 25%));
+  animation: sonny-click-hint-bob 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes sonny-click-hint-bob {
+  from { transform: translateY(-0.3rem) rotate(-5deg); }
+  to { transform: translateY(0.3rem) rotate(2deg); }
+}
+
+.sonnyStickerGallery {
+  width: min(100%, 90rem);
+  margin: clamp(1rem, 3vh, 2rem) auto 0;
+  padding-bottom: 2rem;
+  animation: bites-intro-in 500ms ease both;
+}
+
+.sonnyStickerGallery h2 {
+  margin: 0 0 1rem;
+  color: #56334a;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  text-align: center;
+  text-shadow: 0 1px 10px rgb(255 255 255 / 80%);
+}
+
+.sonnyStickerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.sonnySticker {
+  display: grid;
+  min-width: 0;
+  min-height: 12rem;
+  margin: 0;
+  place-items: center;
+}
+
+.sonnySticker img {
+  display: block;
+  width: 100%;
+  max-height: 38vh;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0.5rem 0.8rem rgb(40 79 105 / 24%));
+}
+
+.etsyDescription {
+  max-width: 32rem;
+  margin: 0;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.7;
+}
+
+.bitesEyebrow {
+  margin: 0 0 0.15rem;
+  color: #875071;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.8rem;
+}
+
+.bitesIntro h1 {
+  margin: 0;
+  color: #56334a;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.bitesHeadingRow {
+  display: block;
+}
+
+.bitesBackButton {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 5;
+  display: inline-flex;
+  min-height: 3.25rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.2rem;
+  border: 2px solid rgb(135 51 87 / 60%);
+  border-radius: 999px;
+  background: #fff8fb;
+  box-shadow: 0 0.3rem 0.9rem rgb(40 79 105 / 20%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.bitesBackButton span {
+  font-size: 1.6rem;
+  line-height: 0.8;
+}
+
+.bitesBackButton:hover {
+  transform: scale(1.04);
+  background: #fff;
+  box-shadow: 0 0.45rem 1.1rem rgb(40 79 105 / 26%);
+}
+
+.bitesBackButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.bitesIntro > p:last-child {
+  max-width: 48rem;
+  margin: 0.35rem auto 0;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  line-height: 1.4;
+}
+
+.bitesGrid {
+  display: grid;
+  width: min(100%, 90rem);
+  margin: 0 auto;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.5rem, 1.4vw, 1.25rem);
+}
+
+.bitesPost {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  opacity: 0;
+  transform: translateY(1.5rem) scale(0.94);
+  animation: bites-post-in 500ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--post-delay) forwards;
+}
+
+.bitesPost:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.bitesPost img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.4rem 1rem rgb(40 60 85 / 24%);
+}
+
+.postViewerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  background: rgb(29 44 66 / 78%);
+  backdrop-filter: blur(8px);
+}
+
+.postViewer {
+  position: relative;
+  display: grid;
+  width: min(100%, 78rem);
+  height: min(92dvh, 60rem);
+  place-items: center;
+}
+
+.postViewer > img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.4rem;
+  box-shadow: 0 1rem 4rem rgb(0 0 0 / 40%);
+}
+
+.postViewerClose {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  z-index: 1;
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f7d8e5;
+  color: #7d3657;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 25%);
+}
+
+.postViewerClose:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+@keyframes bites-intro-in {
+  from { opacity: 0; transform: translateY(-0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bites-post-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes interest-buoyancy {
+  0%, 100% {
+    transform: translate3d(calc(-50% - 0.65rem), calc(-50% + 0.9rem), 0) rotate(-5deg) scale(0.97);
+  }
+
+  50% {
+    transform: translate3d(calc(-50% + 0.65rem), calc(-50% - 3rem), 0) rotate(5deg) scale(1.04);
+  }
+}
+
+.bubble {
+  position: absolute;
+  bottom: -12vh;
+  left: var(--bubble-left);
+  width: var(--bubble-size);
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 29% 24%, rgb(255 255 255 / 88%) 0 2%, transparent 13%),
+    radial-gradient(ellipse at 68% 76%, rgb(226 168 233 / 23%), transparent 36%),
+    radial-gradient(ellipse at 32% 80%, rgb(157 233 240 / 30%), transparent 42%),
+    rgb(255 255 255 / 6%);
+  box-shadow:
+    inset 0.18rem 0.12rem 0.4rem rgb(255 255 255 / 72%),
+    inset -0.22rem -0.18rem 0.5rem rgb(119 206 236 / 25%),
+    0 0 0.8rem rgb(255 255 255 / 24%);
+  animation: bubble-float var(--bubble-duration) linear var(--bubble-delay) infinite;
+}
+
+.bubble::after {
+  position: absolute;
+  top: 17%;
+  left: 21%;
+  width: 23%;
+  height: 9%;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 82%);
+  content: '';
+  filter: blur(1px);
+  transform: rotate(-35deg);
+}
+
+@keyframes bubble-float {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.82);
+  }
+
+  12% {
+    opacity: 0.72;
+  }
+
+  82% {
+    opacity: 0.55;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--bubble-drift), -125vh, 0) scale(1.08);
+  }
+}
+
 .content {
+  position: relative;
+  z-index: 1;
   width: min(100%, 42rem);
   padding: clamp(2rem, 6vw, 4rem);
   border: 3px solid rgb(135 51 87 / 55%);
@@ -19,10 +708,93 @@
   text-align: center;
 }
 
+.directionsBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(48 27 39 / 42%);
+  backdrop-filter: blur(5px);
+}
+
+.directionsDialog {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  border: 2px solid rgb(255 255 255 / 90%);
+  border-radius: 12px;
+  background: #fff0f5;
+  box-shadow: 0 1.5rem 5rem rgb(35 14 25 / 30%);
+  color: #5f3d50;
+  text-align: center;
+}
+
+.directionsClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #f7d8e5;
+  color: #7d3657;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.directionsClose:hover,
+.directionsClose:focus-visible {
+  background: #edbfd2;
+}
+
+.directionsClose:focus-visible {
+  outline: 3px solid #695687;
+  outline-offset: 3px;
+}
+
+.directionsEyebrow {
+  margin: 0 0 0.4rem;
+  color: #9b567a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+}
+
+.directionsDialog h2 {
+  margin: 0 2rem 0.75rem;
+  color: #695687;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.directionsDialog > p:not(.directionsEyebrow):not(.directionsPrompt) {
+  max-width: 27rem;
+  margin: 0 auto;
+  font-family: 'Happy Monkey', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.directionsPrompt {
+  margin: 1.25rem 0 0;
+  color: #9b3158;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .backButton {
   position: absolute;
   top: max(1rem, env(safe-area-inset-top));
   left: max(1rem, env(safe-area-inset-left));
+  z-index: 4;
   display: grid;
   width: 2.75rem;
   height: 2.75rem;
@@ -51,7 +823,7 @@
 .content h1 {
   margin: 0;
   color: #873357;
-  font-family: 'Ballet', cursive;
+  font-family: 'Fascinate', cursive;
   font-size: clamp(3.5rem, 12vw, 6rem);
   font-weight: 400;
   line-height: 1.1;
@@ -81,8 +853,166 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .bubble {
+    display: none;
+    animation: none;
+  }
+
+  .interestButton {
+    animation: none;
+  }
+
+  .interestItemsFlying .interestButton {
+    animation: none;
+    opacity: 0;
+  }
+
+  .interestItemsFlying .interestButton,
+  .bitesIntro,
+  .bitesPost,
+  .etsyIntroStep,
+  .etsyIterationsStage,
+  .etsyFeature {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
   .backButton,
-  .projectsLink {
+  .projectsLink,
+  .bitesBackButton,
+  .etsyContinueButton {
     transition: none;
   }
+}
+
+@media (max-width: 700px) {
+  .interestButton {
+    width: clamp(7.5rem, 32vw, 11rem);
+  }
+
+  .interestCroissant {
+    top: 54%;
+    left: 17%;
+  }
+
+  .interestEtsy {
+    top: 43%;
+    left: 50%;
+  }
+
+  .interestPainting {
+    top: 56%;
+    left: 83%;
+  }
+
+  .bitesExperience {
+    padding-top: 5.25rem;
+  }
+
+  .etsyExperience {
+    padding: 5.25rem 1rem 1.5rem;
+  }
+
+  .bitesIntro {
+    margin-bottom: 0.85rem;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .bitesHeadingRow {
+    display: block;
+  }
+
+  .bitesBackButton {
+    min-height: 2.8rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .bitesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .etsyFeature {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .etsyIntroStep {
+    gap: 0.25rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
+  }
+
+  .etsyIterationsStage {
+    width: 100%;
+    height: min(64dvh, calc(100dvh - 13rem), 42rem);
+    min-height: 13rem;
+    margin-top: 0.5rem;
+  }
+
+  .etsyIterationsImage {
+    height: calc(100% - 4.25rem);
+  }
+
+  .etsyNextButton {
+    bottom: 0;
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .etsyLogo {
+    width: clamp(7.5rem, 32vw, 10rem);
+    max-height: 20vh;
+    margin-bottom: 0;
+  }
+
+  .sonnyImage {
+    width: min(65vw, 15rem);
+    max-height: 34vh;
+  }
+
+  .sonnyButtonWrap {
+    padding-top: 2rem;
+  }
+
+  .sonnyButton {
+    width: min(65vw, 15rem);
+  }
+
+  .sonnyClickHint {
+    top: -0.5rem;
+    right: auto;
+    left: 50%;
+    width: clamp(5.5rem, 27vw, 8rem);
+    transform: translateX(-50%);
+    animation-name: sonny-click-hint-bob-mobile;
+  }
+
+  .sonnyStickerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .sonnySticker {
+    min-height: 0;
+  }
+
+  .sonnySticker img {
+    max-height: 32vh;
+  }
+
+  .etsyDescription {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@keyframes sonny-click-hint-bob-mobile {
+  from { transform: translate(-50%, -0.2rem) rotate(-4deg); }
+  to { transform: translate(-50%, 0.2rem) rotate(3deg); }
 }

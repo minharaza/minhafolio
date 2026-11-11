@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import confetti from 'canvas-confetti';
 import styles from './about.module.css';
 
 const collageItems = [
@@ -19,6 +20,12 @@ const collageItems = [
 ];
 
 const collageImageSizes = '(max-width: 700px) 46vw, 37vh';
+
+const btsImages = [
+  { src: '/images/bts/bts-1.gif', alt: 'BTS members together, image 1' },
+  { src: '/images/bts/bts-2.gif', alt: 'BTS members together, image 2' },
+  { src: '/images/bts/bts-3.gif', alt: 'BTS members together, image 3' },
+];
 
 const travelPhotos = [
   '0701E767-A800-42C0-AC42-506DEBF4F43E_4_5005_c.jpeg',
@@ -77,6 +84,8 @@ const travelPhotos = [
 
 const About = () => {
   const router = useRouter();
+  const [showDirections, setShowDirections] = useState(true);
+  const directionsCloseRef = useRef(null);
   const [activeGallery, setActiveGallery] = useState(null);
   const [enlargedPhoto, setEnlargedPhoto] = useState(null);
   const [ballBounceSequence, setBallBounceSequence] = useState(0);
@@ -84,6 +93,10 @@ const About = () => {
   const [starsCrazy, setStarsCrazy] = useState(false);
   const [activeMessage, setActiveMessage] = useState(null);
   const isGalleryOpen = activeGallery !== null;
+
+  useEffect(() => {
+    directionsCloseRef.current?.focus();
+  }, []);
 
   const closeGallery = () => {
     if (activeGallery === 'travel') setActiveMessage('travel');
@@ -110,16 +123,17 @@ const About = () => {
 
   return (
     <main className={`${styles.aboutPage}${starsCrazy ? ` ${styles.starsCrazy}` : ''}`}>
-      <button
-        type="button"
-        className={styles.backButton}
-        onClick={() => router.push('/homepage?skipIntro=1')}
-        aria-label="Go back to homepage"
-      >
-        &larr;
-      </button>
-      <h1 className={styles.aboutTitle}>About me</h1>
-      <div className={styles.scene} aria-label="A collage of things that represent me, arranged on a pink bed">
+      <div inert={showDirections ? '' : undefined}>
+        <button
+          type="button"
+          className={`${styles.backButton} back-navigation-button`}
+          onClick={() => router.push('/homepage?skipIntro=1')}
+          aria-label="Go back to homepage"
+        >
+          &larr;
+        </button>
+        <h1 className={styles.aboutTitle}>About me</h1>
+        <div className={styles.scene} aria-label="A collage of things that represent me, arranged on a pink bed">
         <Image
           src="/images/other/top-of-bed.png"
           alt="A pink bed"
@@ -140,6 +154,27 @@ const About = () => {
               setActiveGallery(gallery);
             }}
             aria-label={`Open ${item.className === 'airport' ? 'travel' : 'photography'} photo gallery`}
+          >
+            <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
+          </button>
+        ) : item.className === 'notebook' ? (
+          <button
+            key={item.src}
+            type="button"
+            className={`${styles.item} ${styles.notebook} ${styles.galleryTrigger}`}
+            onClick={() => {
+              setActiveGallery('bts');
+              confetti({
+                particleCount: 220,
+                spread: 150,
+                startVelocity: 48,
+                scalar: 1.15,
+                origin: { y: 0.56 },
+                colors: ['#f7d8e5', '#e5b96f', '#a6c9bb', '#8f6fc8', '#fff8fb'],
+                disableForReducedMotion: true,
+              });
+            }}
+            aria-label="Open BTS photo gallery"
           >
             <Image src={item.src} alt={item.alt} width={2048} height={2048} sizes={collageImageSizes} loading="eager" />
           </button>
@@ -217,22 +252,50 @@ const About = () => {
             className={`${styles.item} ${styles[item.className]}`}
           />
         ))}
+        </div>
+        {activeMessage && (
+          <p className={styles.aboutMessage}>
+            {activeMessage === 'travel'
+              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
+              : activeMessage === 'photography'
+                ? 'Photography is a hobby of mine'
+                : activeMessage === 'fashion'
+                  ? 'I love fashion I love to change it up!'
+                  : 'I love tennis! I\'ve been playing since I was 6!'}
+          </p>
+        )}
       </div>
-      {activeMessage && (
-        <p className={styles.aboutMessage}>
-          {activeMessage === 'travel'
-            ? 'I love to travel! Fun fact: I\'ve been to 17 countries!'
-            : activeMessage === 'photography'
-              ? 'Photography is a hobby of mine'
-              : activeMessage === 'fashion'
-                ? 'I love fashion I love to change it up!'
-              : 'I love tennis! I\'ve been playing since I was 6!'}
-        </p>
+      {showDirections && (
+        <div className={styles.directionsBackdrop}>
+          <section
+            className={styles.directionsDialog}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="about-directions-title"
+            aria-describedby="about-directions-copy"
+          >
+            <button
+              ref={directionsCloseRef}
+              type="button"
+              className={styles.directionsClose}
+              onClick={() => setShowDirections(false)}
+              aria-label="Close directions and explore the About page"
+            >
+              &times;
+            </button>
+            <p className={styles.directionsEyebrow}>Time to Learn </p>
+            <h2 id="about-directions-title">A little about me!</h2>
+            <p id="about-directions-copy">
+              Get to know me better by exploring and clicking on the different elements!
+               </p>
+            <p className={styles.directionsPrompt}>Close this note to start exploring.</p>
+          </section>
+        </div>
       )}
       {isGalleryOpen && (
-        <div className={styles.galleryBackdrop} onClick={closeGallery}>
+        <div className={`${styles.galleryBackdrop} ${activeGallery === 'bts' ? styles.btsGalleryBackdrop : ''}`} onClick={closeGallery}>
           <section
-            className={styles.galleryDialog}
+            className={`${styles.galleryDialog} ${activeGallery === 'bts' ? styles.btsGalleryDialog : ''}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="gallery-title"
@@ -246,7 +309,7 @@ const About = () => {
             >
               &times;
             </button>
-            <h2 id="gallery-title">{activeGallery === 'travel' ? 'Travel Memories' : 'Photography'}</h2>
+            <h2 id="gallery-title">{activeGallery === 'travel' ? 'Travel Memories' : activeGallery === 'bts' ? 'I LOVE BTS!!!!' : 'Photography'}</h2>
             {activeGallery === 'travel' ? (
               <div className={styles.galleryGrid}>
                 {travelPhotos.map((photo, index) => (
@@ -264,6 +327,15 @@ const About = () => {
                       sizes="(max-width: 600px) 42vw, (max-width: 1000px) 28vw, 220px"
                     />
                   </button>
+                ))}
+              </div>
+            ) : activeGallery === 'bts' ? (
+              <div className={styles.btsGalleryGrid}>
+                {btsImages.map((image, index) => (
+                  <figure className={styles.btsGalleryItem} key={image.src}>
+                    <img src={image.src} alt={image.alt} />
+                   
+                  </figure>
                 ))}
               </div>
             ) : (

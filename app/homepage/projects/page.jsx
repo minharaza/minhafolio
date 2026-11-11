@@ -2,36 +2,44 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import styles from './projects.module.css';
 
 const mats = [
   { src: '/images/project-sec/Mat1.png', plate: '/images/project-sec/Plate1.png', drink: '/images/project-sec/Drink1.png', food: '/images/project-sec/Toast.png', project: 'Project1', foodAlt: 'Toast', alt: 'Pink place setting with plate, drink, fork, and knife' },
   { src: '/images/project-sec/Mat2.png', plate: '/images/project-sec/Plate2.png', drink: '/images/project-sec/Drink2.png', food: '/images/project-sec/Waffle.png', project: 'Project2', foodAlt: 'Waffle', alt: 'Orange place setting with plate, drink, fork, and knife' },
-  { src: '/images/project-sec/Mat3.png', plate: '/images/project-sec/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/project-sec/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat3.png', plate: '/images/project-sec/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/other/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
 ];
 
 export default function ProjectsPage() {
   const router = useRouter();
+  const [showDirections, setShowDirections] = useState(true);
+  const directionsCloseRef = useRef(null);
+
+  useEffect(() => {
+    directionsCloseRef.current?.focus();
+  }, []);
 
   return (
     <main className={styles.page}>
-      <div className={styles.backgroundTexture} aria-hidden="true" />
-      <button
-        type="button"
-        className={styles.backButton}
-        onClick={() => router.push('/homepage?skipIntro=1')}
-        aria-label="Go back to homepage"
-      >
-        &larr;
-      </button>
+      <div inert={showDirections ? '' : undefined}>
+        <div className={styles.backgroundTexture} aria-hidden="true" />
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={() => router.push('/homepage?skipIntro=1')}
+          aria-label="Go back to homepage"
+        >
+          &larr;
+        </button>
 
-      <section className={styles.content} aria-label="Project mats">
-        <header className={styles.header}>
-          <p className={styles.eyebrow}>A small collection</p>
-          <h1>Projects</h1>
-          <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
-        </header>
-        <div className={styles.grid}>
+        <section className={styles.content} aria-label="Project mats">
+          <header className={styles.header}>
+            <p className={styles.eyebrow}>A small collection</p>
+            <h1>Projects</h1>
+            <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
+          </header>
+          <div className={styles.grid}>
           {mats.map((mat) => (
             <figure className={styles.matCard} key={mat.src}>
               <Image
@@ -102,6 +110,18 @@ export default function ProjectsPage() {
                   </text>
                 </svg>
               )}
+              {mat.project === 'Project2' && (
+                <svg className={styles.toastCaption} viewBox="0 -35 500 170" aria-hidden="true">
+                  <defs>
+                    <path id="waffle-caption-arc" d="M 20 110 Q 270 -70 480 110" />
+                  </defs>
+                  <text fill="currentColor">
+                    <textPath href="#waffle-caption-arc" startOffset="50%" textAnchor="middle">
+                      Blending functionality and fashion in a
+                    </textPath>
+                  </text>
+                </svg>
+              )}
               {mat.project === 'Project3' && (
                 <svg className={`${styles.toastCaption} ${styles.projectThreeCaption}`} viewBox="0 -35 500 170" aria-hidden="true">
                   <defs>
@@ -125,8 +145,36 @@ export default function ProjectsPage() {
               </span>
             </figure>
           ))}
+          </div>
+        </section>
+      </div>
+      {showDirections && (
+        <div className={styles.directionsBackdrop}>
+          <section
+            className={styles.directionsDialog}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="projects-directions-title"
+            aria-describedby="projects-directions-copy"
+          >
+            <button
+              ref={directionsCloseRef}
+              type="button"
+              className={styles.directionsClose}
+              onClick={() => setShowDirections(false)}
+              aria-label="Close directions and explore projects"
+            >
+              &times;
+            </button>
+            <p className={styles.directionsEyebrow}>Take a bite into</p>
+            <h2 id="projects-directions-title">My Projects</h2>
+            <p id="projects-directions-copy">
+              Feast your eyes on some delicious projects! Click on a plate to slice right into my work!
+            </p>
+            <p className={styles.directionsPrompt}>Close this note to start exploring.</p>
+          </section>
         </div>
-      </section>
+      )}
     </main>
   );
 }

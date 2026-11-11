@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Happy+Monkey&family=Lily+Script+One&family=Signika:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Fascinate+Inline&family=Happy+Monkey&family=Lily+Script+One&family=Signika:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -40,6 +40,34 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.back-navigation-button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid rgb(105 86 135 / 70%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 78%);
+  color: #695687;
+  font-family: var(--font-quicksand), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.back-navigation-button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 14%);
+}
+
+.back-navigation-button:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
 }
 
 #root {

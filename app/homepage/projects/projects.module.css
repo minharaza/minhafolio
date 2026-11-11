@@ -1479,7 +1479,7 @@
   right: -4.5rem;
   width: 7rem;
   height: auto;
-  transform: translateY(-50%);
+  translate: 0 -50%;
   filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%));
   animation: hint-flash 1.3s ease-in-out infinite alternate;
 }
@@ -1676,7 +1676,7 @@
   z-index: 1;
   width: var(--bus-stop-hint-size);
   max-height: none;
-  transform: translateY(-50%);
+  translate: 0 -50%;
   filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
   animation: hint-flash 1.3s ease-in-out infinite alternate;
   pointer-events: none;
@@ -2318,6 +2318,23 @@
   width: 8rem;
   height: 8rem;
   object-fit: contain;
+}
+
+.projectStepBusHint,
+.projectBenchHint,
+.researchPersonaHint img,
+.worksCitedHint img,
+.busStopStructureHint img,
+.busStopDesignProgressionImage .busStopDesignClickHint,
+.busStopMemoryHint {
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
+  animation: hint-flash 1.3s ease-in-out infinite alternate;
+}
+
+.researchPersonaHint,
+.worksCitedHint,
+.busStopStructureHint {
+  animation: none;
 }
 
 .projectNavigation {
@@ -2985,6 +3002,16 @@
   }
 
   .busStopStructureHint {
+    animation: none;
+  }
+
+  .projectStepBusHint,
+  .projectBenchHint,
+  .researchPersonaHint img,
+  .worksCitedHint img,
+  .busStopStructureHint img,
+  .busStopDesignProgressionImage .busStopDesignClickHint,
+  .busStopMemoryHint {
     animation: none;
   }
 

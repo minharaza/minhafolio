@@ -684,7 +684,7 @@ export default function ProjectOnePage() {
           <span aria-hidden="true">&#8592;</span> Back to home
         </Link>
         <Link className={styles.projectNavigationButton} href="#project-top">
-          Top of the page
+          <span aria-hidden="true">&#8593;</span> Top of the page
         </Link>
         <Link className={styles.projectNavigationButton} href="/homepage/projects/Project2">
           Project 2 <span aria-hidden="true">&#8594;</span>

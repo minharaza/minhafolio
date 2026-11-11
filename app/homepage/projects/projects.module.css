@@ -129,6 +129,15 @@
   backdrop-filter: blur(2px);
 }
 
+.projectTwoHeader {
+  width: min(100%, 56rem);
+}
+
+.header.projectTwoHeader h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+}
+
 .directionsBackdrop {
   position: fixed;
   inset: 0;

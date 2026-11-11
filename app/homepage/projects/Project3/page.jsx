@@ -269,7 +269,7 @@ export default function ProjectThreePage() {
 
       <section className={`${styles.content} ${styles.projectOneContent}`} id="project-top" ref={contentRef}>
         <header className={`${styles.header} ${styles.projectThreeHeader}`}>
-          <p className={styles.eyebrow}>A Deep Dive into:</p>
+          <p className={styles.eyebrow}>Project 3</p>
           <h1>Bus Stops:</h1>
           <p className={styles.eyebrow}>The Cornerstones of Community!</p>
         </header>

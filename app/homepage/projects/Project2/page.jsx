@@ -10,9 +10,9 @@ export default function ProjectTwoPage() {
       </Link>
 
       <section className={styles.content}>
-        <header className={styles.header}>
-          <p className={styles.eyebrow}>Project showcase</p>
-          <h1>Waffle Project</h1>
+        <header className={`${styles.header} ${styles.projectTwoHeader}`}>
+          <p className={styles.eyebrow}>Project 2</p>
+          <h1>Designing NFC Medical ID into Whimsical Keychains</h1>
         </header>
       </section>
     </main>

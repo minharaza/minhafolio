@@ -75,6 +75,44 @@
   outline-offset: 3px;
 }
 
+.sectionNavigation {
+  position: fixed;
+  top: 50%;
+  right: clamp(0.75rem, 2vw, 2rem);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transform: translateY(-50%);
+}
+
+.sectionNavigation a {
+  display: grid;
+  width: 2.8rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 2px solid rgb(105 86 135 / 80%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 92%);
+  color: #493b60;
+  font-family: 'Fascinate', cursive;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-decoration: none;
+  box-shadow: 0 0.3rem 0.8rem rgb(35 22 29 / 24%);
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.sectionNavigation a:hover {
+  transform: scale(1.1);
+  background: #fff8f1;
+}
+
+.sectionNavigation a:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
 .content {
   position: relative;
   z-index: 1;
@@ -2555,6 +2593,16 @@
   .content {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
+  }
+
+  .sectionNavigation {
+    right: 0.4rem;
+    gap: 0.4rem;
+  }
+
+  .sectionNavigation a {
+    width: 2.25rem;
+    font-size: 0.72rem;
   }
 
   .projectNavigation {

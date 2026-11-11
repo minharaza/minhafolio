@@ -99,6 +99,13 @@ export default function ProjectOnePage() {
   return (
     <main className={styles.page}>
       <div className={styles.backgroundTexture} aria-hidden="true" />
+      <nav className={styles.sectionNavigation} aria-label="Jump to project section">
+        <a href="#project-section-01" aria-label="Go to section 1, Overview">01</a>
+        <a href="#project-section-02" aria-label="Go to section 2, Research and Analysis">02</a>
+        <a href="#project-section-03" aria-label="Go to section 3, Design Process">03</a>
+        <a href="#project-section-04" aria-label="Go to section 4, Final Design and Analysis">04</a>
+        <a href="#project-section-05" aria-label="Go to section 5, Final Thoughts">05</a>
+      </nav>
       <Link
         className={styles.backButton}
         href="/homepage/projects"
@@ -112,7 +119,7 @@ export default function ProjectOnePage() {
           <p className={styles.eyebrow}>Project One</p>
           <h1 className={styles.projectTitle}>Case Study: Redesigning Indigo Hippo's Website</h1>
         </header>
-        <h1 className={styles.projectNumberTitle}>01</h1>
+        <h1 id="project-section-01" className={styles.projectNumberTitle}>01</h1>
         <h2 className={styles.swotHeading} id="overview-heading">Overview</h2>
         <section className={styles.projectDetails} aria-label="Project details">
           <article className={styles.projectDetail}>
@@ -138,7 +145,7 @@ export default function ProjectOnePage() {
             </p>
           </article>
           <section className={styles.projectSection} aria-labelledby="research-heading">
-            <h1 className={styles.projectNumberTitle}>02</h1>
+            <h1 id="project-section-02" className={styles.projectNumberTitle}>02</h1>
             <h2 className={styles.swotHeading} id="research-heading">Research & Analysis</h2>
              <article className={styles.projectDetail}>
             <h2>The Approach</h2>
@@ -307,7 +314,7 @@ export default function ProjectOnePage() {
             </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="design-process-heading">
-          <h1 className={styles.projectNumberTitle}>03</h1>
+          <h1 id="project-section-03" className={styles.projectNumberTitle}>03</h1>
           <h2 className={styles.swotHeading} id="design-process-heading">Design Process</h2>
           <article className={styles.projectDetail}>
             <p>
@@ -413,7 +420,7 @@ export default function ProjectOnePage() {
           </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="final-design-heading">
-          <h1 className={styles.projectNumberTitle}>04</h1>
+          <h1 id="project-section-04" className={styles.projectNumberTitle}>04</h1>
           <h2 className={styles.swotHeading} id="final-design-heading">Final Design and Analysis</h2>
           <div className={styles.designProcessScrapbookRow}>
             <article className={styles.projectDetail}>
@@ -586,7 +593,7 @@ export default function ProjectOnePage() {
           </div>
         </section>
       </section>
-<h1 className={styles.projectNumberTitle}>05</h1>
+<h1 id="project-section-05" className={styles.projectNumberTitle}>05</h1>
 <h2 className={styles.swotHeading} id="final-thoughts-heading">Final Thoughts</h2>
 
 

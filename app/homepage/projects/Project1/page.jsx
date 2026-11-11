@@ -114,7 +114,7 @@ export default function ProjectOnePage() {
         &larr;
       </Link>
 
-      <section className={styles.content}>
+      <section className={`${styles.content} ${styles.projectOneContent}`}>
         <header id="project-top" className={`${styles.header} ${styles.projectHeader}`}>
           <p className={styles.eyebrow}>Project One</p>
           <h1 className={styles.projectTitle}>Case Study: Redesigning Indigo Hippo's Website</h1>

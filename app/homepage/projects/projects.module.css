@@ -121,6 +121,14 @@
   padding: 1rem clamp(0.75rem, 2.5vw, 2.5rem) 3rem;
 }
 
+.projectOneContent {
+  
+  border-radius: 12px;
+  background: rgba(87, 49, 55, 0.335);
+  box-shadow: 0 1rem 3rem rgb(61 34 46 / 12%);
+  backdrop-filter: blur(2px);
+}
+
 .directionsBackdrop {
   position: fixed;
   inset: 0;

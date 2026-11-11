@@ -2282,7 +2282,7 @@
   gap: 0.6rem;
   padding: 0.7rem 1.1rem;
   border: 2px solid rgb(105 86 135 / 70%);
-  border-radius: 8px;
+  border-radius: 999px;
   background: rgb(255 255 255 / 90%);
   color: #493b60;
   font-weight: 700;

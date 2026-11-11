@@ -2420,6 +2420,14 @@
   transform: translate(-50%, -50%);
 }
 
+.projectTwoCaption {
+  top: 35%;
+  width: min(64%, 48rem);
+  max-width: 64%;
+  color: #472411;
+  font-size: clamp(0.8rem, 0.9vw, 1.25rem);
+}
+
 .projectThreeCaption {
   top: 37%;
   width: min(38%, 40rem);

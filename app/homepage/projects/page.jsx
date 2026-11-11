@@ -110,6 +110,18 @@ export default function ProjectsPage() {
                   </text>
                 </svg>
               )}
+              {mat.project === 'Project2' && (
+                <svg className={styles.toastCaption} viewBox="0 -35 500 170" aria-hidden="true">
+                  <defs>
+                    <path id="waffle-caption-arc" d="M 20 110 Q 270 -70 480 110" />
+                  </defs>
+                  <text fill="currentColor">
+                    <textPath href="#waffle-caption-arc" startOffset="50%" textAnchor="middle">
+                      Blending functionality and fashion in a
+                    </textPath>
+                  </text>
+                </svg>
+              )}
               {mat.project === 'Project3' && (
                 <svg className={`${styles.toastCaption} ${styles.projectThreeCaption}`} viewBox="0 -35 500 170" aria-hidden="true">
                   <defs>

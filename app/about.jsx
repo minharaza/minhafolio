@@ -256,7 +256,7 @@ const About = () => {
         {activeMessage && (
           <p className={styles.aboutMessage}>
             {activeMessage === 'travel'
-              ? 'I love to travel! Fun fact: I\'ve been to 17 countries!'
+              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
               : activeMessage === 'photography'
                 ? 'Photography is a hobby of mine'
                 : activeMessage === 'fashion'

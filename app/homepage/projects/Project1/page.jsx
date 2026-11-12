@@ -593,11 +593,12 @@ export default function ProjectOnePage() {
           </div>
         </section>
       </section>
-<h1 id="project-section-05" className={styles.projectNumberTitle}>05</h1>
-<h2 className={styles.swotHeading} id="final-thoughts-heading">Final Thoughts</h2>
+        <section className={styles.projectSection} aria-labelledby="final-thoughts-heading">
+          <h1 id="project-section-05" className={styles.projectNumberTitle}>05</h1>
+          <h2 className={styles.swotHeading} id="final-thoughts-heading">Final Thoughts</h2>
 
 
-<section className={styles.finalThoughtsLayout} aria-label="Design concept">
+          <section className={styles.finalThoughtsLayout} aria-label="Design concept">
               <Image
                 className={styles.finalThoughtsImage}
                 src="/images/other/Logo.png"
@@ -626,8 +627,8 @@ export default function ProjectOnePage() {
 
                 </p>
               </article>
-      </section>
-      <div className={styles.finalThoughtsIcons} aria-label="Project tools">
+          </section>
+          <div className={styles.finalThoughtsIcons} aria-label="Project tools">
         {showFinalThoughtsHint && (
           <button
             className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintLeft}`}
@@ -678,7 +679,8 @@ export default function ProjectOnePage() {
             <img src="/images/other/Click_Me_Left_.png" alt="Click me" />
           </button>
         )}
-      </div>
+          </div>
+        </section>
       <nav className={styles.projectNavigation} aria-label="Project navigation">
         <Link className={styles.projectNavigationButton} href="/homepage?skipIntro=1">
           <span aria-hidden="true">&#8592;</span> Back to home

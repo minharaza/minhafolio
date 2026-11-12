@@ -122,11 +122,37 @@
 }
 
 .projectOneContent {
-  
+  --project-one-gap: clamp(1rem, 2vw, 1.5rem);
+  display: grid;
+  gap: var(--project-one-gap);
   border-radius: 12px;
   background: rgba(87, 49, 55, 0.335);
   box-shadow: 0 1rem 3rem rgb(61 34 46 / 12%);
   backdrop-filter: blur(2px);
+}
+
+.projectOneContent .projectHeader {
+  margin: 0 auto;
+}
+
+.projectOneContent .projectNumberTitle {
+  margin: 0 auto;
+}
+
+.projectOneContent .projectDetails,
+.projectOneContent .projectSection,
+.projectOneContent .personaSection,
+.projectOneContent .researchInsights {
+  gap: var(--project-one-gap);
+}
+
+.projectOneContent .finalThoughtsLayout {
+  gap: var(--project-one-gap);
+  margin: 0 auto;
+}
+
+.projectOneContent .finalThoughtsIcons {
+  margin: 0 auto;
 }
 
 .projectTwoHeader {

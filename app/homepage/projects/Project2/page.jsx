@@ -107,9 +107,17 @@ export default function ProjectTwoPage() {
         <section className={styles.projectSection} aria-labelledby="project-section-title-02">
           <h2 id="project-section-02" className={styles.projectNumberTitle}>02</h2>
           <h3 id="project-section-title-02" className={styles.swotHeading}>Research &amp; Analysis</h3>
-          <p className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
-           explain how people love to charm and personalize their belongings with unique accessories.
-          </p>
+          
+          <div className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
+            <h2>What it Means to "Charmify"</h2>
+            <p>
+              In the uptick of the "Trinket Girl" aesthetic, adding charms everyday items has taken the internet by storm in the past
+              couple years. From personalizing bags to phone cases to belts, charming as spread into everyday fashion. 
+              This phenomenon reflects the new generations' value of self-expression even in the mundune.
+              <br /><br />
+              Check out some examples of "charmifying" below!
+            </p>
+          </div>
           <div className={styles.projectTwoKeychainGallery} aria-label="CharMED-ID keychain concepts">
             <p className={styles.projectTwoOrbitLabel}>The Art of Charmifying!</p>
             <div className={styles.projectTwoKeychainOrbit}>

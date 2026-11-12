@@ -236,6 +236,7 @@ export default function ProjectThreePage() {
   const [showStructureSketchHints, setShowStructureSketchHints] = useState(true);
   const [showBusStopMemoryDrawing, setShowBusStopMemoryDrawing] = useState(false);
   const [showProjectLinkHints, setShowProjectLinkHints] = useState(true);
+  const pageRef = useRef(null);
   const contentRef = useRef(null);
   const toggleDesignDetails = (id) => {
     setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
@@ -243,6 +244,7 @@ export default function ProjectThreePage() {
 
   return (
     <main
+      ref={pageRef}
       className={styles.page}
       style={busAnchor.top === null && researchBusAnchor.top === null && publicArtBusAnchor.top === null ? undefined : {
         '--bus-anchor': busAnchor.top === null ? undefined : `${busAnchor.top}px`,
@@ -254,13 +256,20 @@ export default function ProjectThreePage() {
       }}
     >
       <div className={styles.backgroundTexture} aria-hidden="true" />
+      <nav className={styles.sectionNavigation} aria-label="Jump to project section">
+        <a href="#project-step-01" aria-label="Go to section 1, Overview">01</a>
+        <a href="#project-step-02" aria-label="Go to section 2, Research">02</a>
+        <a href="#project-step-03" aria-label="Go to section 3, Research Consideration and Planning">03</a>
+        <a href="#project-step-04" aria-label="Go to section 4, Design Breakdown">04</a>
+        <a href="#project-step-05" aria-label="Go to section 5, Final Thoughts">05</a>
+      </nav>
       <Link className={styles.backButton} href="/homepage/projects" aria-label="Back to projects">
         &larr;
       </Link>
 
-      <section className={styles.content} ref={contentRef}>
+      <section className={`${styles.content} ${styles.projectThreeContent}`} id="project-top" ref={contentRef}>
         <header className={`${styles.header} ${styles.projectThreeHeader}`}>
-          <p className={styles.eyebrow}>A Deep Dive into:</p>
+          <p className={styles.eyebrow}>Project 3</p>
           <h1>Bus Stops:</h1>
           <p className={styles.eyebrow}>The Cornerstones of Community!</p>
         </header>
@@ -1378,6 +1387,24 @@ export default function ProjectThreePage() {
                   )}
                 </div>
               </div>
+               <nav className={styles.projectNavigation} aria-label="Project navigation">
+        <Link className={styles.projectNavigationButton} href="/homepage?skipIntro=1">
+          <span aria-hidden="true">&#8592;</span> Back to home
+        </Link>
+        <Link
+          className={styles.projectNavigationButton}
+          href="#project-top"
+          onClick={(event) => {
+            event.preventDefault();
+            pageRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          <span aria-hidden="true">&#8593;</span> Top of the page
+        </Link>
+        <Link className={styles.projectNavigationButton} href="/homepage/projects/Project1">
+          Project 1 <span aria-hidden="true">&#8594;</span>
+        </Link>
+      </nav>
           </div>
         </section>
       </section>

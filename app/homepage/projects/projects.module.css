@@ -222,6 +222,11 @@
   line-height: 1.65;
 }
 
+.projectDetail .projectTwoResearchCopy {
+  width: auto;
+  justify-self: initial;
+}
+
 .projectTwoKeychainGallery {
   position: relative;
   width: min(100%, 44rem);

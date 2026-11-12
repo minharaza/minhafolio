@@ -94,12 +94,21 @@ export default function ProjectTwoPage() {
           {showCombinedRobot && (
             <h2 className={styles.researchFindingIntro}>Find something that balances both!</h2>
           )}
+          <article className={styles.projectDetail}>
+            <h2>Design Challenge</h2>
+            <p className={styles.projectTwoResearchCopy}> 
+              The two catagories of fashion and medical function seemingly clash when it comes to design aesthetics.
+              This project aims to design a keychain that leans towards playful customization, while having the purposeful
+              function of a Medical ID tag. The challenge arises in balancing two superficially, mutually exculisive design
+              catagories into a seamless interntional solution.
+            </p>
+          </article>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-02">
           <h2 id="project-section-02" className={styles.projectNumberTitle}>02</h2>
           <h3 id="project-section-title-02" className={styles.swotHeading}>Research &amp; Analysis</h3>
-          <p className={styles.projectTwoResearchCopy}>
-            Medical IDs are essential, but traditional options may not feel personal enough for everyday wear. I explored how people customize their bags and accessories with charms, then looked for ways to make a medical ID feel expressive while remaining easy to carry and recognize.
+          <p className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
+           explain how people love to charm and personalize their belongings with unique accessories.
           </p>
           <div className={styles.projectTwoKeychainGallery} aria-label="CharMED-ID keychain concepts">
             <p className={styles.projectTwoOrbitLabel}>The Art of Charmifying!</p>
@@ -129,6 +138,9 @@ export default function ProjectTwoPage() {
               ))}
             </div>
           </div>
+          <p className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
+           explain the comp.
+          </p>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">
           <h2 id="project-section-03" className={styles.projectNumberTitle}>03</h2>

@@ -19,11 +19,22 @@ export default function ProjectTwoPage() {
       <section className={`${styles.content} ${styles.projectTwoContent}`}>
         <header id="project-top" className={`${styles.header} ${styles.projectTwoHeader}`}>
           <p className={styles.eyebrow}>Project 2</p>
-          <h1>charMED-ID: <br />A Medical ID Keychain</h1>
+          <h1>CharMED-ID: <br />A Medical ID Keychain</h1>
         </header>
         <section className={styles.projectSection} aria-labelledby="project-section-title-01">
           <h2 id="project-section-01" className={styles.projectNumberTitle}>01</h2>
           <h3 id="project-section-title-01" className={styles.swotHeading}>Overview</h3>
+          <section className={styles.projectDetails} aria-label="Project details">
+          <article className={styles.projectDetail}>
+            <h2>Project Overview</h2>
+            <p>
+              CharMED-ID is a medical ID NFC tag created to blend the cross section of functionality and fashion. It gives
+              users the ability to bring along crucial medical information on-the-go in a personalized manner. Inspired by the
+              "charmification" of purses, belts, phones and more, CharMED-ID leans into this trend while providing use in serious 
+              medical situations.
+            </p>
+          </article>
+        </section>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-02">
           <h2 id="project-section-02" className={styles.projectNumberTitle}>02</h2>

@@ -41,7 +41,7 @@ export default function ProjectTwoPage() {
             </p>
           </article>
         </section>
-         <h2 className={styles.researchFindingIntro}>What is the best solution that is functional and fashionionable?</h2>
+         <h2 className={styles.researchFindingIntro}>What is the best solution that for two completely different needs?</h2>
           <div className={styles.projectTwoSolutionLine}>
             <div className={styles.projectTwoRobotPair} aria-label="Robot keychain before and after customization">
               <Image
@@ -91,10 +91,36 @@ export default function ProjectTwoPage() {
               </div>
             )}
           </div>
+          {showCombinedRobot && (
+            <h2 className={styles.researchFindingIntro}>Find something that balances both!</h2>
+          )}
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-02">
           <h2 id="project-section-02" className={styles.projectNumberTitle}>02</h2>
           <h3 id="project-section-title-02" className={styles.swotHeading}>Research &amp; Analysis</h3>
+          <p className={styles.projectTwoResearchCopy}>
+            Medical IDs are essential, but traditional options may not feel personal enough for everyday wear. I explored how people customize their bags and accessories with charms, then looked for ways to make a medical ID feel expressive while remaining easy to carry and recognize.
+          </p>
+          <div className={styles.projectTwoKeychainGallery} aria-label="CharMED-ID keychain concepts">
+            {[
+              { src: '/images/proj2/KC-1.png', alt: 'CharMED-ID keychain concept 1' },
+              { src: '/images/proj2/KC-2.png', alt: 'CharMED-ID keychain concept 2' },
+              { src: '/images/proj2/KC-3.png', alt: 'CharMED-ID keychain concept 3' },
+              { src: '/images/proj2/KC-4.png', alt: 'CharMED-ID keychain concept 4' },
+              { src: '/images/proj2/KC-5.png', alt: 'CharMED-ID keychain concept 5' },
+              { src: '/images/proj2/KC-6.png', alt: 'CharMED-ID keychain concept 6' },
+              { src: '/images/proj2/KC-6 1.png', alt: 'CharMED-ID keychain concept 7' },
+            ].map((image) => (
+              <Image
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 42vw, (max-width: 1100px) 28vw, 20rem"
+              />
+            ))}
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">
           <h2 id="project-section-03" className={styles.projectNumberTitle}>03</h2>

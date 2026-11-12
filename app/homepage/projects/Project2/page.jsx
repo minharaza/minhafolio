@@ -102,7 +102,9 @@ export default function ProjectTwoPage() {
             Medical IDs are essential, but traditional options may not feel personal enough for everyday wear. I explored how people customize their bags and accessories with charms, then looked for ways to make a medical ID feel expressive while remaining easy to carry and recognize.
           </p>
           <div className={styles.projectTwoKeychainGallery} aria-label="CharMED-ID keychain concepts">
-            {[
+            <p className={styles.projectTwoOrbitLabel}>The Art of Charmifying!</p>
+            <div className={styles.projectTwoKeychainOrbit}>
+              {[
               { src: '/images/proj2/KC-1.png', alt: 'CharMED-ID keychain concept 1' },
               { src: '/images/proj2/KC-2.png', alt: 'CharMED-ID keychain concept 2' },
               { src: '/images/proj2/KC-3.png', alt: 'CharMED-ID keychain concept 3' },
@@ -110,16 +112,22 @@ export default function ProjectTwoPage() {
               { src: '/images/proj2/KC-5.png', alt: 'CharMED-ID keychain concept 5' },
               { src: '/images/proj2/KC-6.png', alt: 'CharMED-ID keychain concept 6' },
               { src: '/images/proj2/KC-6 1.png', alt: 'CharMED-ID keychain concept 7' },
-            ].map((image) => (
-              <Image
-                key={image.src}
-                src={image.src}
-                alt={image.alt}
-                width={2048}
-                height={2048}
-                sizes="(max-width: 700px) 42vw, (max-width: 1100px) 28vw, 20rem"
-              />
-            ))}
+              ].map((image, index) => (
+                <figure
+                  className={styles.projectTwoKeychainOrbitItem}
+                  key={image.src}
+                  style={{ '--orbit-angle': `${(360 / 7) * index}deg` }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={2048}
+                    height={2048}
+                    sizes="(max-width: 700px) 28vw, 12rem"
+                  />
+                </figure>
+              ))}
+            </div>
           </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">

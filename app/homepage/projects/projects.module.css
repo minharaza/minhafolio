@@ -192,6 +192,26 @@
   margin-top: var(--project-three-gap);
 }
 
+.projectTwoContent {
+  --project-two-gap: clamp(1rem, 2vw, 1.5rem);
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--project-two-gap);
+  border-radius: 12px;
+  background: rgba(87, 49, 55, 0.335);
+  box-shadow: 0 1rem 3rem rgb(61 34 46 / 12%);
+  backdrop-filter: blur(2px);
+}
+
+.projectTwoContent .projectTwoHeader,
+.projectTwoContent .projectNumberTitle {
+  margin: 0 auto;
+}
+
+.projectTwoContent .projectSection {
+  gap: var(--project-two-gap);
+}
+
 .projectTwoHeader {
   width: min(100%, 56rem);
 }

@@ -1,7 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
 import styles from '../projects.module.css';
 
 export default function ProjectTwoPage() {
+  const [showCombinedRobot, setShowCombinedRobot] = useState(false);
+
   return (
     <main className={styles.page}>
       <div className={styles.backgroundTexture} aria-hidden="true" />
@@ -35,6 +41,56 @@ export default function ProjectTwoPage() {
             </p>
           </article>
         </section>
+         <h2 className={styles.researchFindingIntro}>What is the best solution that is functional and fashionionable?</h2>
+          <div className={styles.projectTwoSolutionLine}>
+            <div className={styles.projectTwoRobotPair} aria-label="Robot keychain before and after customization">
+              <Image
+                src="/images/proj2/RB-1.png"
+                alt="Plain CharMED-ID robot keychain"
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 40vw, 20rem"
+              />
+              <span aria-hidden="true">+</span>
+              <Image
+                src="/images/proj2/Rb-2.png"
+                alt="CharMED-ID robot keychain dressed with a bow and outfit"
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 40vw, 20rem"
+              />
+            </div>
+            <button
+              className={styles.projectTwoCombineButton}
+              type="button"
+              aria-expanded={showCombinedRobot}
+              aria-controls="project-two-combined-robot"
+              aria-label={showCombinedRobot ? 'Hide combined solution' : 'Combine solutions'}
+              title={showCombinedRobot ? 'Hide combined solution' : 'Combine solutions'}
+              onClick={() => setShowCombinedRobot((isVisible) => !isVisible)}
+            >
+              <Image
+                className={styles.projectTwoCombineHint}
+                src="/images/other/Click_Me.png"
+                alt=""
+                aria-hidden="true"
+                width={800}
+                height={800}
+              />
+              =
+            </button>
+            {showCombinedRobot && (
+              <div className={styles.projectTwoRobotResult} id="project-two-combined-robot">
+                <Image
+                  src="/images/proj2/Rb-3.png"
+                  alt="Combined CharMED-ID robot keychain solution"
+                  width={2048}
+                  height={2048}
+                  sizes="(max-width: 700px) 70vw, 24rem"
+                />
+              </div>
+            )}
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-02">
           <h2 id="project-section-02" className={styles.projectNumberTitle}>02</h2>

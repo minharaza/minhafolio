@@ -212,6 +212,94 @@
   gap: var(--project-two-gap);
 }
 
+.projectTwoSolutionLine {
+  display: grid;
+  width: min(100%, 76rem);
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, auto) minmax(0, 0.8fr);
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.projectTwoRobotPair {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 1rem);
+}
+
+.projectTwoRobotPair img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.projectTwoRobotPair > span {
+  color: #fff8f1;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.projectTwoCombineButton {
+  position: relative;
+  display: grid;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  justify-self: center;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgb(255 248 241 / 70%);
+  border-radius: 50%;
+  background: #4a2722;
+  color: #fff8f1;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0 0.6rem rgb(244 214 120 / 55%);
+  animation: project-two-button-breathe 1.8s ease-in-out infinite;
+}
+
+.projectTwoCombineButton:hover,
+.projectTwoCombineButton:focus-visible {
+  background: #674636;
+}
+
+.projectTwoCombineButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.projectTwoCombineHint {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.35rem);
+  width: 7rem;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0.35rem, -50%) scale(0.9);
+  filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%));
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.projectTwoCombineButton:hover .projectTwoCombineHint,
+.projectTwoCombineButton:focus-visible .projectTwoCombineHint {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+.projectTwoRobotResult {
+  width: 100%;
+}
+
+.projectTwoRobotResult img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .projectTwoHeader {
   width: min(100%, 56rem);
 }
@@ -2697,12 +2785,37 @@
   to { filter: drop-shadow(0 0 1rem rgb(255 248 241 / 100%)); }
 }
 
+@keyframes project-two-button-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0.6rem rgb(244 214 120 / 45%);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 1.2rem rgb(244 214 120 / 95%);
+  }
+}
+
 @keyframes food-button-breathe {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-50%, -50%) scale(1.045); }
 }
 
 @media (max-width: 700px) {
+  .projectTwoSolutionLine {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .projectTwoRobotPair {
+    width: min(100%, 28rem);
+    justify-self: center;
+  }
+
+  .projectTwoRobotResult {
+    width: min(100%, 20rem);
+    justify-self: center;
+  }
+
   .page {
     padding: 1rem 0.75rem 3rem;
   }
@@ -3093,6 +3206,7 @@
   .researchPersonaHint img,
   .worksCitedHint img,
   .busStopStructureHint img,
+  .projectTwoCombineButton,
   .busStopDesignProgressionImage .busStopDesignClickHint,
   .busStopMemoryHint {
     animation: none;

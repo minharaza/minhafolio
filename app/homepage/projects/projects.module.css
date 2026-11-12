@@ -155,6 +155,43 @@
   margin: 0 auto;
 }
 
+.projectThreeContent {
+  --project-three-gap: clamp(1rem, 2vw, 1.5rem);
+  --project-three-intro-space: 30rem;
+  display: grid;
+  gap: var(--project-three-gap);
+  border-radius: 12px;
+  background: rgba(87, 49, 55, 0.335);
+  box-shadow: 0 1rem 3rem rgb(61 34 46 / 12%);
+  backdrop-filter: blur(2px);
+}
+
+.projectThreeContent .projectThreeHeader {
+  margin: 0 auto var(--project-three-intro-space);
+}
+
+.projectThreeContent .projectSection,
+.projectThreeContent .projectStepsGrid,
+.projectThreeContent .projectStepItem,
+.projectThreeContent .researchInsights,
+.projectThreeContent .personaSection {
+  gap: var(--project-three-gap);
+}
+
+.projectThreeContent .projectStepsGrid {
+  row-gap: var(--project-three-gap);
+}
+
+.projectThreeContent .busOriginStory {
+  gap: var(--project-three-gap);
+  margin: var(--project-three-gap) 0;
+}
+
+.projectThreeContent .transportationBenefitsSection,
+.projectThreeContent .publicArtBenefitsSection {
+  margin-top: var(--project-three-gap);
+}
+
 .projectTwoHeader {
   width: min(100%, 56rem);
 }
@@ -259,7 +296,7 @@
 }
 
 .projectThreeHeader {
-  margin-bottom: 30rem;
+  margin-bottom: var(--project-three-intro-space, 30rem);
 }
 
 .eyebrow {

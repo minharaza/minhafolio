@@ -117,7 +117,7 @@ export default function ProjectTwoPage() {
               <br /><br />
               Check out some examples of "charmifying" below!
             </p>
-          </div>
+          </div>     
           <div className={styles.projectTwoKeychainGallery} aria-label="CharMED-ID keychain concepts">
             <p className={styles.projectTwoOrbitLabel}>The Art of Charmifying!</p>
             <div className={styles.projectTwoKeychainOrbit}>
@@ -146,6 +146,7 @@ export default function ProjectTwoPage() {
               ))}
             </div>
           </div>
+          <h3 className={styles.swotHeading}>Existing NFC Medical ID tags</h3>
           <p className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
            explain the comp.
           </p>

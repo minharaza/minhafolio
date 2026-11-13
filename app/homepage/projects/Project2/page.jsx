@@ -150,6 +150,24 @@ export default function ProjectTwoPage() {
           <p className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
            explain the comp.
           </p>
+          <div className={styles.projectTwoMedicalKeyring} aria-label="Existing NFC medical ID tags">
+            {[
+              { src: '/images/proj2/MID-1.png', alt: 'Heart condition NFC medical ID tag' },
+              { src: '/images/proj2/MID-2.png', alt: 'Non-verbal NFC medical ID tag' },
+              { src: '/images/proj2/MID-3.png', alt: 'Round medical information NFC tag' },
+              { src: '/images/proj2/MID-4.png', alt: 'Red medical alert NFC tag' },
+            ].map((tag) => (
+              <figure className={styles.projectTwoMedicalKeyringTag} key={tag.src}>
+                <Image
+                  src={tag.src}
+                  alt={tag.alt}
+                  width={2048}
+                  height={2048}
+                  sizes="(max-width: 700px) 22vw, 14rem"
+                />
+              </figure>
+            ))}
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">
           <h2 id="project-section-03" className={styles.projectNumberTitle}>03</h2>

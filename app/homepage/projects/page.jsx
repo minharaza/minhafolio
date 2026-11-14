@@ -48,6 +48,17 @@ export default function ProjectsPage() {
             <h1>Projects</h1>
             <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
           </header>
+          <nav className={styles.projectLinks} aria-label="Project pages">
+            <button type="button" onClick={() => router.push('/homepage/projects/Project1')}>
+              Art Thrift Store Website Redesign
+            </button>
+            <button type="button" onClick={() => router.push('/homepage/projects/Project2')}>
+              CharMED-ID: A Medical ID Keychain
+            </button>
+            <button type="button" onClick={() => router.push('/homepage/projects/Project3')}>
+              Designing a Bus Stop through Public Art and Technology
+            </button>
+          </nav>
           <div className={styles.grid}>
           {mats.map((mat) => (
             <figure className={styles.matCard} key={mat.src}>

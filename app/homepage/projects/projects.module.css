@@ -2887,6 +2887,39 @@
   line-height: 1.5;
 }
 
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: -1.5rem auto 2.5rem;
+}
+
+.projectLinks button {
+  min-height: 2.75rem;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgb(255 248 241 / 75%);
+  border-radius: 999px;
+  background: #fff8f1;
+  color: #693b30;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.projectLinks button:hover {
+  transform: translateY(-2px);
+  background: #f4d678;
+}
+
+.projectLinks button:focus-visible {
+  outline: 3px solid #f6dc6f;
+  outline-offset: 3px;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;

@@ -331,28 +331,31 @@ export default function InterestsPage() {
           )}
         </section>
       )}
-      {isExploringInterest && (
-        <button
-          className={styles.bitesBackButton}
-          type="button"
-          onClick={() => {
-            setShowBitesPosts(false);
-            setBakingStarted(false);
-            setShowEtsyContent(false);
-            setShowSonnyStickers(false);
-            setShowEtsyIterations(false);
-            setEtsyStarted(false);
-            setSelectedInterest(null);
-            setShowEtsyIntro(false);
-          }}
-        >
+      <nav className={styles.topNavigation} aria-label="Page navigation">
+        <Link className={styles.backButton} href="/homepage?skipIntro=1">
           <span aria-hidden="true">&larr;</span>
-          Back to interests
-        </button>
-      )}
-      <Link className={styles.backButton} href="/homepage?skipIntro=1" aria-label="Back to the house">
-        &larr;
-      </Link>
+          Return to Home
+        </Link>
+        {isExploringInterest && (
+          <button
+            className={styles.bitesBackButton}
+            type="button"
+            onClick={() => {
+              setShowBitesPosts(false);
+              setBakingStarted(false);
+              setShowEtsyContent(false);
+              setShowSonnyStickers(false);
+              setShowEtsyIterations(false);
+              setEtsyStarted(false);
+              setSelectedInterest(null);
+              setShowEtsyIntro(false);
+            }}
+          >
+            <span aria-hidden="true">&larr;</span>
+            Back to interests
+          </button>
+        )}
+      </nav>
       {zoomedPost && (
         <div className={styles.postViewerBackdrop} onClick={() => setZoomedPost(null)}>
           <section

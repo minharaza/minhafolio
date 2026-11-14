@@ -38,26 +38,6 @@
   transform: translateX(-50%);
 }
 
-.aboutMessage {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  z-index: 2;
-  width: min(92vw, 42rem);
-  margin: 0;
-  padding: 0.8rem 1.2rem;
-  border: 2px solid rgb(255 255 255 / 75%);
-  border-radius: 1rem;
-  background: rgb(255 248 251 / 82%);
-  color: #5f3d50;
-  font-family: 'Happy Monkey', cursive;
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  line-height: 1.35;
-  text-align: center;
-  box-shadow: 0 0.75rem 2rem rgb(80 34 51 / 14%);
-  transform: translateX(-50%);
-}
-
 .aboutPage::before,
 .aboutPage::after {
   position: absolute;
@@ -132,7 +112,41 @@
 
 .item:hover {
   transform: scale(1.045) rotate(0deg);
-  z-index: 5;
+  z-index: 20;
+}
+
+.scene button[data-hover-label]::after {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: 12;
+  width: max-content;
+  max-width: min(70vw, 24rem);
+  padding: 0.65rem 0.9rem;
+  border: 2px solid rgb(255 255 255 / 85%);
+  border-radius: 0.75rem;
+  background: rgb(255 248 251 / 96%);
+  box-shadow: 0 0.5rem 1.25rem rgb(80 34 51 / 20%);
+  color: #5f3d50;
+  content: attr(data-hover-label);
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -0.25rem);
+  visibility: hidden;
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.scene button[data-hover-label]:hover::after,
+.scene button[data-hover-label]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  visibility: visible;
 }
 
 .airport {

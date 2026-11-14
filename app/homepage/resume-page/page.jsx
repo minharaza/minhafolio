@@ -30,6 +30,7 @@ export default function ResumePage() {
   const [selectedBook, setSelectedBook] = useState('book-1');
   const [showResume, setShowResume] = useState(false);
   const [openBookFrame, setOpenBookFrame] = useState(0);
+  const [bookFramesLoaded, setBookFramesLoaded] = useState(false);
   const [isOpeningBook, setIsOpeningBook] = useState(false);
   const [isOpenBookHovered, setIsOpenBookHovered] = useState(false);
   const [booksVisible, setBooksVisible] = useState(false);
@@ -49,6 +50,23 @@ export default function ResumePage() {
     image: bookImages[index % bookImages.length],
     label: job.position,
   }));
+
+  useEffect(() => {
+    let cancelled = false;
+    const frameLoads = openBookFrames.map((src) => {
+      const image = new window.Image();
+      image.src = src;
+      return image.decode().catch(() => undefined);
+    });
+
+    Promise.all(frameLoads).then(() => {
+      if (!cancelled) setBookFramesLoaded(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     async function fetchContent() {
@@ -196,9 +214,10 @@ export default function ResumePage() {
           <div className="flex min-h-[640px] items-center justify-center">
             <button
               type="button"
-              aria-label="Open resume book"
+              aria-label={bookFramesLoaded ? 'Open resume book' : 'Loading resume book'}
+              disabled={!bookFramesLoaded || isOpeningBook}
               onClick={() => {
-                if (!isOpeningBook) setIsOpeningBook(true);
+                setIsOpeningBook(true);
               }}
               onMouseEnter={() => setIsOpenBookHovered(true)}
               onMouseLeave={() => setIsOpenBookHovered(false)}
@@ -209,7 +228,7 @@ export default function ResumePage() {
                 border: 'none',
                 background: 'transparent',
                 padding: 0,
-                cursor: 'pointer',
+                cursor: bookFramesLoaded && !isOpeningBook ? 'pointer' : 'wait',
                 transition: 'transform 0.2s ease, filter 0.2s ease',
                 transform: isOpeningBook || isOpenBookHovered ? 'scale(1.02)' : 'scale(1)',
                 filter: isOpeningBook || isOpenBookHovered ? 'drop-shadow(0 10px 18px rgba(252, 227, 65, 0.7))' : 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16))',
@@ -239,6 +258,7 @@ export default function ResumePage() {
                 alt="Book opening"
                 fill
                 sizes="(max-width: 700px) 80vw, 500px"
+                unoptimized
                 style={{
                   objectFit: 'contain',
                 }}

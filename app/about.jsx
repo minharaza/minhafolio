@@ -91,7 +91,6 @@ const About = () => {
   const [ballBounceSequence, setBallBounceSequence] = useState(0);
   const [alternateItems, setAlternateItems] = useState({});
   const [starsCrazy, setStarsCrazy] = useState(false);
-  const [activeMessage, setActiveMessage] = useState(null);
   const isGalleryOpen = activeGallery !== null;
 
   useEffect(() => {
@@ -99,7 +98,6 @@ const About = () => {
   }, []);
 
   const closeGallery = () => {
-    if (activeGallery === 'travel') setActiveMessage('travel');
     setActiveGallery(null);
     setEnlargedPhoto(null);
   };
@@ -148,9 +146,14 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles[item.className]} ${styles.galleryTrigger}`}
+            data-hover-label={item.className === 'airport'
+              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
+              : 'Photography is a hobby of mine'}
+            title={item.className === 'airport'
+              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
+              : 'Photography is a hobby of mine'}
             onClick={() => {
               const gallery = item.className === 'airport' ? 'travel' : 'photography';
-              setActiveMessage(gallery === 'photography' ? 'photography' : null);
               setActiveGallery(gallery);
             }}
             aria-label={`Open ${item.className === 'airport' ? 'travel' : 'photography'} photo gallery`}
@@ -162,6 +165,8 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles.notebook} ${styles.galleryTrigger}`}
+            data-hover-label="I love everything BTS! V is my bias."
+            title="I love everything BTS! V is my bias."
             onClick={() => {
               setActiveGallery('bts');
               confetti({
@@ -183,6 +188,8 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles.head} ${styles.headTrigger}`}
+            data-hover-label="I love making art and writing code! It's even more awesome when I can combine both!"
+            title="I love making art and writing code! It's even more awesome when I can combine both!"
             onClick={() => {
               setStarsCrazy(true);
               window.setTimeout(() => setStarsCrazy(false), 1800);
@@ -196,9 +203,10 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles.tennisRacquet} ${styles.tennisRacquetTrigger}`}
+            data-hover-label="I love tennis! I've been playing since I was 6!"
+            title="I love tennis! I've been playing since I was 6!"
             onClick={() => {
               setBallBounceSequence((sequence) => sequence + 1);
-              setActiveMessage('tennis');
             }}
             aria-label="Make the tennis ball bounce"
           >
@@ -209,9 +217,10 @@ const About = () => {
             key={`${item.src}-${ballBounceSequence}`}
             type="button"
             className={`${styles.item} ${styles.tennisBall} ${styles.tennisBallTrigger}${ballBounceSequence ? ` ${styles.bouncing}` : ''}`}
+            data-hover-label="I love tennis! I've been playing since I was 6!"
+            title="I love tennis! I've been playing since I was 6!"
             onClick={() => {
               setBallBounceSequence((sequence) => sequence + 1);
-              setActiveMessage('tennis');
             }}
             aria-label="Make the tennis ball bounce"
           >
@@ -222,12 +231,13 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles[item.className]} ${styles.swapTrigger}`}
+            data-hover-label="I love fashion and I love to change it up!"
+            title="I love fashion and I love to change it up!"
             onClick={() => {
               setAlternateItems((current) => ({
                 ...current,
                 [item.className]: !current[item.className],
               }));
-              setActiveMessage('fashion');
             }}
             aria-label={`Switch ${item.className} image`}
           >
@@ -253,17 +263,6 @@ const About = () => {
           />
         ))}
         </div>
-        {activeMessage && (
-          <p className={styles.aboutMessage}>
-            {activeMessage === 'travel'
-              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
-              : activeMessage === 'photography'
-                ? 'Photography is a hobby of mine'
-                : activeMessage === 'fashion'
-                  ? 'I love fashion I love to change it up!'
-                  : 'I love tennis! I\'ve been playing since I was 6!'}
-          </p>
-        )}
       </div>
       {showDirections && (
         <div className={styles.directionsBackdrop}>

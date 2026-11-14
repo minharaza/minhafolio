@@ -140,7 +140,7 @@ export default function ResumePage() {
 
   return (
     <main
-      className="relative flex min-h-screen items-center justify-center overflow-y-auto bg-[#7a4f3a] bg-cover bg-center px-6 py-16 text-slate-800"
+      className="relative flex min-h-dvh items-center justify-center overflow-y-auto bg-[#7a4f3a] bg-cover bg-center px-6 py-4 text-slate-800"
       style={{
         fontFamily: "'Happy Monkey', cursive",
         backgroundImage: "linear-gradient(rgba(122, 79, 58, 0.58), rgba(122, 79, 58, 0.58)), url('/images/other/brownaura.jpg')",
@@ -189,7 +189,7 @@ export default function ResumePage() {
       >
         &larr;
       </button>
-      <div className="relative z-10 w-full max-w-5xl rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur-sm">
+      <div className="relative z-10 max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-y-auto rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-lg backdrop-blur-sm sm:p-8">
         <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Resume</h1>
 
         {!showResume ? (
@@ -248,7 +248,8 @@ export default function ResumePage() {
           </div>
         ) : (
         <section className="mb-8 flex flex-col items-center justify-center gap-8">
-          <div className="relative h-[290px] w-[340px] pb-2">
+          <div className="relative flex h-[290px] w-full max-w-[480px] items-center justify-center">
+          <div className="relative h-[290px] w-[340px] shrink-0 pb-2">
             <Image
               src="/images/other/Shelf2.png"
               alt=""
@@ -323,6 +324,18 @@ export default function ResumePage() {
                 </div>
               );
             })}
+          </div>
+          <Image
+            src="/images/other/Click_Me.png"
+            alt="Click a book to explore an experience"
+            width={150}
+            height={150}
+            className="pointer-events-none absolute left-0 top-[28%] z-20 w-[clamp(4.5rem,10vw,7.5rem)] object-contain"
+            style={{
+              filter: 'drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%))',
+              animation: 'resume-hint-flash 1.3s ease-in-out infinite alternate',
+            }}
+          />
           </div>
 
           <div

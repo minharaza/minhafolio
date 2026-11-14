@@ -13,12 +13,21 @@ const mats = [
 
 export default function ProjectsPage() {
   const router = useRouter();
-  const [showDirections, setShowDirections] = useState(true);
+  const [showDirections, setShowDirections] = useState(false);
   const directionsCloseRef = useRef(null);
 
   useEffect(() => {
-    directionsCloseRef.current?.focus();
+    setShowDirections(sessionStorage.getItem('projects-directions-dismissed') !== 'true');
   }, []);
+
+  useEffect(() => {
+    if (showDirections) directionsCloseRef.current?.focus();
+  }, [showDirections]);
+
+  const closeDirections = () => {
+    sessionStorage.setItem('projects-directions-dismissed', 'true');
+    setShowDirections(false);
+  };
 
   return (
     <main className={styles.page}>
@@ -39,6 +48,17 @@ export default function ProjectsPage() {
             <h1>Projects</h1>
             <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
           </header>
+          <nav className={styles.projectLinks} aria-label="Project pages">
+            <button type="button" onClick={() => router.push('/homepage/projects/Project1')}>
+              Art Thrift Store Website Redesign
+            </button>
+            <button type="button" onClick={() => router.push('/homepage/projects/Project2')}>
+              CharMED-ID: A Medical ID Keychain
+            </button>
+            <button type="button" onClick={() => router.push('/homepage/projects/Project3')}>
+              Designing a Bus Stop through Public Art and Technology
+            </button>
+          </nav>
           <div className={styles.grid}>
           {mats.map((mat) => (
             <figure className={styles.matCard} key={mat.src}>
@@ -161,7 +181,7 @@ export default function ProjectsPage() {
               ref={directionsCloseRef}
               type="button"
               className={styles.directionsClose}
-              onClick={() => setShowDirections(false)}
+              onClick={closeDirections}
               aria-label="Close directions and explore projects"
             >
               &times;

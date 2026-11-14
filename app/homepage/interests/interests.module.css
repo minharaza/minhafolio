@@ -487,10 +487,7 @@
 }
 
 .bitesBackButton {
-  position: fixed;
-  top: max(1rem, env(safe-area-inset-top));
-  right: max(1rem, env(safe-area-inset-right));
-  z-index: 5;
+  position: static;
   display: inline-flex;
   min-height: 3.25rem;
   flex: 0 0 auto;
@@ -791,20 +788,51 @@
 }
 
 .backButton {
-  position: absolute;
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.2rem;
+  border: 2px solid rgb(135 51 87 / 60%);
+  border-radius: 999px;
+  background: #fff8fb;
+  box-shadow: 0 0.3rem 0.9rem rgb(40 79 105 / 20%);
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  white-space: nowrap;
+}
+
+.backButton > span:first-child {
+  font-size: 1.6rem;
+  line-height: 0.8;
+}
+
+.backButton:hover {
+  transform: scale(1.04);
+  background: #fff;
+  box-shadow: 0 0.45rem 1.1rem rgb(40 79 105 / 26%);
+}
+
+.topNavigation {
+  position: fixed;
   top: max(1rem, env(safe-area-inset-top));
   left: max(1rem, env(safe-area-inset-left));
-  z-index: 4;
-  display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
-  place-items: center;
-  border: 2px solid #873357;
-  border-radius: 50%;
-  background: #fff8e8;
-  color: #57334a;
-  font-size: 1.5rem;
-  text-decoration: none;
+  z-index: 5;
+  display: flex;
+  max-width: calc(100vw - 2rem);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.backButtonIcon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .backButton:focus-visible,

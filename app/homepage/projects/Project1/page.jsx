@@ -85,6 +85,27 @@ const finalDesignImages = [
   { src: '/images/project-sec/final-04.png', alt: 'Final website design, screen 4', width: 818, height: 1552 },
 ];
 
+function ZoomableImage({ onZoom, ...imageProps }) {
+  const zoom = () => onZoom({ src: imageProps.src, alt: imageProps.alt });
+
+  return (
+    <Image
+      {...imageProps}
+      className={`${imageProps.className ?? ''} ${styles.zoomableImage}`}
+      role="button"
+      tabIndex={0}
+      aria-label={`Enlarge ${imageProps.alt || 'image'}`}
+      onClick={zoom}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          zoom();
+        }
+      }}
+    />
+  );
+}
+
 export default function ProjectOnePage() {
   const [expandedSwot, setExpandedSwot] = useState(null);
   const [expandedPersona, setExpandedPersona] = useState(null);
@@ -95,6 +116,17 @@ export default function ProjectOnePage() {
   const [showFinalThoughtsHint, setShowFinalThoughtsHint] = useState(true);
   const [activeProgressionImage, setActiveProgressionImage] = useState(0);
   const [selectedFinalImage, setSelectedFinalImage] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const zoomImage = (image) => {
+    setZoomLevel(1);
+    setSelectedFinalImage(image);
+  };
+
+  const closeImage = () => {
+    setSelectedFinalImage(null);
+    setZoomLevel(1);
+  };
 
   return (
     <main className={styles.page}>
@@ -230,7 +262,8 @@ export default function ProjectOnePage() {
             </section>
             <section className={styles.researchVisual} aria-label="Design concept">
               <div className={styles.researchVisualFrame}>
-                <Image
+                <ZoomableImage
+                  onZoom={zoomImage}
                   className={styles.researchVisualImage}
                   src="/images/project-sec/randa1-converted.png"
                   alt="Visual design concept for the Indigo Hippo website redesign"
@@ -284,29 +317,34 @@ export default function ProjectOnePage() {
                   const detailsId = `persona-details-${persona.id}`;
 
                   return (
-                    <button
+                    <article
                       className={`${styles.personaButton} ${styles[persona.className]}${isExpanded ? ` ${styles.personaButtonExpanded}` : ''}`}
-                      type="button"
                       key={persona.id}
-                      aria-expanded={isExpanded}
-                      aria-controls={detailsId}
-                      onClick={() => {
-                        setShowPersonaHints(false);
-                        setExpandedPersona(isExpanded ? null : persona.id);
-                      }}
                     >
-                      <Image
+                      <ZoomableImage
+                        onZoom={zoomImage}
                         className={styles.personaLogo}
                         src={persona.image}
-                        alt=""
+                        alt={`${persona.name.trim()} portrait`}
                         width={120}
                         height={120}
                       />
-                      <span className={styles.personaName}>{persona.name}</span>
+                      <button
+                        className={styles.personaName}
+                        type="button"
+                        aria-expanded={isExpanded}
+                        aria-controls={detailsId}
+                        onClick={() => {
+                          setShowPersonaHints(false);
+                          setExpandedPersona(isExpanded ? null : persona.id);
+                        }}
+                      >
+                        {persona.name}
+                      </button>
                       <span className={styles.personaDetails} id={detailsId} hidden={!isExpanded}>
                         {persona.details}
                       </span>
-                    </button>
+                    </article>
                   );
                 })}
                 </div>
@@ -335,7 +373,8 @@ export default function ProjectOnePage() {
           </article>
           <div className={styles.designProcessGallery}>
             <div className={styles.designProcessImageFrame}>
-              <Image
+              <ZoomableImage
+                onZoom={zoomImage}
                 className={styles.designProcessImage}
                 src="/images/project-sec/og-layout.png"
                 alt="Original Indigo Hippo landing page layout"
@@ -348,7 +387,8 @@ export default function ProjectOnePage() {
             </span>
             <div className={styles.designProcessSketches}>
               <div className={styles.designProcessImageFrame}>
-              <Image
+              <ZoomableImage
+                onZoom={zoomImage}
                 className={styles.designProcessImage}
                 src="/images/project-sec/randa2-converted.png"
                 alt="Design process board showing the second stage of the Indigo Hippo website redesign"
@@ -357,7 +397,8 @@ export default function ProjectOnePage() {
               />
               </div>
               <div className={styles.designProcessImageFrame}>
-              <Image
+              <ZoomableImage
+                onZoom={zoomImage}
                 className={styles.designProcessImage}
                 src="/images/project-sec/randa3-converted.png"
                 alt="Design process board showing the third stage of the Indigo Hippo website redesign"
@@ -375,7 +416,8 @@ export default function ProjectOnePage() {
               the new arrangement would make important information more accessible while being highlighted on the first landing page.
               </p>
           </article>
-          <Image
+          <ZoomableImage
+            onZoom={zoomImage}
             className={styles.designProcessStepImage}
             src="/images/project-sec/step2.png"
             alt="Step 2 digital layout concept alongside the original Indigo Hippo landing page"
@@ -384,7 +426,8 @@ export default function ProjectOnePage() {
             sizes="(max-width: 700px) 100vw, 60rem"
           />
           <div className={styles.designProcessScrapbookRow}>
-            <Image
+            <ZoomableImage
+              onZoom={zoomImage}
               className={styles.designProcessScrapbookImage}
               src="/images/project-sec/scarpbooking-layout.png"
               alt="Scrapbook-inspired Indigo Hippo landing page layout concept"
@@ -401,7 +444,8 @@ export default function ProjectOnePage() {
             </article>
           </div>
           <div className={styles.designProcessVisuals}>
-            <Image
+            <ZoomableImage
+              onZoom={zoomImage}
               className={styles.designProcessVisualImage}
               src="/images/project-sec/Brand-identiy.png"
               alt="Three visual identity and website design directions"
@@ -409,7 +453,8 @@ export default function ProjectOnePage() {
               height={982}
               sizes="(max-width: 700px) 100vw, 50vw"
             />
-            <Image
+            <ZoomableImage
+              onZoom={zoomImage}
               className={styles.designProcessVisualImage}
               src="/images/project-sec/typography.png"
               alt="Typography explorations for the Indigo Hippo brand"
@@ -440,7 +485,7 @@ export default function ProjectOnePage() {
                 type="button"
                 onClick={() => {
                   setShowFeatureHint(false);
-                  setSelectedFinalImage({
+                  zoomImage({
                     src: '/images/project-sec/final-04.png',
                     alt: 'Final Indigo Hippo landing page with a scrapbook-style collage layout',
                   });
@@ -496,7 +541,7 @@ export default function ProjectOnePage() {
                   className={styles.finalDesignImageButton}
                   type="button"
                   key={image.src}
-                  onClick={() => setSelectedFinalImage(image)}
+                  onClick={() => zoomImage(image)}
                   aria-label={`Enlarge ${image.alt}`}
                   hidden={index !== activeProgressionImage}
                 >
@@ -571,7 +616,8 @@ export default function ProjectOnePage() {
           <div className={styles.comparisonList}>
             {comparisonPairs.map((pair, index) => (
               <div className={styles.comparisonRow} key={pair.id}>
-                <Image
+                <ZoomableImage
+                  onZoom={zoomImage}
                   className={styles.comparisonImage}
                   src={pair.id}
                   alt={`Original website, section ${index + 1}`}
@@ -580,7 +626,8 @@ export default function ProjectOnePage() {
                   sizes="(max-width: 700px) 100vw, 40vw"
                 />
                 <span className={styles.comparisonArrow} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <Image
+                <ZoomableImage
+                  onZoom={zoomImage}
                   className={styles.comparisonImage}
                   src={pair.fd}
                   alt={`Final design, section ${index + 1}`}
@@ -599,7 +646,8 @@ export default function ProjectOnePage() {
 
 
           <section className={styles.finalThoughtsLayout} aria-label="Design concept">
-              <Image
+              <ZoomableImage
+                onZoom={zoomImage}
                 className={styles.finalThoughtsImage}
                 src="/images/other/Logo.png"
                 alt="Indigo Hippo logo"
@@ -694,7 +742,7 @@ export default function ProjectOnePage() {
       </nav>
                 </section>
       {selectedFinalImage && (
-        <div className={styles.finalDesignModalBackdrop} onClick={() => setSelectedFinalImage(null)}>
+        <div className={styles.finalDesignModalBackdrop} onClick={closeImage}>
           <div
             className={styles.finalDesignModal}
             role="dialog"
@@ -705,11 +753,30 @@ export default function ProjectOnePage() {
             <button
               className={styles.finalDesignModalClose}
               type="button"
-              onClick={() => setSelectedFinalImage(null)}
+              onClick={closeImage}
               aria-label="Close enlarged image"
             >
               &times;
             </button>
+            <div className={styles.finalDesignModalControls} aria-label="Image zoom controls">
+              <button
+                type="button"
+                onClick={() => setZoomLevel((level) => Math.max(1, level - 0.5))}
+                disabled={zoomLevel <= 1}
+                aria-label="Zoom out"
+              >
+                -
+              </button>
+              <span aria-live="polite">{Math.round(zoomLevel * 100)}%</span>
+              <button
+                type="button"
+                onClick={() => setZoomLevel((level) => Math.min(3, level + 0.5))}
+                disabled={zoomLevel >= 3}
+                aria-label="Zoom in"
+              >
+                +
+              </button>
+            </div>
             <div className={styles.finalDesignModalImageFrame}>
               <Image
                 src={selectedFinalImage.src}
@@ -717,6 +784,7 @@ export default function ProjectOnePage() {
                 fill
                 sizes="90vw"
                 className={styles.finalDesignModalImage}
+                style={{ transform: `scale(${zoomLevel})` }}
               />
             </div>
           </div>

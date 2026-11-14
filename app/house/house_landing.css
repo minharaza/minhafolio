@@ -270,10 +270,6 @@
 	z-index: 1;
 }
 
-.house-items-disabled {
-	pointer-events: none;
-}
-
 .house-item {
 	position: absolute;
 	display: block;
@@ -391,11 +387,7 @@
 	z-index: 4;
 	width: clamp(10rem, 22vw, 20rem);
 	cursor: pointer;
-	animation: speech-bubble-in 0.6s ease-out both;
-}
-
-.speech-bubble:hover {
-	animation: speech-bubble-breathe 2.1s ease-in-out infinite;
+	animation: speech-bubble-in 0.6s ease-out both, speech-bubble-breathe 2.1s ease-in-out 0.6s infinite;
 }
 
 .speech-bubble:active {
@@ -422,47 +414,20 @@
 	transform: scaleX(-1);
 }
 
-.speech-bubble-final {
-	top: 15%;
-	right: 20%;
-}
-
-.speech-bubble-explore {
-	top: 26%;
-	left: 25%;
-	right: auto;
-}
-
-.speech-bubble-house-instructions {
-	top: 23%;
-	left: 24%;
-	right: auto;
-	width: clamp(15rem, 30vw, 26rem);
-}
-
 .speech-bubble span {
 	position: absolute;
 	top: 45%;
 	left: 50%;
 	width: 80%;
 	transform: translate(-50%, -50%);
-	font-family: 'Lily Script One', cursive;
+	font-family: 'Happy Monkey', cursive;
 	color:  #695687;;
-	font-size: clamp(2.5rem, 3vw, 1.25rem);
-	font-weight: 700;
+	font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+	font-weight: 400;
+	line-height: 1.2;
 	text-align: center;
 }
 
-.speech-bubble-explore span {
-	font-size: 1.70rem;
-	line-height: 1.1;
-}
-
-.speech-bubble-house-instructions span {
-	width: 84%;
-	font-size: clamp(1.1rem, 1.8vw, 1.6rem);
-	line-height: 1.15;
-}
 
 @keyframes speech-bubble-in {
 	from {
@@ -512,8 +477,7 @@
 		transition: none;
 	}
 
-	.speech-bubble:hover {
-		animation: none;
+	.speech-bubble {
 		filter: drop-shadow(0 8px 16px rgba(252, 227, 65, 0.9));
 	}
 }

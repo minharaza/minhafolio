@@ -27,7 +27,7 @@ export default function ResumePage() {
   const directionsCloseRef = useRef(null);
   const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
-  const [selectedBook, setSelectedBook] = useState('book-1');
+  const [selectedBook, setSelectedBook] = useState(null);
   const [showResume, setShowResume] = useState(false);
   const [openBookFrame, setOpenBookFrame] = useState(0);
   const [bookFramesLoaded, setBookFramesLoaded] = useState(false);
@@ -125,7 +125,7 @@ export default function ResumePage() {
     return () => clearInterval(frameInterval);
   }, [isOpeningBook]);
 
-  const selectedIndex = Number(selectedBook.replace('book-', '')) - 1;
+  const selectedIndex = selectedBook ? Number(selectedBook.replace('book-', '')) - 1 : -1;
   const activeBookPalette = bookPalette[selectedIndex] || bookPalette[0];
 
   const selectedContent = (() => {
@@ -350,7 +350,7 @@ export default function ResumePage() {
             alt="Click a book to explore an experience"
             width={150}
             height={150}
-            className="pointer-events-none absolute left-0 top-[28%] z-20 w-[clamp(4.5rem,10vw,7.5rem)] object-contain"
+            className="pointer-events-none absolute left-0 top-[12%] z-20 w-[clamp(4.5rem,10vw,7.5rem)] object-contain"
             style={{
               filter: 'drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%))',
               animation: 'resume-hint-flash 1.3s ease-in-out infinite alternate',
@@ -358,7 +358,7 @@ export default function ResumePage() {
           />
           </div>
 
-          <div
+          {selectedBook && <div
             className="w-full max-w-2xl overflow-hidden rounded-2xl border border-slate-200 shadow-inner transition-colors duration-300"
             style={{ backgroundColor: activeBookPalette.light }}
           >
@@ -385,7 +385,7 @@ export default function ResumePage() {
                 {selectedContent.items.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </div>
-          </div>
+          </div>}
         </section>
         )}
       </div>

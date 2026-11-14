@@ -253,6 +253,41 @@ export default function ProjectTwoPage() {
               </figure>
             ))}
           </div>
+           <h3 id="project-section-title-03" className={styles.swotHeading}>Design Refinement</h3>
+          <div className={styles.projectTwoConceptGallery} aria-label="CharMED-ID refined designs">
+            {[
+              { src: '/images/proj2/DKC-1.png', alt: 'Refined teddy bear-shaped medical ID keychain design' },
+              { src: '/images/proj2/DKC-2.png', alt: 'Refined strawberry-shaped medical ID keychain design' },
+              { src: '/images/proj2/DKC-3.png', alt: 'Refined flower-shaped medical ID keychain design' },
+              { src: '/images/proj2/DKC-4.png', alt: 'Refined beaded non-verbal medical ID keychain design' },
+            ].map((design) => (
+              <figure className={styles.projectTwoConceptSketch} key={design.src}>
+                <button
+                  className={styles.projectTwoConceptSketchButton}
+                  type="button"
+                  onClick={() => setSelectedConceptSketch(design)}
+                  aria-label={`Enlarge: ${design.alt}`}
+                >
+                  <Image
+                    className={styles.projectTwoConceptSketchImage}
+                    src={design.src}
+                    alt={design.alt}
+                    width={2048}
+                    height={2048}
+                    sizes="(max-width: 700px) 68vw, 25vw"
+                  />
+                  <Image
+                    className={styles.projectTwoConceptSketchHint}
+                    src="/images/other/Click_Me.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={300}
+                    height={300}
+                  />
+                </button>
+              </figure>
+            ))}
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-04">
           <h2 id="project-section-04" className={styles.projectNumberTitle}>04</h2>

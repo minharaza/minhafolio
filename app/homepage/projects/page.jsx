@@ -13,12 +13,21 @@ const mats = [
 
 export default function ProjectsPage() {
   const router = useRouter();
-  const [showDirections, setShowDirections] = useState(true);
+  const [showDirections, setShowDirections] = useState(false);
   const directionsCloseRef = useRef(null);
 
   useEffect(() => {
-    directionsCloseRef.current?.focus();
+    setShowDirections(sessionStorage.getItem('projects-directions-dismissed') !== 'true');
   }, []);
+
+  useEffect(() => {
+    if (showDirections) directionsCloseRef.current?.focus();
+  }, [showDirections]);
+
+  const closeDirections = () => {
+    sessionStorage.setItem('projects-directions-dismissed', 'true');
+    setShowDirections(false);
+  };
 
   return (
     <main className={styles.page}>
@@ -161,7 +170,7 @@ export default function ProjectsPage() {
               ref={directionsCloseRef}
               type="button"
               className={styles.directionsClose}
-              onClick={() => setShowDirections(false)}
+              onClick={closeDirections}
               aria-label="Close directions and explore projects"
             >
               &times;

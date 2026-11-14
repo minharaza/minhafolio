@@ -336,10 +336,11 @@
 .projectTwoConceptSketchHint {
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;
+  left: 0.5rem;
   width: clamp(4rem, 8vw, 7rem);
   height: auto;
   opacity: 0;
+  filter: drop-shadow(0 0 2px #4a2722) drop-shadow(0 2px 4px rgb(25 20 19 / 85%));
   pointer-events: none;
   transform: translateY(0.25rem);
   transition: opacity 160ms ease, transform 160ms ease;

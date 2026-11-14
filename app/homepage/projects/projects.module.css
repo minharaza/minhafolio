@@ -1303,9 +1303,19 @@
 }
 
 .personaName {
+  padding: 0.25rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
   font-family: var(--font-quicksand), sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
+}
+
+.personaName:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 .personaDetails {
@@ -2415,6 +2425,15 @@
   border-radius: 8px;
 }
 
+.zoomableImage {
+  cursor: zoom-in;
+}
+
+.zoomableImage:focus-visible {
+  outline: 3px solid #fff8f1;
+  outline-offset: 3px;
+}
+
 .comparisonArrow {
   color: #4a2722;
   font-size: clamp(0.85rem, 1.5vw, 1.3rem);
@@ -2441,7 +2460,38 @@
 
 .finalDesignModalImageFrame {
   position: absolute;
-  inset: 0;
+  inset: 3.5rem 0 0;
+  overflow: auto;
+}
+
+.finalDesignModalControls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff8f1;
+  font-variant-numeric: tabular-nums;
+}
+
+.finalDesignModalControls button {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid rgb(255 248 241 / 70%);
+  border-radius: 50%;
+  background: #4a2722;
+  color: #fff8f1;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.finalDesignModalControls button:disabled {
+  cursor: default;
+  opacity: 0.5;
 }
 
 .projectTwoConceptModal {
@@ -2465,12 +2515,14 @@
 
 .finalDesignModalImage {
   object-fit: contain;
+  transform-origin: top left;
+  transition: transform 160ms ease;
 }
 
 .finalDesignModalClose {
   position: absolute;
-  top: -0.75rem;
-  right: -0.75rem;
+  top: 0;
+  right: 0;
   z-index: 1;
   display: grid;
   width: 2.75rem;

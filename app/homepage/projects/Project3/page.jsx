@@ -178,16 +178,27 @@ const worksCitedBooks = [
   },
 ];
 
-function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label, hintDirection = 'left' }) {
+function ExpandableDesignImage({ src, alt, controls, onHover, hintDirection = 'left' }) {
+  const dialogRef = useRef(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [dialogDetails, setDialogDetails] = useState('');
+  const detailId = controls?.split(' ')[hintDirection === 'right' ? 1 : 0] || controls;
+
   return (
     <figure className={`${styles.busStopDesignProgressionImage} ${hintDirection === 'right' ? styles.busStopDesignProgressionImageRight : ''}`}>
       <button
         className={styles.busStopDesignImageButton}
         type="button"
-        onClick={onClick}
-        aria-label={label}
-        aria-expanded={expanded}
-        aria-controls={controls}
+        onClick={() => {
+          setZoomLevel(1);
+          const detail = detailId && document.getElementById(detailId);
+          setDialogDetails(detail ? Array.from(detail.querySelectorAll('h2, p'), (element) => element.textContent.trim()).join('\n\n') : '');
+          dialogRef.current?.showModal();
+        }}
+        onMouseEnter={() => onHover?.(detailId)}
+        onFocus={() => onHover?.(detailId)}
+        aria-label={`Enlarge ${alt}`}
+        aria-describedby={detailId}
       >
         <Image
           src={src}
@@ -197,7 +208,6 @@ function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label, h
           sizes="(max-width: 10rem) 150vw, 100rem"
         />
       </button>
-      {!expanded && (
         <Image
           className={styles.busStopDesignClickHint}
           src={hintDirection === 'left' ? '/images/other/Click_Me_Left_.png' : '/images/other/Click_Me.png'}
@@ -206,7 +216,22 @@ function ExpandableDesignImage({ src, alt, controls, expanded, onClick, label, h
           width={800}
           height={800}
         />
-      )}
+      <dialog ref={dialogRef} className={styles.designImageDialog} aria-label={`Enlarged ${alt}`} onKeyDown={(event) => {
+        if (event.key === 'Escape') event.currentTarget.close();
+      }} onClick={(event) => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      }}>
+        <button className={styles.finalDesignModalClose} type="button" onClick={() => dialogRef.current?.close()} aria-label="Close enlarged image">&times;</button>
+        <div className={styles.finalDesignModalControls} aria-label="Image zoom controls">
+          <button type="button" onClick={() => setZoomLevel((level) => Math.max(1, level - 0.5))} disabled={zoomLevel <= 1} aria-label="Zoom out">-</button>
+          <span aria-live="polite">{Math.round(zoomLevel * 100)}%</span>
+          <button type="button" onClick={() => setZoomLevel((level) => Math.min(3, level + 0.5))} disabled={zoomLevel >= 3} aria-label="Zoom in">+</button>
+        </div>
+        <div className={styles.designImageDialogFrame}>
+          <Image src={src} alt={alt} width={2000} height={2000} sizes="90vw" style={{ transform: `scale(${zoomLevel})` }} />
+        </div>
+        {dialogDetails && <p className={styles.designImageDialogDetail}>{dialogDetails}</p>}
+      </dialog>
     </figure>
   );
 }
@@ -231,16 +256,13 @@ export default function ProjectThreePage() {
   const [showResearchPersonaHints, setShowResearchPersonaHints] = useState(true);
   const [showWorksCitedHints, setShowWorksCitedHints] = useState(true);
   const [selectedWorksCitedBook, setSelectedWorksCitedBook] = useState(null);
-  const [expandedDesignDetails, setExpandedDesignDetails] = useState({});
+  const [activeDesignDetail, setActiveDesignDetail] = useState(null);
   const [flippedStructureSketches, setFlippedStructureSketches] = useState([]);
   const [showStructureSketchHints, setShowStructureSketchHints] = useState(true);
   const [showBusStopMemoryDrawing, setShowBusStopMemoryDrawing] = useState(false);
   const [showProjectLinkHints, setShowProjectLinkHints] = useState(true);
   const pageRef = useRef(null);
   const contentRef = useRef(null);
-  const toggleDesignDetails = (id) => {
-    setExpandedDesignDetails((current) => ({ ...current, [id]: !current[id] }));
-  };
 
   return (
     <main
@@ -862,25 +884,16 @@ export default function ProjectThreePage() {
                 <h2 className={styles.researchInsightsTitle}>Bus Stop Screen User Interface</h2>
             
               <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
+                <ExpandableDesignImage
                     src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
                     alt="Hand-drawn wireframe for the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
                   />
-                </figure>
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <figure className={styles.busStopDesignProgressionImage}>
-                  <Image
+                <ExpandableDesignImage
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
                     alt="Figma mockup of the bus stop touchscreen interface"
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 10rem) 150vw, 100rem"
+                    hintDirection="right"
                   />
-                </figure>
                 </section>
                 <article className={styles.projectDetail}>
                   <p>Using the ideas laid out in the brainstorming session, a wireframe for an electronic
@@ -894,12 +907,11 @@ export default function ProjectThreePage() {
                     src="/images/project-sec/proj%203/busstops/figma/color-palette.png"
                     alt="Color palette for the bus stop touchscreen interface"
                     controls="design-detail-color"
-                    expanded={Boolean(expandedDesignDetails.color)}
-                    onClick={() => toggleDesignDetails('color')}
+                    onHover={setActiveDesignDetail}
                     label="Show or hide the color palette explanation"
                   />
                 </section>
-                <article className={styles.projectDetail} id="design-detail-color" hidden={!expandedDesignDetails.color}>
+                <article className={styles.projectDetail} id="design-detail-color" hidden={activeDesignDetail !== 'design-detail-color'}>
                   <h2>Choosing Color</h2>
                   <p>The color palette was an easy choice. In hopes of these designs being implemented in the future, it
                     would be important to work with the city metro. Naturally, using the color scheme of organization was the obvious
@@ -912,8 +924,7 @@ export default function ProjectThreePage() {
                   alt="Figma mockup of the bus stop touchscreen interface"
                   hintDirection="left"
                   controls="design-detail-device design-detail-interface"
-                  expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
-                  onClick={() => toggleDesignDetails('interfaceFeatures')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the interface feature explanations"
                 />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
@@ -922,13 +933,12 @@ export default function ProjectThreePage() {
                   alt="Figma mockup of the bus stop touchscreen interface"
                   hintDirection="right"
                   controls="design-detail-device design-detail-interface"
-                  expanded={Boolean(expandedDesignDetails.interfaceFeatures)}
-                  onClick={() => toggleDesignDetails('interfaceFeatures')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the interface feature explanations"
                 />
                 </section>
                 <div className={styles.busStopFeatureExplanations}>
-                <article className={styles.projectDetail} id="design-detail-device" hidden={!expandedDesignDetails.interfaceFeatures}>
+                <article className={styles.projectDetail} id="design-detail-device" hidden={activeDesignDetail !== 'design-detail-device'}>
                   <h2>Device Layout Feature Explanation</h2>
                   <p>
                     The design begins with an outer interface with three main components: An 'SOS' help button, 
@@ -948,7 +958,7 @@ export default function ProjectThreePage() {
                     to a multiple of problems extending into other areas of the city outside of public transport.
                     </p>
                 </article>
-                <article className={styles.projectDetail} id="design-detail-interface" hidden={!expandedDesignDetails.interfaceFeatures}>
+                <article className={styles.projectDetail} id="design-detail-interface" hidden={activeDesignDetail !== 'design-detail-interface'}>
                   <h2>User Interface Layout Feature Explanation</h2>
                   <p>
                     The actual interface aims to be as user friendly as possible, especially considering the diversity of 
@@ -971,8 +981,7 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface showing incoming buses and their arrival times"
                   hintDirection="left"
                   controls="design-detail-bus-card design-detail-home-icon"
-                  expanded={Boolean(expandedDesignDetails.busScreens)}
-                  onClick={() => toggleDesignDetails('busScreens')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the bus card and home screen explanations"
                 />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
@@ -981,19 +990,18 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface home screen with a resource guide over the city map"
                   hintDirection="right"
                   controls="design-detail-bus-card design-detail-home-icon"
-                  expanded={Boolean(expandedDesignDetails.busScreens)}
-                  onClick={() => toggleDesignDetails('busScreens')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the bus card and home screen explanations"
                 />
                 </section>
-                <article className={styles.projectDetail} id="design-detail-bus-card" hidden={!expandedDesignDetails.busScreens}>
+                <article className={styles.projectDetail} id="design-detail-bus-card" hidden={activeDesignDetail !== 'design-detail-bus-card'}>
                   <h2>Clicking on a Bus Card</h2>
                   <p>After the user taps on a bus on a bus card, this screen displays. If you look on the upper right
                     hand corner, the bus cards changed from displaying the different bus numbers to the same bus number 
                     with each future incoming bus with its respective arrival time.  
                   </p>
                 </article>
-                <article className={styles.projectDetail} id="design-detail-home-icon" hidden={!expandedDesignDetails.busScreens}>
+                <article className={styles.projectDetail} id="design-detail-home-icon" hidden={activeDesignDetail !== 'design-detail-home-icon'}>
                   <h2>Clicking on the Home Icon</h2>
                   <p>When click on the home icon, a pop up expands with a number of resource icons along with a search bar at
                     the bottom. This is a resource guide that can connect users with city announcements, local events, food banks,
@@ -1006,8 +1014,7 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface showing incoming buses and their arrival times"
                   hintDirection="left"
                   controls="design-detail-money design-detail-money-flow"
-                  expanded={Boolean(expandedDesignDetails.money)}
-                  onClick={() => toggleDesignDetails('money')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the money exchange explanation"
                 />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
@@ -1016,12 +1023,11 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface home screen with a resource guide over the city map"
                   hintDirection="right"
                   controls="design-detail-money design-detail-money-flow"
-                  expanded={Boolean(expandedDesignDetails.money)}
-                  onClick={() => toggleDesignDetails('money')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the money exchange explanation"
                 />
                 </section>
-                <article className={styles.projectDetail} id="design-detail-money" hidden={!expandedDesignDetails.money}>
+                <article className={styles.projectDetail} id="design-detail-money" hidden={activeDesignDetail !== 'design-detail-money'}>
                   <h2>Money Exchange Icon</h2>
                   <p>
                     The money exchange icon aims to create a neo-ATM money exchanger that gives exact change for bus tickets. 
@@ -1029,7 +1035,7 @@ export default function ProjectThreePage() {
                     go in. Then the pop up flow would be prompted.
                   </p>
                 </article>
-                <article className={styles.projectDetail} id="design-detail-money-flow" hidden={!expandedDesignDetails.money}>
+                <article className={styles.projectDetail} id="design-detail-money-flow" hidden={activeDesignDetail !== 'design-detail-money-flow'}>
                   <h2>Pop Up Flow</h2>
                   <p>Within this money exchange pop up flow, each step is supposed to clearly address the user similar to an ATM interface.
                     Since the bus is $2.20 per ride, the machine would calculate exact change for the amount of bus tickets the user asks
@@ -1042,8 +1048,7 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface showing incoming buses and their arrival times"
                   hintDirection="left"
                   controls="design-detail-ticket design-detail-ticket-flow"
-                  expanded={Boolean(expandedDesignDetails.ticket)}
-                  onClick={() => toggleDesignDetails('ticket')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the ticket printer explanation"
                 />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
@@ -1052,18 +1057,17 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface home screen with a resource guide over the city map"
                   hintDirection="right"
                   controls="design-detail-ticket design-detail-ticket-flow"
-                  expanded={Boolean(expandedDesignDetails.ticket)}
-                  onClick={() => toggleDesignDetails('ticket')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the ticket printer explanation"
                 />
                 </section>
-                <article className={styles.projectDetail} id="design-detail-ticket" hidden={!expandedDesignDetails.ticket}>
+                <article className={styles.projectDetail} id="design-detail-ticket" hidden={activeDesignDetail !== 'design-detail-ticket'}>
                   <h2>Ticket Printer Icon</h2>
                   <p>The ticket printer icon would give the user the ability to print a number of bus tickets. It would allow users to input money in the
                     money slot for the change exchanger, and print tickets according to the user's input.
                   </p>
                 </article>
-                <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={!expandedDesignDetails.ticket}>
+                <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={activeDesignDetail !== 'design-detail-ticket-flow'}>
                   <h2>Pop Up Flow</h2>
                   <p>
                 Similar to the above flow, the ticket printer pop up aims to clearly guide and confirm with the user for how many tickets
@@ -1076,8 +1080,7 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface showing incoming buses and their arrival times"
                   hintDirection="left"
                   controls="design-detail-search design-detail-search-flow"
-                  expanded={Boolean(expandedDesignDetails.search)}
-                  onClick={() => toggleDesignDetails('search')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the search explanation"
                 />
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true"></span>
@@ -1086,18 +1089,17 @@ export default function ProjectThreePage() {
                   alt="Bus stop interface home screen with a resource guide over the city map"
                   hintDirection="right"
                   controls="design-detail-search design-detail-search-flow"
-                  expanded={Boolean(expandedDesignDetails.search)}
-                  onClick={() => toggleDesignDetails('search')}
+                  onHover={setActiveDesignDetail}
                   label="Show or hide the search explanation"
                 />
                 </section>
-                <article className={styles.projectDetail} id="design-detail-search" hidden={!expandedDesignDetails.search}>
+                <article className={styles.projectDetail} id="design-detail-search" hidden={activeDesignDetail !== 'design-detail-search'}>
                   <h2>Search Icon</h2>
                   <p>The search icon acts as a map guide for finding bus routes to any location, similar to
                      any traditional navigation application. This would allow users who do not have access to cellular phones to still
                      be able to look at updated bus routes to any location of their choosing.</p>
                 </article>
-                <article className={styles.projectDetail} id="design-detail-search-flow" hidden={!expandedDesignDetails.search}>
+                <article className={styles.projectDetail} id="design-detail-search-flow" hidden={activeDesignDetail !== 'design-detail-search-flow'}>
                   <h2>Pop Up Flow</h2>
                   <p>In this flow, the user is prompted with a keyboard to search their location. After entering their response, 
                     the destination search displays specific bus route directions. The user is then allowed to print these directions using the
@@ -1111,12 +1113,11 @@ export default function ProjectThreePage() {
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma7.png"
                     alt="Bus stop interface showing the SOS emergency control"
                     controls="design-detail-sos"
-                    expanded={Boolean(expandedDesignDetails.sos)}
-                    onClick={() => toggleDesignDetails('sos')}
+                    onHover={setActiveDesignDetail}
                     label="Show or hide the SOS button explanation"
                   />
                 </section>
-                <article className={styles.projectDetail} id="design-detail-sos" hidden={!expandedDesignDetails.sos}>
+                <article className={styles.projectDetail} id="design-detail-sos" hidden={activeDesignDetail !== 'design-detail-sos'}>
                   <h2>Pressing on SOS Button</h2>
                   <p>
                     When a bus rider presses on the physical SOS button, it prompts a notifying alert telling the user that the police

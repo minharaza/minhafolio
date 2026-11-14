@@ -288,6 +288,82 @@
   filter: drop-shadow(0 0.3rem 0.35rem rgb(35 22 29 / 28%));
 }
 
+.projectTwoConceptGallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(0.5rem, 1.5vw, 1.25rem);
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.projectTwoConceptSketch {
+  min-width: 0;
+  margin: 0;
+  padding: 0.5rem;
+ 
+  border-radius: 12px;
+  background: rgb(87 49 55 / 62%);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0.35rem 0.8rem rgb(35 22 29 / 18%);
+}
+
+.projectTwoConceptSketchButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.projectTwoConceptSketchButton:focus-visible {
+  outline: 3px solid #f4d678;
+  outline-offset: 3px;
+}
+
+.projectTwoConceptSketchImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.projectTwoConceptSketchHint {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: clamp(4rem, 8vw, 7rem);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.25rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.projectTwoConceptSketchButton:hover .projectTwoConceptSketchHint,
+.projectTwoConceptSketchButton:focus-visible .projectTwoConceptSketchHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+  .projectTwoConceptGallery {
+    grid-template-columns: repeat(4, minmax(68vw, 1fr));
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .projectTwoConceptSketch {
+    scroll-snap-align: start;
+  }
+}
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .projectTwoMedicalKeyring:hover .projectTwoMedicalKeyringTag {
     animation: project-two-medical-tag-swing 600ms ease-in-out infinite alternate;
@@ -2365,6 +2441,25 @@
 .finalDesignModalImageFrame {
   position: absolute;
   inset: 0;
+}
+
+.projectTwoConceptModal {
+  display: grid;
+  grid-template-rows: 3rem minmax(0, 1fr);
+  gap: 0.25rem;
+}
+
+.projectTwoConceptModalClose {
+  position: static;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.projectTwoConceptModalImageFrame {
+  position: relative;
+  inset: auto;
+  grid-row: 2;
+  min-height: 0;
 }
 
 .finalDesignModalImage {

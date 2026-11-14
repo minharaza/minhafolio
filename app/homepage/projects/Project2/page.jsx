@@ -2,11 +2,23 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../projects.module.css';
 
 export default function ProjectTwoPage() {
   const [showCombinedRobot, setShowCombinedRobot] = useState(false);
+  const [selectedConceptSketch, setSelectedConceptSketch] = useState(null);
+
+  useEffect(() => {
+    if (!selectedConceptSketch) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setSelectedConceptSketch(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedConceptSketch]);
 
   return (
     <main className={styles.page}>
@@ -207,6 +219,40 @@ export default function ProjectTwoPage() {
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">
           <h2 id="project-section-03" className={styles.projectNumberTitle}>03</h2>
           <h3 id="project-section-title-03" className={styles.swotHeading}>Concept Development</h3>
+          <div className={styles.projectTwoConceptGallery} aria-label="CharMED-ID concept sketches">
+            {[
+              { src: '/images/proj2/sketch-1.png', alt: 'Plush bear keychain concept with an NFC medical information tag' },
+              { src: '/images/proj2/sketch-2.png', alt: 'Strawberry-shaped keychain concept with a transparent NFC tag window' },
+              { src: '/images/proj2/sketch-3.png', alt: 'Flower-shaped keychain concept with a medical information tag and charm holes' },
+              { src: '/images/proj2/sketch-4.png', alt: 'Beaded non-verbal medical information keychain concept' },
+            ].map((sketch) => (
+              <figure className={styles.projectTwoConceptSketch} key={sketch.src}>
+                <button
+                  className={styles.projectTwoConceptSketchButton}
+                  type="button"
+                  onClick={() => setSelectedConceptSketch(sketch)}
+                  aria-label={`Enlarge: ${sketch.alt}`}
+                >
+                  <Image
+                    className={styles.projectTwoConceptSketchImage}
+                    src={sketch.src}
+                    alt={sketch.alt}
+                    width={1482}
+                    height={1388}
+                    sizes="(max-width: 700px) 68vw, 25vw"
+                  />
+                  <Image
+                    className={styles.projectTwoConceptSketchHint}
+                    src="/images/other/Click_Me.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={300}
+                    height={300}
+                  />
+                </button>
+              </figure>
+            ))}
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-04">
           <h2 id="project-section-04" className={styles.projectNumberTitle}>04</h2>
@@ -217,6 +263,36 @@ export default function ProjectTwoPage() {
           <h3 id="project-section-title-05" className={styles.swotHeading}>Final Thoughts</h3>
         </section>
       </section>
+      {selectedConceptSketch && (
+        <div className={`${styles.finalDesignModalBackdrop} ${styles.projectTwoConceptModalBackdrop}`} onClick={() => setSelectedConceptSketch(null)}>
+          <div
+            className={`${styles.finalDesignModal} ${styles.projectTwoConceptModal}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedConceptSketch.alt}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className={`${styles.finalDesignModalClose} ${styles.projectTwoConceptModalClose}`}
+              type="button"
+              onClick={() => setSelectedConceptSketch(null)}
+              aria-label="Close enlarged image"
+              autoFocus
+            >
+              &times;
+            </button>
+            <div className={`${styles.finalDesignModalImageFrame} ${styles.projectTwoConceptModalImageFrame}`}>
+              <Image
+                src={selectedConceptSketch.src}
+                alt={selectedConceptSketch.alt}
+                fill
+                sizes="90vw"
+                className={styles.finalDesignModalImage}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

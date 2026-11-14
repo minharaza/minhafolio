@@ -146,16 +146,51 @@ export default function ProjectTwoPage() {
               ))}
             </div>
           </div>
-          <h3 className={styles.swotHeading}>Existing NFC Medical ID tags</h3>
-          <p className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
-           explain the comp.
+          <h3 className={styles.swotHeading}>Existing Medical ID Tags</h3>
+          <div className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>  
+             <h2> NFC Tags on the Market</h2>
+          <p>
+           Currently a keychain with an embedded "Near Field Communication" tag is not a new product. However, they typically
+           provide a similar experience in terms of the design choices. In the realm of medicine, products often reflect a 
+           clinical, simplistic focus. These design choices are reflected upon in the examples shown below. These tags are
+           straighforward, using words and constrasting colors to clearly convey the use of this at a glance. 
+           These design choices are reflected upon in the examples shown below.
           </p>
+          </div>
           <div className={styles.projectTwoMedicalKeyring} aria-label="Existing NFC medical ID tags">
             {[
               { src: '/images/proj2/MID-1.png', alt: 'Heart condition NFC medical ID tag' },
               { src: '/images/proj2/MID-2.png', alt: 'Non-verbal NFC medical ID tag' },
               { src: '/images/proj2/MID-3.png', alt: 'Round medical information NFC tag' },
               { src: '/images/proj2/MID-4.png', alt: 'Red medical alert NFC tag' },
+            ].map((tag) => (
+              <figure className={styles.projectTwoMedicalKeyringTag} key={tag.src}>
+                <Image
+                  src={tag.src}
+                  alt={tag.alt}
+                  width={2048}
+                  height={2048}
+                  sizes="(max-width: 700px) 22vw, 14rem"
+                />
+              </figure>
+            ))}
+          </div>
+          <div className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>  
+             <h2>Personalized Tags on the Market</h2>
+          <p>
+           The culture surrounding personalizing items with charms leans heavily into the chunky aesthethic of maximalism.
+           There are many subcultures within this space, especially when it comes to themes and niches, yet the look is the same.
+           Some may even say more is more! The designs can take numerous colorful turns, incorporating plushies, beads, photographs,
+           and way more. Check out some inspiration below!
+          </p>
+          </div>
+          <div className={styles.projectTwoMedicalKeyring} aria-label="Existing NFC medical ID tags">
+            {[
+              { src: '/images/proj2/PTM-1.png', alt: 'plushie keychain' },
+              { src: '/images/proj2/PTM-2.png', alt: 'window keychain' },
+              { src: '/images/proj2/PTM-5.png', alt: 'carabeaner beaded keychain' },
+              { src: '/images/proj2/PTM-4.png', alt: 'Resin keychain' },
+
             ].map((tag) => (
               <figure className={styles.projectTwoMedicalKeyringTag} key={tag.src}>
                 <Image

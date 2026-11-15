@@ -870,7 +870,7 @@ export default function ProjectThreePage() {
                <figure className={styles.busStopNeedsFigure}>
                   <Image
                     className={styles.busStopNeedsImage}
-                    src="/images/project-sec/proj%203/busstops/busstop-needs.png"
+                    src="/images/proj-images/bus-scan-1.png"
                     alt="Handwritten planning notes listing bus rider touchscreen needs and additional community resources"
                     width={1154}
                     height={1308}
@@ -884,10 +884,17 @@ export default function ProjectThreePage() {
                 <h2 className={styles.researchInsightsTitle}>Bus Stop Screen User Interface</h2>
             
               <section className={styles.busStopDesignProgression} aria-label="Bus stop wireframe and interface design">
-                <ExpandableDesignImage
-                    src="/images/project-sec/proj%203/busstops/bs-wireframe.png"
+                <div className={styles.busStopScanPair} aria-label="Bus stop wireframe sketches">
+                  <ExpandableDesignImage
+                    src="/images/proj-images/bus-scan-2.png"
                     alt="Hand-drawn wireframe for the bus stop touchscreen interface"
                   />
+                  <ExpandableDesignImage
+                    src="/images/proj-images/bus-scan-3.png"
+                    alt="Additional hand-drawn bus stop touchscreen interface sketches"
+                    hintDirection="right"
+                  />
+                </div>
                 <span className={styles.busStopDesignProgressionDivider} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
                 <ExpandableDesignImage
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma.png"
@@ -1131,7 +1138,7 @@ export default function ProjectThreePage() {
                       <figure className={styles.busStopStructureFigure}>
                         <Image
                           className={styles.busStopStructureImage}
-                          src="/images/project-sec/proj%203/busstops/art/art-bs1.png"
+                          src="/images/proj-images/bus-scan-4.png"
                           alt="Handwritten planning notes for improving the physical bus stop experience"
                           width={1248}
                           height={1254}
@@ -1169,7 +1176,7 @@ export default function ProjectThreePage() {
                       {[
                         {
                           title: 'Planted roof and fruit-shaped bench',
-                          photo: '/images/project-sec/proj%203/busstops/art/art-bs2.png',
+                          photo: '/images/proj-images/bus-scan-5.png',
                           photoWidth: 1300,
                           photoHeight: 992,
                           drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_1.png',
@@ -1177,7 +1184,7 @@ export default function ProjectThreePage() {
                         },
                         {
                           title: 'Solar shelter with a community mural',
-                          photo: '/images/project-sec/proj%203/busstops/art/art-bs4.png',
+                          photo: '/images/proj-images/bus-scan-6.png',
                           photoWidth: 1226,
                           photoHeight: 708,
                           drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_2.png',
@@ -1185,7 +1192,7 @@ export default function ProjectThreePage() {
                         },
                         {
                           title: 'Solar roof and hanging plants',
-                          photo: '/images/project-sec/proj%203/busstops/art/art-bs3.png',
+                          photo: '/images/proj-images/bus-scan-7.png',
                           photoWidth: 1292,
                           photoHeight: 762,
                           drawing: '/images/project-sec/proj%203/busstops/art/Bs_Drawing_3.png',

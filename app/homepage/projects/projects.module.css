@@ -2064,12 +2064,28 @@
 
 .busStopDesignProgression {
   display: grid;
-  width:min(calc(100vw - 3rem), 70rem);
+  width: min(calc(100vw - 2rem), 80rem);
   grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.4fr) auto minmax(0, 1.35fr);
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.5rem);
   justify-self: center;
+}
+
+.busStopScanPair {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.busStopScanPair .busStopDesignProgressionImage {
+  --bus-stop-hint-size: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.busStopScanPair .busStopDesignProgressionImage .busStopDesignClickHint {
+  width: clamp(4rem, 5vw, 5rem);
 }
 
 .busStopDesignProgressionImage {

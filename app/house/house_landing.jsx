@@ -219,6 +219,24 @@ export default function HousePage() {
           </Link>
         ))}
       </nav>
+      <section className="house-contact-cloud" aria-labelledby="house-contact-title">
+        <img className="house-cloud" src="/images/proj2/Cloud.png" alt="" aria-hidden="true" />
+        <div className="house-contact-content">
+          <h2 id="house-contact-title">Contact me</h2>
+          <div className="house-contact-actions" aria-label="Contact links">
+            <a href="https://github.com/minharaza" target="_blank" rel="noreferrer" aria-label="Visit my GitHub profile" title="GitHub">
+              <img src="/images/other/GitHub_Invertocat_Black_Clearspace.svg" alt="" aria-hidden="true" />
+            </a>
+            <a href="mailto:minharaza.biz@gmail.com" aria-label="Email me" title="Email">
+              <img src="/images/proj2/email-1-svgrepo-com.svg" alt="" aria-hidden="true" />
+            </a>
+            <Link href="/homepage/resume-page" aria-label="View my resume" title="Resume">
+              <img src="/images/proj2/resume-portfolio-svgrepo-com.svg" alt="" aria-hidden="true" />
+            </Link>
+          </div>
+          <a className="house-contact-email" href="mailto:minharaza.biz@gmail.com">minharaza.biz@gmail.com</a>
+        </div>
+      </section>
     {isCutoutReady && (
     <div className="house-scene">
       <img className="house-image" src="/images/other/House.png" alt="" aria-hidden="true" />

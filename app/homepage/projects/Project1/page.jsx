@@ -265,7 +265,7 @@ export default function ProjectOnePage() {
                 <ZoomableImage
                   onZoom={zoomImage}
                   className={styles.researchVisualImage}
-                  src="/images/project-sec/randa1-converted.png"
+                  src="/images/proj-images/proj-scan-1.png"
                   alt="Visual design concept for the Indigo Hippo website redesign"
                   width={4032}
                   height={3024}
@@ -390,17 +390,17 @@ export default function ProjectOnePage() {
               <ZoomableImage
                 onZoom={zoomImage}
                 className={styles.designProcessImage}
-                src="/images/project-sec/randa2-converted.png"
+                src="/images/proj-images/proj-scan-2.png"
                 alt="Design process board showing the second stage of the Indigo Hippo website redesign"
                 fill
                 sizes="(max-width: 700px) 100vw, 50vw"
               />
               </div>
-              <div className={styles.designProcessImageFrame}>
+              <div className={`${styles.designProcessImageFrame} ${styles.designProcessScanThreeFrame}`}>
               <ZoomableImage
                 onZoom={zoomImage}
                 className={styles.designProcessImage}
-                src="/images/project-sec/randa3-converted.png"
+                src="/images/proj-images/proj-scan-3.png"
                 alt="Design process board showing the third stage of the Indigo Hippo website redesign"
                 fill
                 sizes="(max-width: 700px) 100vw, 50vw"

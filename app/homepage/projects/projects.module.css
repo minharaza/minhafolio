@@ -1757,7 +1757,7 @@
   max-width: none;
   height: auto;
   object-fit: contain;
-  transform: translate(-50%, -50%) rotate(90deg);
+  transform: translate(-50%, -50%);
 }
 
 .busStopDesignComparison {
@@ -2211,8 +2211,10 @@
 
 .designProcessSketches {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 22rem);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
+  justify-self: center;
 }
 
 .designProcessArrow {
@@ -2242,6 +2244,10 @@
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 8px;
+}
+
+.designProcessScanThreeFrame {
+  aspect-ratio: 794 / 282;
 }
 
 .designProcessImage {

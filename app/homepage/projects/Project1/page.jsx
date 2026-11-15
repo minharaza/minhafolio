@@ -736,6 +736,22 @@ export default function ProjectOnePage() {
                 height={48}
               />
         </a>
+        <a
+          className={styles.finalThoughtsIconButton}
+          href="/Minha_Raza_Resume_2026.pdf"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open resume PDF"
+          title="Resume"
+        >
+          <Image
+            className={styles.finalThoughtsIcon}
+            src="/images/proj2/resume-portfolio-svgrepo-com.svg"
+            alt=""
+            width={48}
+            height={48}
+          />
+        </a>
         {showFinalThoughtsHint && (
           <button
             className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintRight}`}

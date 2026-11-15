@@ -1383,6 +1383,22 @@ export default function ProjectThreePage() {
                       height={128}
                     />
                   </a>
+                  <a
+                    className={styles.finalThoughtsIconButton}
+                    href="/Minha_Raza_Resume_2026.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Open resume PDF"
+                    title="Resume"
+                  >
+                    <Image
+                      className={styles.finalThoughtsIcon}
+                      src="/images/proj2/resume-portfolio-svgrepo-com.svg"
+                      alt=""
+                      width={128}
+                      height={128}
+                    />
+                  </a>
                   {showProjectLinkHints && (
                     <button
                       className={`${styles.swotHint} ${styles.finalThoughtsClickHint} ${styles.finalThoughtsHintRight}`}

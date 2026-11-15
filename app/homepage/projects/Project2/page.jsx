@@ -297,6 +297,35 @@ export default function ProjectTwoPage() {
           <h2 id="project-section-05" className={styles.projectNumberTitle}>05</h2>
           <h3 id="project-section-title-05" className={styles.swotHeading}>Final Thoughts</h3>
         </section>
+        <div className={styles.finalThoughtsIcons} aria-label="Resume link">
+          <a
+            className={styles.finalThoughtsIconButton}
+            href="/Minha_Raza_Resume_2026.pdf"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open resume PDF"
+            title="Resume"
+          >
+            <Image
+              className={styles.finalThoughtsIcon}
+              src="/images/proj2/resume-portfolio-svgrepo-com.svg"
+              alt=""
+              width={128}
+              height={128}
+            />
+          </a>
+        </div>
+        <nav className={styles.projectNavigation} aria-label="Project navigation">
+          <Link className={styles.projectNavigationButton} href="/homepage?skipIntro=1">
+            <span aria-hidden="true">&#8592;</span> Back to home
+          </Link>
+          <Link className={styles.projectNavigationButton} href="#project-top">
+            <span aria-hidden="true">&#8593;</span> Top of the page
+          </Link>
+          <Link className={styles.projectNavigationButton} href="/homepage/projects/Project3">
+            Project 3 <span aria-hidden="true">&#8594;</span>
+          </Link>
+        </nav>
       </section>
       {selectedConceptSketch && (
         <div className={`${styles.finalDesignModalBackdrop} ${styles.projectTwoConceptModalBackdrop}`} onClick={() => setSelectedConceptSketch(null)}>

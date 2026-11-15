@@ -208,6 +208,22 @@ export default function ResumePage() {
         &larr;
       </button>
       <div className="relative z-10 max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-y-auto rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-lg backdrop-blur-sm sm:p-8">
+        <a
+          href="/Minha_Raza_Resume_2026.pdf"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open resume PDF"
+          title="Open resume PDF"
+          className="absolute right-4 top-4 z-20 grid size-16 place-items-center rounded-full bg-white/80 shadow-sm transition hover:scale-105 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#695687] sm:right-6 sm:top-6"
+        >
+          <Image
+            src="/images/proj2/resume-portfolio-svgrepo-com.svg"
+            alt=""
+            aria-hidden="true"
+            width={52}
+            height={52}
+          />
+        </a>
         <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Resume</h1>
 
         {!showResume ? (

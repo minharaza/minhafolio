@@ -430,15 +430,18 @@ export default function ProjectOnePage() {
             sizes="(max-width: 700px) 100vw, 60rem"
           />
           <div className={styles.designProcessScrapbookRow}>
-            <ZoomableImage
-              onZoom={zoomImage}
-              className={styles.designProcessScrapbookImage}
-              src="/images/project-sec/scarpbooking-layout.png"
-              alt="Scrapbook-inspired Indigo Hippo landing page layout concept"
-              width={1336}
-              height={844}
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
+            <div className={styles.designProcessImageHintFrame}>
+              <ZoomableImage
+                onZoom={zoomImage}
+                className={styles.designProcessScrapbookImage}
+                src="/images/project-sec/scarpbooking-layout.png"
+                alt="Scrapbook-inspired Indigo Hippo landing page layout concept"
+                width={1336}
+                height={844}
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+            </div>
             <article className={styles.projectDetail}>
               <p>
                 After establishing a basic wireframe of a more impactful layout, I researched ways to emphasize Indigo Hippo's playful, unique character in a digital format. As a customer, I reflected on the materials that have supported my school projects and art escapades. A digital scrapbook felt like the right way to capture the brand's identity, so I researched examples and explored how that visual direction could shape the site.
@@ -448,24 +451,30 @@ export default function ProjectOnePage() {
             </article>
           </div>
           <div className={styles.designProcessVisuals}>
-            <ZoomableImage
-              onZoom={zoomImage}
-              className={styles.designProcessVisualImage}
-              src="/images/project-sec/Brand-identiy.png"
-              alt="Three visual identity and website design directions"
-              width={1808}
-              height={982}
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
-            <ZoomableImage
-              onZoom={zoomImage}
-              className={styles.designProcessVisualImage}
-              src="/images/project-sec/typography.png"
-              alt="Typography explorations for the Indigo Hippo brand"
-              width={710}
-              height={344}
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
+            <div className={styles.designProcessImageHintFrame}>
+              <ZoomableImage
+                onZoom={zoomImage}
+                className={styles.designProcessVisualImage}
+                src="/images/project-sec/Brand-identiy.png"
+                alt="Three visual identity and website design directions"
+                width={1808}
+                height={982}
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+            </div>
+            <div className={styles.designProcessImageHintFrame}>
+              <ZoomableImage
+                onZoom={zoomImage}
+                className={styles.designProcessVisualImage}
+                src="/images/project-sec/typography.png"
+                alt="Typography explorations for the Indigo Hippo brand"
+                width={710}
+                height={344}
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+            </div>
           </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="final-design-heading">

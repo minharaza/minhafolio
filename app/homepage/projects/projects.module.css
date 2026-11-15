@@ -2271,7 +2271,9 @@
 .researchVisualFrame:hover .designProcessClickHint,
 .researchVisualFrame:focus-within .designProcessClickHint,
 .designProcessImageFrame:hover .designProcessClickHint,
-.designProcessImageFrame:focus-within .designProcessClickHint {
+.designProcessImageFrame:focus-within .designProcessClickHint,
+.designProcessImageHintFrame:hover .designProcessClickHint,
+.designProcessImageHintFrame:focus-within .designProcessClickHint {
   opacity: 1;
   transform: translateY(0);
 }
@@ -2282,6 +2284,11 @@
   height: auto;
   justify-self: center;
   border-radius: 8px;
+}
+
+.designProcessImageHintFrame {
+  position: relative;
+  min-width: 0;
 }
 
 .designProcessVisuals {

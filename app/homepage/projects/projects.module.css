@@ -2072,6 +2072,18 @@
   justify-self: center;
 }
 
+.busStopDesignProgressionSingle {
+  display: grid;
+  width: min(calc(100vw - 2rem), 80rem);
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.busStopDesignProgressionSingle .busStopDesignProgressionImage {
+  width: min(100%, 46rem);
+}
+
 .busStopScanPair {
   display: grid;
   min-width: 0;

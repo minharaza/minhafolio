@@ -1115,7 +1115,7 @@ export default function ProjectThreePage() {
                   </p>
                 </article>
                 </div>
-                <section>
+                <section className={styles.busStopDesignProgressionSingle} aria-label="Bus stop SOS screen design">
                   <ExpandableDesignImage
                     src="/images/project-sec/proj%203/busstops/figma/bs-figma7.png"
                     alt="Bus stop interface showing the SOS emergency control"

@@ -741,7 +741,7 @@ export default function ProjectThreePage() {
                           aria-label="Dismiss left Works Cited click hint"
                           onClick={() => setShowWorksCitedHints(false)}
                         >
-                          <Image src="/images/other/Click_Me.png" alt="Click me" width={800} height={800} />
+                          <Image src="/images/other/Click_Me.png" alt="Click me" width={1000} height={1000} />
                         </button>
                         <button
                           className={`${styles.worksCitedHint} ${styles.worksCitedHintRight}`}

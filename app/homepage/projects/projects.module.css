@@ -1481,7 +1481,7 @@
 .worksCitedShelves {
   display: grid;
   min-width: 0;
-  width: calc(100% - 9rem);
+  width: calc(100% - 14rem);
   margin: 0 auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
@@ -1491,7 +1491,7 @@
   position: absolute;
   top: 50%;
   z-index: 10;
-  width: 6cap;
+  width: 6rem;
   padding: 0;
   border: 0;
   background: transparent;
@@ -3431,12 +3431,12 @@
   }
 
   .worksCitedBoard {
-    padding-top: 4.5rem;
+    padding-top: 5.5rem;
   }
 
   .worksCitedHint {
     top: 0;
-    width: 4rem;
+    width: 5rem;
     transform: none;
   }
 

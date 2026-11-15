@@ -230,9 +230,9 @@ export default function HousePage() {
             <a href="mailto:minharaza.biz@gmail.com" aria-label="Email me" title="Email">
               <img src="/images/proj2/email-1-svgrepo-com.svg" alt="" aria-hidden="true" />
             </a>
-            <Link href="/homepage/resume-page" aria-label="View my resume" title="Resume">
+            <a href="/Minha_Raza_Resume_2026.pdf" target="_blank" rel="noreferrer" aria-label="View my resume PDF" title="Resume">
               <img src="/images/proj2/resume-portfolio-svgrepo-com.svg" alt="" aria-hidden="true" />
-            </Link>
+            </a>
           </div>
           <a className="house-contact-email" href="mailto:minharaza.biz@gmail.com">minharaza.biz@gmail.com</a>
         </div>

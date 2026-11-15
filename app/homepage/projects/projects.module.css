@@ -1744,7 +1744,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 8 / 7;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 8px;
 }
 
@@ -2242,7 +2242,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 8px;
 }
 
@@ -2252,6 +2252,28 @@
 
 .designProcessImage {
   object-fit: contain;
+}
+
+.designProcessClickHint {
+  position: absolute;
+  top: 3rem;
+  left: -2rem;
+  z-index: 2;
+  width: clamp(4rem, 8vw, 7rem);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px #4a2722) drop-shadow(0 2px 4px rgb(25 20 19 / 85%));
+  transform: translateY(0.25rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.researchVisualFrame:hover .designProcessClickHint,
+.researchVisualFrame:focus-within .designProcessClickHint,
+.designProcessImageFrame:hover .designProcessClickHint,
+.designProcessImageFrame:focus-within .designProcessClickHint {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .designProcessStepImage {
@@ -2477,6 +2499,38 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+.comparisonImageFrame {
+  position: relative;
+  min-width: 0;
+}
+
+.comparisonClickHint {
+  position: absolute;
+  top: 0.75rem;
+  z-index: 2;
+  width: clamp(4rem, 8vw, 7rem);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px #4a2722) drop-shadow(0 2px 4px rgb(25 20 19 / 85%));
+  transform: translateY(0.25rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.comparisonClickHintLeft {
+  left: -2rem;
+}
+
+.comparisonClickHintRight {
+  right: -2rem;
+}
+
+.comparisonImageFrame:hover .comparisonClickHint,
+.comparisonImageFrame:focus-within .comparisonClickHint {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .zoomableImage {
@@ -3514,6 +3568,14 @@
 
   .comparisonRow {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .comparisonClickHintLeft {
+    left: 0.5rem;
+  }
+
+  .comparisonClickHintRight {
+    right: 0.5rem;
   }
 
   .comparisonArrow {

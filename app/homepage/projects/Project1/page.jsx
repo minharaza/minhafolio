@@ -270,6 +270,7 @@ export default function ProjectOnePage() {
                   width={4032}
                   height={3024}
                 />
+                <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
               </div>
               <article className={styles.projectDetail}>
                 <h2>UX Research & Interviews</h2>
@@ -381,6 +382,7 @@ export default function ProjectOnePage() {
                 fill
                 sizes="(max-width: 700px) 100vw, 25vw"
               />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
             </div>
             <span className={styles.designProcessArrow} role="img" aria-label="leads to redesigned sketches">
               ⋆˚𓏲ּ｡➹
@@ -395,6 +397,7 @@ export default function ProjectOnePage() {
                 fill
                 sizes="(max-width: 700px) 100vw, 50vw"
               />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
               </div>
               <div className={`${styles.designProcessImageFrame} ${styles.designProcessScanThreeFrame}`}>
               <ZoomableImage
@@ -405,6 +408,7 @@ export default function ProjectOnePage() {
                 fill
                 sizes="(max-width: 700px) 100vw, 50vw"
               />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
               </div>
             </div>
           </div>
@@ -616,25 +620,31 @@ export default function ProjectOnePage() {
           <div className={styles.comparisonList}>
             {comparisonPairs.map((pair, index) => (
               <div className={styles.comparisonRow} key={pair.id}>
-                <ZoomableImage
-                  onZoom={zoomImage}
-                  className={styles.comparisonImage}
-                  src={pair.id}
-                  alt={`Original website, section ${index + 1}`}
-                  width={pair.idWidth}
-                  height={pair.idHeight}
-                  sizes="(max-width: 700px) 100vw, 40vw"
-                />
+                <div className={styles.comparisonImageFrame}>
+                  <ZoomableImage
+                    onZoom={zoomImage}
+                    className={styles.comparisonImage}
+                    src={pair.id}
+                    alt={`Original website, section ${index + 1}`}
+                    width={pair.idWidth}
+                    height={pair.idHeight}
+                    sizes="(max-width: 700px) 100vw, 40vw"
+                  />
+                  <Image className={`${styles.comparisonClickHint} ${styles.comparisonClickHintLeft}`} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+                </div>
                 <span className={styles.comparisonArrow} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <ZoomableImage
-                  onZoom={zoomImage}
-                  className={styles.comparisonImage}
-                  src={pair.fd}
-                  alt={`Final design, section ${index + 1}`}
-                  width={pair.fdWidth}
-                  height={pair.fdHeight}
-                  sizes="(max-width: 700px) 100vw, 40vw"
-                />
+                <div className={styles.comparisonImageFrame}>
+                  <ZoomableImage
+                    onZoom={zoomImage}
+                    className={styles.comparisonImage}
+                    src={pair.fd}
+                    alt={`Final design, section ${index + 1}`}
+                    width={pair.fdWidth}
+                    height={pair.fdHeight}
+                    sizes="(max-width: 700px) 100vw, 40vw"
+                  />
+                  <Image className={`${styles.comparisonClickHint} ${styles.comparisonClickHintRight}`} src="/images/other/Click_Me_Left_.png" alt="" aria-hidden="true" width={800} height={800} />
+                </div>
               </div>
             ))}
           </div>

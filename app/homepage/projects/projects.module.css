@@ -3235,9 +3235,12 @@
 
 .projectThreeCaption {
   top: 37%;
-  width: min(38%, 40rem);
+  width: min(38%, 35rem);
   max-width: 38%;
   font-size: clamp(1.25rem, 0.9vw, 1.2rem);
+}
+
+.matCard:nth-child(3) .toastCaption {
   color: #ffffff;
   text-shadow: 0 0.1rem 0.2rem rgb(50, 46, 48);
 }

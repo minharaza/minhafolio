@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './projects.module.css';
 
 const mats = [
-  { src: '/images/project-sec/Mat1.png', plate: '/images/project-sec/Plate1.png', drink: '/images/project-sec/Drink1.png', food: '/images/project-sec/Toast.png', project: 'Project1', foodAlt: 'Toast', alt: 'Pink place setting with plate, drink, fork, and knife' },
-  { src: '/images/project-sec/Mat2.png', plate: '/images/project-sec/Plate2.png', drink: '/images/project-sec/Drink2.png', food: '/images/project-sec/Waffle.png', project: 'Project2', foodAlt: 'Waffle', alt: 'Orange place setting with plate, drink, fork, and knife' },
-  { src: '/images/project-sec/Mat3.png', plate: '/images/project-sec/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/other/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat1.png', plate: '/images/project-sec/Plate1.png', drink: '/images/project-sec/Drink1.png', food: '/images/other/Pancake.png', project: 'Project3', foodAlt: 'Pancake', alt: 'Pink place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat2.png', plate: '/images/project-sec/Plate2.png', drink: '/images/project-sec/Drink2.png', food: '/images/project-sec/Toast.png', project: 'Project1', foodAlt: 'Toast', alt: 'Orange place setting with plate, drink, fork, and knife' },
+  { src: '/images/project-sec/Mat3.png', plate: '/images/project-sec/Plate3.png', drink: '/images/project-sec/Drink3.png', food: '/images/project-sec/Waffle.png', project: 'Project2', foodAlt: 'Waffle', alt: 'Striped yellow place setting with plate, drink, fork, and knife' },
 ];
 
 export default function ProjectsPage() {
@@ -49,14 +49,14 @@ export default function ProjectsPage() {
             <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
           </header>
           <nav className={styles.projectLinks} aria-label="Project pages">
+            <button type="button" onClick={() => router.push('/homepage/projects/Project3')}>
+              Designing a Bus Stop through Public Art and Technology
+            </button>
             <button type="button" onClick={() => router.push('/homepage/projects/Project1')}>
               Art Thrift Store Website Redesign
             </button>
             <button type="button" onClick={() => router.push('/homepage/projects/Project2')}>
               CharMED-ID: A Medical ID Keychain
-            </button>
-            <button type="button" onClick={() => router.push('/homepage/projects/Project3')}>
-              Designing a Bus Stop through Public Art and Technology
             </button>
           </nav>
           <div className={styles.grid}>
@@ -133,7 +133,7 @@ export default function ProjectsPage() {
               {mat.project === 'Project2' && (
                 <svg className={styles.toastCaption} viewBox="0 -35 500 170" aria-hidden="true">
                   <defs>
-                    <path id="waffle-caption-arc" d="M 20 110 Q 270 -70 480 110" />
+                    <path id="waffle-caption-arc" d="M 20 110 Q 270 -60 480 110" />
                   </defs>
                   <text fill="currentColor">
                     <textPath href="#waffle-caption-arc" startOffset="50%" textAnchor="middle">

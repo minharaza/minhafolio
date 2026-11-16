@@ -222,6 +222,19 @@
   line-height: 1.65;
 }
 
+.projectTwoFinalMockup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  align-items: center;
+  gap: 2rem;
+}
+
+.projectTwoFinalMockupImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .projectDetail .projectTwoResearchCopy {
   width: auto;
   justify-self: initial;
@@ -344,6 +357,11 @@
   pointer-events: none;
   transform: translateY(0.25rem);
   transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.projectTwoFinalMockup .projectTwoConceptSketchHint {
+  top: 45%;
+  left: 10%;
 }
 
 .projectTwoConceptSketchButton:hover .projectTwoConceptSketchHint,

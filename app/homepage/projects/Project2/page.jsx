@@ -361,7 +361,35 @@ export default function ProjectTwoPage() {
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-04">
           <h2 id="project-section-04" className={styles.projectNumberTitle}>04</h2>
-          <h3 id="project-section-title-04" className={styles.swotHeading}>Design &amp; Prototype</h3>
+          <h3 id="project-section-title-04" className={styles.swotHeading}>Design Mock Up</h3>
+          <div className={styles.projectTwoFinalMockup}>
+            <div className={styles.projectDetail}>
+              <p>The final CharMED-ID keychain design.</p>
+            </div>
+            <button
+              className={styles.projectTwoConceptSketchButton}
+              type="button"
+              onClick={() => setSelectedConceptSketch({ src: '/images/proj2/Final-KC.png', alt: 'Final CharMED-ID keychain mockup' })}
+              aria-label="Enlarge final CharMED-ID keychain mockup"
+            >
+              <Image
+                className={styles.projectTwoFinalMockupImage}
+                src="/images/proj2/Final-KC.png"
+                alt="Final CharMED-ID keychain mockup"
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 90vw, 36rem"
+              />
+              <Image
+                className={styles.projectTwoConceptSketchHint}
+                src="/images/other/Click_Me.png"
+                alt=""
+                aria-hidden="true"
+                width={300}
+                height={300}
+              />
+            </button>
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-05">
           <h2 id="project-section-05" className={styles.projectNumberTitle}>05</h2>

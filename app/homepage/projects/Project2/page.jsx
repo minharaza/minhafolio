@@ -367,10 +367,13 @@ export default function ProjectTwoPage() {
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-04">
           <h2 id="project-section-04" className={styles.projectNumberTitle}>04</h2>
-          <h3 id="project-section-title-04" className={styles.swotHeading}>Final Design Mock Up</h3>
+          <h3 id="project-section-title-04" className={styles.swotHeading}>Final Design Mockup</h3>
           <div className={styles.projectTwoFinalMockup}>
             <div className={styles.projectDetail}>
-              <p>The final CharMED-ID keychain design.</p>
+              <p>Here is an imagined CharMED-ID keychain mockup! This final design pulls from a number of the refined designs into
+                a semi-realistic representation of the product. This idea aims to bridge the gap between a medical need while having the 
+                ability to keep some personality.
+              </p>
             </div>
             <button
               className={styles.projectTwoConceptSketchButton}

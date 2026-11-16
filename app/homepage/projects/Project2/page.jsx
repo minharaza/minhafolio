@@ -8,21 +8,21 @@ import styles from '../projects.module.css';
 const personas = [
   {
     id: 'artist',
-    name: 'The Artist',
+    name: 'The Teacher',
     image: '/images/project-sec/Artist.png',
-    details: 'An artist who wants a medical ID that feels as expressive and personal as the accessories they wear.',
+    details: 'A teacher who wants to find a fun way for their students to have their allergies and health information easily accessible, but in a fun playful way that still gives them a way to show their identity!'
   },
   {
     id: 'creative',
-    name: 'The Creative Professional',
+    name: 'A Fashion Enthusiast with a Chronic Illness',
     image: '/images/other/Logo.png',
-    details: 'A creative professional who wants important medical information close at hand without compromising their personal style.',
+    details: 'This fashion enthusiast loves to dress up in patterns, prints, and beads galore! Being able to express herself by matching her keychain to her outfit, while still having access to her illness information in case of emergency gives her peace of mind.'
   },
   {
     id: 'student',
-    name: 'The Student',
+    name: 'The Nanny',
     image: '/images/project-sec/Student.png',
-    details: 'A student who wants a practical, recognizable medical ID that can be customized and attached to an everyday bag.',
+    details: 'As a nanny, she wants to stay diligient and prepared in case of any allergy related situations with the children. Having the medical information on her bag ensures she can always be sure the kids are safe. She loves her bag and hopes it stays looking nice! ',
   },
 ];
 

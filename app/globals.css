@@ -164,6 +164,52 @@ code {
   animation: star-drift-global 3.2s ease-in-out infinite alternate;
 }
 
+@keyframes resume-glow-breathe {
+  from {
+    box-shadow: 0 0 0.5rem 0.1rem rgb(255 236 170 / 55%), 0 0 1rem 0.25rem rgb(255 200 120 / 30%);
+    transform: scale(1);
+  }
+
+  to {
+    box-shadow: 0 0 1.1rem 0.4rem rgb(255 236 170 / 95%), 0 0 2.2rem 0.9rem rgb(255 200 120 / 55%);
+    transform: scale(1.07);
+  }
+}
+
+.resume-glow-button {
+  animation: resume-glow-breathe 1.8s ease-in-out infinite alternate;
+}
+
+.resume-glow-button::after {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: max-content;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.75rem;
+  background: rgb(255 248 251 / 96%);
+  box-shadow: 0 0.4rem 1rem rgb(80 34 51 / 20%);
+  color: #5f3d50;
+  content: 'Download my Full resume';
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 160ms ease, visibility 160ms ease;
+}
+
+.resume-glow-button:hover::after,
+.resume-glow-button:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-glow-button {
+    animation: none;
+  }
+}
+
 .fade-in {
   animation: fadeIn 1s ease-in-out forwards;
 }

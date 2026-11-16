@@ -321,14 +321,15 @@
 	width: clamp(2rem, 3.2vw, 2.75rem);
 	 aspect-ratio: 1;
 	place-items: center;
+	border: 2px solid #695687;
 	border-radius: 50%;
-	background: rgb(255 255 255 / 78%);
+	background: #fff;
 	transition: transform 160ms ease, background-color 160ms ease;
 }
 
 .house-contact-actions a:hover,
 .house-contact-actions a:focus-visible {
-	background: #fff;
+	background: #f7d8e5;
 	transform: translateY(-0.15rem) scale(1.08);
 }
 

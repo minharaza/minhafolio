@@ -233,6 +233,9 @@ export default function HousePage() {
             <a href="/Minha_Raza_Resume_2026.pdf" target="_blank" rel="noreferrer" aria-label="View my resume PDF" title="Resume">
               <img src="/images/proj2/resume-portfolio-svgrepo-com.svg" alt="" aria-hidden="true" />
             </a>
+            <a href="https://www.linkedin.com/in/minha-raza/" target="_blank" rel="noreferrer" aria-label="Visit my LinkedIn profile" title="LinkedIn">
+              <img src="/images/other/linkedin-svgrepo-com.svg" alt="" aria-hidden="true" />
+            </a>
           </div>
           <a className="house-contact-email" href="mailto:minharaza.biz@gmail.com">minharaza.biz@gmail.com</a>
         </div>

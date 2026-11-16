@@ -212,9 +212,8 @@ export default function ResumePage() {
           href="/Minha_Raza_Resume_2026.pdf"
           target="_blank"
           rel="noreferrer"
-          aria-label="Open resume PDF"
-          title="Open resume PDF"
-          className="absolute right-4 top-4 z-20 grid size-16 place-items-center rounded-full bg-white/80 shadow-sm transition hover:scale-105 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#695687] sm:right-6 sm:top-6"
+          aria-label="Download my full resume"
+          className="resume-glow-button absolute right-4 top-4 z-20 grid size-16 place-items-center rounded-full bg-white/80 transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#695687] sm:right-6 sm:top-6"
         >
           <Image
             src="/images/proj2/resume-portfolio-svgrepo-com.svg"
@@ -224,7 +223,7 @@ export default function ResumePage() {
             height={52}
           />
         </a>
-        <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Resume</h1>
+        <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Professional Experience</h1>
 
         {!showResume ? (
           <div className="flex min-h-[640px] items-center justify-center">

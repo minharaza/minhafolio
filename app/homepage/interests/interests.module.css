@@ -532,6 +532,55 @@
   line-height: 1.4;
 }
 
+.artSection {
+  width: min(100%, 90rem);
+  margin: clamp(1.5rem, 4vh, 2.5rem) auto 0;
+}
+
+.artSection h2 {
+  margin: 0 0 1rem;
+  color: #56334a;
+  font-family: 'Fascinate', cursive;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  text-align: center;
+  text-shadow: 0 1px 10px rgb(255 255 255 / 80%);
+}
+
+.artGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  align-items: start;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 700px) {
+  .artGrid {
+    grid-template-columns: repeat(var(--art-cols), minmax(0, 1fr));
+  }
+}
+
+.artItem {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.artItem:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.artItem img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.4rem 1rem rgb(40 60 85 / 24%);
+}
+
 .bitesGrid {
   display: grid;
   width: min(100%, 90rem);

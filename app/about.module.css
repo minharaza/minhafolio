@@ -574,6 +574,10 @@
   transform: rotate(7deg);
 }
 
+.item.purse:hover {
+  z-index: 22;
+}
+
 .shirt {
   top: 28%;
   left: 27%;
@@ -652,6 +656,12 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Align the ball tooltip with the racquet's tooltip position. */
+.scene button.tennisBallTrigger[data-hover-label]::after {
+  top: calc(324% + 0.5rem);
+  left: -26%;
 }
 
 .tennisBallTrigger:focus-visible {

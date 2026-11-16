@@ -10,19 +10,19 @@ const researchPersonas = [
     id: 'student-commuter',
     name: 'Student Commuter',
     image: '/images/project-sec/Student.png',
-    details: 'This high school student has two working parents who cannot drop her off to school, so she depends fully on the bus as a mode of transportation on a daily basis to get to school. School is too far of a walk to do alone, especially since the streets are not supportive of pedestrians around her neighborhood.',
+    details: 'This high school student has two working parents who cannot drop her off to school. She depends on the bus as a mode of transportation on a daily basis. School is too far of a walk to do alone, especially since the streets are not supportive of pedestrians around her neighborhood.',
   },
   {
     id: 'parent-rider',
     name: 'Parent Rider',
     image: '/images/project-sec/Parent.png',
-    details: 'This parent depends on the bus to get around the city. Her daughter is still younger, so she needs an adult to ride with her to school. Sometimes the mornings are challenging because she needs to keep track of her daughter along with other things while waiting for the bus. This is challenging without a place to sit.',
+    details: 'This parent depends on the bus to get around the city. Her daughter is still needs an adult to ride with her to school. Sometimes the mornings are challenging because she needs to keep track of her daughter, along with other things, while waiting for the bus. This is challenging without a place to sit.',
   },
   {
     id: 'educator-commuter',
     name: 'Corporate Commuter',
     image: '/images/project-sec/Educator.png',
-    details: 'This downtown local relied on the bus to get to work. If he were to walk every day it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
+    details: 'This downtown local relies on the bus to get to work. If he were to walk every day it would consume over an hour of his morning, along with a toll on his body. He has a chronic illness that prevents him from walking long distances. Sometimes the bus changes their routes causing him painful mornings due to overexertion.',
   },
 ];
 
@@ -478,7 +478,13 @@ export default function ProjectThreePage() {
                 </div>
                 <figcaption className={styles.busOriginCaption}>
                   <p className={styles.thoughtsHeading}>The Inspiration</p>
-                  In the aftermath of “The Tragedy,” my mornings consisted of unintentionally experience research. Other bus users complained immensely about this change, and rightfully so. I heard commentary about a number of issues that arose with the removal, which led the gears in my brain to turn a little extra. I was experiencing firsthand the effects of a decision with an nonequivalent impact. How can a seemingly small change affect a community at large? The question weighed on me greatly, to a point of invention!
+                  In the aftermath of “The Tragedy,” my mornings consisted of unintentional field research. 
+                  Other bus users complained immensely about this change, and rightfully so. 
+                  I heard commentary about a number of issues that arose with the removal, 
+                  which led the gears in my brain to turn a little extra. I was experiencing firsthand the effects of a decision
+                   with a momentous impact. How can a bus stop affect a community at large? 
+                  <br/><br/>
+                  <strong>The question weighed on me greatly, to a point of invention! </strong>
                 </figcaption>
               </figure>
               <div className={styles.projectStepItem} id="project-step-02">
@@ -537,15 +543,15 @@ export default function ProjectThreePage() {
                     <Image src="/images/project-sec/Bus.png" alt="" width={2160} height={1620} sizes="40vw" />
                   </div>
                 )}
-                <h2 className={styles.researchFindingIntro}>Based on my field research, discussing with other bus goers, here’s what I found:</h2>
+                <h2 className={styles.researchFindingIntro}>Based on my field research, here’s what I found:</h2>
                 <section className={styles.researchChallenges} aria-labelledby="research-challenges-title">
                   <h3 className={styles.researchChallengesTitle} id="research-challenges-title">Challenges</h3>
                   <ul className={styles.researchChallengeGrid}>
                     <li>No Wifi Connection</li>
                     <li>Incoming Bus Information Not Displayed Clearly</li>
                     <li>No Seating</li>
-                    <li>Bus Drivers Missing Bus Stop Waiters</li>
-                    <li>Bus Only Takes Exact Change</li>
+                    <li>Bus Drivers Missing Pickups</li>
+                    <li>"Exact Change" Required</li>
                     <li>Disruption of Local Community</li>
                     <li>No Weather Protection</li>
                     <li>Bus Route Adjustment Information is Unclear</li>
@@ -625,8 +631,8 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail}>
                   <h2>Public Transportation Rocks!</h2>
-                  <p>It is unequivocally evident that research shows how public transportation is vital 
-                    to the health of cities and local communities. Bus stops become a portal into opportunity 
+                  <p>It is unequivocally evident that research supports public transportation being vital 
+                    to the health of cities and communities. Bus stops become a portal for access to opportunity 
                     and resources, especially within the Downtown Cincinnati area. This raises curiosity 
                     about how such a vital point within thousands of people’s everyday lives is overlooked. 
                     Whether a city is large or small, a bus stop guarantees community members to spend time 
@@ -643,7 +649,7 @@ export default function ProjectThreePage() {
                      My goal in a solution for this opportunity is to combine both utilitarianism and 
                      aesthetics into a design that creates a comforting space for bus-goers. Not only 
                      should the function of the bus stop be catered to all users needs, but also it should 
-                     tap into the local cities character with the use of public art!
+                     tap into the a city's character with the use of public art!
                     </p>
                 </article>
                 <div className={styles.publicArtBusPrompt}>
@@ -711,18 +717,17 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail}>
                   <h2>Public Art Rocks Too!</h2>
-                  <p>Overall, the benefits public art has within a community’s mental safety is enormous! 
+                  <p>Overall, public art enormously benefits a community’s mental safety! 
                     The Cincinnati local government and organizations have invested in murals on building 
-                    facades all over the Over-The-Rhine area. This initiative has given a breath of life 
-                    into the area, especially in recent decades. 
+                    facades all over the OTR area. This initiative has given a breath of life 
+                    into the neighborhood, especially in recent decades. 
                     <br /><br />
                     ArtsWave is the driving engine for the Cincinnati arts community, which has helped 
-                    transform the city fueling the community’s Identity. Of the public art benefits listed 
-                    above, ArtsWave has encapsulated each area at an immense impact. The non-profit 
+                    transform the city by fueling the community’s identity. Of the public art benefits listed 
+                    above, ArtsWave has embodied them causing an immense impact. The non-profit 
                     organization has supported over 150 organizations across the city, and most notably, 
                     had a $1.6 billion economic impact upon the city. This organization has been truly 
-                    groundbreaking to the city, and has transformed its identity from one of unrest to a 
-                    revitalized effort highlighting the vibrancy of its community members.
+                    groundbreaking to the city's health by highlighting the vibrancy of its community members.
                     <br /><br />
                     Cincinnati is the perfect case study for how public art can channel positive 
                     change into benefiting community health. 
@@ -822,11 +827,11 @@ export default function ProjectThreePage() {
                   <p> After researching a few visuals of bus stop designs, some with a technologically functional focus 
                     along with others with a cultural art focus, a lot of inspiration could be drawn from both categories.
                     The functional designs leaned upon innovation, specifically by adding features like a screen with live updates 
-                    or solar panels that generating heating and electricity for the stop. Most of these took a modern simplistic
+                    or solar panels that generate heating and electricity for the structure. Most of these took a modern simplistic
                     approach that focused on the advanced additions. 
                     <br /><br />
                     In contrast, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
-                    fruit bus stop installations have gain worldwide attention for their uniqueness and eclectic presence. They
+                    fruit bus stop installations have gained worldwide attention for their uniqueness and eclectic presence. They
                     have become landmarks, attracting tourists from far and wide.
                     <br /><br />
                     Successfully blending technical innovation with artistic expression may be a mighty challenge, however, the
@@ -858,12 +863,11 @@ export default function ProjectThreePage() {
               <section className={styles.busStopNeedsLayout} aria-label="Bus stop interface planning">
                 <article className={styles.projectDetail}>
                   <p>
-                    One aspect of redesigning the bus stop that seemed to easily solve a lot of issues riders
-                    were experiencing was the lack of information readily available. In this bus stop redesign, 
-                    a touchscreen user interface seemed to be the most natural and effective solution to solving any issues with 
-                    displaying relevent bus information.
+                    A lot of issues riders were experiencing was connected to the lack of information readily available. 
+                    In this bus stop redesign, a touchscreen user interface was the most natural and effective solution for
+                    displaying relevant bus information.
                     <br /><br />
-                    After brainstorming a bit, a list of important functions was created allowing for
+                    After brainstorming a bit, a list of important functions were created allowing for
                     a basic design to brew into fruition.
                   </p>
                 </article>
@@ -904,9 +908,9 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail}>
                   <p>Using the ideas laid out in the brainstorming session, a wireframe for an electronic
-                    user interface was developed. The goal of the design is to create a screen that acknowledges
-                    user's needs in one simple, but efficient layout. With the user personas in mind, the created wireframe
-                    aims to be a user-friendly addition to a traditional bus stop, where technology would benefit the community.
+                    user interface was developed. The goal was to create a screen that acknowledges
+                    user needs in one simple, but efficient layout. With the user personas in mind, the wireframe
+                    aims to be an intuitive addition to a traditional bus stop.
                   </p>
                 </article>
                 <section>
@@ -921,7 +925,7 @@ export default function ProjectThreePage() {
                 <article className={styles.projectDetail} id="design-detail-color" hidden={activeDesignDetail !== 'design-detail-color'}>
                   <h2>Choosing Color</h2>
                   <p>The color palette was an easy choice. In hopes of these designs being implemented in the future, it
-                    would be important to work with the city metro. Naturally, using the color scheme of organization was the obvious
+                    is important to align with the city metro. Naturally, using the color scheme of organization was the obvious
                     choice for a cohesive design overall.</p>
                 </article>
               
@@ -949,16 +953,14 @@ export default function ProjectThreePage() {
                   <h2>Device Layout Feature Explanation</h2>
                   <p>
                     The design begins with an outer interface with three main components: An 'SOS' help button, 
-                    a money slot, an a ticket printer. Within the field research, it was found that bus tickets are currently 
-                    bought on the bus. This poses a challenge due to the nature of the system for buying. Sometimes, buses get 
-                    held up due to ticket purchasing causing delays. Newer bus goers mentioned the unclarity of where to purchase when initially
-                    utilizing the bus system. The ticket printer feature aims to alleviate this issue, so that bus goers can
-                    easily purchase tickets at the physical bus stops. 
+                    a money slot, and a ticket printer. Within the field research, it was found that bus tickets are currently 
+                    bought on the bus. This process is challenging because it causes delays within the schedule. Moreover, there are only
+                    five physical ticket printers across the bus routes. Including a printer feature at each stop would alleviate both issues.
                     <br /><br />
-                    The "Change Exchanger" money slot aims to work similarly to that of an ATM machine. Another challenge discovered in the field research was that
-                    users faced difficulties since the bus only accepts exact change. Currently, the Cincinnati Metro costs $2.20 per bus ride. Many frequent riders
+                    The "Change Exchanger" money slot aims to work similarly to that of an ATM machine. 
+                    Users faced difficulties since the bus only accepts exact change. Currently, the Cincinnati Metro costs $2.20 per bus ride. Many frequent riders
                     tended to use cash instead of a digital bus pass. This caused some people to lose money if they did not have exact change. Moreover, this resulted
-                    in more bus delays due to the nature of counting change. In order to improve upon this challenge, the money slot was added so that bus riders could
+                    in more bus delays due to the nature of counting change. The money slot was added so that bus riders could
                     more easily obtain exact change per bus ride at any stop, reducing any type of unnecessary money loss or bus delays.
                     <br /><br />
                     Finally, an 'SOS' button was added in order to provide immediate access during any emergency. This allows for a wholistic solution
@@ -968,18 +970,15 @@ export default function ProjectThreePage() {
                 <article className={styles.projectDetail} id="design-detail-interface" hidden={activeDesignDetail !== 'design-detail-interface'}>
                   <h2>User Interface Layout Feature Explanation</h2>
                   <p>
-                    The actual interface aims to be as user friendly as possible, especially considering the diversity of 
-                    riders with different technology proficiency levels. With the screen the overall layout consists of 
-                    a map. Within it, a side menu with incoming buses along with the duration of their arrival. Each bus
-                    is color-coded differently to make it visually apparent to differentiate between them. Additionally,
-                    each incoming bus is displayed upon the map, providing a real-time visual of the bus numbers and their
-                    respection locations. This furthers the overall idea of making bus information readily available
-                    without much effort for the user.
+                    The interface aims to be as user friendly as possible, considering riders with different technology 
+                    proficiency levels. It contains a map with a side menu that displays color-coded incoming buses, along with 
+                    the duration until their arrival. Each incoming bus is displayed upon the map, providing a real-time visual of their
+                    respective locations, making bus information readily available without much effort for the user.
                     <br /><br />
-                    Along with the largely displayed bus information, there are four icons in the bottom left-hand corner: A home menu icon, 
-                    a money exchanger icon, a ticket print icon, and a search icon. In spirit of making information apparent, yet simple,
-                    the icons are place strategically to ensure less confusion. These icons functionally will be explained further, and it is
-                    important to highlight that these icons to not take away from any of the bus information at any time.
+                    There are four icons in the bottom left-hand corner: A home menu icon, 
+                    a money exchanger icon, a ticket print icon, and a search icon. They are designed
+                    to be clear and accessible, without covering any bus information at any time.
+                    
                     </p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
@@ -1003,16 +1002,16 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail} id="design-detail-bus-card" hidden={activeDesignDetail !== 'design-detail-bus-card'}>
                   <h2>Clicking on a Bus Card</h2>
-                  <p>After the user taps on a bus on a bus card, this screen displays. If you look on the upper right
-                    hand corner, the bus cards changed from displaying the different bus numbers to the same bus number 
-                    with each future incoming bus with its respective arrival time.  
+                  <p>After the user taps on a bus card, this screen displays. If you look on the upper right
+                    hand corner, the bus cards change to display the same bus number with each future incoming 
+                    bus with its respective arrival time.  
                   </p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-home-icon" hidden={activeDesignDetail !== 'design-detail-home-icon'}>
                   <h2>Clicking on the Home Icon</h2>
-                  <p>When click on the home icon, a pop up expands with a number of resource icons along with a search bar at
+                  <p>After clicking the home icon, a pop up expands with a number of icons along with a search bar at
                     the bottom. This is a resource guide that can connect users with city announcements, local events, food banks,
-                    and other resource information that may not otherwise be readily available.
+                    and other resource information that may not otherwise be in one place.
                   </p>
                 </article>
                  <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
@@ -1038,15 +1037,14 @@ export default function ProjectThreePage() {
                   <h2>Money Exchange Icon</h2>
                   <p>
                     The money exchange icon aims to create a neo-ATM money exchanger that gives exact change for bus tickets. 
-                    In this feature, the user will press the icon and the money slot would be blinking green, indicating that money should
+                    After a user presses the icon, the  slot blinks green to indicate that money should
                     go in. Then the pop up flow would be prompted.
                   </p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-money-flow" hidden={activeDesignDetail !== 'design-detail-money-flow'}>
                   <h2>Pop Up Flow</h2>
                   <p>Within this money exchange pop up flow, each step is supposed to clearly address the user similar to an ATM interface.
-                    Since the bus is $2.20 per ride, the machine would calculate exact change for the amount of bus tickets the user asks
-                    for.
+                    Since the bus is $2.20 per ride, the machine would calculate exact change for the amount of bus tickets a user requests.
                   </p>
                 </article>
                 <section className={styles.busStopDesignProgression} aria-label="Bus stop home and incoming buses screens">
@@ -1070,8 +1068,9 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail} id="design-detail-ticket" hidden={activeDesignDetail !== 'design-detail-ticket'}>
                   <h2>Ticket Printer Icon</h2>
-                  <p>The ticket printer icon would give the user the ability to print a number of bus tickets. It would allow users to input money in the
-                    money slot for the change exchanger, and print tickets according to the user's input.
+                  <p>The ticket printer icon would give the user the ability to print a number of bus tickets. 
+                    It would allow users to input money in the money slot for the change exchanger, 
+                    and print tickets according to the user's input.
                   </p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-ticket-flow" hidden={activeDesignDetail !== 'design-detail-ticket-flow'}>
@@ -1102,13 +1101,14 @@ export default function ProjectThreePage() {
                 </section>
                 <article className={styles.projectDetail} id="design-detail-search" hidden={activeDesignDetail !== 'design-detail-search'}>
                   <h2>Search Icon</h2>
-                  <p>The search icon acts as a map guide for finding bus routes to any location, similar to
-                     any traditional navigation application. This would allow users who do not have access to cellular phones to still
+                  <p>The search icon acts as a guide for finding bus routes to any location, similar to
+                     any traditional navigation application. This provides access to users who do not have cellular phones.
+                     This would allow users who lack access to cellular phones to still
                      be able to look at updated bus routes to any location of their choosing.</p>
                 </article>
                 <article className={styles.projectDetail} id="design-detail-search-flow" hidden={activeDesignDetail !== 'design-detail-search-flow'}>
                   <h2>Pop Up Flow</h2>
-                  <p>In this flow, the user is prompted with a keyboard to search their location. After entering their response, 
+                  <p>In this flow, the user is prompted with a keyboard to search a location. After entering their response, 
                     the destination search displays specific bus route directions. The user is then allowed to print these directions using the
                     ticket printer if needed. This really considers those who may be in need of accessible information, but do not have the
                     technology on hand at all times.
@@ -1127,7 +1127,7 @@ export default function ProjectThreePage() {
                 <article className={styles.projectDetail} id="design-detail-sos" hidden={activeDesignDetail !== 'design-detail-sos'}>
                   <h2>Pressing on SOS Button</h2>
                   <p>
-                    When a bus rider presses on the physical SOS button, it prompts a notifying alert telling the user that the police
+                    When a bus rider presses the physical SOS button, it prompts an alert telling the user that the police
                     will be called. The numbers on the screen would act as a live timer, indicating how much time until the call goes 
                     through to the local authorities. This allows the user to cancel if needed, along with simplified steps in case of actual
                     emergent situations.
@@ -1261,16 +1261,15 @@ export default function ProjectThreePage() {
                           </div>
                           <figcaption className={styles.projectDetail}>
                             <p>
-                              In this final design, I decided to choose my personal favorite elements from all three of the designs. 
+                              In this final design, I decided to choose my personal favorite aspects from all three of the designs. 
                               On the left-hand side, the screen interface is built as apart of the structure, in reference to the the earlier
                               user interface breakdown. As a frequent visitor and user of the Findlay Market bus stop, I wanted to capture
-                              the essence of community and the overall celebration of the local market within the design. The fruit bench is 
+                              the essence of community and the overall celebration of the local market. The fruit bench is 
                               an ode to the many farmer's market booths in the historic shed. The very top of the structure features a 
                               giant flower bed filled with plants. Findlay Market has its own local plant business, along with many giant pots
-                              decorated for the summer and spring seasons with plants! In reference to this, I wanted to incorporate another
-                              reflection of the market within every inch of the design. The showstopper would be the mural at the back part
+                              decorated for the summer and spring seasons with plants! The showstopper would be the mural at the back part
                               of the structure, which truly captures the essence of the overall area in addition to the market. The 
-                              neighborhood is filled with public mural for all to see, whether it's visitors or  locals.
+                              neighborhood is filled with public murals for all to see, whether it's visitors or locals.
                             </p>
                           </figcaption>
                         </figure>

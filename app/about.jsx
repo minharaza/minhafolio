@@ -27,6 +27,52 @@ const btsImages = [
   { src: '/images/bts/bts-3.gif', alt: 'BTS members together, image 3' },
 ];
 
+const photographyPhotos = [
+  '63B0F48E-D188-48CC-889C-3B621F7B81D2.JPG',
+  'DA05D628-15CE-4A9D-A72D-040A6C2FA801.JPG',
+  'P1010083 2.JPG',
+  'P1010083.JPG',
+  'P1010103.JPG',
+  'P1010238.JPG',
+  'P1010309.JPG',
+  'P1010458.JPG',
+  'P1010495.JPG',
+  'P1010505.JPG',
+  'P1010517.JPG',
+  'P1010518.JPG',
+  'P1010545.JPG',
+  'P1010603.JPG',
+  'P1010648.JPG',
+  'P1010650.JPG',
+  'P1010658.JPG',
+  'P1010681.JPG',
+  'P1241334.JPG',
+  'P6120892.JPG',
+  'P6140920.JPG',
+  'P6160995.JPG',
+  'P6161007.JPG',
+  'P6161009.JPG',
+  'P6161018.JPG',
+  'P6171082.JPG',
+  'P6181121.JPG',
+  'P6191157.JPG',
+  'P6191178.JPG',
+  'P6191187.JPG',
+  'P6191194.JPG',
+  'P6191198.JPG',
+  'P8201241.JPG',
+  'P8201249.JPG',
+  'P8201257.JPG',
+  'P8201265.JPG',
+  'P8221271.JPG',
+  'P8251278.JPG',
+  'P9141204.JPG',
+  'P9141228.JPG',
+  'P9141230.JPG',
+  'PA041207.JPG',
+  'PA041211.JPG',
+];
+
 const travelPhotos = [
   '0701E767-A800-42C0-AC42-506DEBF4F43E_4_5005_c.jpeg',
   '08ED415D-62E3-405A-91FA-38392CEF79EE_4_5005_c.jpeg',
@@ -81,6 +127,31 @@ const travelPhotos = [
   'F1716011-2C1C-40AB-90DC-18B363103D60_4_5005_c.jpeg',
   'FC3AE07B-0A76-4D7C-8664-800CF2D51486_1_105_c.jpeg',
 ];
+
+function GalleryImage({ src, alt, sizes, priority = false }) {
+  const [imageState, setImageState] = useState('loading');
+
+  return (
+    <>
+      {imageState === 'loading' && (
+        <span className={styles.photoLoading} aria-hidden="true">
+          <span className={styles.photoSpinner} />
+        </span>
+      )}
+      {imageState === 'error' && <span className={styles.photoError}>Unable to load photo</span>}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        onLoad={() => setImageState('loaded')}
+        onError={() => setImageState('error')}
+        style={imageState === 'error' ? { visibility: 'hidden' } : undefined}
+      />
+    </>
+  );
+}
 
 const About = () => {
   const router = useRouter();
@@ -309,20 +380,19 @@ const About = () => {
               &times;
             </button>
             <h2 id="gallery-title">{activeGallery === 'travel' ? 'Travel Memories' : activeGallery === 'bts' ? 'I LOVE BTS!!!!' : 'Photography'}</h2>
-            {activeGallery === 'travel' ? (
+            {activeGallery === 'travel' || activeGallery === 'photography' ? (
               <div className={styles.galleryGrid}>
-                {travelPhotos.map((photo, index) => (
+                {(activeGallery === 'travel' ? travelPhotos : photographyPhotos).map((photo, index) => (
                   <button
                     className={styles.galleryPhoto}
                     key={photo}
                     type="button"
-                    onClick={() => setEnlargedPhoto({ photo, index })}
-                    aria-label={`Enlarge travel photo ${index + 1}`}
+                    onClick={() => setEnlargedPhoto({ photo, index, gallery: activeGallery })}
+                    aria-label={`Enlarge ${activeGallery} photo ${index + 1}`}
                   >
-                    <Image
-                      src={`/images/travel/p/${photo}`}
-                      alt={`Travel photo ${index + 1}`}
-                      fill
+                    <GalleryImage
+                      src={activeGallery === 'travel' ? `/images/travel/p/${photo}` : `/images/photography/${photo}`}
+                      alt={`${activeGallery === 'travel' ? 'Travel' : 'Photography'} photo ${index + 1}`}
                       sizes="(max-width: 600px) 42vw, (max-width: 1000px) 28vw, 220px"
                     />
                   </button>
@@ -337,9 +407,7 @@ const About = () => {
                   </figure>
                 ))}
               </div>
-            ) : (
-              <p className={styles.galleryEmpty}>No photography added yet.</p>
-            )}
+            ) : null}
           </section>
         </div>
       )}
@@ -349,7 +417,7 @@ const About = () => {
             className={styles.photoViewer}
             role="dialog"
             aria-modal="true"
-            aria-label={`Enlarged travel photo ${enlargedPhoto.index + 1}`}
+            aria-label={`Enlarged ${enlargedPhoto.gallery} photo ${enlargedPhoto.index + 1}`}
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -361,11 +429,12 @@ const About = () => {
               &times;
             </button>
             <div className={styles.photoViewerImage}>
-              <Image
-                src={`/images/travel/p/${enlargedPhoto.photo}`}
-                alt={`Travel photo ${enlargedPhoto.index + 1}`}
-                fill
+              <GalleryImage
+                key={`${enlargedPhoto.gallery}-${enlargedPhoto.photo}`}
+                src={enlargedPhoto.gallery === 'travel' ? `/images/travel/p/${enlargedPhoto.photo}` : `/images/photography/${enlargedPhoto.photo}`}
+                alt={`${enlargedPhoto.gallery === 'travel' ? 'Travel' : 'Photography'} photo ${enlargedPhoto.index + 1}`}
                 sizes="90vw"
+                priority
               />
             </div>
           </section>

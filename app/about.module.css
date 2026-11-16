@@ -450,6 +450,60 @@
   outline-offset: 3px;
 }
 
+.photoLoading,
+.photoError {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.photoLoading {
+  opacity: 0;
+  animation: photo-loading-appear 1ms linear 350ms forwards;
+}
+
+.photoSpinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #d8aebe;
+  border-top-color: #695687;
+  border-radius: 50%;
+  animation: photo-loading-spin 800ms linear infinite;
+}
+
+.photoError {
+  padding: 1rem;
+  color: #695687;
+  font-family: 'Happy Monkey', cursive;
+  text-align: center;
+}
+
+.photoViewerImage .photoError {
+  color: #fff8fb;
+}
+
+@keyframes photo-loading-appear {
+  to { opacity: 1; }
+}
+
+@keyframes photo-loading-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photoLoading {
+    opacity: 1;
+    animation: none;
+  }
+
+  .photoSpinner {
+    animation: none;
+  }
+}
+
 .photoViewerBackdrop {
   position: fixed;
   inset: 0;

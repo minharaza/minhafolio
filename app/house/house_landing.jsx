@@ -219,7 +219,7 @@ export default function HousePage() {
           </Link>
         ))}
       </nav>
-      <section className="house-contact-cloud" aria-labelledby="house-contact-title">
+      {!showMatcha && <section className="house-contact-cloud" aria-labelledby="house-contact-title">
         <img className="house-cloud" src="/images/proj2/Cloud.png" alt="" aria-hidden="true" />
         <div className="house-contact-content">
           <h2 id="house-contact-title">Contact me</h2>
@@ -236,7 +236,7 @@ export default function HousePage() {
           </div>
           <a className="house-contact-email" href="mailto:minharaza.biz@gmail.com">minharaza.biz@gmail.com</a>
         </div>
-      </section>
+      </section>}
     {isCutoutReady && (
     <div className="house-scene">
       <img className="house-image" src="/images/other/House.png" alt="" aria-hidden="true" />

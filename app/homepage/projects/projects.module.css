@@ -2721,6 +2721,13 @@
   color: #fff8f1;
 }
 
+.projectTwoOverview {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  width: min(100%, 56rem);
+  justify-self: center;
+}
+
 .projectStepItem .projectDetail {
   box-sizing: border-box;
   width: 100%;

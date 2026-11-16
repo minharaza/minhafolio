@@ -72,7 +72,7 @@ export default function ProjectTwoPage() {
           <h2 id="project-section-01" className={styles.projectNumberTitle}>01</h2>
           <h3 id="project-section-title-01" className={styles.swotHeading}>Overview</h3>
           <section className={styles.projectDetails} aria-label="Project details">
-          <article className={styles.projectDetail}>
+          <article className={`${styles.projectDetail} ${styles.projectTwoOverview}`}>
             <h2>Project Overview</h2>
             <p>
               CharMED-ID is a medical ID NFC tag created to blend the cross section of functionality and fashion. It gives
@@ -400,7 +400,7 @@ export default function ProjectTwoPage() {
             </button>
           </div>
         </section>
-       <h2 className={styles.researchFindingIntro}>Thank you!</h2>
+       <h2 className={styles.researchFindingIntro}>Thank you for your time!</h2>
         <div className={styles.finalThoughtsIcons} aria-label="Resume link">
           <a
             className={styles.finalThoughtsIconButton}

@@ -29,8 +29,14 @@ const personas = [
 export default function ProjectTwoPage() {
   const [showCombinedRobot, setShowCombinedRobot] = useState(false);
   const [selectedConceptSketch, setSelectedConceptSketch] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
   const [expandedPersona, setExpandedPersona] = useState(null);
   const [showPersonaHints, setShowPersonaHints] = useState(true);
+
+  const openImage = (image) => {
+    setZoomLevel(1);
+    setSelectedConceptSketch(image);
+  };
 
   useEffect(() => {
     if (!selectedConceptSketch) return undefined;
@@ -300,7 +306,7 @@ export default function ProjectTwoPage() {
                 <button
                   className={styles.projectTwoConceptSketchButton}
                   type="button"
-                  onClick={() => setSelectedConceptSketch(sketch)}
+                  onClick={() => openImage(sketch)}
                   aria-label={`Enlarge: ${sketch.alt}`}
                 >
                   <Image
@@ -335,7 +341,7 @@ export default function ProjectTwoPage() {
                 <button
                   className={styles.projectTwoConceptSketchButton}
                   type="button"
-                  onClick={() => setSelectedConceptSketch(design)}
+                  onClick={() => openImage(design)}
                   aria-label={`Enlarge: ${design.alt}`}
                 >
                   <Image
@@ -361,7 +367,7 @@ export default function ProjectTwoPage() {
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-04">
           <h2 id="project-section-04" className={styles.projectNumberTitle}>04</h2>
-          <h3 id="project-section-title-04" className={styles.swotHeading}>Design Mock Up</h3>
+          <h3 id="project-section-title-04" className={styles.swotHeading}>Final Design Mock Up</h3>
           <div className={styles.projectTwoFinalMockup}>
             <div className={styles.projectDetail}>
               <p>The final CharMED-ID keychain design.</p>
@@ -369,7 +375,7 @@ export default function ProjectTwoPage() {
             <button
               className={styles.projectTwoConceptSketchButton}
               type="button"
-              onClick={() => setSelectedConceptSketch({ src: '/images/proj2/Final-KC.png', alt: 'Final CharMED-ID keychain mockup' })}
+              onClick={() => openImage({ src: '/images/proj2/Final-KC.png', alt: 'Final CharMED-ID keychain mockup' })}
               aria-label="Enlarge final CharMED-ID keychain mockup"
             >
               <Image
@@ -391,10 +397,7 @@ export default function ProjectTwoPage() {
             </button>
           </div>
         </section>
-        <section className={styles.projectSection} aria-labelledby="project-section-title-05">
-          <h2 id="project-section-05" className={styles.projectNumberTitle}>05</h2>
-          <h3 id="project-section-title-05" className={styles.swotHeading}>Final Thoughts</h3>
-        </section>
+       <h2 className={styles.researchFindingIntro}>Thank you!</h2>
         <div className={styles.finalThoughtsIcons} aria-label="Resume link">
           <a
             className={styles.finalThoughtsIconButton}
@@ -443,6 +446,25 @@ export default function ProjectTwoPage() {
             >
               &times;
             </button>
+            <div className={styles.finalDesignModalControls} aria-label="Image zoom controls">
+              <button
+                type="button"
+                onClick={() => setZoomLevel((level) => Math.max(1, level - 0.5))}
+                disabled={zoomLevel <= 1}
+                aria-label="Zoom out"
+              >
+                -
+              </button>
+              <span aria-live="polite">{Math.round(zoomLevel * 100)}%</span>
+              <button
+                type="button"
+                onClick={() => setZoomLevel((level) => Math.min(3, level + 0.5))}
+                disabled={zoomLevel >= 3}
+                aria-label="Zoom in"
+              >
+                +
+              </button>
+            </div>
             <div className={`${styles.finalDesignModalImageFrame} ${styles.projectTwoConceptModalImageFrame}`}>
               <Image
                 src={selectedConceptSketch.src}
@@ -450,6 +472,7 @@ export default function ProjectTwoPage() {
                 fill
                 sizes="90vw"
                 className={styles.finalDesignModalImage}
+                style={{ transform: `scale(${zoomLevel})` }}
               />
             </div>
           </div>

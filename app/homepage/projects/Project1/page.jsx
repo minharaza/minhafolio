@@ -265,11 +265,12 @@ export default function ProjectOnePage() {
                 <ZoomableImage
                   onZoom={zoomImage}
                   className={styles.researchVisualImage}
-                  src="/images/project-sec/randa1-converted.png"
+                  src="/images/proj-images/proj-scan-1.png"
                   alt="Visual design concept for the Indigo Hippo website redesign"
                   width={4032}
                   height={3024}
                 />
+                <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
               </div>
               <article className={styles.projectDetail}>
                 <h2>UX Research & Interviews</h2>
@@ -381,6 +382,7 @@ export default function ProjectOnePage() {
                 fill
                 sizes="(max-width: 700px) 100vw, 25vw"
               />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
             </div>
             <span className={styles.designProcessArrow} role="img" aria-label="leads to redesigned sketches">
               ⋆˚𓏲ּ｡➹
@@ -390,21 +392,23 @@ export default function ProjectOnePage() {
               <ZoomableImage
                 onZoom={zoomImage}
                 className={styles.designProcessImage}
-                src="/images/project-sec/randa2-converted.png"
+                src="/images/proj-images/proj-scan-2.png"
                 alt="Design process board showing the second stage of the Indigo Hippo website redesign"
                 fill
                 sizes="(max-width: 700px) 100vw, 50vw"
               />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
               </div>
-              <div className={styles.designProcessImageFrame}>
+              <div className={`${styles.designProcessImageFrame} ${styles.designProcessScanThreeFrame}`}>
               <ZoomableImage
                 onZoom={zoomImage}
                 className={styles.designProcessImage}
-                src="/images/project-sec/randa3-converted.png"
+                src="/images/proj-images/proj-scan-3.png"
                 alt="Design process board showing the third stage of the Indigo Hippo website redesign"
                 fill
                 sizes="(max-width: 700px) 100vw, 50vw"
               />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
               </div>
             </div>
           </div>
@@ -426,15 +430,18 @@ export default function ProjectOnePage() {
             sizes="(max-width: 700px) 100vw, 60rem"
           />
           <div className={styles.designProcessScrapbookRow}>
-            <ZoomableImage
-              onZoom={zoomImage}
-              className={styles.designProcessScrapbookImage}
-              src="/images/project-sec/scarpbooking-layout.png"
-              alt="Scrapbook-inspired Indigo Hippo landing page layout concept"
-              width={1336}
-              height={844}
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
+            <div className={styles.designProcessImageHintFrame}>
+              <ZoomableImage
+                onZoom={zoomImage}
+                className={styles.designProcessScrapbookImage}
+                src="/images/project-sec/scarpbooking-layout.png"
+                alt="Scrapbook-inspired Indigo Hippo landing page layout concept"
+                width={1336}
+                height={844}
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+            </div>
             <article className={styles.projectDetail}>
               <p>
                 After establishing a basic wireframe of a more impactful layout, I researched ways to emphasize Indigo Hippo's playful, unique character in a digital format. As a customer, I reflected on the materials that have supported my school projects and art escapades. A digital scrapbook felt like the right way to capture the brand's identity, so I researched examples and explored how that visual direction could shape the site.
@@ -444,24 +451,30 @@ export default function ProjectOnePage() {
             </article>
           </div>
           <div className={styles.designProcessVisuals}>
-            <ZoomableImage
-              onZoom={zoomImage}
-              className={styles.designProcessVisualImage}
-              src="/images/project-sec/Brand-identiy.png"
-              alt="Three visual identity and website design directions"
-              width={1808}
-              height={982}
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
-            <ZoomableImage
-              onZoom={zoomImage}
-              className={styles.designProcessVisualImage}
-              src="/images/project-sec/typography.png"
-              alt="Typography explorations for the Indigo Hippo brand"
-              width={710}
-              height={344}
-              sizes="(max-width: 700px) 100vw, 50vw"
-            />
+            <div className={styles.designProcessImageHintFrame}>
+              <ZoomableImage
+                onZoom={zoomImage}
+                className={styles.designProcessVisualImage}
+                src="/images/project-sec/Brand-identiy.png"
+                alt="Three visual identity and website design directions"
+                width={1808}
+                height={982}
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+            </div>
+            <div className={styles.designProcessImageHintFrame}>
+              <ZoomableImage
+                onZoom={zoomImage}
+                className={styles.designProcessVisualImage}
+                src="/images/project-sec/typography.png"
+                alt="Typography explorations for the Indigo Hippo brand"
+                width={710}
+                height={344}
+                sizes="(max-width: 700px) 100vw, 50vw"
+              />
+              <Image className={styles.designProcessClickHint} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+            </div>
           </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="final-design-heading">
@@ -616,25 +629,31 @@ export default function ProjectOnePage() {
           <div className={styles.comparisonList}>
             {comparisonPairs.map((pair, index) => (
               <div className={styles.comparisonRow} key={pair.id}>
-                <ZoomableImage
-                  onZoom={zoomImage}
-                  className={styles.comparisonImage}
-                  src={pair.id}
-                  alt={`Original website, section ${index + 1}`}
-                  width={pair.idWidth}
-                  height={pair.idHeight}
-                  sizes="(max-width: 700px) 100vw, 40vw"
-                />
+                <div className={styles.comparisonImageFrame}>
+                  <ZoomableImage
+                    onZoom={zoomImage}
+                    className={styles.comparisonImage}
+                    src={pair.id}
+                    alt={`Original website, section ${index + 1}`}
+                    width={pair.idWidth}
+                    height={pair.idHeight}
+                    sizes="(max-width: 700px) 100vw, 40vw"
+                  />
+                  <Image className={`${styles.comparisonClickHint} ${styles.comparisonClickHintLeft}`} src="/images/other/Click_Me.png" alt="" aria-hidden="true" width={800} height={800} />
+                </div>
                 <span className={styles.comparisonArrow} aria-hidden="true">⋆˚𓏲ּ｡➹</span>
-                <ZoomableImage
-                  onZoom={zoomImage}
-                  className={styles.comparisonImage}
-                  src={pair.fd}
-                  alt={`Final design, section ${index + 1}`}
-                  width={pair.fdWidth}
-                  height={pair.fdHeight}
-                  sizes="(max-width: 700px) 100vw, 40vw"
-                />
+                <div className={styles.comparisonImageFrame}>
+                  <ZoomableImage
+                    onZoom={zoomImage}
+                    className={styles.comparisonImage}
+                    src={pair.fd}
+                    alt={`Final design, section ${index + 1}`}
+                    width={pair.fdWidth}
+                    height={pair.fdHeight}
+                    sizes="(max-width: 700px) 100vw, 40vw"
+                  />
+                  <Image className={`${styles.comparisonClickHint} ${styles.comparisonClickHintRight}`} src="/images/other/Click_Me_Left_.png" alt="" aria-hidden="true" width={800} height={800} />
+                </div>
               </div>
             ))}
           </div>
@@ -716,6 +735,22 @@ export default function ProjectOnePage() {
                 width={48}
                 height={48}
               />
+        </a>
+        <a
+          className={styles.finalThoughtsIconButton}
+          href="/Minha_Raza_Resume_2026.pdf"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open resume PDF"
+          title="Resume"
+        >
+          <Image
+            className={styles.finalThoughtsIcon}
+            src="/images/proj2/resume-portfolio-svgrepo-com.svg"
+            alt=""
+            width={48}
+            height={48}
+          />
         </a>
         {showFinalThoughtsHint && (
           <button

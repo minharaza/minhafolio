@@ -27,9 +27,10 @@ export default function ResumePage() {
   const directionsCloseRef = useRef(null);
   const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
-  const [selectedBook, setSelectedBook] = useState('book-1');
+  const [selectedBook, setSelectedBook] = useState(null);
   const [showResume, setShowResume] = useState(false);
   const [openBookFrame, setOpenBookFrame] = useState(0);
+  const [bookFramesLoaded, setBookFramesLoaded] = useState(false);
   const [isOpeningBook, setIsOpeningBook] = useState(false);
   const [isOpenBookHovered, setIsOpenBookHovered] = useState(false);
   const [booksVisible, setBooksVisible] = useState(false);
@@ -49,6 +50,23 @@ export default function ResumePage() {
     image: bookImages[index % bookImages.length],
     label: job.position,
   }));
+
+  useEffect(() => {
+    let cancelled = false;
+    const frameLoads = openBookFrames.map((src) => {
+      const image = new window.Image();
+      image.src = src;
+      return image.decode().catch(() => undefined);
+    });
+
+    Promise.all(frameLoads).then(() => {
+      if (!cancelled) setBookFramesLoaded(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     async function fetchContent() {
@@ -107,7 +125,7 @@ export default function ResumePage() {
     return () => clearInterval(frameInterval);
   }, [isOpeningBook]);
 
-  const selectedIndex = Number(selectedBook.replace('book-', '')) - 1;
+  const selectedIndex = selectedBook ? Number(selectedBook.replace('book-', '')) - 1 : -1;
   const activeBookPalette = bookPalette[selectedIndex] || bookPalette[0];
 
   const selectedContent = (() => {
@@ -190,15 +208,32 @@ export default function ResumePage() {
         &larr;
       </button>
       <div className="relative z-10 max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-y-auto rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-lg backdrop-blur-sm sm:p-8">
+        <a
+          href="/Minha_Raza_Resume_2026.pdf"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open resume PDF"
+          title="Open resume PDF"
+          className="absolute right-4 top-4 z-20 grid size-16 place-items-center rounded-full bg-white/80 shadow-sm transition hover:scale-105 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#695687] sm:right-6 sm:top-6"
+        >
+          <Image
+            src="/images/proj2/resume-portfolio-svgrepo-com.svg"
+            alt=""
+            aria-hidden="true"
+            width={52}
+            height={52}
+          />
+        </a>
         <h1 className="mb-8 text-center text-5xl font-bold md:text-6xl" style={{ fontFamily: "'Fascinate', cursive" }}>Resume</h1>
 
         {!showResume ? (
           <div className="flex min-h-[640px] items-center justify-center">
             <button
               type="button"
-              aria-label="Open resume book"
+              aria-label={bookFramesLoaded ? 'Open resume book' : 'Loading resume book'}
+              disabled={!bookFramesLoaded || isOpeningBook}
               onClick={() => {
-                if (!isOpeningBook) setIsOpeningBook(true);
+                setIsOpeningBook(true);
               }}
               onMouseEnter={() => setIsOpenBookHovered(true)}
               onMouseLeave={() => setIsOpenBookHovered(false)}
@@ -209,7 +244,7 @@ export default function ResumePage() {
                 border: 'none',
                 background: 'transparent',
                 padding: 0,
-                cursor: 'pointer',
+                cursor: bookFramesLoaded && !isOpeningBook ? 'pointer' : 'wait',
                 transition: 'transform 0.2s ease, filter 0.2s ease',
                 transform: isOpeningBook || isOpenBookHovered ? 'scale(1.02)' : 'scale(1)',
                 filter: isOpeningBook || isOpenBookHovered ? 'drop-shadow(0 10px 18px rgba(252, 227, 65, 0.7))' : 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16))',
@@ -239,6 +274,7 @@ export default function ResumePage() {
                 alt="Book opening"
                 fill
                 sizes="(max-width: 700px) 80vw, 500px"
+                unoptimized
                 style={{
                   objectFit: 'contain',
                 }}
@@ -330,7 +366,7 @@ export default function ResumePage() {
             alt="Click a book to explore an experience"
             width={150}
             height={150}
-            className="pointer-events-none absolute left-0 top-[28%] z-20 w-[clamp(4.5rem,10vw,7.5rem)] object-contain"
+            className="pointer-events-none absolute left-0 top-[12%] z-20 w-[clamp(4.5rem,10vw,7.5rem)] object-contain"
             style={{
               filter: 'drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%))',
               animation: 'resume-hint-flash 1.3s ease-in-out infinite alternate',
@@ -338,7 +374,7 @@ export default function ResumePage() {
           />
           </div>
 
-          <div
+          {selectedBook && <div
             className="w-full max-w-2xl overflow-hidden rounded-2xl border border-slate-200 shadow-inner transition-colors duration-300"
             style={{ backgroundColor: activeBookPalette.light }}
           >
@@ -365,7 +401,7 @@ export default function ResumePage() {
                 {selectedContent.items.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </div>
-          </div>
+          </div>}
         </section>
         )}
       </div>

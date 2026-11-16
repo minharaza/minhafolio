@@ -1481,7 +1481,7 @@
 .worksCitedShelves {
   display: grid;
   min-width: 0;
-  width: calc(100% - 9rem);
+  width: calc(100% - 14rem);
   margin: 0 auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
@@ -1491,7 +1491,7 @@
   position: absolute;
   top: 50%;
   z-index: 10;
-  width: 6cap;
+  width: 6rem;
   padding: 0;
   border: 0;
   background: transparent;
@@ -1744,7 +1744,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 8 / 7;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 8px;
 }
 
@@ -1757,7 +1757,7 @@
   max-width: none;
   height: auto;
   object-fit: contain;
-  transform: translate(-50%, -50%) rotate(90deg);
+  transform: translate(-50%, -50%);
 }
 
 .busStopDesignComparison {
@@ -2064,12 +2064,40 @@
 
 .busStopDesignProgression {
   display: grid;
-  width:min(calc(100vw - 3rem), 70rem);
+  width: min(calc(100vw - 2rem), 80rem);
   grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.4fr) auto minmax(0, 1.35fr);
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.5rem);
   justify-self: center;
+}
+
+.busStopDesignProgressionSingle {
+  display: grid;
+  width: min(calc(100vw - 2rem), 80rem);
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.busStopDesignProgressionSingle .busStopDesignProgressionImage {
+  width: min(100%, 46rem);
+}
+
+.busStopScanPair {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.busStopScanPair .busStopDesignProgressionImage {
+  --bus-stop-hint-size: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.busStopScanPair .busStopDesignProgressionImage .busStopDesignClickHint {
+  width: clamp(4rem, 5vw, 5rem);
 }
 
 .busStopDesignProgressionImage {
@@ -2108,6 +2136,12 @@
   filter: drop-shadow(0 1px 1px rgb(62 25 29 / 90%)) drop-shadow(0 2px 4px rgb(62 25 29 / 72%)) drop-shadow(0 0 0.35rem rgb(255 248 241 / 70%));
   animation: hint-flash 1.3s ease-in-out infinite alternate;
   pointer-events: none;
+  visibility: hidden;
+}
+
+.busStopDesignImageButton:hover + .busStopDesignClickHint,
+.busStopDesignImageButton:focus-visible + .busStopDesignClickHint {
+  visibility: visible;
 }
 
 .busStopDesignProgressionImageRight .busStopDesignClickHint {
@@ -2118,6 +2152,44 @@
 .busStopDesignImageButton:focus-visible {
   outline: 3px solid #4a2722;
   outline-offset: 4px;
+}
+
+.designImageDialog {
+  position: fixed;
+  box-sizing: border-box;
+  width: min(92vw, 64rem);
+  height: min(90dvh, 58rem);
+  max-width: none;
+  max-height: none;
+  padding: 3.5rem 0 0;
+  border: 0;
+  background: transparent;
+  color: #fff8f1;
+}
+
+.designImageDialog::backdrop {
+  background: rgb(25 20 19 / 88%);
+}
+
+.designImageDialogFrame {
+  display: grid;
+  height: 100%;
+  overflow: auto;
+  place-items: center;
+}
+
+.busStopDesignProgressionImage .designImageDialogFrame img {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: center;
+}
+
+.designImageDialogDetail {
+  max-width: 65rem;
+  margin: 1rem auto 0;
+  white-space: pre-line;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2152,6 +2224,10 @@
   justify-self: center;
 }
 
+.busStopFeatureExplanations > article:nth-of-type(even) {
+  grid-column: 2;
+}
+
 .designProcessGallery {
   display: grid;
   width: min(100%, 76rem);
@@ -2163,8 +2239,10 @@
 
 .designProcessSketches {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 22rem);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
+  justify-self: center;
 }
 
 .designProcessArrow {
@@ -2192,12 +2270,40 @@
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 8px;
+}
+
+.designProcessScanThreeFrame {
+  aspect-ratio: 794 / 282;
 }
 
 .designProcessImage {
   object-fit: contain;
+}
+
+.designProcessClickHint {
+  position: absolute;
+  top: 3rem;
+  left: -2rem;
+  z-index: 2;
+  width: clamp(4rem, 8vw, 7rem);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px #4a2722) drop-shadow(0 2px 4px rgb(25 20 19 / 85%));
+  transform: translateY(0.25rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.researchVisualFrame:hover .designProcessClickHint,
+.researchVisualFrame:focus-within .designProcessClickHint,
+.designProcessImageFrame:hover .designProcessClickHint,
+.designProcessImageFrame:focus-within .designProcessClickHint,
+.designProcessImageHintFrame:hover .designProcessClickHint,
+.designProcessImageHintFrame:focus-within .designProcessClickHint {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .designProcessStepImage {
@@ -2206,6 +2312,11 @@
   height: auto;
   justify-self: center;
   border-radius: 8px;
+}
+
+.designProcessImageHintFrame {
+  position: relative;
+  min-width: 0;
 }
 
 .designProcessVisuals {
@@ -2423,6 +2534,38 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+.comparisonImageFrame {
+  position: relative;
+  min-width: 0;
+}
+
+.comparisonClickHint {
+  position: absolute;
+  top: 0.75rem;
+  z-index: 2;
+  width: clamp(4rem, 8vw, 7rem);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px #4a2722) drop-shadow(0 2px 4px rgb(25 20 19 / 85%));
+  transform: translateY(0.25rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.comparisonClickHintLeft {
+  left: -2rem;
+}
+
+.comparisonClickHintRight {
+  right: -2rem;
+}
+
+.comparisonImageFrame:hover .comparisonClickHint,
+.comparisonImageFrame:focus-within .comparisonClickHint {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .zoomableImage {
@@ -3316,12 +3459,12 @@
   }
 
   .worksCitedBoard {
-    padding-top: 4.5rem;
+    padding-top: 5.5rem;
   }
 
   .worksCitedHint {
     top: 0;
-    width: 4rem;
+    width: 5rem;
     transform: none;
   }
 
@@ -3411,6 +3554,10 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .busStopFeatureExplanations > article:nth-of-type(even) {
+    grid-column: 1;
+  }
+
   .busStopDesignProgression {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.75rem;
@@ -3456,6 +3603,14 @@
 
   .comparisonRow {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .comparisonClickHintLeft {
+    left: 0.5rem;
+  }
+
+  .comparisonClickHintRight {
+    right: 0.5rem;
   }
 
   .comparisonArrow {

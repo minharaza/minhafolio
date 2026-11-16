@@ -578,10 +578,10 @@
   outline-offset: 3px;
 }
 
-.tennisBall {
+.item.tennisBall {
   top: 71%;
   left: 85%;
-  z-index: 6;
+  z-index: 21;
   width: 8%;
   transform-origin: center bottom;
 }

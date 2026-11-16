@@ -221,10 +221,10 @@ const About = () => {
             className={`${styles.item} ${styles[item.className]} ${styles.galleryTrigger}`}
             data-hover-label={item.className === 'airport'
               ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
-              : 'Photography is a hobby of mine'}
+              : 'Photography is a hobby of mine!'}
             title={item.className === 'airport'
               ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
-              : 'Photography is a hobby of mine'}
+              : 'Photography is a hobby of mine!'}
             onClick={() => {
               const gallery = item.className === 'airport' ? 'travel' : 'photography';
               setActiveGallery(gallery);
@@ -304,8 +304,8 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles[item.className]} ${styles.swapTrigger}`}
-            data-hover-label="I love fashion and I love to change it up!"
-            title="I love fashion and I love to change it up!"
+            data-hover-label="I love fashion. Let's change it up!"
+            title="I love fashion. Let's change it up!"
             onClick={() => {
               setAlternateItems((current) => ({
                 ...current,

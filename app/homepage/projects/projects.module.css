@@ -1353,6 +1353,11 @@
   text-align: center;
 }
 
+.projectThreePersonaSection {
+  width: min(calc(100vw - 2 * clamp(1rem, 4vw, 4rem) - 2 * clamp(0.75rem, 2.5vw, 2.5rem)), 76rem);
+  justify-self: center;
+}
+
 .transportationBenefitsSection,
 .publicArtBenefitsSection {
   width: min(calc(100vw - 3rem), 76rem);
@@ -1621,10 +1626,6 @@
   margin: 0 auto;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-}
-
-.projectTwoPersonaGrid {
-  width: 100%;
 }
 
 .researchPersonaHint {

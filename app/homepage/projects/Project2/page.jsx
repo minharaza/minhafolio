@@ -30,6 +30,7 @@ export default function ProjectTwoPage() {
   const [showCombinedRobot, setShowCombinedRobot] = useState(false);
   const [selectedConceptSketch, setSelectedConceptSketch] = useState(null);
   const [expandedPersona, setExpandedPersona] = useState(null);
+  const [showPersonaHints, setShowPersonaHints] = useState(true);
 
   useEffect(() => {
     if (!selectedConceptSketch) return undefined;
@@ -238,7 +239,28 @@ export default function ProjectTwoPage() {
             ))}
           </div>
           <h3 className={styles.swotHeading}>User Personas</h3>
-          <div className={`${styles.researchPersonaGrid} ${styles.projectTwoPersonaGrid}`}>
+          <div className={styles.researchPersonaBoard}>
+            {showPersonaHints && (
+              <>
+                <button
+                  className={`${styles.researchPersonaHint} ${styles.researchPersonaHintLeft}`}
+                  type="button"
+                  onClick={() => setShowPersonaHints(false)}
+                  aria-label="Dismiss left persona hint"
+                >
+                  <Image src="/images/other/Click_Me.png" alt="" width={800} height={800} />
+                </button>
+                <button
+                  className={`${styles.researchPersonaHint} ${styles.researchPersonaHintRight}`}
+                  type="button"
+                  onClick={() => setShowPersonaHints(false)}
+                  aria-label="Dismiss right persona hint"
+                >
+                  <Image src="/images/other/Click_Me_Left_.png" alt="" width={300} height={300} />
+                </button>
+              </>
+            )}
+            <div className={styles.researchPersonaGrid}>
             {personas.map((persona) => {
               const isExpanded = expandedPersona === persona.id;
               return (
@@ -248,7 +270,10 @@ export default function ProjectTwoPage() {
                   className={`${styles.researchPersonaCard}${isExpanded ? ` ${styles.researchPersonaCardExpanded}` : ''}`}
                   aria-expanded={isExpanded}
                   aria-controls={`project-two-persona-${persona.id}`}
-                  onClick={() => setExpandedPersona(isExpanded ? null : persona.id)}
+                  onClick={() => {
+                    setShowPersonaHints(false);
+                    setExpandedPersona(isExpanded ? null : persona.id);
+                  }}
                 >
                   <Image className={styles.researchPersonaImage} src={persona.image} alt="" width={300} height={300} />
                   <span className={styles.researchPersonaName}>{persona.name}</span>
@@ -258,6 +283,7 @@ export default function ProjectTwoPage() {
                 </button>
               );
             })}
+            </div>
           </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">

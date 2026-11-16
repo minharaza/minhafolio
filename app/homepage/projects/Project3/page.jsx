@@ -552,7 +552,7 @@ export default function ProjectThreePage() {
                     <li>Lack of Consideration for Passengers</li>
                   </ul>
                 </section>
-                <section className={styles.researchInsights} aria-labelledby="research-userpersonas-title">
+                <section className={`${styles.researchInsights} ${styles.projectThreePersonaSection}`} aria-labelledby="research-userpersonas-title">
                   <h3 className={styles.researchInsightsTitle} id="research-userpersonas-title">User Personas</h3>
                   <div className={styles.researchPersonaBoard}>
                     {showResearchPersonaHints && (

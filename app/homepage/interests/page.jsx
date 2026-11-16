@@ -240,7 +240,7 @@ export default function InterestsPage() {
             <p className={styles.bitesEyebrow}>Follow my food blog on instagram </p>
             <h1 id="bites-title">@bitesintheam</h1>
             <p>
-              As a born-and-raised Louisvillian going onto a Cincinnatian of 6 years, my friend and I have loved exploring by cafe hopping across our two cities! 
+              As a girl who visits her hometown of Louisville often while being a Cincinnatian of 6 years, my friend and I have loved cafe hopping across our two cities! 
               We decided to start this online food blog to share our discoveries in a fun, visual way. 
               I have designed each post from scratch using my own design skills and the Procreate drawing application!
               Check out some of my work.
@@ -278,9 +278,9 @@ export default function InterestsPage() {
                 sizes="(max-width: 700px) 40vw, 18vw"
               />
               <p>
-                This year I decided to start an Etsy Store to share some of my crafts and designs! 
+                This year I decided to start an Etsy Store to share some of my crafts and designs. 
                 <br /><br />
-                I created my own logo thats show above, but it took a few iterations to get right!
+                I created my own logo thats show above, but it took a few iterations to get right.
               </p>
               <button
                 className={styles.etsyContinueButton}
@@ -347,11 +347,11 @@ export default function InterestsPage() {
                     </button>
                   </div>
               <p className={styles.etsyDescription}>
-                This is a Sonny Angel! These guys are collectible figurines that are sought after for their various hats!
+                This is a Sonny Angel! These guys are collectible figurines that are sought after for their various hats.
                 They have become quite popular, especially over the past year, inspiring me to design some stickers in honor
-                of them! 
+                of them.
                 <br /> <br />
-                Click on sonny to see some stickers!
+                Click on Sonny to see some stickers!
                 </p>
             </div>
           )}
@@ -478,7 +478,7 @@ export default function InterestsPage() {
             <h2 id="interests-directions-title">My Interests</h2>
             <p id="interests-directions-copy">
               As a girl who loves to craft and create, there are plenty of instances where design translates into my personal interests!
-              Feel free to click around and peak into some design hobbies I'm proud of!
+              Feel free to click around and peak into some design hobbies!
               </p>
             <p className={styles.directionsPrompt}>Close this note to start exploring.</p>
           </section>

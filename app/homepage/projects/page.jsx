@@ -46,7 +46,7 @@ export default function ProjectsPage() {
           <header className={styles.header}>
             <p className={styles.eyebrow}>A small collection</p>
             <h1>Projects</h1>
-            <p className={styles.intro}>Ideas I have shaped into useful, thoughtful experiences.</p>
+            <p className={styles.intro}>Check out so design projects I'm passionate about!</p>
           </header>
           <nav className={styles.projectLinks} aria-label="Project pages">
             <button type="button" onClick={() => router.push('/homepage/projects/Project3')}>

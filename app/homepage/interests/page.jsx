@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './interests.module.css';
 
 const interestItems = [
-  { id: 'baking', label: 'Baking', hoverLabel: 'Food Blog', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
+  { id: 'baking', label: 'Baking', hoverLabel: 'My Food Blog', src: '/images/interests/Bitesinam.png', position: 'interestCroissant' },
   { id: 'etsy', label: 'Etsy finds', hoverLabel: 'My Etsy Store', src: '/images/interests/Etsy.png', position: 'interestEtsy' },
-  { id: 'painting', label: 'Painting', src: '/images/interests/Painting.png', position: 'interestPainting' },
+  { id: 'painting', label: 'Painting', hoverLabel: 'My Art', src: '/images/interests/Painting.png', position: 'interestPainting' },
 ];
 
 const bitesPosts = [
@@ -69,6 +69,20 @@ const sonnyStickers = [
   { src: 'Waiter(final).png', alt: 'Sonny dressed as a waiter' },
 ];
 
+const artSections = [
+  { title: 'Paintings', dir: 'paint', alt: 'Painting', count: 4 },
+  { title: 'Drawings', dir: 'draw', alt: 'Drawing', count: 6 },
+  { title: 'Digital Paintings', dir: 'DP', alt: 'Digital painting', count: 6 },
+  { title: 'Plates', dir: 'Plate', alt: 'Painted plate', count: 3 },
+  { title: 'Records', dir: 'Record', alt: 'Painted record', count: 3 },
+].map((section) => ({
+  ...section,
+  items: Array.from({ length: section.count }, (_, i) => ({
+    url: `/images/paintings/${section.dir}-${i + 1}.png`,
+    alt: `${section.alt} ${i + 1}`,
+  })),
+}));
+
 const floatingBubbles = [
   { left: '3%', size: 'clamp(4rem, 8vw, 8rem)', duration: '19s', delay: '-12s', drift: '7vw' },
   { left: '11%', size: 'clamp(3rem, 5vw, 5rem)', duration: '15s', delay: '-4s', drift: '-5vw' },
@@ -108,6 +122,7 @@ export default function InterestsPage() {
   const [showEtsyIterations, setShowEtsyIterations] = useState(false);
   const [showEtsyContent, setShowEtsyContent] = useState(false);
   const [showSonnyStickers, setShowSonnyStickers] = useState(false);
+  const [paintingStarted, setPaintingStarted] = useState(false);
   const [zoomedPost, setZoomedPost] = useState(null);
 
   useEffect(() => {
@@ -154,11 +169,17 @@ export default function InterestsPage() {
       return;
     }
 
+    if (id === 'painting') {
+      setSelectedInterest(null);
+      setPaintingStarted(true);
+      return;
+    }
+
     setSelectedInterest((current) => current === id ? null : id);
   };
 
-  const isExploringInterest = bakingStarted || etsyStarted;
-  const interestContentVisible = showBitesPosts || showEtsyIntro || showEtsyIterations || showEtsyContent;
+  const isExploringInterest = bakingStarted || etsyStarted || paintingStarted;
+  const interestContentVisible = showBitesPosts || showEtsyIntro || showEtsyIterations || showEtsyContent || paintingStarted;
 
   return (
     <main className={`${styles.page}${bakingStarted ? ` ${styles.bakingStarted}` : ''}${showBitesPosts ? ` ${styles.showBitesPosts}` : ''}`}>
@@ -233,7 +254,7 @@ export default function InterestsPage() {
                   key={post.src}
                   post={post}
                   index={index}
-                  onSelect={setZoomedPost}
+                  onSelect={(p) => setZoomedPost({ url: `/images/interests/bitesposts/${p.src}`, alt: p.alt })}
                 />
               ))}
             </div>
@@ -354,6 +375,32 @@ export default function InterestsPage() {
           )}
         </section>
       )}
+      {paintingStarted && (
+        <section className={styles.bitesExperience} aria-labelledby="art-title">
+          <div className={styles.bitesIntro}>
+            <p className={styles.bitesEyebrow}>Here's a little look into some of</p>
+            <h1 id="art-title">My Art</h1>
+          </div>
+          {artSections.map((section) => (
+            <section className={styles.artSection} key={section.dir} aria-labelledby={`art-${section.dir}`}>
+              <h2 id={`art-${section.dir}`}>{section.title}</h2>
+              <div className={styles.artGrid} style={{ '--art-cols': section.count }}>
+                {section.items.map((art) => (
+                  <button
+                    type="button"
+                    className={styles.artItem}
+                    key={art.url}
+                    aria-label={`Zoom in: ${art.alt}`}
+                    onClick={() => setZoomedPost(art)}
+                  >
+                    <Image src={art.url} alt={art.alt} width={768} height={768} sizes="(max-width: 600px) 44vw, (max-width: 1000px) 28vw, 18vw" />
+                  </button>
+                ))}
+              </div>
+            </section>
+          ))}
+        </section>
+      )}
       <nav className={styles.topNavigation} aria-label="Page navigation">
         <Link className={styles.backButton} href="/homepage?skipIntro=1">
           <span aria-hidden="true">&larr;</span>
@@ -372,6 +419,7 @@ export default function InterestsPage() {
               setEtsyStarted(false);
               setSelectedInterest(null);
               setShowEtsyIntro(false);
+              setPaintingStarted(false);
             }}
           >
             <span aria-hidden="true">&larr;</span>
@@ -397,7 +445,7 @@ export default function InterestsPage() {
               &times;
             </button>
             <Image
-              src={`/images/interests/bitesposts/${zoomedPost.src}`}
+              src={zoomedPost.url}
               alt={zoomedPost.alt}
               width={768}
               height={768}

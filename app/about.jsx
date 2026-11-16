@@ -145,6 +145,7 @@ function GalleryImage({ src, alt, sizes, priority = false }) {
         fill
         sizes={sizes}
         priority={priority}
+        data-gallery-loader="true"
         onLoad={() => setImageState('loaded')}
         onError={() => setImageState('error')}
         style={imageState === 'error' ? { visibility: 'hidden' } : undefined}

@@ -1,6 +1,7 @@
 import './globals.css';
 
 import { ThemeProvider } from './components/theme-provider';
+import ImageLoadingIndicator from './components/image-loading-indicator';
 import { Quicksand } from 'next/font/google';
 
 const quicksand = Quicksand({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
+          <ImageLoadingIndicator />
           {children}
         </ThemeProvider>
       </body>

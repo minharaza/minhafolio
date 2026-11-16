@@ -1623,6 +1623,10 @@
   gap: 1rem;
 }
 
+.projectTwoPersonaGrid {
+  width: 100%;
+}
+
 .researchPersonaHint {
   position: absolute;
   top: 50%;

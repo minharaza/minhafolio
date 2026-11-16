@@ -5,9 +5,31 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styles from '../projects.module.css';
 
+const personas = [
+  {
+    id: 'artist',
+    name: 'The Artist',
+    image: '/images/project-sec/Artist.png',
+    details: 'An artist who wants a medical ID that feels as expressive and personal as the accessories they wear.',
+  },
+  {
+    id: 'creative',
+    name: 'The Creative Professional',
+    image: '/images/other/Logo.png',
+    details: 'A creative professional who wants important medical information close at hand without compromising their personal style.',
+  },
+  {
+    id: 'student',
+    name: 'The Student',
+    image: '/images/project-sec/Student.png',
+    details: 'A student who wants a practical, recognizable medical ID that can be customized and attached to an everyday bag.',
+  },
+];
+
 export default function ProjectTwoPage() {
   const [showCombinedRobot, setShowCombinedRobot] = useState(false);
   const [selectedConceptSketch, setSelectedConceptSketch] = useState(null);
+  const [expandedPersona, setExpandedPersona] = useState(null);
 
   useEffect(() => {
     if (!selectedConceptSketch) return undefined;
@@ -214,6 +236,28 @@ export default function ProjectTwoPage() {
                 />
               </figure>
             ))}
+          </div>
+          <h3 className={styles.swotHeading}>User Personas</h3>
+          <div className={`${styles.researchPersonaGrid} ${styles.projectTwoPersonaGrid}`}>
+            {personas.map((persona) => {
+              const isExpanded = expandedPersona === persona.id;
+              return (
+                <button
+                  key={persona.id}
+                  type="button"
+                  className={`${styles.researchPersonaCard}${isExpanded ? ` ${styles.researchPersonaCardExpanded}` : ''}`}
+                  aria-expanded={isExpanded}
+                  aria-controls={`project-two-persona-${persona.id}`}
+                  onClick={() => setExpandedPersona(isExpanded ? null : persona.id)}
+                >
+                  <Image className={styles.researchPersonaImage} src={persona.image} alt="" width={300} height={300} />
+                  <span className={styles.researchPersonaName}>{persona.name}</span>
+                  <span className={styles.researchPersonaDetails} id={`project-two-persona-${persona.id}`} hidden={!isExpanded}>
+                    {persona.details}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">

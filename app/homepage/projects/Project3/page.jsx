@@ -291,7 +291,7 @@ export default function ProjectThreePage() {
 
       <section className={`${styles.content} ${styles.projectThreeContent}`} id="project-top" ref={contentRef}>
         <header className={`${styles.header} ${styles.projectThreeHeader}`}>
-          <p className={styles.eyebrow}>Project 3</p>
+          <p className={styles.eyebrow}>Project 1</p>
           <h1>Bus Stops:</h1>
           <p className={styles.eyebrow}>The Cornerstones of Community!</p>
         </header>
@@ -1426,7 +1426,7 @@ export default function ProjectThreePage() {
           <span aria-hidden="true">&#8593;</span> Top of the page
         </Link>
         <Link className={styles.projectNavigationButton} href="/homepage/projects/Project1">
-          Project 1 <span aria-hidden="true">&#8594;</span>
+          Project 2 <span aria-hidden="true">&#8594;</span>
         </Link>
       </nav>
           </div>

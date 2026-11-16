@@ -57,7 +57,6 @@ export default function ProjectTwoPage() {
         <a href="#project-section-02" aria-label="Go to section 2, Research and Analysis">02</a>
         <a href="#project-section-03" aria-label="Go to section 3, Concept Development">03</a>
         <a href="#project-section-04" aria-label="Go to section 4, Design and Prototype">04</a>
-        <a href="#project-section-05" aria-label="Go to section 5, Final Thoughts">05</a>
       </nav>
       <Link className={styles.backButton} href="/homepage/projects" aria-label="Back to projects">
         &larr;
@@ -65,7 +64,7 @@ export default function ProjectTwoPage() {
 
       <section className={`${styles.content} ${styles.projectTwoContent}`}>
         <header id="project-top" className={`${styles.header} ${styles.projectTwoHeader}`}>
-          <p className={styles.eyebrow}>Project 2</p>
+          <p className={styles.eyebrow}>PROJECT 3</p>
           <h1>CharMED-ID: <br />A Medical ID Keychain</h1>
         </header>
         <section className={styles.projectSection} aria-labelledby="project-section-title-01">
@@ -427,7 +426,7 @@ export default function ProjectTwoPage() {
             <span aria-hidden="true">&#8593;</span> Top of the page
           </Link>
           <Link className={styles.projectNavigationButton} href="/homepage/projects/Project3">
-            Project 3 <span aria-hidden="true">&#8594;</span>
+            Project 1 <span aria-hidden="true">&#8594;</span>
           </Link>
         </nav>
       </section>

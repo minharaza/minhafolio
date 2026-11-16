@@ -148,7 +148,7 @@ export default function ProjectOnePage() {
 
       <section className={`${styles.content} ${styles.projectOneContent}`}>
         <header id="project-top" className={`${styles.header} ${styles.projectHeader}`}>
-          <p className={styles.eyebrow}>Project One</p>
+          <p className={styles.eyebrow}>Project 2</p>
           <h1 className={styles.projectTitle}>Case Study: Redesigning Indigo Hippo's Website</h1>
         </header>
         <h1 id="project-section-01" className={styles.projectNumberTitle}>01</h1>
@@ -772,7 +772,7 @@ export default function ProjectOnePage() {
           <span aria-hidden="true">&#8593;</span> Top of the page
         </Link>
         <Link className={styles.projectNavigationButton} href="/homepage/projects/Project2">
-          Project 2 <span aria-hidden="true">&#8594;</span>
+          Project 3 <span aria-hidden="true">&#8594;</span>
         </Link>
       </nav>
                 </section>

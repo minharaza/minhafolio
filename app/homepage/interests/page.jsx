@@ -25,6 +25,39 @@ const bitesPosts = [
   { src: 'Untitled_Artwork 2.png', alt: 'Food scrapbook page' },
 ];
 
+function BitesPost({ post, index, onSelect }) {
+  const [imageState, setImageState] = useState('loading');
+
+  return (
+    <button
+      type="button"
+      className={styles.bitesPost}
+      aria-label={`Zoom in: ${post.alt}`}
+      aria-busy={imageState === 'loading'}
+      onClick={() => onSelect(post)}
+      style={{ '--post-delay': `${index * 55}ms` }}
+    >
+      {imageState === 'loading' && (
+        <span className={styles.bitesPostLoading} aria-hidden="true">
+          <span className={styles.bitesPostSpinner} />
+        </span>
+      )}
+      {imageState === 'error' && <span className={styles.bitesPostError}>Unable to load photo</span>}
+      <Image
+        src={`/images/interests/bitesposts/${post.src}`}
+        alt={post.alt}
+        width={768}
+        height={768}
+        sizes="(max-width: 600px) 44vw, (max-width: 1000px) 28vw, 18vw"
+        data-gallery-loader="true"
+        onLoad={() => setImageState('loaded')}
+        onError={() => setImageState('error')}
+        style={imageState === 'error' ? { visibility: 'hidden' } : undefined}
+      />
+    </button>
+  );
+}
+
 const sonnyStickers = [
   { src: 'Babysonny_Strawberry_(final).png', alt: 'Sonny wearing a strawberry costume' },
   { src: 'Barista_(final).png', alt: 'Sonny dressed as a barista' },
@@ -196,22 +229,12 @@ export default function InterestsPage() {
           {showBitesPosts && (
             <div className={styles.bitesGrid}>
               {bitesPosts.map((post, index) => (
-                <button
-                  type="button"
-                  className={styles.bitesPost}
+                <BitesPost
                   key={post.src}
-                  aria-label={`Zoom in: ${post.alt}`}
-                  onClick={() => setZoomedPost(post)}
-                  style={{ '--post-delay': `${900 + index * 55}ms` }}
-                >
-                  <Image
-                    src={`/images/interests/bitesposts/${post.src}`}
-                    alt={post.alt}
-                    width={768}
-                    height={768}
-                    sizes="(max-width: 600px) 44vw, (max-width: 1000px) 28vw, 18vw"
-                  />
-                </button>
+                  post={post}
+                  index={index}
+                  onSelect={setZoomedPost}
+                />
               ))}
             </div>
           )}

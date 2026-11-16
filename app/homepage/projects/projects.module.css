@@ -222,6 +222,19 @@
   line-height: 1.65;
 }
 
+.projectTwoFinalMockup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  align-items: center;
+  gap: 2rem;
+}
+
+.projectTwoFinalMockupImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .projectDetail .projectTwoResearchCopy {
   width: auto;
   justify-self: initial;
@@ -344,6 +357,11 @@
   pointer-events: none;
   transform: translateY(0.25rem);
   transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.projectTwoFinalMockup .projectTwoConceptSketchHint {
+  top: 45%;
+  left: 10%;
 }
 
 .projectTwoConceptSketchButton:hover .projectTwoConceptSketchHint,
@@ -1351,6 +1369,11 @@
   font-size: 2rem;
   font-weight: 400;
   text-align: center;
+}
+
+.projectThreePersonaSection {
+  width: min(calc(100vw - 2 * clamp(1rem, 4vw, 4rem) - 2 * clamp(0.75rem, 2.5vw, 2.5rem)), 76rem);
+  justify-self: center;
 }
 
 .transportationBenefitsSection,
@@ -2698,6 +2721,13 @@
   color: #fff8f1;
 }
 
+.projectTwoOverview {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  width: min(100%, 56rem);
+  justify-self: center;
+}
+
 .projectStepItem .projectDetail {
   box-sizing: border-box;
   width: 100%;
@@ -3205,9 +3235,12 @@
 
 .projectThreeCaption {
   top: 37%;
-  width: min(38%, 40rem);
+  width: min(38%, 35rem);
   max-width: 38%;
   font-size: clamp(1.25rem, 0.9vw, 1.2rem);
+}
+
+.matCard:nth-child(3) .toastCaption {
   color: #ffffff;
   text-shadow: 0 0.1rem 0.2rem rgb(50, 46, 48);
 }

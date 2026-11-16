@@ -5,9 +5,38 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styles from '../projects.module.css';
 
+const personas = [
+  {
+    id: 'artist',
+    name: 'The Teacher',
+    image: '/images/project-sec/Artist.png',
+    details: 'A teacher who wants to find a fun way for their students to have their allergies and health information easily accessible, but in a fun playful way that still gives them a way to show their identity!'
+  },
+  {
+    id: 'creative',
+    name: 'A Fashion Enthusiast with a Chronic Illness',
+    image: '/images/other/Logo.png',
+    details: 'This fashion enthusiast loves to dress up in patterns, prints, and beads galore! Being able to express herself by matching her keychain to her outfit, while still having access to her illness information in case of emergency gives her peace of mind.'
+  },
+  {
+    id: 'student',
+    name: 'The Nanny',
+    image: '/images/project-sec/Student.png',
+    details: 'As a nanny, she wants to stay diligient and prepared in case of any allergy related situations with the children. Having the medical information on her bag ensures she can always be sure the kids are safe. She loves her bag and hopes it stays looking nice! ',
+  },
+];
+
 export default function ProjectTwoPage() {
   const [showCombinedRobot, setShowCombinedRobot] = useState(false);
   const [selectedConceptSketch, setSelectedConceptSketch] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [expandedPersona, setExpandedPersona] = useState(null);
+  const [showPersonaHints, setShowPersonaHints] = useState(true);
+
+  const openImage = (image) => {
+    setZoomLevel(1);
+    setSelectedConceptSketch(image);
+  };
 
   useEffect(() => {
     if (!selectedConceptSketch) return undefined;
@@ -28,7 +57,6 @@ export default function ProjectTwoPage() {
         <a href="#project-section-02" aria-label="Go to section 2, Research and Analysis">02</a>
         <a href="#project-section-03" aria-label="Go to section 3, Concept Development">03</a>
         <a href="#project-section-04" aria-label="Go to section 4, Design and Prototype">04</a>
-        <a href="#project-section-05" aria-label="Go to section 5, Final Thoughts">05</a>
       </nav>
       <Link className={styles.backButton} href="/homepage/projects" aria-label="Back to projects">
         &larr;
@@ -36,14 +64,14 @@ export default function ProjectTwoPage() {
 
       <section className={`${styles.content} ${styles.projectTwoContent}`}>
         <header id="project-top" className={`${styles.header} ${styles.projectTwoHeader}`}>
-          <p className={styles.eyebrow}>Project 2</p>
+          <p className={styles.eyebrow}>PROJECT 3</p>
           <h1>CharMED-ID: <br />A Medical ID Keychain</h1>
         </header>
         <section className={styles.projectSection} aria-labelledby="project-section-title-01">
           <h2 id="project-section-01" className={styles.projectNumberTitle}>01</h2>
           <h3 id="project-section-title-01" className={styles.swotHeading}>Overview</h3>
           <section className={styles.projectDetails} aria-label="Project details">
-          <article className={styles.projectDetail}>
+          <article className={`${styles.projectDetail} ${styles.projectTwoOverview}`}>
             <h2>Project Overview</h2>
             <p>
               CharMED-ID is a medical ID NFC tag created to blend the cross section of functionality and fashion. It gives
@@ -215,6 +243,53 @@ export default function ProjectTwoPage() {
               </figure>
             ))}
           </div>
+          <h3 className={styles.swotHeading}>User Personas</h3>
+          <div className={styles.researchPersonaBoard}>
+            {showPersonaHints && (
+              <>
+                <button
+                  className={`${styles.researchPersonaHint} ${styles.researchPersonaHintLeft}`}
+                  type="button"
+                  onClick={() => setShowPersonaHints(false)}
+                  aria-label="Dismiss left persona hint"
+                >
+                  <Image src="/images/other/Click_Me.png" alt="" width={800} height={800} />
+                </button>
+                <button
+                  className={`${styles.researchPersonaHint} ${styles.researchPersonaHintRight}`}
+                  type="button"
+                  onClick={() => setShowPersonaHints(false)}
+                  aria-label="Dismiss right persona hint"
+                >
+                  <Image src="/images/other/Click_Me_Left_.png" alt="" width={300} height={300} />
+                </button>
+              </>
+            )}
+            <div className={styles.researchPersonaGrid}>
+            {personas.map((persona) => {
+              const isExpanded = expandedPersona === persona.id;
+              return (
+                <button
+                  key={persona.id}
+                  type="button"
+                  className={`${styles.researchPersonaCard}${isExpanded ? ` ${styles.researchPersonaCardExpanded}` : ''}`}
+                  aria-expanded={isExpanded}
+                  aria-controls={`project-two-persona-${persona.id}`}
+                  onClick={() => {
+                    setShowPersonaHints(false);
+                    setExpandedPersona(isExpanded ? null : persona.id);
+                  }}
+                >
+                  <Image className={styles.researchPersonaImage} src={persona.image} alt="" width={300} height={300} />
+                  <span className={styles.researchPersonaName}>{persona.name}</span>
+                  <span className={styles.researchPersonaDetails} id={`project-two-persona-${persona.id}`} hidden={!isExpanded}>
+                    {persona.details}
+                  </span>
+                </button>
+              );
+            })}
+            </div>
+          </div>
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-03">
           <h2 id="project-section-03" className={styles.projectNumberTitle}>03</h2>
@@ -230,7 +305,7 @@ export default function ProjectTwoPage() {
                 <button
                   className={styles.projectTwoConceptSketchButton}
                   type="button"
-                  onClick={() => setSelectedConceptSketch(sketch)}
+                  onClick={() => openImage(sketch)}
                   aria-label={`Enlarge: ${sketch.alt}`}
                 >
                   <Image
@@ -265,7 +340,7 @@ export default function ProjectTwoPage() {
                 <button
                   className={styles.projectTwoConceptSketchButton}
                   type="button"
-                  onClick={() => setSelectedConceptSketch(design)}
+                  onClick={() => openImage(design)}
                   aria-label={`Enlarge: ${design.alt}`}
                 >
                   <Image
@@ -291,12 +366,40 @@ export default function ProjectTwoPage() {
         </section>
         <section className={styles.projectSection} aria-labelledby="project-section-title-04">
           <h2 id="project-section-04" className={styles.projectNumberTitle}>04</h2>
-          <h3 id="project-section-title-04" className={styles.swotHeading}>Design &amp; Prototype</h3>
+          <h3 id="project-section-title-04" className={styles.swotHeading}>Final Design Mockup</h3>
+          <div className={styles.projectTwoFinalMockup}>
+            <div className={styles.projectDetail}>
+              <p>Here is an imagined CharMED-ID keychain mockup! This final design pulls from a number of the refined designs into
+                a semi-realistic representation of the product. This idea aims to bridge the gap between a medical need while having the 
+                ability to keep some personality.
+              </p>
+            </div>
+            <button
+              className={styles.projectTwoConceptSketchButton}
+              type="button"
+              onClick={() => openImage({ src: '/images/proj2/Final-KC.png', alt: 'Final CharMED-ID keychain mockup' })}
+              aria-label="Enlarge final CharMED-ID keychain mockup"
+            >
+              <Image
+                className={styles.projectTwoFinalMockupImage}
+                src="/images/proj2/Final-KC.png"
+                alt="Final CharMED-ID keychain mockup"
+                width={2048}
+                height={2048}
+                sizes="(max-width: 700px) 90vw, 36rem"
+              />
+              <Image
+                className={styles.projectTwoConceptSketchHint}
+                src="/images/other/Click_Me.png"
+                alt=""
+                aria-hidden="true"
+                width={300}
+                height={300}
+              />
+            </button>
+          </div>
         </section>
-        <section className={styles.projectSection} aria-labelledby="project-section-title-05">
-          <h2 id="project-section-05" className={styles.projectNumberTitle}>05</h2>
-          <h3 id="project-section-title-05" className={styles.swotHeading}>Final Thoughts</h3>
-        </section>
+       <h2 className={styles.researchFindingIntro}>Thank you for your time!</h2>
         <div className={styles.finalThoughtsIcons} aria-label="Resume link">
           <a
             className={styles.finalThoughtsIconButton}
@@ -323,7 +426,7 @@ export default function ProjectTwoPage() {
             <span aria-hidden="true">&#8593;</span> Top of the page
           </Link>
           <Link className={styles.projectNavigationButton} href="/homepage/projects/Project3">
-            Project 3 <span aria-hidden="true">&#8594;</span>
+            Project 1 <span aria-hidden="true">&#8594;</span>
           </Link>
         </nav>
       </section>
@@ -345,6 +448,25 @@ export default function ProjectTwoPage() {
             >
               &times;
             </button>
+            <div className={styles.finalDesignModalControls} aria-label="Image zoom controls">
+              <button
+                type="button"
+                onClick={() => setZoomLevel((level) => Math.max(1, level - 0.5))}
+                disabled={zoomLevel <= 1}
+                aria-label="Zoom out"
+              >
+                -
+              </button>
+              <span aria-live="polite">{Math.round(zoomLevel * 100)}%</span>
+              <button
+                type="button"
+                onClick={() => setZoomLevel((level) => Math.min(3, level + 0.5))}
+                disabled={zoomLevel >= 3}
+                aria-label="Zoom in"
+              >
+                +
+              </button>
+            </div>
             <div className={`${styles.finalDesignModalImageFrame} ${styles.projectTwoConceptModalImageFrame}`}>
               <Image
                 src={selectedConceptSketch.src}
@@ -352,6 +474,7 @@ export default function ProjectTwoPage() {
                 fill
                 sizes="90vw"
                 className={styles.finalDesignModalImage}
+                style={{ transform: `scale(${zoomLevel})` }}
               />
             </div>
           </div>

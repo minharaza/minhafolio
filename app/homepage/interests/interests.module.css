@@ -542,12 +542,15 @@
 }
 
 .bitesPost {
+  position: relative;
   display: block;
   min-width: 0;
+  aspect-ratio: 1;
   margin: 0;
   padding: 0;
   border: 0;
-  background: transparent;
+  border-radius: 0.5rem;
+  background: #e6f3fa;
   cursor: zoom-in;
   opacity: 0;
   transform: translateY(1.5rem) scale(0.94);
@@ -565,6 +568,37 @@
   height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 0.4rem 1rem rgb(40 60 85 / 24%);
+}
+
+.bitesPostLoading,
+.bitesPostError {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.bitesPostSpinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #d8aebe;
+  border-top-color: #695687;
+  border-radius: 50%;
+  animation: bites-loading-spin 800ms linear infinite;
+}
+
+.bitesPostError {
+  padding: 0.75rem;
+  color: #56334a;
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@keyframes bites-loading-spin {
+  to { transform: rotate(360deg); }
 }
 
 .postViewerBackdrop {
@@ -881,6 +915,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .bitesPostSpinner {
+    animation: none;
+  }
+
   .bubble {
     display: none;
     animation: none;

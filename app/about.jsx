@@ -220,11 +220,8 @@ const About = () => {
             type="button"
             className={`${styles.item} ${styles[item.className]} ${styles.galleryTrigger}`}
             data-hover-label={item.className === 'airport'
-              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
-              : 'Photography is a hobby of mine!'}
-            title={item.className === 'airport'
-              ? 'I love to travel! Fun fact: I\'ve been to 19 countries...and counting!'
-              : 'Photography is a hobby of mine!'}
+              ? 'Fun fact: I\'ve been to 19 countries...and counting! Click in to see some memories!'
+              : 'Photography is a hobby of mine. Click in to see some of my work!'}
             onClick={() => {
               const gallery = item.className === 'airport' ? 'travel' : 'photography';
               setActiveGallery(gallery);
@@ -238,8 +235,7 @@ const About = () => {
             key={item.src}
             type="button"
             className={`${styles.item} ${styles.notebook} ${styles.galleryTrigger}`}
-            data-hover-label="I love everything BTS! V is my bias."
-            title="I love everything BTS! V is my bias."
+            data-hover-label="I love new music. Click in for a surprise!"
             onClick={() => {
               setActiveGallery('bts');
               confetti({
@@ -262,7 +258,6 @@ const About = () => {
             type="button"
             className={`${styles.item} ${styles.head} ${styles.headTrigger}`}
             data-hover-label="I love making art and writing code! It's even more awesome when I can combine both!"
-            title="I love making art and writing code! It's even more awesome when I can combine both!"
             onClick={() => {
               setStarsCrazy(true);
               window.setTimeout(() => setStarsCrazy(false), 1800);
@@ -277,7 +272,6 @@ const About = () => {
             type="button"
             className={`${styles.item} ${styles.tennisRacquet} ${styles.tennisRacquetTrigger}`}
             data-hover-label="I love tennis! I've been playing since I was 6!"
-            title="I love tennis! I've been playing since I was 6!"
             onClick={() => {
               setBallBounceSequence((sequence) => sequence + 1);
             }}
@@ -291,7 +285,6 @@ const About = () => {
             type="button"
             className={`${styles.item} ${styles.tennisBall} ${styles.tennisBallTrigger}${ballBounceSequence ? ` ${styles.bouncing}` : ''}`}
             data-hover-label="I love tennis! I've been playing since I was 6!"
-            title="I love tennis! I've been playing since I was 6!"
             onClick={() => {
               setBallBounceSequence((sequence) => sequence + 1);
             }}
@@ -305,7 +298,6 @@ const About = () => {
             type="button"
             className={`${styles.item} ${styles[item.className]} ${styles.swapTrigger}`}
             data-hover-label="I love fashion. Let's change it up!"
-            title="I love fashion. Let's change it up!"
             onClick={() => {
               setAlternateItems((current) => ({
                 ...current,

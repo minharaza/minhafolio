@@ -237,6 +237,15 @@ export default function InterestsPage() {
       {bakingStarted && (
         <section className={styles.bitesExperience} aria-labelledby="bites-title">
           <div className={styles.bitesIntro}>
+            <a
+              className={styles.instagramButton}
+              href="https://www.instagram.com/bitesintheam/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open @bitesintheam on Instagram"
+            >
+              <Image src="/images/other/instagram-1-svgrepo-com.svg" alt="" width={48} height={48} />
+            </a>
             <p className={styles.bitesEyebrow}>Follow my food blog on instagram </p>
             <h1 id="bites-title">@bitesintheam</h1>
             <p>
@@ -264,6 +273,15 @@ export default function InterestsPage() {
       {etsyStarted && (
         <section className={styles.etsyExperience} aria-labelledby="etsy-title">
           <div className={styles.bitesIntro}>
+            <a
+              className={`${styles.instagramButton} ${styles.etsyShopButton}`}
+              href="https://www.etsy.com/shop/MasterpiecesbyMinha?ref=shop_profile&listing_id=4534038516"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open my Etsy shop"
+            >
+              <Image src="/images/other/etsy-logo-svgrepo-com.svg" alt="" width={48} height={48} />
+            </a>
             <p className={styles.bitesEyebrow}>Check out some of my creations in my Etsy store!</p>
             <h1 id="etsy-title">@MasterpiecesByMinha</h1>
           </div>
@@ -280,7 +298,7 @@ export default function InterestsPage() {
               <p>
                 This year I decided to start an Etsy Store to share some of my crafts and designs. 
                 <br /><br />
-                I created my own logo thats show above, but it took a few iterations to get right.
+                I created my own logo that's shown above. It took a few iterations to get right.
               </p>
               <button
                 className={styles.etsyContinueButton}
@@ -474,7 +492,6 @@ export default function InterestsPage() {
             >
               &times;
             </button>
-            <p className={styles.directionsEyebrow}>Some extra design highlights in</p>
             <h2 id="interests-directions-title">My Interests</h2>
             <p id="interests-directions-copy">
               As a girl who loves to craft and create, there are plenty of instances where design translates into my personal interests!

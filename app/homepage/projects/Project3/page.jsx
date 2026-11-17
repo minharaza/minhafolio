@@ -484,7 +484,7 @@ export default function ProjectThreePage() {
                   which led the gears in my brain to turn a little extra. I was experiencing firsthand the effects of a decision
                    with a momentous impact. How can a bus stop affect a community at large? 
                   <br/><br/>
-                  <strong>The question weighed on me greatly, to a point of invention! </strong>
+                  <strong>The question weighed on me greatly, to the point of invention! </strong>
                 </figcaption>
               </figure>
               <div className={styles.projectStepItem} id="project-step-02">
@@ -635,18 +635,16 @@ export default function ProjectThreePage() {
                     to the health of cities and communities. Bus stops become a portal for access to opportunity 
                     and resources, especially within the Downtown Cincinnati area. This raises curiosity 
                     about how such a vital point within thousands of people’s everyday lives is overlooked. 
-                    Whether a city is large or small, a bus stop guarantees community members to spend time 
-                    in a location point waiting for transportation. If cities invest in public spaces, 
-                    there would be a large positive impact on not only the individual residents, 
+                    If cities invest in public spaces, there would be a large positive impact on not only individual residents, 
                     but the overall health of the city. 
                     <br /><br />
                     There are two categories of improvement that can be considered when redesigning a bus stop. 
-                    Utilitarian improvements are solutions that alleviate an operational needs such as 
+                    Utilitarian improvements are solutions that alleviate operational needs such as 
                     improving accessibility or providing a bench at a stop. Aesthetic design improvements 
-                    are solutions aimed to improvement the quality of an experience through culturally 
+                    are solutions aimed to improve the quality of an experience through culturally 
                     intertwined design. 
                      <br /><br />
-                     My goal in a solution for this opportunity is to combine both utilitarianism and 
+                     My goal in creating a solution for this challenge is to combine both utilitarianism and 
                      aesthetics into a design that creates a comforting space for bus-goers. Not only 
                      should the function of the bus stop be catered to all users needs, but also it should 
                      tap into the a city's character with the use of public art!
@@ -723,10 +721,10 @@ export default function ProjectThreePage() {
                     into the neighborhood, especially in recent decades. 
                     <br /><br />
                     ArtsWave is the driving engine for the Cincinnati arts community, which has helped 
-                    transform the city by fueling the community’s identity. Of the public art benefits listed 
-                    above, ArtsWave has embodied them causing an immense impact. The non-profit 
-                    organization has supported over 150 organizations across the city, and most notably, 
-                    had a $1.6 billion economic impact upon the city. This organization has been truly 
+                    ArtsWave has embodied an immense impact
+                    by embodying the benefits of public art listed above.
+                    The non-profit organization supported over 150 organizations across the city, and most notably, 
+                    has a $1.6 billion economic impact upon the city. This organization has been truly 
                     groundbreaking to the city's health by highlighting the vibrancy of its community members.
                     <br /><br />
                     Cincinnati is the perfect case study for how public art can channel positive 
@@ -824,18 +822,17 @@ export default function ProjectThreePage() {
                 <h2 className={styles.projectNumberTitle}>03</h2>
                 <h2 className={styles.researchInsightsTitle}>Research Consideration &amp; Planning</h2>
                 <article className={styles.projectDetail}>
-                  <p> After researching a few visuals of bus stop designs, some with a technologically functional focus 
-                    along with others with a cultural art focus, a lot of inspiration could be drawn from both categories.
-                    The functional designs leaned upon innovation, specifically by adding features like a screen with live updates 
-                    or solar panels that generate heating and electricity for the structure. Most of these took a modern simplistic
-                    approach that focused on the advanced additions. 
+                  <p> 
+                    After researching various function and aesthetic focused design, a lot of inspiration was derived from both categories.
+                    The functional designs leaned upon innovation, specifically by adding features like a screen
+                    or solar panels. Most of these took a modern simplistic approach that focused on the advanced additions. 
                     <br /><br />
-                    In contrast, the artistic design honed in on adding vibrancy through functional installations. Most notably, the Japanese
-                    fruit bus stop installations have gained worldwide attention for their uniqueness and eclectic presence. They
-                    have become landmarks, attracting tourists from far and wide.
+                    In contrast, the artistic designs added vibrancy through functional installations. Most notably, the Japanese
+                    fruit bus stop installations gained worldwide attention for their uniqueness and eclectic presence. They
+                    are landmarks which attract tourists from far and wide.
                     <br /><br />
                     Successfully blending technical innovation with artistic expression may be a mighty challenge, however, the
-                    lasting, positive impact upon the community leaves the city for the better.  </p>
+                    lasting, positive impact upon the community makes the city better.  </p>
                 </article>
                 <section className={styles.busStopDesignComparison} aria-label="Bus stop design inspiration">
                   {busStopDesignGroups.map((group) => (

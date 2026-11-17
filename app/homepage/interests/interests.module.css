@@ -209,6 +209,7 @@
 }
 
 .bitesIntro {
+  position: relative;
   width: min(100%, 56rem);
   margin: 0 auto clamp(1rem, 2vh, 1.5rem);
   padding: 0.75rem clamp(1rem, 3vw, 2rem);
@@ -218,6 +219,72 @@
   box-shadow: 0 0.5rem 1.5rem rgb(40 79 105 / 15%);
   text-align: center;
   animation: bites-intro-in 550ms ease both;
+}
+
+.instagramButton {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 85%);
+  animation: instagram-glow-breathe 1.8s ease-in-out infinite alternate;
+}
+
+.instagramButton img {
+  display: block;
+  width: 70%;
+  height: 70%;
+}
+
+.instagramButton:focus-visible {
+  outline: 3px solid #8f6fc8;
+  outline-offset: 3px;
+}
+
+@keyframes instagram-glow-breathe {
+  from {
+    box-shadow: 0 0 0.5rem 0.1rem rgb(255 236 170 / 55%), 0 0 1rem 0.25rem rgb(255 200 120 / 30%);
+    transform: scale(1);
+  }
+
+  to {
+    box-shadow: 0 0 1.1rem 0.4rem rgb(255 236 170 / 95%), 0 0 2.2rem 0.9rem rgb(255 200 120 / 55%);
+    transform: scale(1.08);
+  }
+}
+
+.instagramButton::after {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid rgb(255 255 255 / 85%);
+  border-radius: 0.75rem;
+  background: rgb(255 248 251 / 96%);
+  box-shadow: 0 0.4rem 1rem rgb(80 34 51 / 20%);
+  color: #5f3d50;
+  content: 'Follow me!';
+  font-family: 'Happy Monkey', cursive;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 160ms ease, visibility 160ms ease;
+}
+
+.instagramButton:hover::after,
+.instagramButton:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.etsyShopButton::after {
+  content: 'Shop my store!';
 }
 
 .etsyLogo {
@@ -964,6 +1031,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .instagramButton {
+    animation: none;
+  }
+
   .bitesPostSpinner {
     animation: none;
   }

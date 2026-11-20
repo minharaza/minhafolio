@@ -16,7 +16,7 @@ const researchPersonas = [
     id: 'parent-rider',
     name: 'Parent Rider',
     image: '/images/project-sec/Parent.png',
-    details: 'This parent depends on the bus to get around the city. Her daughter is still needs an adult to ride with her to school. Sometimes the mornings are challenging because she needs to keep track of her daughter, along with other things, while waiting for the bus. This is challenging without a place to sit.',
+    details: 'This parent depends on the bus to get around the city. Her daughter still needs an adult to ride with her to school. Sometimes the mornings are challenging because she needs to keep track of her daughter, along with other things, while waiting for the bus. This is challenging without a place to sit.',
   },
   {
     id: 'educator-commuter',
@@ -720,8 +720,7 @@ export default function ProjectThreePage() {
                     facades all over the OTR area. This initiative has given a breath of life 
                     into the neighborhood, especially in recent decades. 
                     <br /><br />
-                    ArtsWave is the driving engine for the Cincinnati arts community, which has helped 
-                    ArtsWave has embodied an immense impact
+                    ArtsWave is the driving engine for the Cincinnati arts community 
                     by embodying the benefits of public art listed above.
                     The non-profit organization supported over 150 organizations across the city, and most notably, 
                     has a $1.6 billion economic impact upon the city. This organization has been truly 
@@ -1333,7 +1332,7 @@ export default function ProjectThreePage() {
                       deepens the level of community, especially in an critical point such as a bus stop.
                       <br /><br />
                       Cincinnati's Over-the-Rhine neighborhood has a unique opportunity to not only pump a new life into the city,
-                      but also impact the overall community in ways that benefits the locals on such a large, and daily scale. Investing in
+                      but also impact the overall community in ways that benefits the locals on such a large and daily scale. Investing in
                       a public need, while simultaneously supporting local artists richens the fabric of the city.
                        </p>
                   </article>

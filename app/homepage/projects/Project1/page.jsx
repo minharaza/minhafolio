@@ -28,7 +28,7 @@ const swotItems = [
     letter: 'T',
     title: 'Threats',
     className: 'threats',
-    description: 'Due to the nature of information layout, user may disconnect with the online presence, deterring them from their initial goal of donating or checking out the business.',
+    description: 'Due to the nature of information layout, they users may feel disconnected with the flow information, detering them from continuing to engage with the site.',
   },
 ];
 
@@ -609,7 +609,7 @@ export default function ProjectOnePage() {
                 the text. The ripped paper edges add a continuous feel for the application as well. The white space feels more intentional,
                 finding balance between overuse and effectiveness.
                 <br /> <br />
-                And additionally section was added that was not in the original design. Furthering the solution for
+                And additional section was added that was not in the original design. Furthering the solution for
                 excessive whitespace, this section was added to highlight important events within the organization. 
                 When observing pain points in my own user journey, this was something that came to my attention. It is required
                 to navigate through the top bar in order to find out about the donation box. This causes many users to miss

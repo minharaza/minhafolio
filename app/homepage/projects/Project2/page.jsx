@@ -151,7 +151,7 @@ export default function ProjectTwoPage() {
           <div className={`${styles.projectTwoResearchCopy} ${styles.projectDetail}`}>
             <h2>What it Means to "Charmify"</h2>
             <p>
-              In the uptick of the "Trinket Girl" aesthetic, adding charms everyday items has taken the internet by storm in the past
+              In the uptick of the "Trinket Girl" aesthetic, adding charms to everyday items has taken the internet by storm in the past
               couple years. From personalizing bags to phone cases to belts, charming as spread into everyday fashion. 
               This phenomenon reflects the new generations' value of self-expression even in the mundune.
               <br /><br />
